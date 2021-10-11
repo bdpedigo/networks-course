@@ -1,4 +1,4 @@
-(page:syllabus)
+(page:syllabus)=
 # Syllabus
 
 ## Instructor
