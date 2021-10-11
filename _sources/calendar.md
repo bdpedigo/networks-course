@@ -4,7 +4,7 @@ Schedule below is approximate and subject to change
 
 ## Week 1
 ### Jan 4th (Tuesday)
-*NOTE* this class will likely be remote
+**NOTE** this class will likely be remote
 - Introductions
 - What is a network (and what is not)?
 - Why should we care about networks?
@@ -37,7 +37,7 @@ Schedule below is approximate and subject to change
 
 ## Week 3
 ### Jan 17th (Monday)
-- Graph isomorphism and matching
+**No class** Martin Luther King Jr. Day
 
 ### Jan 18th (Tuesday)
 - Multiple network embedding
