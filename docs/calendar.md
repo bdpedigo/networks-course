@@ -6,7 +6,9 @@ Schedule below is approximate and subject to change
 
 ## Week 1
 ### Jan 4th (Tuesday)
-**NOTE** this class will likely be remote
+```{warning} 
+This class will likely be taught remotely
+```
 - Introductions
 - [Syllabus](page:syllabus)
 - What is a network (and what is not)?
@@ -41,9 +43,11 @@ Schedule below is approximate and subject to change
 
 ## Week 3
 ### Jan 17th (Monday)
-**No class** 
+```{warning} 
+**No class**
 
 Martin Luther King Jr. Day
+```
 
 ### Jan 18th (Tuesday)
 - Multiple network embedding
