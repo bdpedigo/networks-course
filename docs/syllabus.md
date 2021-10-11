@@ -9,9 +9,9 @@ For specific topics covered, please see the [calendar page](page:calendar).
 ## Materials
 ### Code/software
 #### Primary
-- [graspologic](https://github.com/microsoft/graspologic)
-- NetworkX
-- scipy.sparse.csgraph
+- [graspologic](https://graspologic.readthedocs.io/en/latest/)
+- [NetworkX](https://networkx.org/)
+- [Scipy's sparse graph routines](https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html)
 
 #### Also mentioned 
 - graph-tool
