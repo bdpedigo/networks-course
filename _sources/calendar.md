@@ -6,7 +6,7 @@ Schedule below is approximate and subject to change
 ### Jan 4th (Tuesday)
 **NOTE** this class will likely be remote
 - Introductions
-- [Syllabus]
+- [Syllabus](page:syllabus)
 - What is a network (and what is not)?
 - Why should we care about networks?
 - How do we represent networks?
