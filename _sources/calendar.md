@@ -39,7 +39,9 @@ Schedule below is approximate and subject to change
 
 ## Week 3
 ### Jan 17th (Monday)
-**No class** Martin Luther King Jr. Day
+**No class** 
+
+Martin Luther King Jr. Day
 
 ### Jan 18th (Tuesday)
 - Multiple network embedding
