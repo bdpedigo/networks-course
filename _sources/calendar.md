@@ -6,9 +6,11 @@ Schedule below is approximate and subject to change
 ### Jan 4th (Tuesday)
 **NOTE** this class will likely be remote
 - Introductions
+- [Syllabus]
 - What is a network (and what is not)?
 - Why should we care about networks?
 - How do we represent networks?
+- Course roadmap
 
 ### Jan 5th (Wednesday)
 - Centrality measures
