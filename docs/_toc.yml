@@ -1,0 +1,7 @@
+format: jb-book
+root: landing
+parts:
+- caption: Preliminaries
+  chapters:
+  - file: outline
+  - file: introduction

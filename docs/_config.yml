@@ -1,0 +1,35 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options: 
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : Network Data Science # The title of the book. Will be placed in the left navbar.
+author                      : NeuroData  # The author of the book
+copyright                   : "2021"  # Copyright year to be placed in the footer
+logo                        : ./images/nd_logo.png  # A path to the book logo
+
+# Linking
+html:
+  favicon: ./images/nd_logo_small.png
+  comments:
+    hypothesis: true
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: false
+  home_page_in_navbar: true
+  
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/bdpedigo/networks-course
+  path_to_book: networks-course
+  branch: main
+
+sphinx:
+  config:
+    language: en
+
+execute: 
+  execute_notebooks: off # TODO turn back on someday
