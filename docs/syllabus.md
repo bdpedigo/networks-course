@@ -1,9 +1,13 @@
+(page:syllabus)
 # Syllabus
 
 ## Instructor
-Benjamin Pedigo 
+Benjamin Pedigo (he/him)
+
 PhD Candidate, Department of Biomedical Engineering
+
 Email: [bpedigo@jhu.edu](mailto:bpedigo@jhu.edu)
+
 Website: [https://bdpedigo.github.io/](https://bdpedigo.github.io/)
 
 ## Time
@@ -64,9 +68,14 @@ is going on and we will come up with a plan.
 
 ## Final project
 
+
 ## Office hours
 By appointment. I also expect most lecture days to have a significant group work proportion
 where you can ask questions.
 
 ## Python development
 Please see [insert link] for tips on getting an environment set up for Python and open source.
+
+## Accommodations
+
+## Citations and credit
