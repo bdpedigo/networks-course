@@ -12,6 +12,7 @@ Website: [https://bdpedigo.github.io/](https://bdpedigo.github.io/)
 
 ## Time
 1PM - 2:45PM, MTWThF
+
 Jan 4th - Jan 21st, 2021
 
 ## Location
