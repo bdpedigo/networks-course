@@ -32,17 +32,17 @@ Schedule below is approximate and subject to change
 - Unsupervised network embeddings (day 2)
 
 ### Jan 13th (Thursday)
-- Graph neural networks + supervised embeddings
+- Multiple network embedding
 
 ### Jan 14th (Friday)
-- Catch-up time or special lecture
+- Graph neural networks + supervised embeddings
 
 ## Week 3
 ### Jan 17th (Monday)
 **No class** Martin Luther King Jr. Day
 
 ### Jan 18th (Tuesday)
-- Multiple network embedding
+- Graph matching
 
 ### Jan 19th (Wednesday)
 - Network kernels/metrics
