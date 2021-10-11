@@ -1,6 +1,8 @@
 (page:calendar)=
 # Calendar 
+```{note}
 Schedule below is approximate and subject to change
+```
 
 ## Week 1
 ### Jan 4th (Tuesday)
