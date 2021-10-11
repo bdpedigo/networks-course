@@ -1,5 +1,6 @@
 (page:syllabus)=
 # Syllabus
+Syllabus under construction (especially anywhere you see a TODO)
 
 ## Instructor
 Benjamin Pedigo (he/him)
@@ -16,7 +17,7 @@ Website: [https://bdpedigo.github.io/](https://bdpedigo.github.io/)
 Jan 4th - Jan 21st, 2021
 
 ## Location
-TBD
+TODO
 
 ## Course description
 Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science; for example, they have been used to represent include social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, random graph models, graph matching, network hypothesis testing, and graph neural networks. Students will be expected to submit a very brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics and linear algebra is very highly encouraged.
@@ -68,7 +69,7 @@ Missing class for an illness will never be held against you, please just let me 
 is going on and we will come up with a plan. 
 
 ## Final project
-
+TODO
 
 ## Office hours
 By appointment. I also expect most lecture days to have a significant group work proportion
@@ -78,5 +79,7 @@ where you can ask questions.
 Please see [insert link] for tips on getting an environment set up for Python and open source.
 
 ## Accommodations
+TODO
 
 ## Citations and credit
+TODO
