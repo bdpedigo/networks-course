@@ -1,7 +1,7 @@
 # Syllabus
 
 ## Course description
-Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science; for example, they have been used to represent include social interactions, relationships between genes or protein sequences, and the interconnectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, random graph models, graph matching, network hypothesis testing, and graph neural networks. Students will be expected to submit a very brief analysis of some real-world network dataset for their final project. Some familiarity with Python, statistics and linear algebra is highly encouraged.
+Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science; for example, they have been used to represent include social interactions, relationships between genes or protein sequences, and the interconnectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, random graph models, graph matching, network hypothesis testing, and graph neural networks. Students will be expected to submit a very brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics and linear algebra is very highly encouraged.
 
 ## Topics
 - What is a network?
@@ -14,7 +14,6 @@ Networks represent data by describing a set of objects and the relations between
    - Spectral embedding, min-flow-max-cut
    - Node2vec and other... 
 - Graph neural networks (message passing kind)
-   - https://staging.distill.pub/2021/gnn-intro/
 - Random graph models
    - ER
    - SBM and variants
@@ -50,6 +49,7 @@ required to rent or buy:
 - Networks by Mark Newman
 - Atlas for the Aspiring Network Scientist
 - Hands-on book by NeuroData group
+- https://staging.distill.pub/2021/gnn-intro/
 
 ## Prerequisites
 The following prerequisites are highly recommended to take this course. Please talk to 

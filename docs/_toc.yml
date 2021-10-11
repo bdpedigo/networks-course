@@ -4,4 +4,5 @@ parts:
 - caption: Preliminaries
   chapters:
   - file: syllabus
+  - file: calendar
   - file: introduction
