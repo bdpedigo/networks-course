@@ -1,8 +1,11 @@
 format: jb-book
 root: landing
 parts:
-- caption: Preliminaries
+- caption: Course logistics
   chapters:
   - file: syllabus
   - file: calendar
-  - file: introduction
+  - file: about
+# - caption: 
+#   chapters: 
+#   - file: what-is-a-network
