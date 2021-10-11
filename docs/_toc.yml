@@ -3,5 +3,5 @@ root: landing
 parts:
 - caption: Preliminaries
   chapters:
-  - file: outline
+  - file: syllabus
   - file: introduction
