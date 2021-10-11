@@ -76,7 +76,7 @@ By appointment. I also expect most lecture days to have a significant group work
 where you can ask questions.
 
 ## Python development
-Please see [insert link] for tips on getting an environment set up for Python and open source.
+Please see TODO for tips on getting an environment set up for Python and open source.
 
 ## Accommodations
 TODO
