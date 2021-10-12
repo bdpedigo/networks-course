@@ -7,7 +7,7 @@ Schedule below is approximate and subject to change
 ## Week 1
 ### Jan 4th (Tuesday)
 ```{warning} 
-This class will likely be taught remotely
+This day of class only will likely be taught remotely
 ```
 - Introductions
 - [Syllabus](page:syllabus)
