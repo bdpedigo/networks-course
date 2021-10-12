@@ -22,7 +22,7 @@ Jan 4th - Jan 21st, 2021
 TODO
 
 ## Course description
-Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science; for example, they have been used to represent include social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, random graph models, graph matching, network hypothesis testing, and graph neural networks. Students will be expected to submit a very brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics and linear algebra is very highly encouraged.
+Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science: for example, they have been used to represent social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, graph neural networks, random graph models, graph matching, and network hypothesis testing. This is a hands-on, project-based course - students will submit a brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics, and linear algebra is very highly encouraged.
 
 ## Prerequisites
 ```{warning} The following prerequisites are highly recommended to take this course. Please talk to 
@@ -72,17 +72,26 @@ Missing class for an illness will never be held against you, please just let me 
 is going on and we will come up with a plan. 
 
 ## Final project
+```{warning}
 TODO
+```
 
 ## Office hours
 By appointment. I also expect most lecture days to have a significant group work proportion
 where you can ask questions.
 
 ## Python development
-Please see TODO for tips on getting an environment set up for Python and open source.
+```{warning}
+TODO
+```
+Please see ___ for tips on getting an environment set up for Python and open source.
 
 ## Accommodations
+```{warning}
 TODO
+```
 
 ## Citations and credit
+```{warning}
 TODO
+```
