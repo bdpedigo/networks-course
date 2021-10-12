@@ -88,11 +88,4 @@ TODO
 Please see ___ for tips on getting an environment set up for Python and open source.
 
 ## Accommodations
-```{warning}
-TODO
-```
-
-## Citations and credit
-```{warning}
-TODO
-```
+My goal is for this course to be a safe and accessible place for anyone to learn. Please let me know if there's anything I can do to accomodate any needs towards that end.
