@@ -42,8 +42,8 @@ For specific topics covered, please see the [calendar page](page:calendar).
 - [Scipy's sparse graph routines](https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html)
 
 #### Also mentioned 
-- graph-tool
-- scikit-network
+- [graph-tool](https://graph-tool.skewed.de/)
+- [scikit-network](https://scikit-network.readthedocs.io/en/latest/)
 - python-igraph
 - karateclub
 - DGL
@@ -53,10 +53,12 @@ For specific topics covered, please see the [calendar page](page:calendar).
 ### Books
 The following books may be useful material during the course, but none of them are
 required to rent or buy:
-- Networks by Mark Newman
-- Atlas for the Aspiring Network Scientist
-- Hands-on book by NeuroData group
-- https://staging.distill.pub/2021/gnn-intro/
+- [Networks by Mark Newman](https://global.oup.com/academic/product/networks-9780198805090?cc=us&lang=en&)
+- [Atlas for the Aspiring Network Scientist](https://www.networkatlas.eu/)
+- [Hands-on Network Machine Learning with Scikit-Learn and Graspologic](http://docs.neurodata.io/graph-stats-book/coverpage.html) (book not yet finished)
+
+### Other resources
+- [A Gentle Introduction to Graph Neural Networks](https://staging.distill.pub/2021/gnn-intro/)
 
 ## Grading
 To pass, a student must: 
