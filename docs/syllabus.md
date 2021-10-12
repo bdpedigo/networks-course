@@ -44,11 +44,11 @@ For specific topics covered, please see the [calendar page](page:calendar).
 #### Also mentioned 
 - [graph-tool](https://graph-tool.skewed.de/)
 - [scikit-network](https://scikit-network.readthedocs.io/en/latest/)
-- python-igraph
-- karateclub
-- DGL
-- pytorch-geometric
-- stellargraph
+- [python-igraph](https://igraph.org/python/)
+- [karateclub](https://karateclub.readthedocs.io/en/latest/)
+- [DGL](https://www.dgl.ai/)
+- [pytorch-geometric](https://pytorch-geometric.readthedocs.io/en/latest/)
+- [stellargraph](https://stellargraph.readthedocs.io/en/stable/)
 
 ### Books
 The following books may be useful material during the course, but none of them are
