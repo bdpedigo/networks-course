@@ -1,7 +1,15 @@
-# Network Data Science (EN.580.1XX)
-A repo housing a course introducing students to network data science. 
+# Network Data Science - EN.580.129 (13)
+A repo housing a course introducing students to network data science at Johns Hopkins University.
 
-Instructor: Benjamin Pedigo
+Term: Intersession 2022
+
+Instructor: Benjamin D. Pedigo
+
+Times: M T W Th F, 1:00PM - 2:20PM
+
+Schedule: 01-01-2022 to 01-21-2022
+
+Credits: 2
 
 ## Repo structure 
 - ``.github``: Files specifying how the repo behaves on GitHub
