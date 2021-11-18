@@ -9,3 +9,6 @@ parts:
 # - caption: 
 #   chapters: 
 #   - file: what-is-a-network
+- caption: Introduction
+  chapters: 
+  - file: representing_networks
