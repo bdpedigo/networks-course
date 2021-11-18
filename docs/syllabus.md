@@ -1,6 +1,8 @@
 (page:syllabus)=
 # Syllabus
+```{note}
 Syllabus under construction (especially anywhere you see a TODO)
+```
 
 ## Instructor
 Benjamin Pedigo (he/him)
@@ -20,11 +22,11 @@ Jan 4th - Jan 21st, 2021
 TODO
 
 ## Course description
-Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science; for example, they have been used to represent include social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, random graph models, graph matching, network hypothesis testing, and graph neural networks. Students will be expected to submit a very brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics and linear algebra is very highly encouraged.
+Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science: for example, they have been used to represent social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, graph neural networks, random graph models, graph matching, and network hypothesis testing. This is a hands-on, project-based course - students will submit a brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics, and linear algebra is very highly encouraged.
 
 ## Prerequisites
-The following prerequisites are highly recommended to take this course. Please talk to 
-the instructor if you are unsure about your prior knowledge for any of these:
+```{warning} The following prerequisites are highly recommended to take this course. In particular, Python experience will be important in order to be able to submit the final project. Please talk to the instructor if you are unsure about your prior knowledge for any of these:
+```
 - Python programming experience 
 - Linear algebra 
 - Probability/statistics
@@ -40,21 +42,23 @@ For specific topics covered, please see the [calendar page](page:calendar).
 - [Scipy's sparse graph routines](https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html)
 
 #### Also mentioned 
-- graph-tool
-- scikit-network
-- python-igraph
-- karateclub
-- DGL
-- pytorch-geometric
-- stellargraph
+- [graph-tool](https://graph-tool.skewed.de/)
+- [scikit-network](https://scikit-network.readthedocs.io/en/latest/)
+- [python-igraph](https://igraph.org/python/)
+- [karateclub](https://karateclub.readthedocs.io/en/latest/)
+- [DGL](https://www.dgl.ai/)
+- [pytorch-geometric](https://pytorch-geometric.readthedocs.io/en/latest/)
+- [stellargraph](https://stellargraph.readthedocs.io/en/stable/)
 
 ### Books
 The following books may be useful material during the course, but none of them are
 required to rent or buy:
-- Networks by Mark Newman
-- Atlas for the Aspiring Network Scientist
-- Hands-on book by NeuroData group
-- https://staging.distill.pub/2021/gnn-intro/
+- [Networks by Mark Newman](https://global.oup.com/academic/product/networks-9780198805090?cc=us&lang=en&)
+- [Atlas for the Aspiring Network Scientist](https://www.networkatlas.eu/)
+- [Hands-on Network Machine Learning with Scikit-Learn and Graspologic](http://docs.neurodata.io/graph-stats-book/coverpage.html) (book not yet finished)
+
+### Other resources
+- [A Gentle Introduction to Graph Neural Networks](https://staging.distill.pub/2021/gnn-intro/)
 
 ## Grading
 To pass, a student must: 
@@ -69,17 +73,19 @@ Missing class for an illness will never be held against you, please just let me 
 is going on and we will come up with a plan. 
 
 ## Final project
+```{warning}
 TODO
+```
 
 ## Office hours
 By appointment. I also expect most lecture days to have a significant group work proportion
 where you can ask questions.
 
 ## Python development
-Please see TODO for tips on getting an environment set up for Python and open source.
+```{warning}
+TODO
+```
+Please see ___ for tips on getting an environment set up for Python and open source.
 
 ## Accommodations
-TODO
-
-## Citations and credit
-TODO
+My goal is for this course to be a safe and accessible place for anyone to learn. Please let me know if there's anything I can do to accomodate any needs towards that end.

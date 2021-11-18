@@ -24,7 +24,7 @@ html:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/bdpedigo/networks-course
-  path_to_book: networks-course
+  path_to_book: docs
   branch: main
 
 sphinx:
