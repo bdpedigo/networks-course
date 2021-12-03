@@ -12,3 +12,6 @@ parts:
 - caption: Introduction
   chapters: 
   - file: representing_networks
+- caption: Week 1
+  chapters:
+  - file: centrality
