@@ -13,8 +13,8 @@ This day of class only will likely be taught remotely
 - [Syllabus](page:syllabus)
 - What is a network (and what is not)?
 - Why should we care about networks?
-- How do we represent networks?
-- Course roadmap
+- [How do we represent networks?](representing_networks.ipynb)
+- Course roadmap (go over this calendar)
 
 ### Jan 5th (Wednesday)
 - Centrality measures
