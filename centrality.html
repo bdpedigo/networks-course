@@ -63,6 +63,14 @@
 
     <!-- Google Analytics -->
     
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NKZDF4TJZF"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-NKZDF4TJZF');
+                </script>
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -259,11 +267,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#eigenvector-centrality">
    Eigenvector centrality
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#katz-centrality">
-   Katz centrality
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -504,14 +507,722 @@ will be the one we chose above, by a famous result called the <a class="referenc
 </div>
 </div>
 </div>
-<div class="section" id="katz-centrality">
-<h2>Katz centrality<a class="headerlink" href="#katz-centrality" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="pagerank">
 <h2>PageRank<a class="headerlink" href="#pagerank" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="betweenness-centrality">
 <h2>Betweenness centrality<a class="headerlink" href="#betweenness-centrality" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+    </tr>
+    <tr>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>2</th>
+    </tr>
+    <tr>
+      <th>3</th>
+    </tr>
+    <tr>
+      <th>4</th>
+    </tr>
+    <tr>
+      <th>5</th>
+    </tr>
+    <tr>
+      <th>6</th>
+    </tr>
+    <tr>
+      <th>7</th>
+    </tr>
+    <tr>
+      <th>8</th>
+    </tr>
+    <tr>
+      <th>9</th>
+    </tr>
+    <tr>
+      <th>10</th>
+    </tr>
+    <tr>
+      <th>11</th>
+    </tr>
+    <tr>
+      <th>12</th>
+    </tr>
+    <tr>
+      <th>13</th>
+    </tr>
+    <tr>
+      <th>14</th>
+    </tr>
+    <tr>
+      <th>15</th>
+    </tr>
+    <tr>
+      <th>16</th>
+    </tr>
+    <tr>
+      <th>17</th>
+    </tr>
+    <tr>
+      <th>18</th>
+    </tr>
+    <tr>
+      <th>19</th>
+    </tr>
+    <tr>
+      <th>20</th>
+    </tr>
+    <tr>
+      <th>21</th>
+    </tr>
+    <tr>
+      <th>22</th>
+    </tr>
+    <tr>
+      <th>23</th>
+    </tr>
+    <tr>
+      <th>24</th>
+    </tr>
+    <tr>
+      <th>25</th>
+    </tr>
+    <tr>
+      <th>26</th>
+    </tr>
+    <tr>
+      <th>27</th>
+    </tr>
+    <tr>
+      <th>28</th>
+    </tr>
+    <tr>
+      <th>29</th>
+    </tr>
+    <tr>
+      <th>30</th>
+    </tr>
+    <tr>
+      <th>31</th>
+    </tr>
+    <tr>
+      <th>32</th>
+    </tr>
+    <tr>
+      <th>33</th>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 16,
+ 1: 9,
+ 2: 10,
+ 3: 6,
+ 4: 3,
+ 5: 4,
+ 6: 4,
+ 7: 4,
+ 8: 5,
+ 9: 2,
+ 10: 3,
+ 11: 1,
+ 12: 2,
+ 13: 5,
+ 14: 2,
+ 15: 2,
+ 16: 2,
+ 17: 2,
+ 18: 2,
+ 19: 3,
+ 20: 2,
+ 21: 2,
+ 22: 2,
+ 23: 5,
+ 24: 3,
+ 25: 3,
+ 26: 2,
+ 27: 4,
+ 28: 3,
+ 29: 4,
+ 30: 4,
+ 31: 6,
+ 32: 12,
+ 33: 17}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">g</span><span class="p">)))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;eigenvector&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;pagerank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;betweenness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+    <span class="n">rank_mapper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+    <span class="n">node_data</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">_ranked&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">rank_mapper</span><span class="p">)</span>
+    <span class="n">networkplot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s1">&#39;eigenvector&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s1">&#39;pagerank&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s1">&#39;betweenness&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/centrality_17_0.png" src="_images/centrality_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>degree</th>
+      <th>eigenvector</th>
+      <th>pagerank</th>
+      <th>betweenness</th>
+      <th>x</th>
+      <th>y</th>
+      <th>degree_ranked</th>
+      <th>eigenvector_ranked</th>
+      <th>pagerank_ranked</th>
+      <th>betweenness_ranked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16</td>
+      <td>0.355483</td>
+      <td>0.097002</td>
+      <td>0.437635</td>
+      <td>0.025953</td>
+      <td>0.332618</td>
+      <td>9</td>
+      <td>26</td>
+      <td>27</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>0.265954</td>
+      <td>0.052878</td>
+      <td>0.053937</td>
+      <td>-0.154154</td>
+      <td>0.251060</td>
+      <td>6</td>
+      <td>23</td>
+      <td>24</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10</td>
+      <td>0.317189</td>
+      <td>0.057078</td>
+      <td>0.143657</td>
+      <td>0.072811</td>
+      <td>-0.003398</td>
+      <td>7</td>
+      <td>25</td>
+      <td>25</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>0.211174</td>
+      <td>0.035861</td>
+      <td>0.011909</td>
+      <td>0.151208</td>
+      <td>0.232506</td>
+      <td>5</td>
+      <td>20</td>
+      <td>22</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>0.075966</td>
+      <td>0.021979</td>
+      <td>0.000631</td>
+      <td>0.193135</td>
+      <td>0.574454</td>
+      <td>2</td>
+      <td>6</td>
+      <td>12</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4</td>
+      <td>0.079481</td>
+      <td>0.029113</td>
+      <td>0.029987</td>
+      <td>0.189964</td>
+      <td>0.679017</td>
+      <td>3</td>
+      <td>7</td>
+      <td>18</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4</td>
+      <td>0.079481</td>
+      <td>0.029113</td>
+      <td>0.029987</td>
+      <td>-0.004422</td>
+      <td>0.691958</td>
+      <td>3</td>
+      <td>7</td>
+      <td>17</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4</td>
+      <td>0.170955</td>
+      <td>0.024491</td>
+      <td>0.000000</td>
+      <td>0.283520</td>
+      <td>0.210236</td>
+      <td>3</td>
+      <td>17</td>
+      <td>13</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5</td>
+      <td>0.227405</td>
+      <td>0.029765</td>
+      <td>0.055927</td>
+      <td>-0.175658</td>
+      <td>-0.009901</td>
+      <td>4</td>
+      <td>22</td>
+      <td>20</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2</td>
+      <td>0.102675</td>
+      <td>0.014309</td>
+      <td>0.000848</td>
+      <td>0.070613</td>
+      <td>-0.289252</td>
+      <td>1</td>
+      <td>11</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3</td>
+      <td>0.075966</td>
+      <td>0.021979</td>
+      <td>0.000631</td>
+      <td>0.379808</td>
+      <td>0.532623</td>
+      <td>2</td>
+      <td>5</td>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>0.052854</td>
+      <td>0.009565</td>
+      <td>0.000000</td>
+      <td>-0.187765</td>
+      <td>0.633252</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2</td>
+      <td>0.084252</td>
+      <td>0.014645</td>
+      <td>0.000000</td>
+      <td>0.433744</td>
+      <td>0.379505</td>
+      <td>1</td>
+      <td>8</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>5</td>
+      <td>0.226470</td>
+      <td>0.029536</td>
+      <td>0.045863</td>
+      <td>-0.085120</td>
+      <td>0.052682</td>
+      <td>4</td>
+      <td>21</td>
+      <td>19</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2</td>
+      <td>0.101406</td>
+      <td>0.014535</td>
+      <td>0.000000</td>
+      <td>-0.500067</td>
+      <td>-0.312444</td>
+      <td>1</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>0.101406</td>
+      <td>0.014535</td>
+      <td>0.000000</td>
+      <td>-0.465779</td>
+      <td>-0.429025</td>
+      <td>1</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2</td>
+      <td>0.023635</td>
+      <td>0.016785</td>
+      <td>0.000000</td>
+      <td>0.159578</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2</td>
+      <td>0.092397</td>
+      <td>0.014559</td>
+      <td>0.000000</td>
+      <td>-0.279331</td>
+      <td>0.514205</td>
+      <td>1</td>
+      <td>9</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2</td>
+      <td>0.101406</td>
+      <td>0.014535</td>
+      <td>0.000000</td>
+      <td>-0.395900</td>
+      <td>-0.534397</td>
+      <td>1</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>3</td>
+      <td>0.147911</td>
+      <td>0.019604</td>
+      <td>0.032475</td>
+      <td>-0.275385</td>
+      <td>0.069220</td>
+      <td>2</td>
+      <td>15</td>
+      <td>8</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2</td>
+      <td>0.101406</td>
+      <td>0.014535</td>
+      <td>0.000000</td>
+      <td>-0.293375</td>
+      <td>-0.615543</td>
+      <td>1</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2</td>
+      <td>0.092397</td>
+      <td>0.014559</td>
+      <td>0.000000</td>
+      <td>-0.373191</td>
+      <td>0.436351</td>
+      <td>1</td>
+      <td>9</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2</td>
+      <td>0.101406</td>
+      <td>0.014535</td>
+      <td>0.000000</td>
+      <td>-0.158642</td>
+      <td>-0.642802</td>
+      <td>1</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>5</td>
+      <td>0.150123</td>
+      <td>0.031521</td>
+      <td>0.017614</td>
+      <td>0.236065</td>
+      <td>-0.515501</td>
+      <td>4</td>
+      <td>16</td>
+      <td>21</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3</td>
+      <td>0.057054</td>
+      <td>0.021075</td>
+      <td>0.002210</td>
+      <td>0.570081</td>
+      <td>-0.296654</td>
+      <td>2</td>
+      <td>2</td>
+      <td>10</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>3</td>
+      <td>0.059208</td>
+      <td>0.021006</td>
+      <td>0.003840</td>
+      <td>0.548790</td>
+      <td>-0.166394</td>
+      <td>2</td>
+      <td>3</td>
+      <td>9</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2</td>
+      <td>0.075582</td>
+      <td>0.015043</td>
+      <td>0.000000</td>
+      <td>-0.047563</td>
+      <td>-0.757920</td>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>4</td>
+      <td>0.133479</td>
+      <td>0.025639</td>
+      <td>0.022333</td>
+      <td>0.284627</td>
+      <td>-0.289822</td>
+      <td>3</td>
+      <td>13</td>
+      <td>15</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>3</td>
+      <td>0.131079</td>
+      <td>0.019573</td>
+      <td>0.001795</td>
+      <td>0.185397</td>
+      <td>-0.292763</td>
+      <td>2</td>
+      <td>12</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>4</td>
+      <td>0.134965</td>
+      <td>0.026287</td>
+      <td>0.002922</td>
+      <td>0.068520</td>
+      <td>-0.620426</td>
+      <td>3</td>
+      <td>14</td>
+      <td>16</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>4</td>
+      <td>0.174760</td>
+      <td>0.024589</td>
+      <td>0.014412</td>
+      <td>-0.381375</td>
+      <td>-0.089401</td>
+      <td>3</td>
+      <td>18</td>
+      <td>14</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>6</td>
+      <td>0.191036</td>
+      <td>0.037157</td>
+      <td>0.138276</td>
+      <td>0.197179</td>
+      <td>-0.072189</td>
+      <td>5</td>
+      <td>19</td>
+      <td>23</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>12</td>
+      <td>0.308651</td>
+      <td>0.071692</td>
+      <td>0.145247</td>
+      <td>-0.172313</td>
+      <td>-0.312215</td>
+      <td>8</td>
+      <td>24</td>
+      <td>26</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>17</td>
+      <td>0.373371</td>
+      <td>0.100918</td>
+      <td>0.304075</td>
+      <td>-0.100954</td>
+      <td>-0.339640</td>
+      <td>10</td>
+      <td>27</td>
+      <td>28</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
