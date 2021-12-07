@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "networks-course"
+version = "0.1.0"
+description = ""
+authors = ["Benjamin D. Pedigo <bpedigo@jhu.edu>"]
+
+[tool.poetry.dependencies]
+python = "3.9.*"
+graspologic = "^0.3.1"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+ipykernel = "^6.6.0"
+jupyter-book = "^0.12.1"
+black = {version = "^21.12b0", allow-prereleases = true}
