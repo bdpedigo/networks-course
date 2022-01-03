@@ -62,9 +62,9 @@ required to rent or buy:
 
 ## Grading
 To pass, a student must: 
-- Attend and engage with most lectures (please let the instructor know if you need to miss a lecture for some reason)
+- Attend and engage with every lecture (please let the instructor know if you need to miss a lecture for some reason)
 - Submit a merge-able final project by 12pm (noon) on Jan 20th (Thursday)
-- Present their final project on the last day of class
+- Present their final project on the last day of class, Jan 21st (Friday)
 
 ## Sick policy
 My #1 priority is making sure everyone has a safe environment to learn - to this end, and out of respect
