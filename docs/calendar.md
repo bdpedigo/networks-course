@@ -6,9 +6,6 @@ Schedule below is approximate and subject to change
 
 ## Week 1
 ### Jan 4th (Tuesday)
-```{warning} 
-This day of class only will likely be taught remotely
-```
 - Introductions
 - [Syllabus](page:syllabus)
 - What is a network (and what is not)?
@@ -17,6 +14,9 @@ This day of class only will likely be taught remotely
 - Course roadmap (go over this calendar)
 
 ### Jan 5th (Wednesday)
+```{warning} 
+This day of class only will be cancelled or recorded
+```
 - Centrality measures
    - Degree, strength
    - Eigenvector centrality
