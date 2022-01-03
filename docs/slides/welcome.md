@@ -116,7 +116,20 @@ _[NeuroData lab](https://neurodata.io/)_
 - In that file, write `# <your last name> - final project placeholder`:
   ![h:200](./slide_images/name-example-markdown.png)
 - From the command line, make sure you are in the `networks-course` directory. You probably need to move there with a command like `cd networks-course`. 
-- 
+
+---
+# Mini-assignment steps (cont.)
+- Use `git` to check for modified files via `git status`: 
+  ![h:175](./slide_images/git-status.png) 
+- Do `git add docs/<your last name>.md` to add this new file to be tracked. You can use `git status` again to verify if this worked
+  ![h:175](./slide_images/git-add.png) 
+
+---
+# Mini-assignment steps (cont.)
+- Do `git commit -m "add project placeholder"`. A commit is like a bundle of code modifications, and the `-m` allows you to write a message (like a title) to be associated with that commit.
+  ![](./slide_images/git-commit.png)
+- Do `git push` to send these changes to be reflected online: 
+  ![h:200](./slide_images/git-push.png)
 
 ---
 # Final projects
