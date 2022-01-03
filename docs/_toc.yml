@@ -9,6 +9,8 @@ parts:
   chapters:
   - url: https://bdpedigo.github.io/networks-course/welcome.html
     title: Welcome
+  - url: https://bdpedigo.github.io/networks-course/what_are_networks.html
+    title: What are networks?
   - file: mini_assignment
   - file: representing_networks
 - caption: Week 1
