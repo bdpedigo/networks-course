@@ -6,7 +6,7 @@
 - Go to the page for this repo: https://github.com/bdpedigo/networks-course
 - Find the `Fork` button (top right) and use it to fork this repo to your own account. This essentially makes a copy of this repo which you can modify as you please. 
   ![w:900px](./slide_images/git-page.png)
-- Find the green `Code` button on your fork (not the main page as shown here):
+- Find the green `Code` button on your fork (not the main page as shown here). Note that for all of the subsequent steps, the repo should be `<your username>/networks-course` instead of mine.
   ![w:900px](./slide_images/git-page.png)
 - Hit the green `Code` button and copy the `HTTPS` link: 
   ![h:300px](./slide_images/git-clone.png)

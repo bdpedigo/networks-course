@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; Network Data Science</title>
+    <title>Mini-assignment &#8212; Network Data Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -43,9 +43,18 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/nd_logo_small.png"/>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Representing networks" href="representing_networks.html" />
+    <link rel="prev" title="Calendar" href="calendar.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -119,14 +128,14 @@
   Introduction
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="https://bdpedigo.github.io/networks-course/test_marp_slides.html">
    Welcome
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mini-assignment.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Mini-assignment
   </a>
  </li>
@@ -192,6 +201,23 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/mini-assignment.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -203,10 +229,12 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fmini-assignment.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
+        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/mini-assignment.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
@@ -232,19 +260,76 @@
         
               <div>
                 
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="tex2jax_ignore mathjax_ignore section" id="mini-assignment">
+<h1>Mini-assignment<a class="headerlink" href="#mini-assignment" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Make sure you have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed: <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a></p></li>
+<li><p>Make sure you have a GitHub (free/student) account: <a class="reference external" href="https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account">https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account</a></p></li>
+<li><p>From the command line on your machine, navigate to a folder where you would like to keep your work for the course</p></li>
+<li><p>Go to the page for this repo: <a class="reference external" href="https://github.com/bdpedigo/networks-course">https://github.com/bdpedigo/networks-course</a></p></li>
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">Fork</span></code> button (top right) and use it to fork this repo to your own account. This essentially makes a copy of this repo which you can modify as you please.
+<img alt="w:900px" src="slide_images/git-page.png" /></p></li>
+<li><p>Find the green <code class="docutils literal notranslate"><span class="pre">Code</span></code> button on your fork (not the main page as shown here). Note that for all of the subsequent steps, the repo should be <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">username&gt;/networks-course</span></code> instead of mine.
+<img alt="w:900px" src="slide_images/git-page.png" /></p></li>
+<li><p>Hit the green <code class="docutils literal notranslate"><span class="pre">Code</span></code> button and copy the <code class="docutils literal notranslate"><span class="pre">HTTPS</span></code> link:
+<img alt="h:300px" src="slide_images/git-clone.png" /></p></li>
+<li><p>From the command line, do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;link</span> <span class="pre">that</span> <span class="pre">you</span> <span class="pre">just</span> <span class="pre">copied&gt;</span></code></p></li>
+<li><p>You should now see a directory called <code class="docutils literal notranslate"><span class="pre">networks-course</span></code></p></li>
+<li><p>Make a new file in the directory <code class="docutils literal notranslate"><span class="pre">networks-course/docs</span></code>, call it <code class="docutils literal notranslate"><span class="pre">&lt;your-last-name&gt;.md</span></code>:
+<img alt="h:400" src="slide_images/nav-example-name-markdown.png" /></p></li>
+<li><p>In that file, write <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">&lt;your</span> <span class="pre">last</span> <span class="pre">name&gt;</span> <span class="pre">-</span> <span class="pre">final</span> <span class="pre">project</span> <span class="pre">placeholder</span></code>:
+<img alt="h:200" src="slide_images/name-example-markdown.png" /></p></li>
+<li><p>From the command line, make sure you are in the <code class="docutils literal notranslate"><span class="pre">networks-course</span></code> directory. You probably need to move there with a command like <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">networks-course</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span></code> to check for modified files via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>:
+<img alt="h:175" src="slide_images/git-status.png" /></p></li>
+<li><p>Do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">docs/&lt;your</span> <span class="pre">last</span> <span class="pre">name&gt;.md</span></code> to add this new file to be tracked. You can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> again to verify if this worked
+<img alt="h:175" src="slide_images/git-add.png" /></p></li>
+<li><p>Do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;add</span> <span class="pre">project</span> <span class="pre">placeholder&quot;</span></code>. A commit is like a bundle of code modifications, and the <code class="docutils literal notranslate"><span class="pre">-m</span></code> allows you to write a message (like a title) to be associated with that commit.
+<img alt="" src="slide_images/git-commit.png" /></p></li>
+<li><p>Do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> to send these changes to be reflected online:
+<img alt="h:200" src="slide_images/git-push.png" /></p></li>
+</ul>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="calendar.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Calendar</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="representing_networks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Representing networks</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
