@@ -6,24 +6,24 @@ Schedule below is approximate and subject to change
 
 ## Week 1
 ### Jan 4th (Tuesday)
-- Introductions
-- [Syllabus](page:syllabus)
-- What is a network (and what is not)?
-- Why should we care about networks?
-- [How do we represent networks?](representing_networks.ipynb)
+- [Introductions and welcome](slides/welcome.html)
 - Course roadmap (go over this calendar)
+- [What are networks (and why should we care)](what_are_networks.md)?
+- [How do we represent networks?](representing_networks.ipynb)
 
 ### Jan 5th (Wednesday)
 ```{warning} 
-This day of class will be cancelled or recorded
+Ben can't make it to this class, but you are encouraged to come to the class via zoom and help each other complete the mini-assignment.
 ```
+
+Complete the [mini-assignment](mini_assignment.md).
+
+### Jan 6th (Thursday)
 - Centrality measures
    - Degree, strength
    - Eigenvector centrality
    - PageRank
    - Betweenness centrality
-
-### Jan 6th (Thursday)
 - Ranking and flow through networks
    - Simple rankings (A, A squared)
    - Eigenvector ranking
