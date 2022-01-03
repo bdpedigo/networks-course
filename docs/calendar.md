@@ -15,7 +15,7 @@ Schedule below is approximate and subject to change
 
 ### Jan 5th (Wednesday)
 ```{warning} 
-This day of class only will be cancelled or recorded
+This day of class will be cancelled or recorded
 ```
 - Centrality measures
    - Degree, strength

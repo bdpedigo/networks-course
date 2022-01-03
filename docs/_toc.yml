@@ -5,7 +5,6 @@ parts:
   chapters:
   - file: syllabus
   - file: calendar
-  - file: about
 # - caption: 
 #   chapters: 
 #   - file: what-is-a-network
@@ -17,3 +16,6 @@ parts:
 - caption: Week 1
   chapters:
   - file: centrality
+- caption: Projects
+  chapters: 
+  - file: test.md
