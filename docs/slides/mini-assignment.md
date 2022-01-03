@@ -4,7 +4,9 @@
 - Make sure you have a GitHub (free/student) account: https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account
 - From the command line on your machine, navigate to a folder where you would like to keep your work for the course
 - Go to the page for this repo: https://github.com/bdpedigo/networks-course
-- Find the green `Code` button: 
+- Find the `Fork` button (top right) and use it to fork this repo to your own account. This essentially makes a copy of this repo which you can modify as you please. 
+  ![w:900px](./slide_images/git-page.png)
+- Find the green `Code` button on your fork (not the main page as shown here):
   ![w:900px](./slide_images/git-page.png)
 - Hit the green `Code` button and copy the `HTTPS` link: 
   ![h:300px](./slide_images/git-clone.png)
