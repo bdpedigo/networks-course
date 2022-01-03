@@ -10,9 +10,10 @@ parts:
 #   chapters: 
 #   - file: what-is-a-network
 - caption: Introduction
-  chapters: 
+  chapters:
+  - url: https://bdpedigo.github.io/networks-course/test_marp_slides.html
+    title: Welcome
   - file: representing_networks
 - caption: Week 1
   chapters:
   - file: centrality
-

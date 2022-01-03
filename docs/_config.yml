@@ -30,9 +30,12 @@ repository:
 sphinx:
   config:
     language: en
+    html_extra_path: ["slides"]
 
 execute: 
   execute_notebooks: off # TODO turn back on someday
+
+# exclude_patterns: [slides/*]
 
 bibtex_bibfiles:
   - references.bib
