@@ -108,7 +108,15 @@ _[NeuroData lab](https://neurodata.io/)_
 
 ---
 # Mini-assignment steps (cont.)
-- Make a new file in the directory `networks-course/docs`, call it `<your-last-name>.md`
+- Make a new file in the directory `networks-course/docs`, call it `<your-last-name>.md`:
+  ![h:400](./slide_images/nav-example-name-markdown.png)
+
+---
+# Mini-assignment steps (cont.)
+- In that file, write `# <your last name> - final project placeholder`:
+  ![h:200](./slide_images/name-example-markdown.png)
+- From the command line, make sure you are in the `networks-course` directory. You probably need to move there with a command like `cd networks-course`. 
+- 
 
 ---
 # Final projects
