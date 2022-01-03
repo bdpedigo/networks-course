@@ -147,3 +147,4 @@ pkg/pkg/pymaid/pymaid_credentials.json
 # not storing figures
 results
 sandbox/light_speed.py
+docs/slides/pedigo-theme.css
