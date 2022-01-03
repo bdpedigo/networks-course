@@ -15,7 +15,4 @@ parts:
 - caption: Week 1
   chapters:
   - file: centrality
-- caption: Slides
-  chapters: 
-  - file: 
 
