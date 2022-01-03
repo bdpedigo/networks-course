@@ -7,9 +7,9 @@ parts:
   - file: calendar
 - caption: Introduction
   chapters:
-  - url: https://bdpedigo.github.io/networks-course/test_marp_slides.html
+  - url: https://bdpedigo.github.io/networks-course/welcome.html
     title: Welcome
-  - file: mini-assignment
+  - file: mini_assignment
   - file: representing_networks
 - caption: Week 1
   chapters:

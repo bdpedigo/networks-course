@@ -40,3 +40,4 @@ If you have trobule with my instructions below, I suggest completing the very qu
 - Repeat the steps above to add a file (`git add`), commit the changes (`git commit`), and push to the remote repository (`git push`). Note that your changes will be reflected in the pull request without having to do anything else.
 - On the pull request page online, you can hit `Files changed` to preview the changes you have proposed. It should look something like the screenshot below. Note that you should only be changing these two files (adding a new `.md` file, and modifying `_toc.yml`).
   ![](./images/mini-assignment/pr-modified.png)
+- If you have opened a pull request with only these two files changed, and the modifications followed all of the steps above, you are done!

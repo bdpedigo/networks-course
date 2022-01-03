@@ -51,6 +51,22 @@ _[NeuroData lab](https://neurodata.io/)_
 ![bg right:50% w:600](./slide_images/hemibrain-layout.png)
 
 ---
+# About me
+- PhD Candidate in [NeuroData lab](https://neurodata.io/)
+- My work focuses on using statistical and computational techniques to help understand [nanoscale connectomes](https://www.nature.com/articles/d41586-019-02208-0).
+- I am a lead developer of a Python package for network data science called [`graspologic`](https://github.com/microsoft/graspologic), which we co-develop with Microsoft Research.
+- I did a couple of internships at Microsoft Research, working on techniques for analyzing search and communication networks. 
+- A few of my other interests are birdwatching, bouldering, and biking.
+
+---
+# About you?
+- Name?
+- Year?
+- Major?
+- Research interests? (if you have any)
+- Hobbies?
+
+---
 # Goals
 
 <div class="twocols">
@@ -75,6 +91,8 @@ _[NeuroData lab](https://neurodata.io/)_
 - I will be available ~2:20-2:45pm ET (or when everyone leaves) - think of this as extra office hours
 - Syllabus: [https://bdpedigo.github.io/networks-course/syllabus.html](https://bdpedigo.github.io/networks-course/syllabus.html) (please review)
 - Calendar: [https://bdpedigo.github.io/networks-course/calendar.html](https://bdpedigo.github.io/networks-course/calendar.html)
+- **Everything will be on the course website** above, not going to use Blackboard for much.
+- Class communication will be via **Discord**.
 
 ---
 # Grading
@@ -88,9 +106,10 @@ _[NeuroData lab](https://neurodata.io/)_
 
 ---
 # Mini-assignment
-- Need to make a pull request to this class's repository on GitHub: []()
+- Need to make a pull request to this class's repository on GitHub
 - Due Jan 5th at 11:59pm
-
+- Description of the mini-assignment is [here](https://bdpedigo.github.io/networks-course/mini_assignment.html) (and on sidebar for course website).
+  
 ---
 # Final projects
 
