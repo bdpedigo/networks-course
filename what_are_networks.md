@@ -122,7 +122,6 @@ Nodes: neurons, edges: some # of synapses
 
 <footer>
 
-TODO
 
 </footer>
 
@@ -143,7 +142,6 @@ TODO
 
 <footer>
 
-TODO
 
 </footer>
 
