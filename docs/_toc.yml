@@ -22,3 +22,4 @@ parts:
 - caption: Projects
   chapters: 
   - file: test.md
+  - file: fry.md
