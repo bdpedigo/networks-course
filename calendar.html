@@ -42,7 +42,7 @@
     <script src="_static/copybutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -219,7 +219,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -255,7 +255,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -359,7 +359,312 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Calendar</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-1">
+   Week 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-4th-tuesday">
+     Jan 4th (Tuesday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-5th-wednesday">
+     Jan 5th (Wednesday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-6th-thursday">
+     Jan 6th (Thursday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-7th-friday">
+     Jan 7th (Friday)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-2">
+   Week 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-10th-monday">
+     Jan 10th (Monday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-11th-tuesday">
+     Jan 11th (Tuesday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-12th-wednesday">
+     Jan 12th (Wednesday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-13th-thursday">
+     Jan 13th (Thursday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-14th-friday">
+     Jan 14th (Friday)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-3">
+   Week 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-17th-monday">
+     Jan 17th (Monday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-18th-tuesday">
+     Jan 18th (Tuesday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-19th-wednesday">
+     Jan 19th (Wednesday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-20th-thursday">
+     Jan 20th (Thursday)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jan-21th-friday">
+     Jan 21th (Friday)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="calendar">
+<span id="page-calendar"></span><h1>Calendar<a class="headerlink" href="#calendar" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Schedule below is approximate and subject to change</p>
+</div>
+<div class="section" id="week-1">
+<h2>Week 1<a class="headerlink" href="#week-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="jan-4th-tuesday">
+<h3>Jan 4th (Tuesday)<a class="headerlink" href="#jan-4th-tuesday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">Introductions and welcome</a></p></li>
+<li><p>Course roadmap (go over this calendar)</p></li>
+<li><p><span class="xref myst">What are networks (and why should we care)</span>?</p></li>
+<li><p><a class="reference internal" href="representing_networks.html"><span class="doc std std-doc">How do we represent networks?</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="jan-5th-wednesday">
+<h3>Jan 5th (Wednesday)<a class="headerlink" href="#jan-5th-wednesday" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ben can’t make it to this class, but you are encouraged to come to the class via zoom and help each other complete the mini-assignment.</p>
+</div>
+<p>Complete the <a class="reference internal" href="mini_assignment.html"><span class="doc std std-doc">mini-assignment</span></a>.</p>
+</div>
+<div class="section" id="jan-6th-thursday">
+<h3>Jan 6th (Thursday)<a class="headerlink" href="#jan-6th-thursday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Centrality measures</p>
+<ul>
+<li><p>Degree, strength</p></li>
+<li><p>Eigenvector centrality</p></li>
+<li><p>PageRank</p></li>
+<li><p>Betweenness centrality</p></li>
+</ul>
+</li>
+<li><p>Ranking and flow through networks</p>
+<ul>
+<li><p>Simple rankings (A, A squared)</p></li>
+<li><p>Eigenvector ranking</p></li>
+<li><p>Minimum violations ranking</p></li>
+<li><p>Applications of ranking to study hierarchies</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jan-7th-friday">
+<h3>Jan 7th (Friday)<a class="headerlink" href="#jan-7th-friday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Community detection, modularity maximization</p>
+<ul>
+<li><p>Newman’s modularity</p></li>
+<li><p>Louvain, Leiden</p></li>
+<li><p>Brief tour of other approaches</p></li>
+<li><p>Application to finding communities in ___</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="week-2">
+<h2>Week 2<a class="headerlink" href="#week-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="jan-10th-monday">
+<h3>Jan 10th (Monday)<a class="headerlink" href="#jan-10th-monday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Random graph models</p>
+<ul>
+<li><p>ER</p></li>
+<li><p>SBM</p></li>
+<li><p>DCSBM</p></li>
+<li><p>RDPG</p></li>
+<li><p>Chung-Lu, scale-free, etc.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jan-11th-tuesday">
+<h3>Jan 11th (Tuesday)<a class="headerlink" href="#jan-11th-tuesday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Unsupervised network embeddings (day 1)</p>
+<ul>
+<li><p>ASE</p></li>
+<li><p>LSE</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jan-12th-wednesday">
+<h3>Jan 12th (Wednesday)<a class="headerlink" href="#jan-12th-wednesday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Unsupervised network embeddings (day 2)</p>
+<ul>
+<li><p>Node2vec</p></li>
+<li><p>What to do with our embeddings</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jan-13th-thursday">
+<h3>Jan 13th (Thursday)<a class="headerlink" href="#jan-13th-thursday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Graph neural networks + supervised embeddings</p></li>
+</ul>
+</div>
+<div class="section" id="jan-14th-friday">
+<h3>Jan 14th (Friday)<a class="headerlink" href="#jan-14th-friday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Graph isomorphism</p></li>
+<li><p>Graph matching</p>
+<ul>
+<li><p>Why is it hard?</p></li>
+<li><p>Fast approximate quadratic algorithm</p></li>
+<li><p>Adding seeds</p></li>
+<li><p>Application to social or criminal networks</p></li>
+<li><p>Application to ranking</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="week-3">
+<h2>Week 3<a class="headerlink" href="#week-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="jan-17th-monday">
+<h3>Jan 17th (Monday)<a class="headerlink" href="#jan-17th-monday" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>No class</strong></p>
+<p>Martin Luther King Jr. Day</p>
+</div>
+</div>
+<div class="section" id="jan-18th-tuesday">
+<h3>Jan 18th (Tuesday)<a class="headerlink" href="#jan-18th-tuesday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Multiple network embedding</p>
+<ul>
+<li><p>Omnibus embedding</p></li>
+<li><p>Multiple ASE</p></li>
+<li><p>___ neural net approaches</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jan-19th-wednesday">
+<h3>Jan 19th (Wednesday)<a class="headerlink" href="#jan-19th-wednesday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Network kernels/metrics</p></li>
+<li><p>Network hypothesis testing</p>
+<ul>
+<li><p>Latent distribution test</p></li>
+<li><p>Latent position test</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jan-20th-thursday">
+<h3>Jan 20th (Thursday)<a class="headerlink" href="#jan-20th-thursday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Catch-up time or special lecture</p></li>
+</ul>
+</div>
+<div class="section" id="jan-21th-friday">
+<h3>Jan 21th (Friday)<a class="headerlink" href="#jan-21th-friday" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Project presentations</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -577,15 +882,13 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Benjamin D. Pedigo<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Benjamin D. Pedigo<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 

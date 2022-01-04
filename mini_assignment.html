@@ -42,7 +42,7 @@
     <script src="_static/copybutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -219,7 +219,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -255,12 +255,97 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Mini-assignment</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="mini-assignment">
+<h1>Mini-assignment<a class="headerlink" href="#mini-assignment" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assignment is based on the wonderful <code class="docutils literal notranslate"><span class="pre">first-contributions</span></code> page: <a class="reference external" href="https://github.com/firstcontributions/first-contributions/blob/master/README.md">https://github.com/firstcontributions/first-contributions/blob/master/README.md</a></p>
+<p>If you have trobule with my instructions below, I suggest completing the very quick <code class="docutils literal notranslate"><span class="pre">first-contributions</span></code> tutorial, and see if that helps you understand the process of making a pull request.</p>
+</div>
+<ul class="simple">
+<li><p>Make sure you have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed: <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a></p></li>
+<li><p>Make sure you have a GitHub (free/student) account: <a class="reference external" href="https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account">https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account</a></p></li>
+<li><p>From the command line on your machine, navigate to a folder where you would like to keep your work for the course</p></li>
+<li><p>Go to the page for this repo: <a class="reference external" href="https://github.com/bdpedigo/networks-course">https://github.com/bdpedigo/networks-course</a></p></li>
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">Fork</span></code> button (top right) and use it to fork this repo to your own account. This essentially makes a copy of this repo which you can modify as you please.
+<img alt="w:900px" src="_images/git-page.png" /></p></li>
+<li><p>Find the green <code class="docutils literal notranslate"><span class="pre">Code</span></code> button on your fork (not the main page as shown here). Note that for all of the subsequent steps, the repo should be <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">username&gt;/networks-course</span></code> instead of mine.
+<img alt="w:900px" src="_images/git-page.png" /></p></li>
+<li><p>Hit the green <code class="docutils literal notranslate"><span class="pre">Code</span></code> button and copy the <code class="docutils literal notranslate"><span class="pre">HTTPS</span></code> link:
+<img alt="h:300px" src="_images/git-clone.png" /></p></li>
+<li><p>From the command line, do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;link</span> <span class="pre">that</span> <span class="pre">you</span> <span class="pre">just</span> <span class="pre">copied&gt;</span></code></p></li>
+<li><p>You should now see a directory called <code class="docutils literal notranslate"><span class="pre">networks-course</span></code></p></li>
+<li><p>Create and switch to a new branch by doing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">add-placeholder</span></code>
+<img alt="" src="_images/git-checkout.png" /></p></li>
+<li><p>Make a new file in the directory <code class="docutils literal notranslate"><span class="pre">networks-course/docs</span></code>, call it <code class="docutils literal notranslate"><span class="pre">&lt;your-last-name&gt;.md</span></code>:
+<img alt="h:400" src="_images/nav-example-name-markdown.png" /></p></li>
+<li><p>In that file, write <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">&lt;your</span> <span class="pre">last</span> <span class="pre">name&gt;</span> <span class="pre">-</span> <span class="pre">final</span> <span class="pre">project</span> <span class="pre">placeholder</span></code>:
+<img alt="h:200" src="_images/name-example-markdown.png" /></p></li>
+<li><p>From the command line, make sure you are in the <code class="docutils literal notranslate"><span class="pre">networks-course</span></code> directory. You probably need to move there with a command like <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">networks-course</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span></code> to check for modified files via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>:
+<img alt="h:175" src="_images/git-status.png" /></p></li>
+<li><p>Do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">docs/&lt;your</span> <span class="pre">last</span> <span class="pre">name&gt;.md</span></code> to add this new file to be tracked. You can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> again to verify if this worked
+<img alt="h:175" src="_images/git-add.png" /></p></li>
+<li><p>Do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;add</span> <span class="pre">project</span> <span class="pre">placeholder&quot;</span></code>. A commit is like a bundle of code modifications, and the <code class="docutils literal notranslate"><span class="pre">-m</span></code> allows you to write a message (like a title) to be associated with that commit.
+<img alt="" src="_images/git-commit.png" /></p></li>
+<li><p>Do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> to send these changes to be reflected online. Note that you main need to do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--set-upstream</span> <span class="pre">origin</span> <span class="pre">add-placeholder</span></code> in order for this to work (like I did below).
+<img alt="h:200" src="_images/git-push-branch.png" /></p></li>
+<li><p>Go to your repo on GitHub again. You will likely see a prompt to make a pull request. If not, navigate to the pull request tab and hit <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">pull</span> <span class="pre">request</span></code>.</p></li>
+<li><p>You should see a page with options for a <code class="docutils literal notranslate"><span class="pre">base</span></code> and a <code class="docutils literal notranslate"><span class="pre">compare</span></code>. <code class="docutils literal notranslate"><span class="pre">base</span></code> should be <code class="docutils literal notranslate"><span class="pre">bdpedigo/main</span></code>, and <code class="docutils literal notranslate"><span class="pre">compare</span></code> should be <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">username&gt;/add-placeholder</span></code>.</p></li>
+<li><p>Add a brief title and description to the pull request. Mine looks like this:
+<img alt="" src="_images/pr.png" /></p></li>
+<li><p>Now, we need to make one more change prior to being done with this pull request. Find the file <code class="docutils literal notranslate"><span class="pre">networks-course/docs/_toc.yml</span></code>, and add your new file to this table of contents page. Under the <code class="docutils literal notranslate"><span class="pre">projects</span></code> chapter, add a new file with just your name (line 22). This just tells <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code>, the package that builds the website, to look for your new page. Note that the indentation here is important.<br />
+<img alt="" src="_images/toc-modify.png" /></p></li>
+<li><p>Repeat the steps above to add a file (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>), commit the changes (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>), and push to the remote repository (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>). Note that your changes will be reflected in the pull request without having to do anything else.</p></li>
+<li><p>On the pull request page online, you can hit <code class="docutils literal notranslate"><span class="pre">Files</span> <span class="pre">changed</span></code> to preview the changes you have proposed. It should look something like the screenshot below. Note that you should only be changing these two files (adding a new <code class="docutils literal notranslate"><span class="pre">.md</span></code> file, and modifying <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>).
+<img alt="" src="_images/pr-modified.png" /></p></li>
+<li><p>If you have opened a pull request with only these two files changed, and the modifications followed all of the steps above, you are done!</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -357,15 +442,13 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Benjamin D. Pedigo<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Benjamin D. Pedigo<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 

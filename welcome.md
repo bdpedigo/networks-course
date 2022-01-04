@@ -64,11 +64,12 @@ A few of my other interests are birdwatching, bouldering, and biking.
 
 <div class="twocols">
 
-![h:400](slide_images/horned-lark.jpeg)
+<!-- ![h:400](slide_images/horned-lark.jpeg) -->
+![h:400](./slide_images/eastern-bluebird.jpeg)
 
 <p class="break"></p>
 
-![h:400](./slide_images/eastern-bluebird.jpeg)
+![h:400](./slide_images/me-bike.jpeg)
 
 </div>
 
