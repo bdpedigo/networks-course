@@ -5,6 +5,9 @@ parts:
   chapters:
   - file: syllabus
   - file: calendar
+- caption: Resources
+  chapters: 
+  - file: datasets
 - caption: Introduction
   chapters:
   - url: https://bdpedigo.github.io/networks-course/welcome.html
@@ -19,4 +22,5 @@ parts:
 - caption: Projects
   chapters: 
   - file: test.md
+  - file: fry.md
   - file: liu.md
