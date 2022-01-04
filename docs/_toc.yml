@@ -19,3 +19,4 @@ parts:
 - caption: Projects
   chapters: 
   - file: test.md
+  - file: liu.md
