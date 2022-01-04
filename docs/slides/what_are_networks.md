@@ -170,6 +170,12 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4898894/#!po=16.6667
 
 ---
 # What are NOT networks? - Multigraphs
+- Graphs (strictly speaking) usually have at most one edge between node $i$ and node $j$.
+- There may be multiple relationships between two nodes in data that we want to model.
+  - Example: An email from me to you, and a phone call from me to you.
+- Sometimes we can compress this information into at most one edge, and still use a graph.
+  - Example: Create an edge if there was an email OR a phone call.
+- **Multigraphs** allow for more than one edge from node $i$ to node $j$.
 
 ---
 <style scoped>
@@ -183,6 +189,8 @@ section {
 
 ---
 # What can we do with networks? (i.e. What is this class about?)
+
+## [Class Calendar](https://bdpedigo.github.io/networks-course/calendar.html)
 
 ---
 # Appendix
