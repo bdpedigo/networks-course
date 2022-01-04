@@ -1,1 +1,1 @@
-# geason - final project placeholder
+# Geason - final project placeholder
