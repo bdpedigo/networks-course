@@ -24,3 +24,4 @@ parts:
   - file: test.md
   - file: fry.md
   - file: liu.md
+  - file: geason.md
