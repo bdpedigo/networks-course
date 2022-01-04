@@ -121,6 +121,7 @@ A few of my other interests are birdwatching, bouldering, and biking.
 
 ---
 # Mini-assignment
+<<<<<<< HEAD
 - Need to make a pull request to this class's repository on GitHub
 - Due **Jan 5th at 11:59pm**
 - **Highly encouraged** to come to class time, work with other students
@@ -151,6 +152,18 @@ A few of my other interests are birdwatching, bouldering, and biking.
 - Presentations should be <5 minutes (no longer than 5) with 2 minutes for questions.
 - Presentation should briefly cover the same main points from the notebook. 
    - Some details from the notebook you may not have time to cover in the presentation; that's OK.
+=======
+- Need to make a pull request to this class's repository on GitHub: []()
+- Due Jan 5th at 11:59pm
+
+---
+# Final projects
+
+
+
+--- 
+
+>>>>>>> 6ec81f1663388438d185f2c42df58058b0e2e39f
 
 --- 
 # Feedback
