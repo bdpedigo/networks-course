@@ -67,7 +67,7 @@ section {
 ---
 # Connectome
 
-Nodes: neurons, edges: some # of synapses
+![center h:500](./slide_images/hemibrain-layout.png)
 
 ---
 # More connectome 
@@ -84,7 +84,7 @@ Nodes: neurons, edges: some # of synapses
 ![center h:500](./slide_images/enron-deltacon.png)
 
 ---
-# MSR communication
+# Organizational communication
 
 <!-- Nodes: email accounts, edges: some # of emails -->
 
@@ -108,7 +108,7 @@ Nodes: neurons, edges: some # of synapses
 
 
 ---
-# Faculty hiring and other dominance hierarchies
+# Faculty hiring and other hierarchies
 
 <div class="twocols">
 
