@@ -63,7 +63,9 @@ required to rent or buy:
 ## Grading
 To pass, a student must: 
 - Attend and engage with every lecture (please let the instructor know if you need to miss a lecture for some reason)
-- Submit a merge-able final project by 12pm (noon) on Jan 20th (Thursday)
+- Submit the pre-project mini-assignment by 11:59pm on Jan 5th
+- Submit any other mini-assignments (these may be very minor things like filling out surveys, telling me what your final project will be, etc.)
+- Submit a merge-able final project notebook by 12pm (noon) on Jan 20th (Thursday)
 - Present their final project on the last day of class, Jan 21st (Friday)
 
 ## Sick policy
