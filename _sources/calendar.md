@@ -8,7 +8,7 @@ Schedule below is approximate and subject to change
 ### Jan 4th (Tuesday)
 - [Introductions and welcome](https://bdpedigo.github.io/networks-course/welcome.html)
 - Course roadmap (go over this calendar)
-- [What are networks (and why should we care)](what_are_networks)?
+- [What are networks (and why should we care)]([what_are_networks](https://bdpedigo.github.io/networks-course/what_are_networks.html))?
 - [How do we represent networks?](representing_networks.ipynb)
 
 ### Jan 5th (Wednesday)

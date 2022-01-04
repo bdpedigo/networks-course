@@ -48,6 +48,10 @@ section {
 
 ---
 # What are networks?
+- Networks are a mathematical way of representing a set of objects and the relationships among them.
+- These "objects" are termed **nodes** or **vertices**.
+- These relationships are termed **edges** or, less often, **links**.
+- Networks are also called **graphs**.
 
 ---
 
@@ -58,25 +62,137 @@ section {
 }
 </style>
 
-# Example networks
+# Example networks / applications
 
 ---
 # Connectome
 
+Nodes: neurons, edges: some # of synapses
+
 ---
-# The Wire
+# More connectome 
+
+![center w:850](./slide_images/mcc-main.png)
+
+<footer>
+
+</footer>
+
+
+---
+# Enron anomaly prediction
+![center h:500](./slide_images/enron-deltacon.png)
 
 ---
 # MSR communication
 
---- 
-# AlphaFold
+<!-- Nodes: email accounts, edges: some # of emails -->
+
+<div class="twocols">
+
+![](./slide_images/msr-layout.jpeg)
+
+<p class="break"></p>
+
+![](./slide_images/modularity-covid.png)
+
+</div>
+
+
+<footer>
+
+[*Advancing organizational science using network machine learning to measure innovation in the workplace*](https://www.microsoft.com/en-us/research/blog/advancing-organizational-science-using-network-machine-learning-to-measure-innovation-in-the-workplace/)
+[Zuzul et al. arXiv:2104.00641 (2021)](https://arxiv.org/abs/2104.00641)
+
+</footer>
+
+
+---
+# Faculty hiring and other dominance hierarchies
+
+<div class="twocols">
+
+![](./slide_images/fac-network.png)
+
+<p class="break"></p>
+
+![](./slide_images/fac-network-sorted.png)
+
+</div>
+
+<footer>
+
+TODO
+
+</footer>
+
+---
+# Pandemic spread
+
+
+<div class="twocols">
+
+![](./slide_images/germany-covid-geo.png)
+
+<p class="break"></p>
+
+![w:350](./slide_images/germany-covid-model-top.png)
+![w:350](./slide_images/germany-covid-model-bottom.png)
+
+</div>
+
+<footer>
+
+TODO
+
+</footer>
+
+---
+# Protein-protein interaction
+![center h:475](slide_images/ppi.jpeg)
+
+<footer>
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4898894/#!po=16.6667
+
+</footer>
+
+---
+# What are NOT networks? - Hypergraphs
+- Networks represent **dyadic** relationships: interactions between *two* things.
+  - Example: an email from me to you  
+- **Polyadic** relationships (interactions between more than two things) are common.
+  - Example: an email from me to you AND someone else
+- We could ignore this: 
+  - Make an edge from me to you.
+  - Make another, separate edge from me to someone else.
+- **Hypergraphs** are a mathematical way of representing general polyadic relationships.
+
+---
+# What are NOT networks? - Multigraphs
+
+---
+<style scoped>
+section {
+    justify-content: center;
+    text-align: center;
+}
+</style>
+
+# Every time we represent something in the real world with a network, we're making a modeling choice
+
+---
+# What can we do with networks? (i.e. What is this class about?)
+
+---
+# Appendix
+
+---
+# The Wire
 
 --- 
 # Sports
 
----
-# Faculty hiring and other dominance hierarchies
 
 --- 
 # Prediction/supervised learning 
