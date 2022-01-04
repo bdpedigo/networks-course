@@ -107,16 +107,37 @@ _[NeuroData lab](https://neurodata.io/)_
 ---
 # Mini-assignment
 - Need to make a pull request to this class's repository on GitHub
-- Due Jan 5th at 11:59pm
+- Due **Jan 5th at 11:59pm**
+- **Highly encouraged** to come to class time, work with other students
 - Description of the mini-assignment is [here](https://bdpedigo.github.io/networks-course/mini_assignment.html) (and on sidebar for course website).
   
 ---
-# Final projects
+# Final project - notebook
+- The final project is a short analysis of some dataset in the form of a [Jupyter Notebook](https://jupyter.org/)
+- The notebook should describe (using text and figures):
+   - The dataset(s) you investigated, and what you wanted to learn from them
+   - The methods you used, explained at a level that someone else in the class would definitely understand
+   - The results you found, with a few figures
+   - A brief discussion of the meaning of these results
 
+---
+# Final project - notebook
+- You are welcome to collaborate, but 
+   - Each student must submit their own notebook and write their own code. 
+   - If there's something you want to collaborate more extensively on, discuss with instructor. 
+   - Acknowledge any people you collaborated with in the notebook.
+- Reference any articles, data sources, etc. you used in your notebook.
+- **Notebooks are due Thursday, January 20th at 12pm (noon) ET.** This will give me time to address any issues with your pull requests and merge them by the time we have presentations the next day.
+   - You are encouraged to submit pull requests earlier than this, and I am happy to provide feedback! 
 
-
---- 
-
+---
+# Final project - presentation
+- Everyone will present their final projects **on the last day of class, January 21st.**
+- Presentations should be <5 minutes (no longer than 5) with 2 minutes for questions.
+- Presentation should briefly cover the same main points from the notebook. 
+   - Some details from the notebook you may not have time to cover in the presentation; that's OK.
 
 --- 
 # Feedback
+- I am always open to feedback (positive or negative). You can leave any comments you have here: https://forms.gle/UxFB2sSQiQyrxr5AA
+- Can be totally anonymous, if you'd like.
