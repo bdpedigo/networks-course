@@ -9,3 +9,5 @@
 [Open Graph Benchmark](https://ogb.stanford.edu/)
 
 [UCI Network Data Repository](https://networkdata.ics.uci.edu/resources.php)
+
+[NeuroData Open Connectome Project](https://neurodata.io/project/ocp/)
