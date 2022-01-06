@@ -702,7 +702,7 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 <h2>Bespoke network formats<a class="headerlink" href="#bespoke-network-formats" title="Permalink to this headline">¶</a></h2>
 <p>Many libraries for dealing with networks create their own data structure for storing networks under the hood.</p>
 <p>The advantage of this approach is that the data structure can be optimized to the kind of operations that
-a specific library often does. These data structures usually are implemented in faster, compiled languages like C, too.
+a specific library often does. See, for example, the graph classes in <a class="reference external" href="https://stellargraph.readthedocs.io/en/stable/api.html#stellargraph.StellarGraph"><code class="docutils literal notranslate"><span class="pre">stellargraph</span></code></a> or <a class="reference external" href="https://graph-tool.skewed.de/static/doc/quickstart.html#creating-and-manipulating-graphs"><code class="docutils literal notranslate"><span class="pre">graph-tool</span></code></a>. These data structures usually are implemented in faster, compiled languages like C, too.
 The main disadvantage of this approach is that it usually requires the user to learn a new format each time
 they pick up a new library, and it can become more difficult to chain together different operations from
 different libraries.</p>
