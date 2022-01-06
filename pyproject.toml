@@ -12,4 +12,4 @@ graspologic = {path = "../graspologic", develop = true}
 flake8 = "^4.0.1"
 ipykernel = "^6.6.0"
 jupyter-book = "^0.12.1"
-black = {version = "^21.12b0", allow-prereleases = true}
+black = {version = "^21.12b0", allow-prereleases = true, extras = ["jupyter"]}
