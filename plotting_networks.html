@@ -627,7 +627,7 @@ small-ish networks is <code class="docutils literal notranslate"><span class="pr
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
 
-<span class="n">networkplot</span><span class="p">(</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
     <span class="n">A</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="n">ys</span><span class="p">,</span>
@@ -637,14 +637,12 @@ small-ish networks is <code class="docutils literal notranslate"><span class="pr
     <span class="n">node_hue</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
     <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
 <span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/plotting_networks_28_1.png" src="_images/plotting_networks_28_1.png" />
+<img alt="_images/plotting_networks_28_0.png" src="_images/plotting_networks_28_0.png" />
 </div>
 </div>
 <p>For larger networks, it is often helpful to use something called a <strong>network embedding</strong> to compute positions for each node. The plots also have to often be modified - it can become unwieldy to try to view every node and edge when there are thousands or millions of each. Below is an example of one of these higher-level network layouts computed on the <a class="reference external" href="https://www.janelia.org/project-team/flyem/hemibrain">hemibrain connectome dataset</a>. The code to generate this plot can be found <a class="reference external" href="https://docs.neurodata.io/notebooks/pedigo/graspologic/connectome/2021/05/06/hemibrain-layout.html">here</a>. We’ll talk about all of the ingredients that go into the plot below throughout the course.</p>
