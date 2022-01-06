@@ -7,9 +7,9 @@ Schedule below is approximate and subject to change
 ## Week 1
 ### Jan 4th (Tuesday)
 - [Introductions and welcome](https://bdpedigo.github.io/networks-course/welcome.html)
-- Course roadmap (go over this calendar)
 - [What are networks (and why should we care)]([what_are_networks](https://bdpedigo.github.io/networks-course/what_are_networks.html))?
-- [How do we represent networks?](representing_networks.ipynb)
+- Course roadmap (go over this calendar)
+
 
 ### Jan 5th (Wednesday)
 ```{warning} 
@@ -19,6 +19,7 @@ Ben can't make it to this class, but you are encouraged to come to the class via
 Complete the [mini-assignment](mini_assignment.md).
 
 ### Jan 6th (Thursday)
+- [How do we represent networks?](representing_networks.ipynb)
 - Centrality measures
    - Degree, strength
    - Eigenvector centrality
