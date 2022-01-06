@@ -6,7 +6,7 @@ authors = ["Benjamin D. Pedigo <bpedigo@jhu.edu>"]
 
 [tool.poetry.dependencies]
 python = "3.9.*"
-graspologic = "^0.3.1"
+graspologic = {path = "../graspologic", develop = true}
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
