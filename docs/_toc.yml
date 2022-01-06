@@ -21,8 +21,8 @@ parts:
   - file: centrality
 - caption: Projects
   chapters:
-  - file: fry.md
-  - file: liu.md
-  - file: geason.md
   - file: clarke.md
+  - file: fry.md
+  - file: geason.md
+  - file: liu.md
   - file: sood.md
