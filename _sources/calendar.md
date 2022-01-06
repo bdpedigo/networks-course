@@ -16,27 +16,38 @@ Schedule below is approximate and subject to change
 Ben can't make it to this class, but you are encouraged to come to the class via zoom and help each other complete the mini-assignment.
 ```
 
+```{admonition} Due
+:class: important
+
 Complete the [mini-assignment](mini_assignment.md).
+```
 
 ### Jan 6th (Thursday)
-- [How do we represent networks?](representing_networks.ipynb)
-- Centrality measures
+- [Representing networks](representing_networks.ipynb)
+- [Plotting networks](plotting_networks.ipynb)
+- (Maybe) [Centrality measures](centrality.ipynb)
    - Degree, strength
    - Eigenvector centrality
    - PageRank
    - Betweenness centrality
+
+### Jan 7th (Friday)
 - Ranking and flow through networks
    - Simple rankings (A, A squared)
    - Eigenvector ranking
    - Minimum violations ranking
    - Applications of ranking to study hierarchies
-
-### Jan 7th (Friday)
 - Community detection, modularity maximization
    - Newman's modularity
    - Louvain, Leiden
    - Brief tour of other approaches
    - Application to finding communities in ___
+
+```{admonition} Due
+:class: important
+
+Know what dataset you'll be working on for the final project.
+```
 
 ## Week 2
 ### Jan 10th (Monday)
