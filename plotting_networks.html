@@ -297,11 +297,46 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/plotting_networks.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-adjacency-matricies">
+   Plotting adjacency matricies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-network-layouts">
+   Plotting network layouts
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -314,6 +349,24 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-adjacency-matricies">
+   Plotting adjacency matricies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-network-layouts">
+   Plotting network layouts
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -322,6 +375,245 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="plotting-networks">
 <h1>Plotting networks<a class="headerlink" href="#plotting-networks" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we’ll look at a few ways to plot networks: mainly, by directly plotting the adjacency matrix or via network layouts.</p>
+<div class="section" id="plotting-adjacency-matricies">
+<h2>Plotting adjacency matricies<a class="headerlink" href="#plotting-adjacency-matricies" title="Permalink to this headline">¶</a></h2>
+<p>Lets start by plotting a very simple network - this happens to be one of the most famous toy datasets in network science, the Karate Club dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span> 
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">karate_club_graph</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we’ll extract the adjacency matrix representation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 1., ..., 1., 0., 0.],
+       [1., 0., 1., ..., 0., 0., 0.],
+       [1., 1., 0., ..., 0., 1., 0.],
+       ...,
+       [1., 0., 0., ..., 0., 1., 1.],
+       [0., 0., 1., ..., 1., 0., 1.],
+       [0., 0., 0., ..., 1., 1., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot the the adjacency matrix using a visualization commonly called a heatmap,
+for instance, using the <code class="docutils literal notranslate"><span class="pre">heatmap</span></code> function from <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/plotting_networks_7_1.png" src="_images/plotting_networks_7_1.png" />
+</div>
+</div>
+<p>We can also use the heatmap function in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>, which essentially just wraps that
+of <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> and adds a few useful features when plotting adjacency matrices. You can read
+more about these in the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/reference/reference/plotting.html#heatmap"><code class="docutils literal notranslate"><span class="pre">graspologic</span></code> documentation for <code class="docutils literal notranslate"><span class="pre">heatmap</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/plotting_networks_9_1.png" src="_images/plotting_networks_9_1.png" />
+</div>
+</div>
+<p>As we mentioned in <a class="reference internal" href="representing_networks.html"><span class="doc std std-doc">Representing networks</span></a>, any permutation of this
+adjacency matrix represents the same graph. Let’s see how this same plot looks with a
+different permutation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a random permutation </span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># n is the number of nodes</span>
+<span class="n">perm</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">perm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1, 12,  9,  2,  0, 13, 30,  7, 24, 28, 16, 14, 32, 15, 17, 10,  4,
+       33,  5, 27, 26, 29, 18, 19,  3, 21, 25, 31, 11, 23,  6,  8, 20, 22])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_perm</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">perm</span><span class="p">][:,</span> <span class="n">perm</span><span class="p">]</span>
+
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A_perm</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/plotting_networks_12_1.png" src="_images/plotting_networks_12_1.png" />
+</div>
+</div>
+<p>This highlights part of why plotting with adjacency matrices can be difficult - depending
+on the permutation you use, the perception of the network can be very different. It is important
+to keep this in mind when plotting or looking at plots of adjacency matrices.</p>
+<p>Often, it can be a good idea to have some specific way to sort the adjacency matrix - here, I infer some groups or communities in the network, and then use those as a partition of the adjacency matrix. I also sort the nodes in order within each community in descending order by degree. We’ll talk more about both of these concepts later in the course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+
+<span class="n">partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partition_map</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 1, 1, 1, 0, 2, 2, 1, 0, 0, 0, 2, 2, 1, 0, 2, 0, 2, 0,
+       2, 3, 3, 3, 2, 3, 3, 2, 2, 3, 2, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">sort_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/plotting_networks_16_1.png" src="_images/plotting_networks_16_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="plotting-network-layouts">
+<h2>Plotting network layouts<a class="headerlink" href="#plotting-network-layouts" title="Permalink to this headline">¶</a></h2>
+<p>Another common way to look at networks is via <strong>network layouts</strong>, sometimes called ball-and-stick diagrams or many other names.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> has a few simple functions for drawing networks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/plotting_networks_20_0.png" src="_images/plotting_networks_20_0.png" />
+</div>
+</div>
+<p>We can use <a class="reference external" href="https://matplotlib.org/"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a> to make things look a little nicer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/plotting_networks_22_0.png" src="_images/plotting_networks_22_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> has a few functions for computing nice-looking positions for each node - one of my favorites for
+small-ish networks is <code class="docutils literal notranslate"><span class="pre">kamada_kawai_layout</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">pos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: array([0.02595264, 0.33261791]),
+ 1: array([-0.15415403,  0.25105994]),
+ 2: array([ 0.07281129, -0.00339833]),
+ 3: array([0.15120782, 0.23250616]),
+ 4: array([0.19313543, 0.57445429]),
+ 5: array([0.1899636 , 0.67901702]),
+ 6: array([-0.00442196,  0.69195753]),
+ 7: array([0.28351952, 0.21023576]),
+ 8: array([-0.17565775, -0.00990143]),
+ 9: array([ 0.0706129 , -0.28925159]),
+ 10: array([0.37980825, 0.53262302]),
+ 11: array([-0.18776547,  0.6332519 ]),
+ 12: array([0.43374412, 0.37950472]),
+ 13: array([-0.0851201 ,  0.05268196]),
+ 14: array([-0.50006702, -0.31244434]),
+ 15: array([-0.46577851, -0.42902514]),
+ 16: array([0.15957838, 1.        ]),
+ 17: array([-0.279331  ,  0.51420533]),
+ 18: array([-0.39589977, -0.53439666]),
+ 19: array([-0.2753847 ,  0.06921985]),
+ 20: array([-0.293375  , -0.61554259]),
+ 21: array([-0.37319088,  0.43635094]),
+ 22: array([-0.15864175, -0.64280203]),
+ 23: array([ 0.23606483, -0.5155009 ]),
+ 24: array([ 0.57008117, -0.29665386]),
+ 25: array([ 0.54879029, -0.16639415]),
+ 26: array([-0.0475633 , -0.75792026]),
+ 27: array([ 0.28462741, -0.28982154]),
+ 28: array([ 0.18539659, -0.29276329]),
+ 29: array([ 0.0685199 , -0.62042602]),
+ 30: array([-0.38137478, -0.08940135]),
+ 31: array([ 0.19717886, -0.07218863]),
+ 32: array([-0.17231283, -0.31221451]),
+ 33: array([-0.10095415, -0.33963971])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/plotting_networks_25_0.png" src="_images/plotting_networks_25_0.png" />
+</div>
+</div>
+<p><img alt="" src="networks-course/docs/images/temp-maggot-brain-umap-omni-hue_key=merge_class.png" /></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
