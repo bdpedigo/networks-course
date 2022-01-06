@@ -498,8 +498,27 @@ False
 </div>
 </div>
 <p>Now, we see that we have a weighted network - not all edge weights are equal to 0 or 1. This is because <code class="docutils literal notranslate"><span class="pre">symmetrize</span></code>
-used the average of edge weights between the edge <span class="math notranslate nohighlight">\(i \rightarrow j\)</span> and the edge <span class="math notranslate nohighlight">\(j \rightarrow i\)</span>. To
+used the average of edge weights between the edge <span class="math notranslate nohighlight">\(i \rightarrow j\)</span> and the edge <span class="math notranslate nohighlight">\(j \rightarrow i\)</span> to
 make the network symmetric/undirected.</p>
+<p>If we wanted to make the network unweighted again, we could use the function <code class="docutils literal notranslate"><span class="pre">binarize</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">binarize</span>
+
+<span class="n">binarize</span><span class="p">(</span><span class="n">A_sym</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
+       [1., 0., 1., 0., 1.],
+       [0., 1., 0., 1., 0.],
+       [0., 0., 1., 0., 0.],
+       [0., 1., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="sparse-networks">
 <h2>Sparse networks<a class="headerlink" href="#sparse-networks" title="Permalink to this headline">¶</a></h2>
@@ -511,7 +530,7 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 <div class="section" id="sparse-adjacency-matrices-in-code">
 <h2>Sparse adjacency matrices in code<a class="headerlink" href="#sparse-adjacency-matrices-in-code" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Sparse_matrix"><strong>Sparse matrices</strong></a> are a wonderful way to get around this problem when working with sparse networks. In Python, the most common sparse matrix format <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html">can be found in SciPy</a>. A sparse matrix format typically saves memory (if the data is sparse) by only explicitly representing any non-zero entries, and then assuming that all other elements of the matrix are zero. The main disadvantage to using a sparse matrix is that they are often more difficult to manipulate and modify than a dense array, but sparse matrices can allow us to store or operate on adjacency matrices which would otherwise be too large to store in memory. There are many different kinds of sparse matrices (see both links earlier in this section), but for now, we’ll just focus on the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix"><strong>compressed sparse row (CSR)</strong></a> format.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Sparse_matrix"><strong>Sparse matrices</strong></a> are a wonderful way to get around this problem when working with sparse networks. In Python, the most common sparse matrix format <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html">can be found in <code class="docutils literal notranslate"><span class="pre">SciPy</span></code></a>. A sparse matrix format typically saves memory (if the data is sparse) by only explicitly representing any non-zero entries, and then assuming that all other elements of the matrix are zero. The main disadvantage to using a sparse matrix is that they are often more difficult to manipulate and modify than a dense array, but sparse matrices can allow us to store or operate on adjacency matrices which would otherwise be too large to store in memory. There are many different kinds of sparse matrices (see both links earlier in this section), but for now, we’ll just focus on the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix"><strong>compressed sparse row (CSR)</strong></a> format.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
@@ -568,7 +587,7 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x12feeab20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x136916be0&gt;
 </pre></div>
 </div>
 </div>
