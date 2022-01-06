@@ -25,5 +25,5 @@ parts:
   - file: fry.md
   - file: liu.md
   - file: geason.md
+  - file: clarke.md
   - file: sood.md
-  
