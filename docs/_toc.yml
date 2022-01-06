@@ -23,7 +23,8 @@ parts:
   - file: clarke.md
   - file: fry.md
   - file: geason.md
-  - file: liu.md
   - file: larson.md
+  - file: liu.md  
   - file: song.md
   - file: sood.md
+  - file: wang.md
