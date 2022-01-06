@@ -425,11 +425,11 @@ follows person <span class="math notranslate nohighlight">\(j\)</span>. Since Tw
 
 <span class="n">n_nodes</span> <span class="o">=</span> <span class="mi">5</span>
 
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span><span class="p">,</span><span class="n">n_nodes</span><span class="p">))</span> <span class="c1"># initialize to a graph with no edges </span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span><span class="p">,</span> <span class="n">n_nodes</span><span class="p">))</span>  <span class="c1"># initialize to a graph with no edges</span>
 
-<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># from node 0 to node 1</span>
-<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># from node 1 to node 2...</span>
-<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># etc, etc.</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># from node 0 to node 1</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># from node 1 to node 2...</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># etc, etc.</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -451,9 +451,9 @@ follows person <span class="math notranslate nohighlight">\(j\)</span>. Since Tw
 <p>We can check whether the network is directed:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">equals</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="c1"># a matrix comparing each element</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">equals</span> <span class="o">=</span> <span class="n">A</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># a matrix comparing each element</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is this network undirected?&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">equals</span><span class="o">.</span><span class="n">all</span><span class="p">())</span> <span class="c1"># is this matrix all true?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">equals</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>  <span class="c1"># is this matrix all true?</span>
 </pre></div>
 </div>
 </div>
@@ -543,6 +543,72 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 <div class="section" id="networkx-graphs">
 <h2>NetworkX graphs<a class="headerlink" href="#networkx-graphs" title="Permalink to this headline">¶</a></h2>
 <p>There are many other ways to represent networks in code - probably the most popular of these in Python is by using the library <a class="reference external" href="https://networkx.org/"><code class="docutils literal notranslate"><span class="pre">NetworkX</span></code></a>, which was created specifically for working with networks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">g</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x12feea640&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>What happens when we convert to an array representation?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
+       [1., 0., 1., 1., 0.],
+       [0., 1., 0., 0., 1.],
+       [0., 1., 0., 0., 0.],
+       [0., 0., 1., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note what happened in the above - the array we got back might not be exactly what you expected. For instance, we did not specify an edge from node <span class="math notranslate nohighlight">\(4\)</span> to node <span class="math notranslate nohighlight">\(1\)</span>, but element <span class="math notranslate nohighlight">\([4, 1]\)</span> has a <span class="math notranslate nohighlight">\(1\)</span> in it.</p>
+<p>The NetworkX <code class="docutils literal notranslate"><span class="pre">Graph</span></code> object <em>always</em> assumes that your graph is undirected. If you’d like to create a directed graph, you need to do so explicitly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_directed</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="n">g_directed</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">g_directed</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">g_directed</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">g_directed</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">g_directed</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
+       [1., 0., 1., 0., 1.],
+       [0., 1., 0., 1., 0.],
+       [0., 0., 1., 0., 0.],
+       [0., 1., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Why did we have to specify the</p>
 </div>
 </div>
 
