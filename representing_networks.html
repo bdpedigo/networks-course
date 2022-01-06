@@ -351,6 +351,11 @@
    NetworkX graphs
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bespoke-network-formats">
+   Bespoke network formats
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -394,6 +399,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#networkx-graphs">
    NetworkX graphs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bespoke-network-formats">
+   Bespoke network formats
   </a>
  </li>
 </ul>
@@ -635,7 +645,11 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 </div>
 </div>
-<p>Why did we have to specify the <code class="docutils literal notranslate"><span class="pre">nodelist</span></code> parameter. Here’s a hit: look what happens when we don’t:</p>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>Why did we have to specify the <code class="docutils literal notranslate"><span class="pre">nodelist</span></code> parameter?</p>
+</div>
+<p>Here’s a hit: look what happens when we don’t:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
@@ -683,6 +697,27 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 <p>Note that these nodes are stored <em>in the order in which they were added</em> by default, and not in any sorted order.</p>
 <p>This brings up an important point about adjacency matrices - any permutation of the row/column indices of the adjacency matrix are valid. We’ll revisit this point many times throughout the course.</p>
+</div>
+<div class="section" id="bespoke-network-formats">
+<h2>Bespoke network formats<a class="headerlink" href="#bespoke-network-formats" title="Permalink to this headline">¶</a></h2>
+<p>Many libraries for dealing with networks create their own data structure for storing networks under the hood.</p>
+<p>The advantage of this approach is that the data structure can be optimized to the kind of operations that
+a specific library often does. These data structures usually are implemented in faster, compiled languages like C, too.
+The main disadvantage of this approach is that it usually requires the user to learn a new format each time
+they pick up a new library, and it can become more difficult to chain together different operations from
+different libraries.</p>
+<p>In contrast, the approach in <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> is to use pure Python for everything under the hood,
+which tends to make operations slow. Indeed, many algorithms in <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> have to convert to
+a sparse/dense adjacency matrix each time a particular function is called, and others have to
+iterate through nodes/edges using Python <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. Both of which are slow.</p>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>What are the advantages and disadvantages of using a dense (<code class="docutils literal notranslate"><span class="pre">numpy</span></code>) adjacency matrix?</p>
+<p>What are the advantages and disadvantages of using a sparse (<code class="docutils literal notranslate"><span class="pre">scipy</span></code>) adjacency matrix?</p>
+<p>What are the advantages and disadvantages of using a <code class="docutils literal notranslate"><span class="pre">networkx</span></code> graph?</p>
+<p>What are the advantages and disadvantages of using a bespoke, custom graph object for a
+particular set of algorithms?</p>
+</div>
 </div>
 </div>
 
