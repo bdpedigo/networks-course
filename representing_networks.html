@@ -314,13 +314,28 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-networks-mathematically">
-   Representing networks mathematically
+  <a class="reference internal nav-link" href="#adjacency-matrices">
+   Adjacency matrices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-networks-in-code">
-   Representing networks in code
+  <a class="reference internal nav-link" href="#adjacency-matrices-in-code">
+   Adjacency matrices in code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sparse-networks">
+   Sparse networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sparse-adjacency-matrices-in-code">
+   Sparse adjacency matrices in code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#networkx-graphs">
+   NetworkX graphs
   </a>
  </li>
 </ul>
@@ -344,13 +359,28 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-networks-mathematically">
-   Representing networks mathematically
+  <a class="reference internal nav-link" href="#adjacency-matrices">
+   Adjacency matrices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-networks-in-code">
-   Representing networks in code
+  <a class="reference internal nav-link" href="#adjacency-matrices-in-code">
+   Adjacency matrices in code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sparse-networks">
+   Sparse networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sparse-adjacency-matrices-in-code">
+   Sparse adjacency matrices in code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#networkx-graphs">
+   NetworkX graphs
   </a>
  </li>
 </ul>
@@ -364,8 +394,8 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="representing-networks">
 <h1>Representing networks<a class="headerlink" href="#representing-networks" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="representing-networks-mathematically">
-<h2>Representing networks mathematically<a class="headerlink" href="#representing-networks-mathematically" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adjacency-matrices">
+<h2>Adjacency matrices<a class="headerlink" href="#adjacency-matrices" title="Permalink to this headline">¶</a></h2>
 <p>The most common representation of a network in a mathematical sense is an <strong>adjacency matrix</strong>. For a network with <span class="math notranslate nohighlight">\(n\)</span> nodes, an adjacency matrix is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix, which we’ll often denote <span class="math notranslate nohighlight">\(A\)</span>. If there is an edge between node <span class="math notranslate nohighlight">\(i\)</span> and node <span class="math notranslate nohighlight">\(j\)</span>, then there is some nonzero element at the <span class="math notranslate nohighlight">\(i, j\)</span>-th element of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(a_{ij}\)</span>.</p>
 <p>For an <strong>unweighted network</strong>, the convention is for the matrix to have a “1” anywhere there is an edge, and a “0” otherwise. One example of an unweighted network is a social network, where each node is a person. We could say that there is an edge between two people if they are friends on Facebook, and there is not an edge otherwise. You may
 also hear the term “binary network” used to mean unweighted, since the elements of the adjacency matrix are 0s and 1s.</p>
@@ -381,8 +411,8 @@ necessarily equal <span class="math notranslate nohighlight">\(a_{ji}\)</span>. 
 modeled as a network of accounts, with directed edges from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> if person <span class="math notranslate nohighlight">\(i\)</span>
 follows person <span class="math notranslate nohighlight">\(j\)</span>. Since Twitter does not require people to follow each other back, this is a directed network.</p>
 </div>
-<div class="section" id="representing-networks-in-code">
-<h2>Representing networks in code<a class="headerlink" href="#representing-networks-in-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adjacency-matrices-in-code">
+<h2>Adjacency matrices in code<a class="headerlink" href="#adjacency-matrices-in-code" title="Permalink to this headline">¶</a></h2>
 <p>There are many ways to represent networks in Python. For instance, we can use the adjacency matrix representation described above. We’ll start with an example of a directed graph on 5 nodes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -392,9 +422,9 @@ follows person <span class="math notranslate nohighlight">\(j\)</span>. Since Tw
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span><span class="p">,</span><span class="n">n_nodes</span><span class="p">))</span> <span class="c1"># initialize to a graph with no edges </span>
 
-<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># from node 0 to node 1</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># from node 1 to node 2...</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># etc, etc.</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">A</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -457,6 +487,57 @@ False
 <p>Now, we see that we have a weighted network - not all edge weights are equal to 0 or 1. This is because <code class="docutils literal notranslate"><span class="pre">symmetrize</span></code>
 used the average of edge weights between the edge <span class="math notranslate nohighlight">\(i \rightarrow j\)</span> and the edge <span class="math notranslate nohighlight">\(j \rightarrow i\)</span>. To
 make the network symmetric/undirected.</p>
+</div>
+<div class="section" id="sparse-networks">
+<h2>Sparse networks<a class="headerlink" href="#sparse-networks" title="Permalink to this headline">¶</a></h2>
+<p>Most networks in the real world are <strong>sparse</strong> - this means that they have far more non-edges
+than edges. For example, consider the example of a Twitter network from before. From a quick Google (I won’t claim that <a class="reference external" href="https://techjury.net/blog/twitter-statistics/#gref">these results</a> are perfectly accurate, but still), there are 100 million Twitter accounts, and the average account has ~700 followers.
+So on average, this would mean there are roughly <span class="math notranslate nohighlight">\(700 \times 100,000,000 = 70,000,000,000\)</span> total follow relationships on Twitter (70 billion edges!). While this may seem like a lot, consider the total number of <em>possible</em> edges - this would be <span class="math notranslate nohighlight">\(100,000,000^2\)</span>, or <span class="math notranslate nohighlight">\(10,000,000,000,000,000\)</span>.</p>
+<p>What does this tell us about the adjacency matrix for Twitter? It would have far, far more <span class="math notranslate nohighlight">\(0\)</span>’s in it than non-zeros, i.e. there are far, far more non-edges than edges. If we were to try to store the
+adjacency matrix for Twitter in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array, we would very quickly run out of memory.</p>
+</div>
+<div class="section" id="sparse-adjacency-matrices-in-code">
+<h2>Sparse adjacency matrices in code<a class="headerlink" href="#sparse-adjacency-matrices-in-code" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Sparse_matrix"><strong>Sparse matrices</strong></a> are a wonderful way to get around this problem when working with sparse networks. In Python, the most common sparse matrix format <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html">can be found in SciPy</a>. A sparse matrix format typically saves memory (if the data is sparse) by only explicitly representing any non-zero entries, and then assuming that all other elements of the matrix are zero. The main disadvantage to using a sparse matrix is that they are often more difficult to manipulate and modify than a dense array, but sparse matrices can allow us to store or operate on adjacency matrices which would otherwise be too large to store in memory. There are many different kinds of sparse matrices (see both links earlier in this section), but for now, we’ll just focus on the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix"><strong>compressed sparse row (CSR)</strong></a> format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+
+<span class="n">A_sparse</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">A_sparse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;5x5 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
+	with 6 stored elements in Compressed Sparse Row format&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can verify that the conversion preserved the data itself by converting back to a dense array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Are all elements the same?&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">A</span> <span class="o">==</span> <span class="n">A_sparse</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Are all elements the same?
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Many of the algorithms we’ll talk about in this course can be sped up by making use of sparse matrices where appropriate.</p>
+</div>
+<div class="section" id="networkx-graphs">
+<h2>NetworkX graphs<a class="headerlink" href="#networkx-graphs" title="Permalink to this headline">¶</a></h2>
+<p>There are many other ways to represent networks in code - probably the most popular of these in Python is by using the library <a class="reference external" href="https://networkx.org/"><code class="docutils literal notranslate"><span class="pre">NetworkX</span></code></a>, which was created specifically for working with networks.</p>
 </div>
 </div>
 
