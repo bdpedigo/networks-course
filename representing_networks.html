@@ -565,7 +565,7 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x12feea640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x12feeab20&gt;
 </pre></div>
 </div>
 </div>
@@ -579,10 +579,10 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
-       [1., 0., 1., 1., 0.],
-       [0., 1., 0., 0., 1.],
-       [0., 1., 0., 0., 0.],
-       [0., 0., 1., 0., 0.]])
+       [1., 0., 1., 0., 1.],
+       [0., 1., 0., 1., 0.],
+       [0., 0., 1., 0., 0.],
+       [0., 1., 0., 0., 0.]])
 </pre></div>
 </div>
 </div>
@@ -599,7 +599,40 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 <span class="n">g_directed</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">g_directed</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g_directed</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
+       [0., 0., 1., 0., 1.],
+       [0., 1., 0., 1., 0.],
+       [0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Why did we have to specify the <code class="docutils literal notranslate"><span class="pre">nodelist</span></code> parameter. Here’s a hit: look what happens when we don’t:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
+       [1., 0., 1., 1., 0.],
+       [0., 1., 0., 0., 1.],
+       [0., 1., 0., 0., 0.],
+       [0., 0., 1., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -613,7 +646,21 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 </div>
 </div>
-<p>Why did we have to specify the</p>
+<p>Here’s another hint - we can look at the <code class="docutils literal notranslate"><span class="pre">.nodes</span></code> attribute of the graph:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NodeView((0, 1, 2, 4, 3))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that these nodes are stored <em>in the order in which they were added</em> by default, and not in any sorted order.</p>
+<p>This brings up an important point about adjacency matrices - any permutation of the row/column indices of the adjacency matrix are valid. We’ll revisit this point many times throughout the course.</p>
 </div>
 </div>
 
