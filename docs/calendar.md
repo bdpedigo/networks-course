@@ -49,6 +49,12 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
    - Minimum violations ranking
    - Applications of ranking to study hierarchies
 
+```{admonition} Due
+:class: important
+
+Be able to load in and somehow plot your dataset(s) in Python.
+```
+
 ### Jan 11th (Tuesday)
 - Community detection, modularity maximization
    - Newman's modularity
