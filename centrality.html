@@ -501,7 +501,7 @@ is connected.</p>
 </div>
 </div>
 </div>
-<p>Computing the degree is also quite easy with the adjacency matrix:</p>
+<p>Computing the degree is also quite easy with the adjacency matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -519,6 +519,11 @@ is connected.</p>
 notions of degree based on whether we are considering a node’s outputs or inputs. These
 are simply termed <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree">out and in degree</a></strong>, where
 out degree is the number of outputs from a given node, and likewise for the in degree.</p>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>If we want to compute the out degree from the adjacency matrix, should we sum along rows
+or along columns?</p>
+</div>
 <p>Let’s see what this looks like to compute using <code class="docutils literal notranslate"><span class="pre">networkx</span></code> and an adjacency matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -577,13 +582,16 @@ out degree is the number of outputs from a given node, and likewise for the in d
 </div>
 <div class="section" id="eigenvector-centrality">
 <h2>Eigenvector centrality<a class="headerlink" href="#eigenvector-centrality" title="Permalink to this headline">¶</a></h2>
-<p>Our next notion of importance for each node is called <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Eigenvector_centrality">eigenvector centrality</a></strong>. The eigenvector centrality has an interesting, circular definition: nodes are considered more important if they themselves are connected to many important nodes.</p>
+<p>Our next notion of importance for each node is called <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Eigenvector_centrality">eigenvector centrality</a></strong>. The eigenvector centrality has an interesting, circular definition: nodes are considered more important if they themselves are connected to important nodes. For this and many other centrality
+measures, we also don’t care about the scale of these importance scores - for instance, scores
+of <span class="math notranslate nohighlight">\([2, 1]\)</span> would be interpreted the same as <span class="math notranslate nohighlight">\([20, 10]\)</span>: the first node is twice as important
+as the second. We also want each of these centrality scores to be positive.</p>
 <p>How can we write this down mathematically? Let’s say that we are after a vector <span class="math notranslate nohighlight">\(x\)</span>, which
 has length <span class="math notranslate nohighlight">\(n\)</span> (the number of nodes in our graph). Element <span class="math notranslate nohighlight">\(x_i\)</span> in this vector will
 represent the eigenvector centrality that we are after for node <span class="math notranslate nohighlight">\(i\)</span>. Based on what we
 said about in the definition, then this means that we can write:</p>
 <div class="math notranslate nohighlight">
-\[x_i = c \sum A_{ij} x_j\]</div>
+\[x_i = c \sum_j A_{ij} x_j\]</div>
 <p>How does this work? For any potential edge incident to <span class="math notranslate nohighlight">\(i\)</span> that doesn’t exist, <span class="math notranslate nohighlight">\(A_{ij} = 0\)</span>,
 and thus we won’t sum up the contribution of those nodes which aren’t neighbors of <span class="math notranslate nohighlight">\(i\)</span>.
 Why do we have a constant, <span class="math notranslate nohighlight">\(c\)</span>? Since the definition of eigenvector centrality is completely
@@ -591,7 +599,7 @@ Why do we have a constant, <span class="math notranslate nohighlight">\(c\)</spa
 choice is relative, let’s set <span class="math notranslate nohighlight">\(c = \frac{1}{\lambda}\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> is the largest eigenvalue
 of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[x_i = \frac{1}{\lambda} \sum A_{ij} x_j\]</div>
+\[x_i = \frac{1}{\lambda} \sum_j A_{ij} x_j\]</div>
 <p>Now, this formula is starting to look like something we know from linear algebra. We
 can rewrite this set of equations (for all <span class="math notranslate nohighlight">\(i\)</span>) as a matrix/vector equation:</p>
 <div class="math notranslate nohighlight">
@@ -653,7 +661,10 @@ will be the one we chose above, by a famous result called the <a class="referenc
 <p>There are several ways to derive the definition of PageRank, but we’ll use one based on something called <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk">random walks</a></strong> to motivate this algorithm.</p>
 <div class="section" id="random-walks">
 <h3>Random walks<a class="headerlink" href="#random-walks" title="Permalink to this headline">¶</a></h3>
-<p><img alt="" src="_images/random-walk.png" /></p>
+<div class="figure align-default" id="random-walk">
+<img alt="_images/random-walk.png" src="_images/random-walk.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Imagining a random walk on a network - image from <a class="reference external" href="http://www2.dc.ufscar.br/~comin/projects/complex-networks/">Cesar H Comin’s website</a>.</span><a class="headerlink" href="#random-walk" title="Permalink to this image">¶</a></p>
+</div>
 <p>Let’s say we have an unweighted, directed network (for the time being). At time <span class="math notranslate nohighlight">\(t\)</span>, imagine you are a placed at a random node in a network, node <span class="math notranslate nohighlight">\(i\)</span>. To decide your position at time <span class="math notranslate nohighlight">\(t+1\)</span>, you <em>randomly</em> chose one of the outbound links from node <span class="math notranslate nohighlight">\(A\)</span> to follow.</p>
 <p>Let <span class="math notranslate nohighlight">\(x^{t+1}\)</span> be an <span class="math notranslate nohighlight">\(n\)</span>-length vector, with all 0s except for a <span class="math notranslate nohighlight">\(1\)</span> at the position
 of our random walker at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
