@@ -52,7 +52,7 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 ```{admonition} Due
 :class: important
 
-Be able to load in and somehow plot your dataset(s) in Python.
+Be able to load in and somehow plot your dataset(s) in Python.$$
 ```
 
 ### Jan 11th (Tuesday)
