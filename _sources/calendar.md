@@ -47,6 +47,8 @@ Complete the [mini-assignment](mini_assignment.md).
 :class: important
 
 Know what dataset you'll be working on for the final project.
+
+Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 ```
 
 ## Week 2
