@@ -526,7 +526,7 @@ is connected.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DegreeView({0: 16, 1: 9, 2: 10, 3: 6, 4: 3, 5: 4, 6: 4, 7: 4, 8: 5, 9: 2, 10: 3, 11: 1, 12: 2, 13: 5, 14: 2, 15: 2, 16: 2, 17: 2, 18: 2, 19: 3, 20: 2, 21: 2, 22: 2, 23: 5, 24: 3, 25: 3, 26: 2, 27: 4, 28: 3, 29: 4, 30: 4, 31: 6, 32: 12, 33: 17})
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DiDegreeView({0: 49, 1: 50, 2: 51, 3: 52, 4: 52, 5: 52, 6: 47, 7: 49, 8: 49, 9: 47, 10: 46, 11: 48, 12: 50, 13: 46, 14: 52, 15: 51, 16: 50, 17: 46, 18: 49, 19: 52, 20: 50, 21: 50, 22: 42, 23: 47, 24: 34, 25: 41, 26: 38, 27: 48})
 </pre></div>
 </div>
 </div>
@@ -539,8 +539,8 @@ is connected.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([16,  9, 10,  6,  3,  4,  4,  4,  5,  2,  3,  1,  2,  5,  2,  2,  2,
-        2,  2,  3,  2,  2,  2,  5,  3,  3,  2,  4,  3,  4,  4,  6, 12, 17])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([49, 50, 51, 52, 52, 52, 47, 49, 49, 47, 46, 48, 50, 46, 52, 51, 50,
+       46, 49, 52, 50, 50, 42, 47, 34, 41, 38, 48,  0,  0,  0,  0,  0,  0])
 </pre></div>
 </div>
 </div>
@@ -794,6 +794,12 @@ The value of <span class="math notranslate nohighlight">\(\alpha\)</span> can be
 </div>
 </div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A good exercise would be to plot how much this vector (<code class="docutils literal notranslate"><span class="pre">x</span></code>) is changing between each iteration.
+How long does it take for this process to converge? Or, what happens if you use a different
+initialization?</p>
+</div>
 <p>Note that this is algorithm also has an interpretation as finding the principal eigenvector
 of the matrix <code class="docutils literal notranslate"><span class="pre">P_mod</span></code> above through a process known as <a class="reference external" href="https://en.wikipedia.org/wiki/Power_iteration">power iteration</a>.</p>
 <div class="cell docutils container">
@@ -985,7 +991,7 @@ in results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/centrality_32_0.png" src="_images/centrality_32_0.png" />
+<img alt="_images/centrality_33_0.png" src="_images/centrality_33_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1341,10 +1347,10 @@ different networks!</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x142983250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x143259b50&gt;
 </pre></div>
 </div>
-<img alt="_images/centrality_35_1.png" src="_images/centrality_35_1.png" />
+<img alt="_images/centrality_36_1.png" src="_images/centrality_36_1.png" />
 </div>
 </div>
 </div>
