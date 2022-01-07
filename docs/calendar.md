@@ -25,23 +25,13 @@ Complete the [mini-assignment](mini_assignment.md).
 ### Jan 6th (Thursday)
 - [Representing networks](representing_networks.ipynb)
 - [Plotting networks](plotting_networks.ipynb)
-- (Maybe) [Centrality measures](centrality.ipynb)
+
+### Jan 7th (Friday)
+- [Centrality measures](centrality.ipynb)
    - Degree, strength
    - Eigenvector centrality
    - PageRank
    - Betweenness centrality
-
-### Jan 7th (Friday)
-- Ranking and flow through networks
-   - Simple rankings (A, A squared)
-   - Eigenvector ranking
-   - Minimum violations ranking
-   - Applications of ranking to study hierarchies
-- Community detection, modularity maximization
-   - Newman's modularity
-   - Louvain, Leiden
-   - Brief tour of other approaches
-   - Application to finding communities in ___
 
 ```{admonition} Due
 :class: important
@@ -53,6 +43,20 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 
 ## Week 2
 ### Jan 10th (Monday)
+- Ranking and flow through networks
+   - Simple rankings (A, A squared)
+   - Eigenvector ranking
+   - Minimum violations ranking
+   - Applications of ranking to study hierarchies
+
+### Jan 11th (Tuesday)
+- Community detection, modularity maximization
+   - Newman's modularity
+   - Louvain, Leiden
+   - Brief tour of other approaches
+   - Application to finding communities in ___
+
+### Jan 12th (Wednesday)
 - Random graph models
    - ER
    - SBM
@@ -60,27 +64,15 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
    - RDPG
    - Chung-Lu, scale-free, etc.
 
-### Jan 11th (Tuesday)
-- Unsupervised network embeddings (day 1)
-   - ASE
-   - LSE 
-
-### Jan 12th (Wednesday)
-- Unsupervised network embeddings (day 2)
-   - Node2vec
-   - What to do with our embeddings 
-
 ### Jan 13th (Thursday)
-- Graph neural networks + supervised embeddings
+- Unsupervised network embeddings
+  - ASE
+  - LSE 
+  - Node2vec
+  - What to do with our embeddings 
 
 ### Jan 14th (Friday)
-- Graph isomorphism
-- Graph matching
-   - Why is it hard?
-   - Fast approximate quadratic algorithm
-   - Adding seeds
-   - Application to social or criminal networks
-   - Application to ranking
+- Graph neural networks + supervised embeddings
 
 ## Week 3
 ### Jan 17th (Monday)
@@ -91,19 +83,25 @@ Martin Luther King Jr. Day
 ```
 
 ### Jan 18th (Tuesday)
+- Graph isomorphism
+- Graph matching
+   - Why is it hard?
+   - Fast approximate quadratic algorithm
+   - Adding seeds
+   - Application to social or criminal networks
+   - Application to ranking
+
+### Jan 19th (Wednesday)
 - Multiple network embedding
    - Omnibus embedding
    - Multiple ASE
    - ___ neural net approaches
 
-### Jan 19th (Wednesday)
+### Jan 20th (Thursday)
 - Network kernels/metrics
 - Network hypothesis testing
    - Latent distribution test
    - Latent position test 
-
-### Jan 20th (Thursday)
-- Catch-up time or special lecture
 
 ### Jan 21th (Friday)
 - Project presentations
