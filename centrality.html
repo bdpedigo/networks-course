@@ -477,19 +477,30 @@ though I personally won’t use that term. The degree of a node is simply the nu
 is connected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DegreeView({0: 16, 1: 9, 2: 10, 3: 6, 4: 3, 5: 4, 6: 4, 7: 4, 8: 5, 9: 2, 10: 3, 11: 1, 12: 2, 13: 5, 14: 2, 15: 2, 16: 2, 17: 2, 18: 2, 19: 3, 20: 2, 21: 2, 22: 2, 23: 5, 24: 3, 25: 3, 26: 2, 27: 4, 28: 3, 29: 4, 30: 4, 31: 6, 32: 12, 33: 17})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degrees</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">degree</span><span class="p">())</span>
 <span class="n">map_to_nodes</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([49, 50, 51, 52, 52, 52, 47, 49, 49, 47, 46, 48, 50, 46, 52, 51, 50,
-       46, 49, 52, 50, 50, 42, 47, 34, 41, 38, 48,  0,  0,  0,  0,  0,  0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([16,  9, 10,  6,  3,  4,  4,  4,  5,  2,  3,  1,  2,  5,  2,  2,  2,
+        2,  2,  3,  2,  2,  2,  5,  3,  3,  2,  4,  3,  4,  4,  6, 12, 17])
 </pre></div>
 </div>
 </div>
 </div>
-<p>This output is essentially a dictionary mapping each node in the network to its degree.</p>
 <p>Computing the degree is also quite easy with the adjacency matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -809,7 +820,7 @@ of the matrix <code class="docutils literal notranslate"><span class="pre">P_mod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/centrality_25_0.png" src="_images/centrality_25_0.png" />
+<img alt="_images/centrality_26_0.png" src="_images/centrality_26_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1168,7 +1179,7 @@ different networks!</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x142983250&gt;
 </pre></div>
 </div>
-<img alt="_images/centrality_28_1.png" src="_images/centrality_28_1.png" />
+<img alt="_images/centrality_29_1.png" src="_images/centrality_29_1.png" />
 </div>
 </div>
 </div>
