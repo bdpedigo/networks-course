@@ -362,6 +362,28 @@
   <a class="reference internal nav-link" href="#betweenness-centrality">
    Betweenness centrality
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shortest-paths">
+     Shortest paths
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivating-betweenness-centrality">
+     Motivating betweenness centrality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-the-centrality-measures">
+   Comparing the centrality measures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-note">
+   Final note
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -419,6 +441,28 @@
   <a class="reference internal nav-link" href="#betweenness-centrality">
    Betweenness centrality
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shortest-paths">
+     Shortest paths
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivating-betweenness-centrality">
+     Motivating betweenness centrality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-the-centrality-measures">
+   Comparing the centrality measures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-note">
+   Final note
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -437,7 +481,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="centrality-measures">
 <h1>Centrality measures<a class="headerlink" href="#centrality-measures" title="Permalink to this headline">¶</a></h1>
 <p>Much of this content is based heavily on Section 7.1 from Mark Newman’s “Networks”
-<span id="id1">[<a class="reference internal" href="#id3">1</a>]</span>.</p>
+<span id="id1">[<a class="reference internal" href="#id5">1</a>]</span>.</p>
 <p>Lots of research has gone into studying various notions of a “how important is each node?” in
 a network. Of course, as this vague question suggests, there are many ways to define
 what we mean by important. Below, we’ll cover a few of the most famous and commonly
@@ -661,6 +705,10 @@ will be the one we chose above, by a famous result called the <a class="referenc
 <p>There are several ways to derive the definition of PageRank, but we’ll use one based on something called <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk">random walks</a></strong> to motivate this algorithm.</p>
 <div class="section" id="random-walks">
 <h3>Random walks<a class="headerlink" href="#random-walks" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Random walks are a very important concept in network science which we’ll come back to later in the course.</p>
+</div>
 <div class="figure align-default" id="random-walk">
 <img alt="_images/random-walk.png" src="_images/random-walk.png" />
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Imagining a random walk on a network - image from <a class="reference external" href="http://www2.dc.ufscar.br/~comin/projects/complex-networks/">Cesar H Comin’s website</a>.</span><a class="headerlink" href="#random-walk" title="Permalink to this image">¶</a></p>
@@ -668,17 +716,17 @@ will be the one we chose above, by a famous result called the <a class="referenc
 <p>Let’s say we have an unweighted, directed network (for the time being). At time <span class="math notranslate nohighlight">\(t\)</span>, imagine you are a placed at a random node in a network, node <span class="math notranslate nohighlight">\(i\)</span>. To decide your position at time <span class="math notranslate nohighlight">\(t+1\)</span>, you <em>randomly</em> chose one of the outbound links from node <span class="math notranslate nohighlight">\(A\)</span> to follow.</p>
 <p>Let <span class="math notranslate nohighlight">\(x^{t+1}\)</span> be an <span class="math notranslate nohighlight">\(n\)</span>-length vector, with all 0s except for a <span class="math notranslate nohighlight">\(1\)</span> at the position
 of our random walker at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
-<p>We can write the probability of being at node <span class="math notranslate nohighlight">\(j\)</span> at time <span class="math notranslate nohighlight">\(t=1\)</span> as:</p>
+<p>We can write the probability of being at node <span class="math notranslate nohighlight">\(j\)</span> at time <span class="math notranslate nohighlight">\(t+1\)</span> as:</p>
 <p><span class="math notranslate nohighlight">\(P[x_j^{t+1} = 1] = A_{ij}/d_{i}\)</span></p>
 <p>In other words, this probability is <span class="math notranslate nohighlight">\(1 / d_{i}\)</span> if <span class="math notranslate nohighlight">\(i\)</span> is connected to <span class="math notranslate nohighlight">\(j\)</span>, and 0 otherwise.</p>
-<p>Random walks are a very important concept in network science which we’ll come back to later in the course.</p>
 <p>Rather than considering a single random walker (e.g. the vector <span class="math notranslate nohighlight">\(x\)</span> has 0’s and 1’s), it
 is often more useful to consider the <em>probability distribution</em> of a random walker. In
 other words, we can consider the vector <span class="math notranslate nohighlight">\(x^{t}\)</span> to be positive and sum to 1, and element
 <span class="math notranslate nohighlight">\(x_i^{t}\)</span> represents the probability of being at node <span class="math notranslate nohighlight">\(i\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(D\)</span> be an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix whose diagonal is the out degree of each node. Now, we
-can create a matrix <span class="math notranslate nohighlight">\(P\)</span> which represents the <strong>transition probabilities</strong> for our random walk:
-$<span class="math notranslate nohighlight">\(P = D^{-1} A\)</span>$</p>
+can create a matrix <span class="math notranslate nohighlight">\(P\)</span> which represents the <strong>transition probabilities</strong> for our random walk:</p>
+<div class="math notranslate nohighlight">
+\[P = D^{-1} A\]</div>
 <p>In essence, we have just divided each row of <span class="math notranslate nohighlight">\(A\)</span> by its out degree.</p>
 <p>Now, we can use a simple matrix/vector equation to update the probability distribution of
 our random walker at time <span class="math notranslate nohighlight">\(t+1\)</span> based on that at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -692,9 +740,20 @@ node with no output edges. The authors of PageRank made one small modification t
 walk scheme - at each time step, with probability <span class="math notranslate nohighlight">\(\alpha\)</span> the random walk proceeds as before. With probability <span class="math notranslate nohighlight">\(1 - \alpha\)</span>, the random walker <em>teleports</em> to node completely at random.</p>
 <p>Now, we have</p>
 <div class="math notranslate nohighlight">
-\[x^{(t+1)} = \alpha A^T D^{-1} x^{(t)} + \frac{(1 - \alpha)}{n} x^{(t)}\]</div>
+\[x^{(t+1)} = \alpha A^T D^{-1} x^{(t)} + \frac{(1 - \alpha)}{n} 1\]</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>What is <span class="math notranslate nohighlight">\(E x^{(t)}\)</span>?</p>
+<p>Hint: <span class="math notranslate nohighlight">\(x^{(t)}\)</span> represents a probability distribution.</p>
+</div>
+<p>We can rearrange as</p>
 <div class="math notranslate nohighlight">
-\[x^{(t+1)} = \left (\alpha A^T D^{-1} + \frac{(1 - \alpha)}{n} \right ) x^{(t)}\]</div>
+\[x^{(t+1)} = \left (\alpha P^T + \frac{(1 - \alpha)}{n} E \right ) x^{(t)}\]</div>
+<div class="math notranslate nohighlight">
+\[x^{(t+1)} = \hat{P} x^{(t)}\]</div>
+<p>Where</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \alpha P^T + \frac{(1 - \alpha)}{n} E\]</div>
 <p>Given this, we are basically done finding the PageRank of each node! The logic of PageRank
 is simply to give an importance to each node which is proportional to the limiting probability
 of this random walker (with teleportation) landing on that node after a long time walking
@@ -702,6 +761,7 @@ on our network. Because of some linear algebraic properties which we probably wo
 into in this course, this limiting distribution (e.g. <span class="math notranslate nohighlight">\(x^{(t)}\)</span> as <span class="math notranslate nohighlight">\(t\)</span> goes to infinity)
 converges in a modest number of iterations because of the teleportation probability we added.
 The value of <span class="math notranslate nohighlight">\(\alpha\)</span> can be set by the user, but typically people leave it at <span class="math notranslate nohighlight">\(0.85\)</span>.</p>
+<p>Below is a simple implementation of computing PageRank.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -736,7 +796,28 @@ The value of <span class="math notranslate nohighlight">\(\alpha\)</span> can be
 </div>
 <p>Note that this is algorithm also has an interpretation as finding the principal eigenvector
 of the matrix <code class="docutils literal notranslate"><span class="pre">P_mod</span></code> above through a process known as <a class="reference external" href="https://en.wikipedia.org/wiki/Power_iteration">power iteration</a>.</p>
-<p>The algorithm we used above gets a very similar answer to the version implemented in <code class="docutils literal notranslate"><span class="pre">networkx</span></code>. There are a couple of parameters (max iterations, stopping tolerance, initial distribution) which can affect the results slightly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">P_mod</span><span class="p">)</span>
+<span class="n">first_eigenvector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">first_eigenvector</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">first_eigenvector</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">first_eigenvector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.09699729, 0.05287692, 0.05707851, 0.03585986, 0.02197795,
+       0.02911115, 0.02911115, 0.0244905 , 0.02976606, 0.0143094 ,
+       0.02197795, 0.00956475, 0.01464489, 0.02953646, 0.01453599,
+       0.01453599, 0.01678401, 0.01455868, 0.01453599, 0.01960464,
+       0.01453599, 0.01455868, 0.01453599, 0.03152251, 0.02107603,
+       0.0210062 , 0.01504404, 0.02563977, 0.01957346, 0.02628854,
+       0.02459016, 0.03715809, 0.07169323, 0.10091918])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The algorithms we used above get very similar answers to the version implemented in <code class="docutils literal notranslate"><span class="pre">networkx</span></code>. There are a couple of parameters (max iterations, stopping tolerance, initial distribution) which can affect the results slightly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pagerank_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -760,9 +841,82 @@ of the matrix <code class="docutils literal notranslate"><span class="pre">P_mod
 </div>
 <div class="section" id="betweenness-centrality">
 <h2>Betweenness centrality<a class="headerlink" href="#betweenness-centrality" title="Permalink to this headline">¶</a></h2>
-<p>Rather than considering random walks, <strong>betweenness centrality</strong> is based on <strong>shortest paths</strong>. A shortest path between node <span class="math notranslate nohighlight">\(i\)</span> and node <span class="math notranslate nohighlight">\(j\)</span> is a path (a sequence of edges to traverse) which uses as few edges as possible to get from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span>. If you’d like to compute shortest paths with a sparse adjacency matrix, you can do this in <code class="docutils literal notranslate"><span class="pre">scipy</span></code> using <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csgraph.shortest_path.html"><code class="docutils literal notranslate"><span class="pre">scipy.sparse.csgraph.shortest_path</span></code></a>.</p>
+<div class="section" id="shortest-paths">
+<h3>Shortest paths<a class="headerlink" href="#shortest-paths" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="id2">
+<img alt="_images/shortest-paths.png" src="_images/shortest-paths.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration of a shortest path between two nodes. Image from <a class="reference external" href="https://www.sci.unich.it/~francesc/teaching/network/geodesic.html">Shortest paths</a>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Rather than considering random walks, <strong>betweenness centrality</strong> is based on <strong>shortest paths</strong>. A shortest path between node <span class="math notranslate nohighlight">\(i\)</span> and node <span class="math notranslate nohighlight">\(j\)</span> is a path (a sequence of edges to traverse) which uses as few edges as possible to get from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span>. If you’d like to compute shortest paths with a sparse adjacency matrix, you can do this in <code class="docutils literal notranslate"><span class="pre">scipy</span></code> using <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csgraph.shortest_path.html"><code class="docutils literal notranslate"><span class="pre">scipy.sparse.csgraph.shortest_path</span></code></a>. In <code class="docutils literal notranslate"><span class="pre">networkx</span></code>, you can use <a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.generic.shortest_path.html#networkx.algorithms.shortest_paths.generic.shortest_path"><code class="docutils literal notranslate"><span class="pre">shortest_path</span></code></a> and several other similar functions.</p>
+</div>
+<div class="section" id="motivating-betweenness-centrality">
+<h3>Motivating betweenness centrality<a class="headerlink" href="#motivating-betweenness-centrality" title="Permalink to this headline">¶</a></h3>
 <p>Betweenness centrality uses the following motivation: imaging we have a network where every pair of nodes needs to exchange information. Further, we assume that each node is equally efficient at transmitting information, and that information will flow between pairs of nodes using the shortest path.</p>
 <p>Betweenness centrality, then, is based on the following simple logic: a node is more important if more information passes through them. In other words, the betweenness centrality of node <span class="math notranslate nohighlight">\(i\)</span> is proportional to the number of these shortest paths (among all other nodes) which contain <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Let’s say that <span class="math notranslate nohighlight">\(n^{i}_{st}\)</span> is an indicator, where it is 1 if node <span class="math notranslate nohighlight">\(i\)</span> is on the shortest path from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> and 0 otherwise.</p>
+<p>We can then write the betweenness centrality of node <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span>, as</p>
+<div class="math notranslate nohighlight">
+\[x_i = \sum_{s,t} n_{st}^i\]</div>
+<p>There are a few modifications which are usually made to the formula above - for instance, if there are multiple shortest paths between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, we would divide <span class="math notranslate nohighlight">\(n_{st}^i\)</span> by how many paths there are, <span class="math notranslate nohighlight">\(g_{st}\)</span>. And, some will normalize the path count by the number of possible paths to make betweenness the fraction of paths running through that node. So, we end up with</p>
+<div class="math notranslate nohighlight">
+\[x_i = \frac{1}{n^2} \sum_{s,t} \frac{n^{i}_{st}}{g_{st}}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">betweenness</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">all_paths</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">source_node</span><span class="p">,</span> <span class="n">path_collection</span> <span class="ow">in</span> <span class="n">all_paths</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">target_node</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">path_collection</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="c1"># ignore the start and end nodes themselves</span>
+            <span class="n">betweenness</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">betweenness</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.45934256, 0.02595156, 0.26816609, 0.        , 0.        ,
+       0.05190311, 0.0017301 , 0.        , 0.03979239, 0.        ,
+       0.        , 0.        , 0.        , 0.00692042, 0.        ,
+       0.        , 0.        , 0.        , 0.        , 0.        ,
+       0.        , 0.        , 0.        , 0.02768166, 0.0017301 ,
+       0.01384083, 0.        , 0.03373702, 0.        , 0.00692042,
+       0.        , 0.06747405, 0.23442907, 0.12716263])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_to_nodes</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.43763528, 0.05393669, 0.14365681, 0.01190927, 0.00063131,
+       0.02998737, 0.02998737, 0.        , 0.05592683, 0.00084776,
+       0.00063131, 0.        , 0.        , 0.0458634 , 0.        ,
+       0.        , 0.        , 0.        , 0.        , 0.03247505,
+       0.        , 0.        , 0.        , 0.01761364, 0.0022096 ,
+       0.00384049, 0.        , 0.02233345, 0.00179473, 0.00292208,
+       0.01441198, 0.13827561, 0.14524711, 0.30407498])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>My simple implementation does not properly deal with the case where there is
+more than one shortest path between two nodes, and <code class="docutils literal notranslate"><span class="pre">networkx</span></code> also uses a slightly different
+normalization constant than I did. I believe these two factors cause the slight difference
+in results.</p>
+</div>
+</div>
+</div>
+<div class="section" id="comparing-the-centrality-measures">
+<h2>Comparing the centrality measures<a class="headerlink" href="#comparing-the-centrality-measures" title="Permalink to this headline">¶</a></h2>
+<p>Let’s compare how these different notions of centrality look on this network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -831,7 +985,7 @@ of the matrix <code class="docutils literal notranslate"><span class="pre">P_mod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/centrality_26_0.png" src="_images/centrality_26_0.png" />
+<img alt="_images/centrality_32_0.png" src="_images/centrality_32_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1190,14 +1344,20 @@ different networks!</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x142983250&gt;
 </pre></div>
 </div>
-<img alt="_images/centrality_29_1.png" src="_images/centrality_29_1.png" />
+<img alt="_images/centrality_35_1.png" src="_images/centrality_35_1.png" />
 </div>
 </div>
+</div>
+<div class="section" id="final-note">
+<h2>Final note<a class="headerlink" href="#final-note" title="Permalink to this headline">¶</a></h2>
+<p>Please keep in mind that there are many, many more notions of centrality that we didn’t
+go into here. More of these are described in Section 7.1 from Mark Newman’s “Networks”
+<span id="id3">[<a class="reference internal" href="#id5">1</a>]</span>, as well as the <a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/centrality.html"><code class="docutils literal notranslate"><span class="pre">centrality</span></code> section in <code class="docutils literal notranslate"><span class="pre">networkx</span></code>’s documentation</a>.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id2"><dl class="citation">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<p id="id4"><dl class="citation">
+<dt class="label" id="id5"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
 <dd><p>Mark Newman. <em>Networks</em>. Oxford university press, 2018.</p>
 </dd>
 </dl>
