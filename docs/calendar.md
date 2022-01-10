@@ -43,7 +43,7 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 
 ## Week 2
 ### Jan 10th (Monday)
-- Random graph models
+- [Random graph models](random_graphs.ipynb)
    - ER
    - SBM
    - DCSBM
