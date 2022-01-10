@@ -8,6 +8,8 @@ parts:
   - file: mini_assignment
 - caption: Resources
   chapters:
+  - file: online_resources
+  - file: books
   - file: datasets
 - caption: Lectures
   chapters:
