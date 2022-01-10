@@ -21,6 +21,7 @@ parts:
   - file: plotting_networks
   - file: centrality
   - file: random_graphs
+  - file: community_detection
 - caption: Projects
   chapters:
   - file: clarke.md
