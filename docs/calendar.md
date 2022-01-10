@@ -50,7 +50,6 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
    - RDPG
    - Chung-Lu, scale-free, etc.
 
-
 ```{admonition} Due
 :class: important
 
