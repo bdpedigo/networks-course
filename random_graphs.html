@@ -394,6 +394,11 @@
    Relationships among these models
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -470,6 +475,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relationships-among-these-models">
    Relationships among these models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
   </a>
  </li>
 </ul>
@@ -613,6 +623,24 @@ This means that the one parameter <span class="math notranslate nohighlight">\(p
 <img alt="_images/random_graphs_10_1.png" src="_images/random_graphs_10_1.png" />
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> also has an ER sampler. Note the <code class="docutils literal notranslate"><span class="pre">directed</span></code> kwarg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">er</span><span class="o">.</span><span class="n">p_</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.digraph.DiGraph at 0x13fc88400&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="degree-corrected-erdos-reyni-dcer">
 <h2>Degree-corrected Erdos-Reyni (DCER)<a class="headerlink" href="#degree-corrected-erdos-reyni-dcer" title="Permalink to this headline">¶</a></h2>
@@ -652,7 +680,7 @@ interpretation as the expected number of edges.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DCER &quot;p&quot; parameter: 7536.0
 </pre></div>
 </div>
-<img alt="_images/random_graphs_12_1.png" src="_images/random_graphs_12_1.png" />
+<img alt="_images/random_graphs_14_1.png" src="_images/random_graphs_14_1.png" />
 </div>
 </div>
 </div>
@@ -682,7 +710,23 @@ interpretation as the expected number of edges.</p>
  [0.         0.07587302 0.         0.        ]]
 </pre></div>
 </div>
-<img alt="_images/random_graphs_14_1.png" src="_images/random_graphs_14_1.png" />
+<img alt="_images/random_graphs_16_1.png" src="_images/random_graphs_16_1.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> also has an SBM sampler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span> <span class="c1"># size in each group</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]]</span> <span class="c1"># matrix of probabilities</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">stochastic_block_model</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.digraph.DiGraph at 0x13f612550&gt;
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -713,18 +757,27 @@ interpretation as the expected number of edges.</p>
  [   0.  478.    0.    0.]]
 </pre></div>
 </div>
-<img alt="_images/random_graphs_16_1.png" src="_images/random_graphs_16_1.png" />
+<img alt="_images/random_graphs_20_1.png" src="_images/random_graphs_20_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="random-dot-product-graph-rdpg">
 <h2>Random dot product graph (RDPG)<a class="headerlink" href="#random-dot-product-graph-rdpg" title="Permalink to this headline">¶</a></h2>
-<p>The random dot product graph model (RDPG) <span id="id1">[<a class="reference internal" href="centrality.html#id24">2</a>, <a class="reference internal" href="centrality.html#id32">3</a>]</span> is a (relatively speaking) newer network model under the umbrella of latent position random graphs \cite{hoff2002latent}. Under latent position models, each node has an associated, typically unobserved vector which is referred to as the \textbf{latent position} of that node. For the directed network case, we can allow each node to have associated “in” and “out” latent position vectors which may not be the same, with the former governing the nodes inputs and the latter governing its outputs. If <span class="math notranslate nohighlight">\(x_i\)</span> is the out latent position for node <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(y_j\)</span> the input latent position for node <span class="math notranslate nohighlight">\(j\)</span>, then the probability of an edge between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is some function of these vectors:
-$<span class="math notranslate nohighlight">\(P[A_{ij} = 1] = P_{ij} = f(x_i, y_j)\)</span><span class="math notranslate nohighlight">\(
-More specifically for the RDPG, the link function \)</span>f<span class="math notranslate nohighlight">\( is the dot product:
-\)</span><span class="math notranslate nohighlight">\(P[A_{ij} = 1] = P_{ij} = \langle x_i, y_j \rangle\)</span><span class="math notranslate nohighlight">\(
-The latent positions are thus restricted such that \)</span>\langle x_i, y_j \rangle \in [0, 1]<span class="math notranslate nohighlight">\( for all \)</span>(i,j)<span class="math notranslate nohighlight">\( pairs. Under this definition, \)</span>P<span class="math notranslate nohighlight">\(, the matrix of connection probabilities, can be written as \)</span>P = XY^T<span class="math notranslate nohighlight">\(, where \)</span>X \in \mathbb{R}^{n \times d}<span class="math notranslate nohighlight">\( is a matrix where each row \)</span>i<span class="math notranslate nohighlight">\( is the out latent position of node \)</span>i<span class="math notranslate nohighlight">\(, and likewise for \)</span>Y$ and the in latent positions.</p>
-<p>In practical applications, we never observe the latent positions in <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> - they must be estimated from the observed network, <span class="math notranslate nohighlight">\(A\)</span>. Fortunately, this can be done via an established technique known as \textbf{adjacency spectral embedding (ASE)} \cite{athreya2017statistical}, which was recently shown to be a consistent estimator of these latent positions.</p>
+<p>The <strong>random dot product graph model (RDPG)</strong> <span id="id1">[<a class="reference internal" href="#id25">1</a>, <a class="reference internal" href="#id33">2</a>]</span> is a (relatively speaking) newer network model under the umbrella of latent position random graphs <span id="id2">[<a class="reference internal" href="#id32">3</a>]</span>. Under <strong>latent position models</strong>, each node has an associated, typically unobserved vector which is referred to as the <strong>latent position</strong> of that node. For the directed network case, we can allow each node to have associated “in” and “out” latent position vectors which may not be the same, with the former governing the nodes inputs and the latter governing its outputs. If <span class="math notranslate nohighlight">\(x_i\)</span> is the out latent position for node <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(y_j\)</span> the input latent position for node <span class="math notranslate nohighlight">\(j\)</span>, then the probability of an edge between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is some function of these vectors:</p>
+<div class="math notranslate nohighlight">
+\[P[A_{ij} = 1] = P_{ij} = f(x_i, y_j)\]</div>
+<p>More specifically for the RDPG, the link function <span class="math notranslate nohighlight">\(f\)</span> is the dot product:</p>
+<div class="math notranslate nohighlight">
+\[P[A_{ij} = 1] = P_{ij} = \langle x_i, y_j \rangle\]</div>
+<p>The latent positions are thus restricted such that <span class="math notranslate nohighlight">\(\langle x_i, y_j \rangle \in [0, 1]\)</span> for all <span class="math notranslate nohighlight">\((i,j)\)</span> pairs. Under this definition, <span class="math notranslate nohighlight">\(P\)</span>, the matrix of connection probabilities, can be written as <span class="math notranslate nohighlight">\(P = XY^T\)</span>, where <span class="math notranslate nohighlight">\(X \in \mathbb{R}^{n \times d}\)</span> is a matrix where each row <span class="math notranslate nohighlight">\(i\)</span> is the out latent position of node <span class="math notranslate nohighlight">\(i\)</span>, and likewise for <span class="math notranslate nohighlight">\(Y\)</span> and the in latent positions.</p>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Imagine that the out and in latent positions are the same (<span class="math notranslate nohighlight">\(x_i = y_i\)</span>). Describe a
+restriction on the latent positions (say, a region of space) such that all probabilities
+are well defined.</p>
+<p>Hint: what would the restriction be when <span class="math notranslate nohighlight">\(d=1\)</span>? When <span class="math notranslate nohighlight">\(d=2\)</span>?</p>
+</div>
+<p>In practical applications, we never observe the latent positions in <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> - they must be estimated from the observed network, <span class="math notranslate nohighlight">\(A\)</span>. Fortunately, this can be done via an established technique known as <strong>adjacency spectral embedding (ASE)</strong> <span id="id3">[<a class="reference internal" href="#id25">1</a>]</span>, which was recently shown to be a consistent estimator of these latent positions. We’ll discuss this more when we talk about network embeddings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.models</span> <span class="kn">import</span> <span class="n">RDPGEstimator</span>
@@ -737,21 +790,44 @@ The latent positions are thus restricted such that \)</span>\langle x_i, y_j \ra
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_19_0.png" src="_images/random_graphs_19_0.png" />
+<img alt="_images/random_graphs_23_0.png" src="_images/random_graphs_23_0.png" />
 </div>
 </div>
 <p>For the RDPG, looking at the model parameters can be more challenging, since in this
-case they are a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector for each node.</p>
+case they are a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector for each node. We can access the estimated
+<span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> matrices:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rdpge</span><span class="o">.</span><span class="n">latent_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">rdpge</span><span class="o">.</span><span class="n">latent_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">rdpge</span><span class="o">.</span><span class="n">latent_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(213, 3)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(213, 3)
+(213, 3)
 </pre></div>
 </div>
+</div>
+</div>
+<p>One way to visualize these multidimensional sets of vectors (each row of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is
+a vector which corresponds to a node) is to use <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>’s <a class="reference external" href="https://microsoft.github.io/graspologic/latest/reference/reference/plotting.html#pairplot"><code class="docutils literal notranslate"><span class="pre">pairplot</span></code></a>, which itself is just a wrapper around <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.pairplot.html"><code class="docutils literal notranslate"><span class="pre">pairplot</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">pairplot</span>
+
+<span class="n">pairplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Out latent positions&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13f94a130&gt;
+</pre></div>
+</div>
+<img alt="_images/random_graphs_27_1.png" src="_images/random_graphs_27_1.png" />
 </div>
 </div>
 </div>
@@ -821,7 +897,7 @@ case they are a <span class="math notranslate nohighlight">\(d\)</span>-dimensio
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_23_0.png" src="_images/random_graphs_23_0.png" />
+<img alt="_images/random_graphs_29_0.png" src="_images/random_graphs_29_0.png" />
 </div>
 </div>
 </div>
@@ -830,7 +906,7 @@ case they are a <span class="math notranslate nohighlight">\(d\)</span>-dimensio
 <div class="figure align-default" id="model-relationships">
 <img alt="_images/model-relationships.png" src="_images/model-relationships.png" />
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Relationships among independent edge models (some not mentioned here). Figure from
-<span id="id2">Chung <em>et al.</em> [<a class="reference internal" href="centrality.html#id23">4</a>]</span>.</span><a class="headerlink" href="#model-relationships" title="Permalink to this image">¶</a></p>
+<span id="id4">Chung <em>et al.</em> [<a class="reference internal" href="#id24">4</a>]</span>.</span><a class="headerlink" href="#model-relationships" title="Permalink to this image">¶</a></p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Question</p>
@@ -849,6 +925,24 @@ case they are a <span class="math notranslate nohighlight">\(d\)</span>-dimensio
 <p>When can an RDPG be considered a DCSBM?</p>
 <p>Hint: have a look at the last plot in <a class="reference external" href="https://docs.neurodata.io/notebooks/pedigo/graspologic/2020/09/24/latent_model_tutorial.html">this notebook</a>.</p>
 </div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id5"><dl class="citation">
+<dt class="label" id="id25"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
+</dd>
+<dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p>Stephen J Young and Edward R Scheinerman. Random dot product graph models for social networks. In <em>International Workshop on Algorithms and Models for the Web-Graph</em>, 138–149. Springer, 2007.</p>
+</dd>
+<dt class="label" id="id32"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
+<dd><p>Peter D Hoff, Adrian E Raftery, and Mark S Handcock. Latent space approaches to social network analysis. <em>Journal of the american Statistical association</em>, 97(460):1090–1098, 2002.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>Jaewon Chung, Eric Bridgeford, Jesús Arroyo, Benjamin D Pedigo, Ali Saad-Eldin, Vivek Gopalakrishnan, Liang Xiang, Carey E Priebe, and Joshua T Vogelstein. Statistical connectomics. <em>Annual Review of Statistics and Its Application</em>, 8:463–492, 2021.</p>
+</dd>
+</dl>
+</p>
 </div>
 </div>
 
