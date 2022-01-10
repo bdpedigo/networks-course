@@ -137,6 +137,16 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="online_resources.html">
+   Course notes and online resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="books.html">
+   Books
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="datasets.html">
    Datasets
   </a>
@@ -529,14 +539,6 @@
 <h1>Random network models<a class="headerlink" href="#random-network-models" title="Permalink to this headline">¶</a></h1>
 <p>This notebook on random network models is adapted from the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/models/models.html"><code class="docutils literal notranslate"><span class="pre">graspoloigc</span></code> tutorial</a> on the same topic.</p>
 <p>You may also be interested in <a class="reference external" href="http://docs.neurodata.io/graph-stats-book/representations/ch5/why-use-models.html">a similar section in <em>Hands-on Network Machine Learning with Scikit-Learn and Graspologic</em></a>.</p>
-<p>In this notebook, we’ll look at the following models:</p>
-<ul class="simple">
-<li><p>Erdos-Reyni (ER)</p></li>
-<li><p>Degree-corrected Erdos-Reyni (DCER)</p></li>
-<li><p>Stochastic block model (SBM)</p></li>
-<li><p>Degree-corrected stochastic block model (DCSBM)</p></li>
-<li><p>Random dot product graph (RDPG)</p></li>
-</ul>
 <div class="section" id="why-use-random-network-models">
 <h2>Why use random network models?<a class="headerlink" href="#why-use-random-network-models" title="Permalink to this headline">¶</a></h2>
 <p>There are a few different reasons one might want to use a statistical network model.</p>
@@ -585,7 +587,7 @@ network models are concerned with binary networks.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_5_0.png" src="_images/random_graphs_5_0.png" />
+<img alt="_images/random_graphs_4_0.png" src="_images/random_graphs_4_0.png" />
 </div>
 </div>
 </div>
@@ -653,7 +655,7 @@ This means that the one parameter <span class="math notranslate nohighlight">\(p
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ER &quot;p&quot; parameter: 0.1661046088739007
 </pre></div>
 </div>
-<img alt="_images/random_graphs_10_1.png" src="_images/random_graphs_10_1.png" />
+<img alt="_images/random_graphs_9_1.png" src="_images/random_graphs_9_1.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> also has an ER sampler. Note the <code class="docutils literal notranslate"><span class="pre">directed</span></code> kwarg.</p>
@@ -713,7 +715,7 @@ interpretation as the expected number of edges.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DCER &quot;p&quot; parameter: 7536.0
 </pre></div>
 </div>
-<img alt="_images/random_graphs_14_1.png" src="_images/random_graphs_14_1.png" />
+<img alt="_images/random_graphs_13_1.png" src="_images/random_graphs_13_1.png" />
 </div>
 </div>
 </div>
@@ -743,7 +745,7 @@ interpretation as the expected number of edges.</p>
  [0.         0.07587302 0.         0.        ]]
 </pre></div>
 </div>
-<img alt="_images/random_graphs_16_1.png" src="_images/random_graphs_16_1.png" />
+<img alt="_images/random_graphs_15_1.png" src="_images/random_graphs_15_1.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> also has an SBM sampler.</p>
@@ -790,7 +792,7 @@ interpretation as the expected number of edges.</p>
  [   0.  478.    0.    0.]]
 </pre></div>
 </div>
-<img alt="_images/random_graphs_20_1.png" src="_images/random_graphs_20_1.png" />
+<img alt="_images/random_graphs_19_1.png" src="_images/random_graphs_19_1.png" />
 </div>
 </div>
 </div>
@@ -823,7 +825,7 @@ are well defined.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_23_0.png" src="_images/random_graphs_23_0.png" />
+<img alt="_images/random_graphs_22_0.png" src="_images/random_graphs_22_0.png" />
 </div>
 </div>
 <p>For the RDPG, looking at the model parameters can be more challenging, since in this
@@ -860,7 +862,7 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13f94a130&gt;
 </pre></div>
 </div>
-<img alt="_images/random_graphs_27_1.png" src="_images/random_graphs_27_1.png" />
+<img alt="_images/random_graphs_26_1.png" src="_images/random_graphs_26_1.png" />
 </div>
 </div>
 </div>
@@ -930,7 +932,7 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_29_0.png" src="_images/random_graphs_29_0.png" />
+<img alt="_images/random_graphs_28_0.png" src="_images/random_graphs_28_0.png" />
 </div>
 </div>
 </div>
@@ -990,7 +992,7 @@ for creating networks this way.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_32_0.png" src="_images/random_graphs_32_0.png" />
+<img alt="_images/random_graphs_31_0.png" src="_images/random_graphs_31_0.png" />
 </div>
 </div>
 </div>
