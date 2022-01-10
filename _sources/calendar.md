@@ -60,8 +60,13 @@ Be able to load in and somehow plot your dataset(s) in Python.
 
 ### Jan 11th (Tuesday)
 - Community detection, modularity maximization
-   - Newman's modularity
-   - Louvain, Leiden
+   - Modularity
+     - Simple node-moving
+     - Spectral
+     - Louvain, Leiden
+     - Issues with modularity maximization
+       - Resolution limit
+       - Overfitting
    - Brief tour of other approaches
    - Application to finding communities in ___
 
