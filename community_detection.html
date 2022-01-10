@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -322,11 +324,95 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/community_detection.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modularity">
+   Modularity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-optimization">
+     Naive optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spectral-optimization">
+     Spectral optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#agglomerative-optimization-louvain-leiden">
+     Agglomerative optimization - Louvain/Leiden
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resolution-limit">
+     Resolution limit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overfitting">
+     Overfitting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternatives-to-modularity">
+   Alternatives to modularity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infomap">
+     InfoMap
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-inference-of-assortative-groups">
+     Statistical inference of assortative groups
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overlapping-soft-community-detection">
+   Overlapping / soft community detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -339,6 +425,73 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modularity">
+   Modularity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-optimization">
+     Naive optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spectral-optimization">
+     Spectral optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#agglomerative-optimization-louvain-leiden">
+     Agglomerative optimization - Louvain/Leiden
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resolution-limit">
+     Resolution limit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overfitting">
+     Overfitting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternatives-to-modularity">
+   Alternatives to modularity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infomap">
+     InfoMap
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-inference-of-assortative-groups">
+     Statistical inference of assortative groups
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overlapping-soft-community-detection">
+   Overlapping / soft community detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -351,8 +504,452 @@
 This is an old and famous network science problem. It has applications across a wide
 range of disciplines. To name a few:</p>
 <ul class="simple">
-<li><p>Predicting “workgroups” in organizational networks <span id="id1">[]</span></p></li>
+<li><p>Predicting “workgroups” in organizational communication networks <span id="id1">[<a class="reference internal" href="#id54">1</a>]</span></p></li>
+<li><p>Clustering networks formed by nearest neighbors in high-dimensional data</p></li>
 </ul>
+<div class="section" id="modularity">
+<h2>Modularity<a class="headerlink" href="#modularity" title="Permalink to this headline">¶</a></h2>
+<p>From <a class="reference external" href="https://en.wikipedia.org/wiki/Modularity">Wikipedia</a>, in general usage, “modularity is the degree to which a system’s components may be separated and recombined.” The <a class="reference external" href="https://en.wikipedia.org/wiki/Modularity_(networks)">definition in network science</a> is similar in spirit but has a more specific meaning. In words, <strong>modularity</strong> it is “the strength of division of a network into modules (also called groups, clusters or communities). Networks with high modularity have dense connections between the nodes within modules but sparse connections between nodes in different modules.”</p>
+<p>How do we write this down mathematically? To begin, lets consider an <em>undirected, unweighted</em> network with no loops, with <span class="math notranslate nohighlight">\(n \times n\)</span> adjacency matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>As usual, we’ll let <span class="math notranslate nohighlight">\(k\)</span> be an <span class="math notranslate nohighlight">\(n\)</span>-length vector with the degree of each node. <span class="math notranslate nohighlight">\(m\)</span> will be the total number of edges.</p>
+<!-- 
+First, we'll create a matrix $B$ defined as
+
+$$B_{ij} = A_{ij} - \frac{k_i}{k_j}{2m}$$ -->
+<p>First, we’d like some way of measuring the strength of edges within groups. Let <span class="math notranslate nohighlight">\(\delta(\tau_i, \tau_j)\)</span> be an indicator function which is
+1 if <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are in the same group, and 0 otherwise. Then, the total number of within-community edges is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2} \sum_{i,j} A_{ij} \delta(\tau_i, \tau_j)\]</div>
+<p>Note that we include the factor of <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> because otherwise edges would be counted twice in the sum.</p>
+<p>Now, we want to optimize some function of the expression above, but note that as written, we could trivially put
+all nodes in the same group and that would maximize the expression we have written. So, we are going to add a term
+that will balance how many edges are within a group by how many edges we’d expect within a group based on a random model.</p>
+<p>Specifically, we’ll use the random model where each node has its observed degree (<span class="math notranslate nohighlight">\(k_i\)</span>),
+but edges are arranged at random. How many edges are expected between nodes under this model?</p>
+<p>Consider node <span class="math notranslate nohighlight">\(i\)</span> for the moment, and lets compute the probability of a particular
+edge <span class="math notranslate nohighlight">\((i,j)\)</span>. Let’s select <em>one</em> of the edges attached to <span class="math notranslate nohighlight">\(i\)</span>. Note that there are
+<span class="math notranslate nohighlight">\(2m-1\)</span> remaining edge stubs (sometimes called half
+edges) in the network. If the wiring is random, then the probability of connecting to
+any other edge stub is the same. Therefore, the probability of connecting to node <span class="math notranslate nohighlight">\(j\)</span> is
+proportional to the degree of that node: <span class="math notranslate nohighlight">\(\frac{k_j}{2m-1}\)</span>. This is the
+probability of observing the edge <span class="math notranslate nohighlight">\((i, j)\)</span>. But, we started by considering a <em>particular</em>
+edge attached to <span class="math notranslate nohighlight">\(i\)</span>. And how many of these are there? <span class="math notranslate nohighlight">\(k_i\)</span>. Therefore, the overall
+probability that <span class="math notranslate nohighlight">\(i\)</span> is connected to <span class="math notranslate nohighlight">\(j\)</span> is <span class="math notranslate nohighlight">\(\frac{k_i k_j}{2m-1}\)</span>. Usually since <span class="math notranslate nohighlight">\(m\)</span> is
+so large for most networks, we drop the <span class="math notranslate nohighlight">\(-1\)</span> and consider</p>
+<div class="math notranslate nohighlight">
+\[P_{ij} = \frac{k_i k_j}{2m}\]</div>
+<p>Great, this is roughly the probability of the edge <span class="math notranslate nohighlight">\((i, j)\)</span>, but recall that we were
+interested in something like “given a partition <span class="math notranslate nohighlight">\(\tau\)</span> of my network, how many edges
+should I expect to be within-group under this silly null model?”. Using the same logic
+as before, we can compute this expected value by summing over this expected probability
+matrix.</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2} \sum_{ij} \frac{k_i k_j}{2m}\]</div>
+<p>Going back to our original expression, we literally take the difference of the observed
+number of edges that are within-group minus the number we’d expect by chance.</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2} \sum_{i,j} A_{ij} \delta(\tau_i, \tau_j) - \frac{1}{2} \sum_{ij} \frac{k_i k_j}{2m} = \frac{1}{2} \sum_{i,j} \left(A_{ij} - \frac{k_i k_j}{2m} \right ) \delta(\tau_i, \tau_j)\]</div>
+<p>Lastly, it is usually more interpretable to make this quantity a proportion of edge rather than
+a count, so we divide by <span class="math notranslate nohighlight">\(m\)</span>. Thus, we arrive at the expression usually defined as modularity.</p>
+<div class="math notranslate nohighlight">
+\[Q(A, \tau) = \frac{1}{2m} \sum_{ij} \left(A_{ij} - \frac{k_i k_j}{2m} \right ) \delta(\tau_i, \tau_j)\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>People often talk about “the modularity of this network” as if it is a function of the
+adjacency matrix only: <span class="math notranslate nohighlight">\(Q(A)\)</span>. Note that modularity is absolutely a function of a
+network <span class="math notranslate nohighlight">\(A\)</span> AND a partition, <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+</div>
+<div class="section" id="naive-optimization">
+<h3>Naive optimization<a class="headerlink" href="#naive-optimization" title="Permalink to this headline">¶</a></h3>
+<p>Thus far, we’ve talked about how we can compute this modularity quantity for a given
+<span class="math notranslate nohighlight">\(A\)</span> and partition <span class="math notranslate nohighlight">\(\tau\)</span>. But remember, we are talking about community <em>detection</em>! In
+other words, we’re trying to infer <span class="math notranslate nohighlight">\(\tau\)</span> from the data.</p>
+<p>For the next few explanations, we are going to restrict ourselves to the case where we
+are only seeking to divide a network into <em>two</em> communities since it will make the
+explanations easier, but note that everything still works for more communities.</p>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Let’s say you have <span class="math notranslate nohighlight">\(n\)</span> nodes, and you’re only considering community detection into
+two groups. How many different partitions, <span class="math notranslate nohighlight">\(\tau\)</span>, are there?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">n_possible_taus</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">ns</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ns</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">n_possible_taus</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of nodes&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of bipartitions&quot;</span><span class="p">)</span>
+<span class="n">world_pop</span> <span class="o">=</span> <span class="mi">8_000_000_000</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">world_pop</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">world_pop</span><span class="p">,</span> <span class="s2">&quot;Number</span><span class="se">\n</span><span class="s2">of people</span><span class="se">\n</span><span class="s2">on Earth</span><span class="se">\n</span><span class="s2">(2022)&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/community_detection_3_0.png" src="_images/community_detection_3_0.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Let’s say you have a network <span class="math notranslate nohighlight">\(A\)</span>, and I give you a random partition, <span class="math notranslate nohighlight">\(\tau\)</span>. What is the
+silliest, most naive way you can think of trying to improve the modularity score?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;networks-course/data/polbooks.csv/edges.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_kamada_kawai</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/community_detection_5_0.png" src="_images/community_detection_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">modularity_from_adjacency</span><span class="p">(</span><span class="n">sym_adj</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">partition_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">)(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sym_adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">partition_labels</span> <span class="o">=</span> <span class="n">partition</span>
+    <span class="n">partition_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">partition_labels</span><span class="p">)</span>
+    <span class="n">in_comm_mask</span> <span class="o">=</span> <span class="n">partition_labels</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">==</span> <span class="n">partition_labels</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sym_adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+    <span class="n">degree_prod_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">degrees</span><span class="p">)</span> <span class="o">/</span> <span class="n">sym_adj</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">mod_mat</span> <span class="o">=</span> <span class="n">sym_adj</span> <span class="o">-</span> <span class="n">resolution</span> <span class="o">*</span> <span class="n">degree_prod_mat</span>
+    <span class="k">return</span> <span class="n">mod_mat</span><span class="p">[</span><span class="n">in_comm_mask</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">sym_adj</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># random bernoullis</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">888</span><span class="p">)</span>
+<span class="n">partition</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">partition</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1,
+       1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0,
+       1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1,
+       0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0,
+       0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clearly this random partition of our network is not very good:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_score</span> <span class="o">=</span> <span class="n">modularity_from_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">partition</span><span class="p">)</span>
+<span class="n">mod_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.014078496099876065
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">best_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">best_iterations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">last_mod_score</span> <span class="o">=</span> <span class="n">mod_score</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
+    <span class="c1"># choose a random node to perturb</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># check what group it is currently in, and swap it</span>
+    <span class="n">current_group</span> <span class="o">=</span> <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">current_group</span><span class="p">:</span>
+        <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># compute modularity with this slightly modified partition</span>
+    <span class="n">mod_score</span> <span class="o">=</span> <span class="n">modularity_from_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">partition</span><span class="p">)</span>
+
+    <span class="c1"># decide whether to keep that change or not</span>
+    <span class="k">if</span> <span class="n">mod_score</span> <span class="o">&lt;</span> <span class="n">last_mod_score</span><span class="p">:</span>
+        <span class="c1"># swap it back</span>
+        <span class="k">if</span> <span class="n">current_group</span><span class="p">:</span>
+            <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">last_mod_score</span> <span class="o">=</span> <span class="n">mod_score</span>
+        <span class="n">best_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mod_score</span><span class="p">)</span>
+        <span class="n">best_iterations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iteration</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mod_score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.42126480221718315
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_iterations</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">best_scores</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Modularity&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Iteration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0, 0.5, &#39;Modularity&#39;), Text(0.5, 0, &#39;Iteration&#39;)]
+</pre></div>
+</div>
+<img alt="_images/community_detection_10_1.png" src="_images/community_detection_10_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span><span class="p">,</span> <span class="n">heatmap</span>
+
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;estimated_partition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">partition</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">:</span>
+    <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+    <span class="n">node_alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;estimated_partition&quot;</span><span class="p">,</span>
+    <span class="c1"># node_kws=dict(s=80, linewidth=1),</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+    <span class="n">edge_hue</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">partition</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">center</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>
+    <span class="n">sort_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/community_detection_11_1.png" src="_images/community_detection_11_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="spectral-optimization">
+<h3>Spectral optimization<a class="headerlink" href="#spectral-optimization" title="Permalink to this headline">¶</a></h3>
+<p>Next, we’ll look at one less silly way of optimizing modularity.</p>
+<p>We can define the matrix <span class="math notranslate nohighlight">\(B\)</span>, often called the <strong>modularity matrix</strong> as</p>
+<div class="math notranslate nohighlight">
+\[B_{ij} = A_{ij} - \frac{k_i k_j}{2m} \]</div>
+<p>Sticking to the case of two groups, let’s change our convention for <span class="math notranslate nohighlight">\(\tau\)</span> so that
+<span class="math notranslate nohighlight">\(\tau_i = 1\)</span> if node <span class="math notranslate nohighlight">\(i\)</span> is in group 1, and <span class="math notranslate nohighlight">\(\tau_i = -1\)</span> if it is in group 2.</p>
+<p>Then, note that our indicator function has a nice expression now:</p>
+<div class="math notranslate nohighlight">
+\[\delta(\tau_i, \tau_j) = \frac{1}{2} (\tau_i \tau_j + 1)\]</div>
+<p>Now we can easily write our modularity function.</p>
+<div class="math notranslate nohighlight">
+\[Q(A, \tau) = \frac{1}{4m} \sum_{ij} B_{ij} \tau_i \tau_j\]</div>
+<p>In matrix/vector form, we can write this as</p>
+<div class="math notranslate nohighlight">
+\[Q(A, \tau) = \frac{1}{4m} \tau^T B \tau\]</div>
+<p>Hermitian, so maximized when <span class="math notranslate nohighlight">\(\tau\)</span> is eigenvector, max modulus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">modularity_matrix</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">first_eigenvector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span>
+<span class="n">first_eigenvector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.02550912,  0.02456848,  0.00170053,  0.19262125, -0.01632424,
+        0.02333085,  0.05243838, -0.01705257,  0.23826617,  0.14694971,
+        0.13066785,  0.17909148,  0.2278586 ,  0.13652453,  0.09609015,
+        0.0537466 ,  0.03258368,  0.07848085,  0.04078242,  0.02814099,
+        0.09584042,  0.07332282,  0.07773025,  0.11014213,  0.11975091,
+        0.05089722,  0.11127976,  0.12026225, -0.03486849,  0.03053454,
+       -0.18966993, -0.10967268,  0.07009965,  0.10030317,  0.08262   ,
+        0.03008297,  0.0535839 ,  0.07084867,  0.06221648,  0.0758389 ,
+        0.1696462 ,  0.10436962,  0.07279506,  0.04798468,  0.07367568,
+        0.08792768,  0.05454009,  0.17501516,  0.0219253 , -0.01486383,
+        0.02666456,  0.00957711,  0.01668981,  0.03091357,  0.07826915,
+        0.03811773,  0.02425889,  0.02312067, -0.01822838, -0.04866926,
+       -0.02113664, -0.0199537 , -0.04687952, -0.01967049, -0.02755088,
+       -0.01022675, -0.19268054, -0.03578428, -0.01618876, -0.0036785 ,
+       -0.08375239, -0.13868297, -0.2027985 , -0.21677572, -0.18442602,
+       -0.17949498, -0.14169565, -0.06326878, -0.06912215, -0.11280441,
+       -0.0614348 , -0.04966937, -0.13492524, -0.10857716, -0.22677681,
+       -0.03713454, -0.14403887, -0.06610225, -0.07608982, -0.08987874,
+       -0.05797735, -0.08678585, -0.05088125, -0.07853913, -0.05733061,
+       -0.02542713, -0.07555278, -0.07673903, -0.0571795 , -0.1187217 ,
+       -0.12131853, -0.04811651, -0.00866984, -0.00311235, -0.00329647])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eig_partition</span> <span class="o">=</span> <span class="n">first_eigenvector</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">eig_partition</span><span class="p">[</span><span class="n">eig_partition</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">eig_partition</span><span class="p">[</span><span class="n">eig_partition</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">eig_partition</span> <span class="o">=</span> <span class="n">eig_partition</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eig_partition</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;eig_partition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eig_partition</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+    <span class="n">node_alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;eig_partition&quot;</span><span class="p">,</span>
+    <span class="c1"># node_kws=dict(s=80, linewidth=1),</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+    <span class="n">edge_hue</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">eig_partition</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">center</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>
+    <span class="n">sort_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/community_detection_17_1.png" src="_images/community_detection_17_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="agglomerative-optimization-louvain-leiden">
+<h3>Agglomerative optimization - Louvain/Leiden<a class="headerlink" href="#agglomerative-optimization-louvain-leiden" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="resolution-limit">
+<h3>Resolution limit<a class="headerlink" href="#resolution-limit" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="overfitting">
+<h3>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="alternatives-to-modularity">
+<h2>Alternatives to modularity<a class="headerlink" href="#alternatives-to-modularity" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="infomap">
+<h3>InfoMap<a class="headerlink" href="#infomap" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="statistical-inference-of-assortative-groups">
+<h3>Statistical inference of assortative groups<a class="headerlink" href="#statistical-inference-of-assortative-groups" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="overlapping-soft-community-detection">
+<h2>Overlapping / soft community detection<a class="headerlink" href="#overlapping-soft-community-detection" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id54"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Tiona Zuzul, Emily Cox Pahnke, Jonathan Larson, Patrick Bourke, Nicholas Caurvina, Neha Parikh Shah, Fereshteh Amini, Youngser Park, Joshua Vogelstein, Jeffrey Weston, and others. Dynamic silos: increased modularity in intra-organizational communication networks during the covid-19 pandemic. <em>arXiv preprint arXiv:2104.00641</em>, 2021.</p>
+</dd>
+</dl>
+</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
