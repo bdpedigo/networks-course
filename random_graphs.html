@@ -748,6 +748,17 @@ interpretation as the expected number of edges.</p>
 <img alt="_images/random_graphs_15_1.png" src="_images/random_graphs_15_1.png" />
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the above, we had to pass in the group labels which told us which node
+belong to which group in the SBM. There is a huge body of work on how to <em>infer</em> which
+group every node belongs to, which we should talk about later in the course.</p>
+<p>For now, just note that <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> implements one simple method for inferring these
+labels if they are not passed in, but I would not trust this quick method without
+reviewing the results. <a class="reference external" href="https://graph-tool.skewed.de/"><code class="docutils literal notranslate"><span class="pre">graph-tool</span></code></a> is also an
+excellent library which has some tools for inferring group membership, but this library
+has a bit of a learning curve.</p>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> also has an SBM sampler.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,7 +803,7 @@ interpretation as the expected number of edges.</p>
  [   0.  478.    0.    0.]]
 </pre></div>
 </div>
-<img alt="_images/random_graphs_19_1.png" src="_images/random_graphs_19_1.png" />
+<img alt="_images/random_graphs_20_1.png" src="_images/random_graphs_20_1.png" />
 </div>
 </div>
 </div>
@@ -825,7 +836,7 @@ are well defined.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_22_0.png" src="_images/random_graphs_22_0.png" />
+<img alt="_images/random_graphs_23_0.png" src="_images/random_graphs_23_0.png" />
 </div>
 </div>
 <p>For the RDPG, looking at the model parameters can be more challenging, since in this
@@ -862,7 +873,7 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13f94a130&gt;
 </pre></div>
 </div>
-<img alt="_images/random_graphs_26_1.png" src="_images/random_graphs_26_1.png" />
+<img alt="_images/random_graphs_27_1.png" src="_images/random_graphs_27_1.png" />
 </div>
 </div>
 </div>
@@ -932,7 +943,7 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_28_0.png" src="_images/random_graphs_28_0.png" />
+<img alt="_images/random_graphs_29_0.png" src="_images/random_graphs_29_0.png" />
 </div>
 </div>
 </div>
@@ -992,7 +1003,7 @@ for creating networks this way.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_31_0.png" src="_images/random_graphs_31_0.png" />
+<img alt="_images/random_graphs_32_0.png" src="_images/random_graphs_32_0.png" />
 </div>
 </div>
 </div>
