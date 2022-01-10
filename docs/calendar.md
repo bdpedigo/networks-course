@@ -45,10 +45,12 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 ### Jan 10th (Monday)
 - [Random graph models](random_graphs.ipynb)
    - ER
+   - DCER
    - SBM
    - DCSBM
    - RDPG
-   - Chung-Lu, scale-free, etc.
+   - Barabasi-Albert
+   - Extensions
 
 ```{admonition} Due
 :class: important
