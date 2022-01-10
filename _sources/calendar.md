@@ -43,11 +43,13 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 
 ## Week 2
 ### Jan 10th (Monday)
-- Ranking and flow through networks
-   - Simple rankings (A, A squared)
-   - Eigenvector ranking
-   - Minimum violations ranking
-   - Applications of ranking to study hierarchies
+- [Random graph models](random_graphs.ipynb)
+   - ER
+   - SBM
+   - DCSBM
+   - RDPG
+   - Chung-Lu, scale-free, etc.
+
 
 ```{admonition} Due
 :class: important
@@ -63,12 +65,11 @@ Be able to load in and somehow plot your dataset(s) in Python.
    - Application to finding communities in ___
 
 ### Jan 12th (Wednesday)
-- Random graph models
-   - ER
-   - SBM
-   - DCSBM
-   - RDPG
-   - Chung-Lu, scale-free, etc.
+- Ranking and flow through networks
+   - Simple rankings (A, A squared)
+   - Eigenvector ranking
+   - Minimum violations ranking
+   - Applications of ranking to study hierarchies
 
 ### Jan 13th (Thursday)
 - Unsupervised network embeddings
