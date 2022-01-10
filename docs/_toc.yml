@@ -18,6 +18,7 @@ parts:
   - file: representing_networks
   - file: plotting_networks
   - file: centrality
+  - file: random_graphs
 - caption: Projects
   chapters:
   - file: clarke.md
