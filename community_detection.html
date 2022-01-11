@@ -653,9 +653,6 @@ by the same buyers” on Amazon.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/community_detection_6_0.png" src="_images/community_detection_6_0.png" />
-</div>
 </div>
 <p>We’ll start by generating a random <span class="math notranslate nohighlight">\(\tau\)</span> with two communities.</p>
 <div class="cell docutils container">
@@ -754,7 +751,7 @@ group label, and proceed to the next iteration of checking another random node�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4405468914701179
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4405468914701179
 </pre></div>
 </div>
 </div>
@@ -1065,117 +1062,12 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span><span class="p">,</span> <span class="n">modularity</span>
 
 <span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-
-<span class="n">leiden_partition_map</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;8&#39;: 2,
- &#39;69&#39;: 4,
- &#39;21&#39;: 2,
- &#39;10&#39;: 2,
- &#39;33&#39;: 2,
- &#39;64&#39;: 4,
- &#39;20&#39;: 2,
- &#39;37&#39;: 2,
- &#39;60&#39;: 3,
- &#39;98&#39;: 1,
- &#39;73&#39;: 1,
- &#39;100&#39;: 1,
- &#39;32&#39;: 2,
- &#39;75&#39;: 1,
- &#39;3&#39;: 2,
- &#39;15&#39;: 2,
- &#39;46&#39;: 3,
- &#39;52&#39;: 4,
- &#39;39&#39;: 2,
- &#39;77&#39;: 1,
- &#39;93&#39;: 3,
- &#39;91&#39;: 1,
- &#39;102&#39;: 3,
- &#39;90&#39;: 1,
- &#39;87&#39;: 1,
- &#39;24&#39;: 2,
- &#39;14&#39;: 2,
- &#39;29&#39;: 0,
- &#39;28&#39;: 1,
- &#39;7&#39;: 0,
- &#39;27&#39;: 2,
- &#39;35&#39;: 2,
- &#39;54&#39;: 2,
- &#39;66&#39;: 1,
- &#39;83&#39;: 1,
- &#39;57&#39;: 2,
- &#39;19&#39;: 2,
- &#39;23&#39;: 2,
- &#39;30&#39;: 1,
- &#39;9&#39;: 2,
- &#39;61&#39;: 3,
- &#39;78&#39;: 1,
- &#39;22&#39;: 2,
- &#39;12&#39;: 2,
- &#39;11&#39;: 2,
- &#39;49&#39;: 2,
- &#39;101&#39;: 3,
- &#39;89&#39;: 1,
- &#39;17&#39;: 2,
- &#39;97&#39;: 1,
- &#39;81&#39;: 1,
- &#39;92&#39;: 1,
- &#39;58&#39;: 4,
- &#39;96&#39;: 1,
- &#39;67&#39;: 4,
- &#39;62&#39;: 3,
- &#39;31&#39;: 1,
- &#39;36&#39;: 2,
- &#39;42&#39;: 2,
- &#39;45&#39;: 2,
- &#39;34&#39;: 2,
- &#39;86&#39;: 1,
- &#39;103&#39;: 4,
- &#39;55&#39;: 2,
- &#39;99&#39;: 3,
- &#39;94&#39;: 3,
- &#39;56&#39;: 2,
- &#39;84&#39;: 1,
- &#39;0&#39;: 0,
- &#39;50&#39;: 2,
- &#39;18&#39;: 2,
- &#39;65&#39;: 4,
- &#39;68&#39;: 4,
- &#39;6&#39;: 0,
- &#39;38&#39;: 2,
- &#39;53&#39;: 2,
- &#39;70&#39;: 1,
- &#39;95&#39;: 3,
- &#39;13&#39;: 2,
- &#39;104&#39;: 4,
- &#39;16&#39;: 2,
- &#39;51&#39;: 4,
- &#39;26&#39;: 2,
- &#39;71&#39;: 1,
- &#39;59&#39;: 3,
- &#39;63&#39;: 3,
- &#39;79&#39;: 1,
- &#39;4&#39;: 0,
- &#39;88&#39;: 1,
- &#39;48&#39;: 2,
- &#39;40&#39;: 2,
- &#39;41&#39;: 2,
- &#39;76&#39;: 1,
- &#39;2&#39;: 0,
- &#39;74&#39;: 1,
- &#39;85&#39;: 4,
- &#39;43&#39;: 2,
- &#39;47&#39;: 2,
- &#39;82&#39;: 1,
- &#39;5&#39;: 0,
- &#39;1&#39;: 0,
- &#39;25&#39;: 2,
- &#39;72&#39;: 1,
- &#39;44&#39;: 2,
- &#39;80&#39;: 1}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
 </pre></div>
 </div>
 </div>
@@ -1190,7 +1082,7 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5235601421218525
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5262287832744588
 </pre></div>
 </div>
 </div>
@@ -1204,7 +1096,7 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5269666445565376
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5266195669499848
 </pre></div>
 </div>
 </div>
