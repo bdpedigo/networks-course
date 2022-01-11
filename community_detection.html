@@ -579,11 +579,11 @@ should I expect to be within-group under this silly null model?”. Using the sa
 as before, we can compute this expected value by summing over this expected probability
 matrix.</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{2} \sum_{ij} \frac{k_i k_j}{2m}\]</div>
+\[\frac{1}{2} \sum_{ij} \frac{k_i k_j}{2m} \delta(\tau_i, \tau_j)\]</div>
 <p>Going back to our original expression, we literally take the difference of the observed
 number of edges that are within-group minus the number we’d expect by chance.</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{2} \sum_{i,j} A_{ij} \delta(\tau_i, \tau_j) - \frac{1}{2} \sum_{ij} \frac{k_i k_j}{2m} = \frac{1}{2} \sum_{i,j} \left(A_{ij} - \frac{k_i k_j}{2m} \right ) \delta(\tau_i, \tau_j)\]</div>
+\[\frac{1}{2} \sum_{i,j} A_{ij} \delta(\tau_i, \tau_j) - \frac{1}{2} \sum_{ij} \frac{k_i k_j}{2m} \delta(\tau_i, \tau_j) = \frac{1}{2} \sum_{i,j} \left(A_{ij} - \frac{k_i k_j}{2m} \right ) \delta(\tau_i, \tau_j)\]</div>
 <p>Lastly, it is usually more interpretable to make this quantity a proportion of edge rather than
 a count, so we divide by <span class="math notranslate nohighlight">\(m\)</span>. Thus, we arrive at the expression usually defined as modularity.</p>
 <div class="math notranslate nohighlight">
@@ -1021,6 +1021,18 @@ for symmetric (Hermitian) matrices.</p>
 <p>How does this partition compare to our earlier one?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modularity_from_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">partition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.44240825581933463
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;eig_partition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eig_partition</span>
 
 <span class="n">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_df</span><span class="p">,</span> <span class="s1">&#39;eig_partition&#39;</span><span class="p">)</span>
@@ -1032,7 +1044,7 @@ for symmetric (Hermitian) matrices.</p>
  &lt;AxesSubplot:xlabel=&#39;Iteration&#39;, ylabel=&#39;Modularity&#39;&gt;)
 </pre></div>
 </div>
-<img alt="_images/community_detection_29_1.png" src="_images/community_detection_29_1.png" />
+<img alt="_images/community_detection_30_1.png" src="_images/community_detection_30_1.png" />
 </div>
 </div>
 </div>
@@ -1052,7 +1064,7 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span><span class="p">,</span> <span class="n">modularity</span>
 
-<span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1073,7 +1085,7 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5262287832744587
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5264061784955857
 </pre></div>
 </div>
 </div>
@@ -1081,13 +1093,13 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
 <p>Note that this algorithm (like most) is not deterministic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">modularity</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">leiden_partition_map</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5262287832744587
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5266195669499848
 </pre></div>
 </div>
 </div>
@@ -1097,8 +1109,18 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">modularity</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">leiden_partition_map</span><span class="p">)</span>
-
-<span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;leiden_partition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5270746242563541
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;leiden_partition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
 
 <span class="n">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_df</span><span class="p">,</span> <span class="s1">&#39;leiden_partition&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1109,7 +1131,7 @@ modularity scores. It is easy to use from <code class="docutils literal notransl
  &lt;AxesSubplot:xlabel=&#39;Iteration&#39;, ylabel=&#39;Modularity&#39;&gt;)
 </pre></div>
 </div>
-<img alt="_images/community_detection_37_1.png" src="_images/community_detection_37_1.png" />
+<img alt="_images/community_detection_39_1.png" src="_images/community_detection_39_1.png" />
 </div>
 </div>
 </div>
@@ -1162,7 +1184,7 @@ would not call communities.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/community_detection_39_0.png" src="_images/community_detection_39_0.png" />
+<img alt="_images/community_detection_41_0.png" src="_images/community_detection_41_0.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -1203,7 +1225,7 @@ community structure when it is not present. This is best demonstrated by example
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/community_detection_42_0.png" src="_images/community_detection_42_0.png" />
+<img alt="_images/community_detection_44_0.png" src="_images/community_detection_44_0.png" />
 </div>
 </div>
 <p>Even for this very simple, completely random (Erdos-Renyi) network, Leiden found several
