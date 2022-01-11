@@ -526,13 +526,14 @@
 <h1>Community detection<a class="headerlink" href="#community-detection" title="Permalink to this headline">¶</a></h1>
 <p><strong>Community detection</strong> is the process of dividing a network into <strong>communities</strong>, where each community is some subset of nodes which connect more within community than without.
 This is an old and famous network science problem. It has applications across a wide
-range of disciplines. To name a few:</p>
+range of disciplines. To name a just a few:</p>
 <ul class="simple">
-<li><p>Predicting “workgroups” in organizational communication networks <span id="id1">[<a class="reference internal" href="#id59">2</a>]</span></p></li>
+<li><p>Predicting “workgroups” in organizational communication networks <span id="id1">[<a class="reference internal" href="#id60">2</a>]</span></p></li>
+<li><p>Grouping researchers into fields based on networks of collaboration <span id="id2">[<a class="reference internal" href="#id65">3</a>]</span></p></li>
 <li><p>Clustering networks formed by nearest neighbors in high-dimensional data</p></li>
 </ul>
 <p>Much of the discussion/derivation in this notebook is based on Sections 7.7 and 14.2
-from Mark Newman’s “Networks” <span id="id2">[<a class="reference internal" href="#id43">1</a>]</span>.</p>
+from Mark Newman’s “Networks” <span id="id3">[<a class="reference internal" href="#id44">1</a>]</span>.</p>
 <div class="section" id="modularity">
 <h2>Modularity<a class="headerlink" href="#modularity" title="Permalink to this headline">¶</a></h2>
 <p>From <a class="reference external" href="https://en.wikipedia.org/wiki/Modularity">Wikipedia</a>, in general usage, “modularity is the degree to which a system’s components may be separated and recombined.” The <a class="reference external" href="https://en.wikipedia.org/wiki/Modularity_(networks)">definition in network science</a> is similar in spirit but has a more specific meaning. In words, <strong>modularity</strong> it is “the strength of division of a network into modules (also called groups, clusters or communities). Networks with high modularity have dense connections between the nodes within modules but sparse connections between nodes in different modules.”</p>
@@ -1052,8 +1053,8 @@ modularity, but I wanted to mention these algorithms since they are somewhat
 state-of-the-art.</p>
 <div class="figure align-default" id="louvain">
 <img alt="_images/louvain.png" src="_images/louvain.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">High-level summary of the Louvain algorithm <span id="id3">[<a class="reference internal" href="#id61">3</a>]</span>. Figure from the
-Leiden paper <span id="id4">[<a class="reference internal" href="#id60">4</a>]</span>, which further improved the Louvain algorithm.</span><a class="headerlink" href="#louvain" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">High-level summary of the Louvain algorithm <span id="id4">[<a class="reference internal" href="#id62">4</a>]</span>. Figure from the
+Leiden paper <span id="id5">[<a class="reference internal" href="#id61">5</a>]</span>, which further improved the Louvain algorithm.</span><a class="headerlink" href="#louvain" title="Permalink to this image">¶</a></p>
 </div>
 <p>The Leiden algorithm scales to very large networks, and usually provides competitive
 modularity scores. It is easy to use from <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>.</p>
@@ -1237,17 +1238,17 @@ maximization for finding communities. For instance:</p>
 <p>InfoMap uses random walks and an information theory framework. The idea is
 that good communities should allow you to easily compress the amount of information that
 would be required to encode the path of a random walker.</p>
-<div class="figure align-default" id="id64">
+<div class="figure align-default" id="id66">
 <img alt="_images/metadatamapequation.svg" src="_images/metadatamapequation.svg" /><p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Illustration of the idea of encoding the path of random walkers used by InfoMap.
-Figure from <span id="id5">Emmons and Mucha [<a class="reference internal" href="#id62">5</a>]</span>.</span><a class="headerlink" href="#id64" title="Permalink to this image">¶</a></p>
+Figure from <span id="id6">Emmons and Mucha [<a class="reference internal" href="#id63">6</a>]</span>.</span><a class="headerlink" href="#id66" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="statistical-inference-sbm-similar">
 <h3>Statistical inference (SBM + similar)<a class="headerlink" href="#statistical-inference-sbm-similar" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id65">
+<div class="figure align-default" id="id67">
 <img alt="_images/peixoto-community.png" src="_images/peixoto-community.png" />
 <p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Demonstration of how inferring a statistical model (like an assortative SBM) can
-alleviate some of the issues from modularity maximization. Figure from <span id="id6">Peixoto [<a class="reference internal" href="#id63">6</a>]</span>.</span><a class="headerlink" href="#id65" title="Permalink to this image">¶</a></p>
+alleviate some of the issues from modularity maximization. Figure from <span id="id7">Peixoto [<a class="reference internal" href="#id64">7</a>]</span>.</span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -1261,23 +1262,26 @@ alleviate some of the issues from modularity maximization. Figure from <span id=
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id7"><dl class="citation">
-<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<p id="id8"><dl class="citation">
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
 <dd><p>Mark Newman. <em>Networks</em>. Oxford university press, 2018.</p>
 </dd>
-<dt class="label" id="id59"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dt class="label" id="id60"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
 <dd><p>Tiona Zuzul, Emily Cox Pahnke, Jonathan Larson, Patrick Bourke, Nicholas Caurvina, Neha Parikh Shah, Fereshteh Amini, Youngser Park, Joshua Vogelstein, Jeffrey Weston, and others. Dynamic silos: increased modularity in intra-organizational communication networks during the covid-19 pandemic. <em>arXiv preprint arXiv:2104.00641</em>, 2021.</p>
 </dd>
-<dt class="label" id="id61"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="id65"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
+<dd><p>Michelle Girvan and Mark EJ Newman. Community structure in social and biological networks. <em>Proceedings of the national academy of sciences</em>, 99(12):7821–7826, 2002.</p>
+</dd>
+<dt class="label" id="id62"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Vincent D Blondel, Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. Fast unfolding of communities in large networks. <em>Journal of statistical mechanics: theory and experiment</em>, 2008(10):P10008, 2008.</p>
 </dd>
-<dt class="label" id="id60"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="id61"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>Vincent A Traag, Ludo Waltman, and Nees Jan Van Eck. From louvain to leiden: guaranteeing well-connected communities. <em>Scientific reports</em>, 9(1):1–12, 2019.</p>
 </dd>
-<dt class="label" id="id62"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="id63"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
 <dd><p>Scott Emmons and Peter J Mucha. Map equation with metadata: varying the role of attributes in community detection. <em>Physical Review E</em>, 100(2):022301, 2019.</p>
 </dd>
-<dt class="label" id="id63"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dt class="label" id="id64"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
 <dd><p>Tiago P Peixoto. Descriptive vs. inferential community detection: pitfalls, myths and half-truths. <em>arXiv preprint arXiv:2112.00183</em>, 2021.</p>
 </dd>
 </dl>
