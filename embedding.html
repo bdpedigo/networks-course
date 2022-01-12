@@ -665,6 +665,9 @@ factorized as</p>
 that the left and the right singular vectors are the same, so we could write</p>
 <div class="math notranslate nohighlight">
 \[M = U \Sigma U^T\]</div>
+<p>More commonly, it will be written as</p>
+<div class="math notranslate nohighlight">
+\[M = U D U^T\]</div>
 <p>This is also known as an <strong>eigendecomposition</strong>. For this reason, you may see people use
 these terms interchangably, in particular for undirected networks.</p>
 </div>
@@ -698,7 +701,7 @@ above would be called a <strong>truncated singular value decomposition</strong> 
 <h3>Adjacency Spectral Embedding<a class="headerlink" href="#adjacency-spectral-embedding" title="Permalink to this headline">¶</a></h3>
 <p>Great, now lets turn back to our specific case of networks. Given everything we just
 discussed, you may see where we’re headed.</p>
-<p>Now, if I ask you to do a low-rank approximation of the adjacency matrix $<span class="math notranslate nohighlight">\(A\)</span>$ of a network, you know what
+<p>Now, if I ask you to do a low-rank approximation of the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> of a network, you know what
 to do (at least, if we care about the Frobenius norm of the difference).</p>
 <p>For an undirected network, we’d have</p>
 <div class="math notranslate nohighlight">
