@@ -59,7 +59,7 @@ Be able to load in and somehow plot your dataset(s) in Python.
 ```
 
 ### Jan 11th (Tuesday)
-- Community detection, modularity maximization
+- [Community detection](community_detection.ipynb)
    - Modularity
      - Simple node-moving
      - Spectral
@@ -71,20 +71,28 @@ Be able to load in and somehow plot your dataset(s) in Python.
    - Application to finding communities in ___
 
 ### Jan 12th (Wednesday)
+- [Network embedding (Part 1)](embedding.ipynb)
+   - Word2Vec to DeepWalk to Node2Vec
+   - Recommendations using an embedding 
+
+### Jan 13th (Thursday)
+- [Network embeddings (Part 2)](embedding.ipynb)
+  - Spectral methods
+    - Adjacency spectral embedding
+    - Laplacian spectral embedding
+  - Regularization
+  - Orthogonal invariance 
+  - Clustering embeddings
+
+### Jan 14th (Friday)
 - Ranking and flow through networks
    - Simple rankings (A, A squared)
    - Eigenvector ranking
    - Minimum violations ranking
    - Applications of ranking to study hierarchies
 
-### Jan 13th (Thursday)
-- Unsupervised network embeddings
-  - ASE
-  - LSE 
-  - Node2vec
-  - What to do with our embeddings 
+OR
 
-### Jan 14th (Friday)
 - Graph neural networks + supervised embeddings
 
 ## Week 3
