@@ -575,6 +575,10 @@ make them applicable for networks.</p></li>
 </div>
 <div class="section" id="spectral-methods">
 <h2>Spectral methods<a class="headerlink" href="#spectral-methods" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO</p>
+</div>
 </div>
 <div class="section" id="deepwalk-node2vec">
 <h2>DeepWalk / Node2Vec<a class="headerlink" href="#deepwalk-node2vec" title="Permalink to this headline">¶</a></h2>
@@ -642,7 +646,15 @@ some datasets, but this result has been debated somewhat.</p>
 <h3>Running Node2Vec<a class="headerlink" href="#running-node2vec" title="Permalink to this headline">¶</a></h3>
 <p>We can learn a Node2Vec embedding easily using <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> - note that many other
 implementations are available. Under the hood, this one uses <code class="docutils literal notranslate"><span class="pre">gensim</span></code> to create a
-Word2Vec model.</p>
+Word2Vec model. To start, let’s load in a dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I originally grabbed the <a class="reference external" href="https://networks.skewed.de/net/cora">Cora dataset from Netzschleuder</a>,
+but the .csv didn’t have labels, and also had far more nodes than I usually see for the
+Cora dataset.</p>
+<p>I honestly don’t know which is most correct - this is why it is always good to go back
+to the original data source.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -666,7 +678,7 @@ Word2Vec model.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">node2vec_embed</span>
 
 <span class="n">node2vec_embedding</span><span class="p">,</span> <span class="n">node_labels</span> <span class="o">=</span> <span class="n">node2vec_embed</span><span class="p">(</span>
-    <span class="n">g</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">return_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">return_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -689,6 +701,11 @@ Word2Vec model.</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Do you expect the output from two runs of <code class="docutils literal notranslate"><span class="pre">node2vec_embed</span></code> to be the same if they are
+run on the same dataset? Why or why not?</p>
 </div>
 <p>So, we now have a 128-dimensional vector associated with each node in our network. It
 can be useful to use UMAP <span id="id4">[<a class="reference internal" href="#id66">4</a>]</span> or other dimensionality reduction
@@ -722,7 +739,7 @@ techniques to further compress these vectors into a 2D plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_9_0.png" src="_images/embedding_9_0.png" />
+<img alt="_images/embedding_11_0.png" src="_images/embedding_11_0.png" />
 </div>
 </div>
 <p>Now let’s try using the Cora dataset, which is a network of academic citations.</p>
@@ -751,6 +768,7 @@ techniques to further compress these vectors into a 2D plot.</p>
     <span class="n">walk_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
     <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
     <span class="n">return_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">8888</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -780,89 +798,14 @@ WARNING:gensim.models.base_any2vec:under 10 jobs per worker: consider setting a 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;networks-course/data/cora_nr/cora.node_labels&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">nodes</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">node_ids</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>label</th>
-    </tr>
-    <tr>
-      <th>node_id</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2704</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2705</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2706</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2707</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2708</th>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
-<p>2708 rows × 1 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">umapper</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span> <span class="n">min_dist</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">umapper</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span> <span class="n">min_dist</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">888</span><span class="p">)</span>
 <span class="n">umap_node2vec_embedding</span> <span class="o">=</span> <span class="n">umapper</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">node2vec_embedding</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -870,8 +813,7 @@ WARNING:gensim.models.base_any2vec:under 10 jobs per worker: consider setting a 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">node_ids</span><span class="p">)</span>
-<span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;umap_0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_node2vec_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;umap_0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_node2vec_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;umap_1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_node2vec_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="c1"># for seaborn</span>
 </pre></div>
@@ -897,7 +839,7 @@ WARNING:gensim.models.base_any2vec:under 10 jobs per worker: consider setting a 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_17_0.png" src="_images/embedding_17_0.png" />
+<img alt="_images/embedding_19_0.png" src="_images/embedding_19_0.png" />
 </div>
 </div>
 <p>You can also use this representation to make a network layout at the same time, which
@@ -925,7 +867,7 @@ is something we often do.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_19_0.png" src="_images/embedding_19_0.png" />
+<img alt="_images/embedding_21_0.png" src="_images/embedding_21_0.png" />
 </div>
 </div>
 </div>
@@ -943,13 +885,13 @@ space.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">NearestNeighbors</span>
 
-<span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
 <span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">node2vec_embedding</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NearestNeighbors(n_neighbors=6, radius=None)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NearestNeighbors(metric=&#39;euclidean&#39;, n_neighbors=6)
 </pre></div>
 </div>
 </div>
@@ -968,7 +910,7 @@ space.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0, 29,  1,  2,  3, 18])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  2,  1, 29,  3, 19])
 </pre></div>
 </div>
 </div>
@@ -996,12 +938,12 @@ space.</p>
 
 
 <span class="n">center</span> <span class="o">=</span> <span class="n">get_location</span><span class="p">(</span><span class="n">query_node</span><span class="p">)</span>
-<span class="n">pad</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">pad</span> <span class="o">=</span> <span class="mf">0.9</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">))</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">annotate</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">annotate</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
     <span class="n">xy</span> <span class="o">=</span> <span class="n">get_location</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
         <span class="n">text</span><span class="p">,</span>
@@ -1012,24 +954,88 @@ space.</p>
     <span class="p">)</span>
 
 
-<span class="n">annotate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Query node&quot;</span><span class="p">)</span>
+<span class="n">annotate</span><span class="p">(</span><span class="n">query_node</span><span class="p">,</span> <span class="s2">&quot;Query node&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">neighbor_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-    <span class="n">annotate</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">annotate</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_25_0.png" src="_images/embedding_25_0.png" />
+<img alt="_images/embedding_27_0.png" src="_images/embedding_27_0.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_neighbor_query</span><span class="p">(</span><span class="n">query_node</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">dists</span><span class="p">,</span> <span class="n">neighbor_indices</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span>
+        <span class="n">node2vec_embedding</span><span class="p">[</span><span class="n">query_node</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">neighbor_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">neighbor_indices</span><span class="p">)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">adj</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;umap_0&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;umap_1&quot;</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">nodes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">center</span> <span class="o">=</span> <span class="n">get_location</span><span class="p">(</span><span class="n">query_node</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">))</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+    <span class="n">annotate</span><span class="p">(</span><span class="n">query_node</span><span class="p">,</span> <span class="s2">&quot;Query node&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">neighbor_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">annotate</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">ax</span>
+
+<span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">node2vec_embedding</span><span class="p">)</span>
+
+<span class="n">plot_neighbor_query</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plot_neighbor_query</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plot_neighbor_query</span><span class="p">(</span><span class="mi">2210</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;umap_0&#39;, ylabel=&#39;umap_1&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/embedding_28_1.png" src="_images/embedding_28_1.png" />
+<img alt="_images/embedding_28_2.png" src="_images/embedding_28_2.png" />
+<img alt="_images/embedding_28_3.png" src="_images/embedding_28_3.png" />
+</div>
+</div>
+<p>Note that it can be difficult to interpret exactly what this recommendation is based on.
+For this particular example and the Node2Vec/DeepWalk settings we were using, it looks
+like we found nodes that are in the local neighborhood of the query, which is perfectly
+reasonable for some applications. With other parameters though, we might get something
+very different.</p>
 </div>
 <div class="section" id="clustering">
 <h3>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO</p>
+</div>
 </div>
 </div>
 <div class="section" id="considerations-for-embeddings">
 <h2>Considerations for embeddings<a class="headerlink" href="#considerations-for-embeddings" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO</p>
+</div>
 <div class="section" id="dimensions-selection">
 <h3>Dimensions selection<a class="headerlink" href="#dimensions-selection" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
