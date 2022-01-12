@@ -22,6 +22,7 @@ parts:
   - file: centrality
   - file: random_graphs
   - file: community_detection
+  - file: embedding
 - caption: Projects
   chapters:
   - file: clarke.md
