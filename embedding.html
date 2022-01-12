@@ -381,6 +381,11 @@
      Eckart-Young-Mirsky theorem
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adjacency-spectral-embedding">
+     Adjacency Spectral Embedding
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -502,6 +507,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#eckart-young-mirsky-theorem">
      Eckart-Young-Mirsky theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adjacency-spectral-embedding">
+     Adjacency Spectral Embedding
     </a>
    </li>
   </ul>
@@ -683,6 +693,33 @@ which minimizes <span class="math notranslate nohighlight">\(e\)</span>) is give
 defined likewise for the right singular vectors, and <span class="math notranslate nohighlight">\(\Sigma_d\)</span> is a <span class="math notranslate nohighlight">\(d \times d\)</span> matrix
 with only the first <span class="math notranslate nohighlight">\(d\)</span> singular values on the diagonal. The decomposition in for <span class="math notranslate nohighlight">\(A_d\)</span>
 above would be called a <strong>truncated singular value decomposition</strong> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+<div class="section" id="adjacency-spectral-embedding">
+<h3>Adjacency Spectral Embedding<a class="headerlink" href="#adjacency-spectral-embedding" title="Permalink to this headline">¶</a></h3>
+<p>Great, now lets turn back to our specific case of networks. Given everything we just
+discussed, you may see where we’re headed.</p>
+<p>Now, if I ask you to do a low-rank approximation of the adjacency matrix $<span class="math notranslate nohighlight">\(A\)</span>$ of a network, you know what
+to do (at least, if we care about the Frobenius norm of the difference).</p>
+<p>For an undirected network, we’d have</p>
+<div class="math notranslate nohighlight">
+\[A_d = U_d \Sigma_d U_d^T\]</div>
+<p>we can absorb the singular values into the vectors themselves</p>
+<div class="math notranslate nohighlight">
+\[X = U_d \Sigma_d^{1/2}\]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[A_d =  U_d \Sigma_d U_d^T = U_d \Sigma_d^{1/2} \Sigma_d^{1/2} U_d^T = U_d \Sigma_d^{1/2} (U_d \Sigma_d^{1/2})^T = X X^T\]</div>
+<p>For a directed network, we can do something similar</p>
+<div class="math notranslate nohighlight">
+\[A_d = U_d \Sigma_d V_d^T = X Y^T\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> has the same meaning as before, and <span class="math notranslate nohighlight">\(Y\)</span> is defined likewise for <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p>Does this formula remind you of anything? It looks awfully similar to the formula for
+the RDPG: <span class="math notranslate nohighlight">\(P = X Y^T\)</span>. It turns out that this process, which is called the
+<strong>adjacency spectral embedding (ASE)</strong>, is a consistent estimator for the parameters <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>
+in the RDPG setting. What “consistent” means in this setting is that is we had a network
+generated from an RDPG, and then let the number of nodes in the network grow to infinity,
+then the <span class="math notranslate nohighlight">\(\hat{X}\)</span> matrix we estimate via ASE would converge to the true latent position
+matrix, <span class="math notranslate nohighlight">\(X\)</span>.</p>
 </div>
 </div>
 <div class="section" id="deepwalk-node2vec">
