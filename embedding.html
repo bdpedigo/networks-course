@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network embedding &#8212; Network Data Science</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/nd_logo_small.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Clarke - final project placeholder" href="clarke.html" />
+    <link rel="prev" title="Community detection" href="community_detection.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-JYHFQNEPZN');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/nd_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Network Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course logistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calendar.html">
+   Calendar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mini_assignment.html">
+   Mini-assignment
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="online_resources.html">
+   Online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="books.html">
+   Books
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
+   Welcome
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
+   What are networks?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="representing_networks.html">
+   Representing networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_networks.html">
+   Plotting networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="centrality.html">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_graphs.html">
+   Random network models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="community_detection.html">
+   Community detection
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Network embedding
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="clarke.html">
+   Clarke - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fry.html">
+   Fry - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="geason.html">
+   Geason - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="larson.html">
+   Larson - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="liu.html">
+   Liu - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="song.html">
+   Song - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sood.html">
+   Sood - Final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wang.html">
+   Wang - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="harounakenfack.html">
+   HarounaKenfack - final project placeholder
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/embedding.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bdpedigo/networks-course"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fembedding.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/embedding.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/embedding.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-embed-networks">
+   Why embed networks?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectral-methods">
+   Spectral methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deepwalk-node2vec">
+   DeepWalk / Node2Vec
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word2vec">
+     Word2vec
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-word2vec-to-deepwalk">
+     From Word2Vec to DeepWalk
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-deepwalk-to-node2vec">
+     From DeepWalk to Node2Vec
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-node2vec">
+     Running Node2Vec
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications-using-embeddings">
+   Applications using embeddings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recommendation">
+     Recommendation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clustering">
+     Clustering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#considerations-for-embeddings">
+   Considerations for embeddings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dimensions-selection">
+     Dimensions selection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-than-one-truth">
+     More than one “truth”
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#orthogonal-invariance">
+     Orthogonal invariance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regularizations">
+     Regularizations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Network embedding</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-embed-networks">
+   Why embed networks?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectral-methods">
+   Spectral methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deepwalk-node2vec">
+   DeepWalk / Node2Vec
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word2vec">
+     Word2vec
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-word2vec-to-deepwalk">
+     From Word2Vec to DeepWalk
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-deepwalk-to-node2vec">
+     From DeepWalk to Node2Vec
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-node2vec">
+     Running Node2Vec
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications-using-embeddings">
+   Applications using embeddings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recommendation">
+     Recommendation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clustering">
+     Clustering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#considerations-for-embeddings">
+   Considerations for embeddings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dimensions-selection">
+     Dimensions selection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-than-one-truth">
+     More than one “truth”
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#orthogonal-invariance">
+     Orthogonal invariance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regularizations">
+     Regularizations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="network-embedding">
+<h1>Network embedding<a class="headerlink" href="#network-embedding" title="Permalink to this headline">¶</a></h1>
+<p>Generally speaking, an <strong>embedding</strong> refers to some technique which takes a network (or
+networks as we’ll see later) and converts it to a representation in some vector space.
+Often, this is a Euclidean vector space, and in that space each vector represents a
+single node in the network. We’ll focus on this case for now.</p>
+<div class="section" id="why-embed-networks">
+<h2>Why embed networks?<a class="headerlink" href="#why-embed-networks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Embedding networks can be viewed as fitting the parameters of statistical models,
+for example, a random dot product graph.</p></li>
+<li><p>Embeddings can be useful for creating visualizations of networks.</p></li>
+<li><p>Embeddings allow us to use a wide range of general machine learning techniques and
+make them applicable for networks.</p></li>
+</ul>
+</div>
+<div class="section" id="spectral-methods">
+<h2>Spectral methods<a class="headerlink" href="#spectral-methods" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="deepwalk-node2vec">
+<h2>DeepWalk / Node2Vec<a class="headerlink" href="#deepwalk-node2vec" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="word2vec">
+<h3>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">¶</a></h3>
+<p>To start understanding DeepWalk and Node2Vec, it’s most helpful to take a brief detour
+and look at Word2Vec <span id="id1">[<a class="reference internal" href="#id63">1</a>]</span>. If you are curious about Word2Vec,
+you can find a fairly accessible introduction at <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick’s blog</a>.</p>
+<p><strong>Word2Vec</strong> is an unsupervised language model developed by researchers at Google. The first
+key idea, which is very common in natural language processing (NLP), is that we can
+train a model (in this case a neural network) on a “fake” supervised learning task. In
+other words, we take a huge dataset without labels (e.g. all of the text you can find
+on the internet, say) and make a labeled dataset from it. This is done by moving a
+sliding window over each sentence, and creating (<em>center word</em>, <em>surrounding word</em>)
+pairs. The task, then, is to predict the surrounding words from the word in the center.
+In this way, we are training a model to understand the <em>context</em> of the center word
+as it is used in language.</p>
+<div class="figure align-default" id="id67">
+<img alt="_images/w2v-training-data.png" src="_images/w2v-training-data.png" />
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Diagram showing how source text is converted to training data for the Word2Vec / Skip-gram
+model. Figure from <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick’s blog</a>.</span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
+</div>
+<p>What does this model actually look like? In the case of Word2Vec, it is simply a 2-layer
+neural network. We wont talk much about the details of neural networks for the purposes
+of this course, but the key idea is that neural networks are functions which we train
+(via sets of labeled data) to predict some output based on some input. Neural networks
+do so by taking input that can be represented mathematically somehow (e.g. as a vector),
+and more or less performing a series of matrix-vector multiplications followed by some nonlinearities to reach an output which usually represents the probability of some
+particular output.</p>
+<div class="figure align-default" id="id68">
+<img alt="_images/word2vec-skip-gram.png" src="_images/word2vec-skip-gram.png" />
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Diagram showing the architecture of Word2Vec. Figure from <a class="reference external" href="https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html">here</a>.</span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
+</div>
+<p>Note that the first part of this neural network architecture is just a weight, which
+maps each word in our vocabulary to some hidden representation which is useful for
+predicting the context of a word. After training, this weight matrix is used as the
+<em>embedding</em> for each word in our vocabulary.</p>
+</div>
+<div class="section" id="from-word2vec-to-deepwalk">
+<h3>From Word2Vec to DeepWalk<a class="headerlink" href="#from-word2vec-to-deepwalk" title="Permalink to this headline">¶</a></h3>
+<p>Given the success of Word2Vec (as of 2022 I saw it had &gt;24,000 citations), it made sense
+to wonder whether this fairly simple tool could be applied to other contexts, like
+networks.</p>
+<p>One “sequence on a network” that keeps coming up for us is random walks (see <a class="reference internal" href="centrality.html"><span class="doc std std-doc">Centrality measures</span></a>). So, what if we generate a ton of random walks on our network, and then trained a
+Word2Vec model to predict context nodes from the nodes in the center of a window.</p>
+<div class="figure align-default" id="id69">
+<img alt="_images/deepwalk.png" src="_images/deepwalk.png" />
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Overview of DeepWalk. Figure from <span id="id2">Perozzi <em>et al.</em> [<a class="reference internal" href="#id64">2</a>]</span></span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="from-deepwalk-to-node2vec">
+<h3>From DeepWalk to Node2Vec<a class="headerlink" href="#from-deepwalk-to-node2vec" title="Permalink to this headline">¶</a></h3>
+<p>Node2Vec further modified the algorithm from DeepWalk, mainly by modifying the way that
+random walks are generated. Rather than being true random walks, these paths through
+the network are biased to be more or less likely to travel in the neighborhood they came
+from based on some user provided parameters. The authors claimed that adjusting these
+parameters based on the application let them find more useful representations for
+some datasets, but this result has been debated somewhat.</p>
+<div class="figure align-default" id="id70">
+<img alt="_images/n2v-modification.png" src="_images/n2v-modification.png" />
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Modification to random walks from Node2Vec. Figure from <span id="id3">Grover and Leskovec [<a class="reference internal" href="#id65">3</a>]</span></span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="running-node2vec">
+<h3>Running Node2Vec<a class="headerlink" href="#running-node2vec" title="Permalink to this headline">¶</a></h3>
+<p>We can learn a Node2Vec embedding easily using <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> - note that many other
+implementations are available. Under the hood, this one uses <code class="docutils literal notranslate"><span class="pre">gensim</span></code> to create a
+Word2Vec model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span>
+    <span class="s2">&quot;networks-course/data/cora/edges.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span>
+<span class="p">)</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>  <span class="c1"># number of nodes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23166
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">node2vec_embed</span>
+
+<span class="n">node2vec_embedding</span><span class="p">,</span> <span class="n">node_labels</span> <span class="o">=</span> <span class="n">node2vec_embed</span><span class="p">(</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">walk_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">return_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/bpedigo/JHU_code/bilateral/graspologic/graspologic/utils/utils.py:1130: UserWarning: Graph has at least one unweighted edge using weight_attribute &quot;weight&quot;. Defaulting unweighted edges to &quot;1.0&quot;
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node2vec_embedding</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(23166, 128)
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, we now have a 128-dimensional vector associated with each node in our network. It
+can be useful to use UMAP <span id="id4">[<a class="reference internal" href="#id66">4</a>]</span> or other dimensionality reduction
+techniques to further compress these vectors into a 2D plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">umap</span> <span class="kn">import</span> <span class="n">UMAP</span>
+
+<span class="n">umapper</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+<span class="n">umap_node2vec_embedding</span> <span class="o">=</span> <span class="n">umapper</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">node2vec_embedding</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">umap_node2vec_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">umap_node2vec_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/embedding_9_0.png" src="_images/embedding_9_0.png" />
+</div>
+</div>
+<p>Now let’s try using the Cora dataset, which is a network of academic citations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edge_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./networks-course/data/cora_nr/cora.edges&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">edge_df</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2708
+5278
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node2vec_embedding</span><span class="p">,</span> <span class="n">node_ids</span> <span class="o">=</span> <span class="n">node2vec_embed</span><span class="p">(</span>
+    <span class="n">g</span><span class="p">,</span>
+    <span class="n">dimensions</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">num_walks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">walk_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">inout_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">return_hyperparameter</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/bpedigo/JHU_code/bilateral/graspologic/graspologic/utils/utils.py:1130: UserWarning: Graph has at least one unweighted edge using weight_attribute &quot;weight&quot;. Defaulting unweighted edges to &quot;1.0&quot;
+  warnings.warn(
+WARNING:gensim.models.base_any2vec:under 10 jobs per worker: consider setting a smaller `batch_words&#39; for smoother alpha decay
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_ids</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 9, 436, 545, 4, 198, 464, 602, 5, 171]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;networks-course/data/cora_nr/cora.node_labels&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">nodes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>label</th>
+    </tr>
+    <tr>
+      <th>node_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2704</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2705</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2706</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2707</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2708</th>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+<p>2708 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">umapper</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span> <span class="n">min_dist</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">umap_node2vec_embedding</span> <span class="o">=</span> <span class="n">umapper</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">node2vec_embedding</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">node_ids</span><span class="p">)</span>
+<span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;umap_0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_node2vec_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;umap_1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_node2vec_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="c1"># for seaborn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;umap_0&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;umap_1&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/embedding_17_0.png" src="_images/embedding_17_0.png" />
+</div>
+</div>
+<p>You can also use this representation to make a network layout at the same time, which
+is something we often do.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">node_ids</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+
+<span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;umap_0&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;umap_1&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">nodes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+    <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;umap_0&#39;, ylabel=&#39;umap_1&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/embedding_19_1.png" src="_images/embedding_19_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="applications-using-embeddings">
+<h2>Applications using embeddings<a class="headerlink" href="#applications-using-embeddings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="recommendation">
+<h3>Recommendation<a class="headerlink" href="#recommendation" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="clustering">
+<h3>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="considerations-for-embeddings">
+<h2>Considerations for embeddings<a class="headerlink" href="#considerations-for-embeddings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dimensions-selection">
+<h3>Dimensions selection<a class="headerlink" href="#dimensions-selection" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>No great answer</p></li>
+<li><p>Depends on application</p></li>
+</ul>
+</div>
+<div class="section" id="more-than-one-truth">
+<h3>More than one “truth”<a class="headerlink" href="#more-than-one-truth" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Two truths paper</p></li>
+<li><p>Possibly anecdote from MSR</p></li>
+</ul>
+</div>
+<div class="section" id="orthogonal-invariance">
+<h3>Orthogonal invariance<a class="headerlink" href="#orthogonal-invariance" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="regularizations">
+<h3>Regularizations<a class="headerlink" href="#regularizations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Degree, etc.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id5"><dl class="citation">
+<dt class="label" id="id63"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. Efficient estimation of word representations in vector space. <em>arXiv preprint arXiv:1301.3781</em>, 2013.</p>
+</dd>
+<dt class="label" id="id64"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. Deepwalk: online learning of social representations. In <em>Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining</em>, 701–710. 2014.</p>
+</dd>
+<dt class="label" id="id65"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Aditya Grover and Jure Leskovec. Node2vec: scalable feature learning for networks. In <em>Proceedings of the 22nd ACM SIGKDD international conference on Knowledge discovery and data mining</em>, 855–864. 2016.</p>
+</dd>
+<dt class="label" id="id66"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>Leland McInnes, John Healy, and James Melville. Umap: uniform manifold approximation and projection for dimension reduction. <em>arXiv preprint arXiv:1802.03426</em>, 2018.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="community_detection.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Community detection</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="clarke.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Clarke - final project placeholder</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Benjamin D. Pedigo<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
