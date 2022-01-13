@@ -11,7 +11,7 @@ Email: [bpedigo@jhu.edu](mailto:bpedigo@jhu.edu)
 Website: [https://bdpedigo.github.io/](https://bdpedigo.github.io/)
 
 ## Time
-1PM - 2:45PM, MTWThF
+1PM - 2:20PM, MTWThF
 
 Jan 4th - Jan 21st, 2021
 
