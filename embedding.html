@@ -880,6 +880,22 @@ representations.</p>
 </div>
 </div>
 </div>
+<p>We can also embed a matrix in sparse format, which will usually be faster for sparse
+networks with more than a small number of nodes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">AdjacencySpectralEmbed</span><span class="p">(</span><span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">A_ptr</span><span class="p">))</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(213, 6)
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="laplacian-spectral-embedding">
 <h3>Laplacian spectral embedding<a class="headerlink" href="#laplacian-spectral-embedding" title="Permalink to this headline">¶</a></h3>
@@ -936,8 +952,8 @@ components.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0, 0.5, &#39;Eigenvector element&#39;)]
 </pre></div>
 </div>
-<img alt="_images/embedding_19_1.png" src="_images/embedding_19_1.png" />
-<img alt="_images/embedding_19_2.png" src="_images/embedding_19_2.png" />
+<img alt="_images/embedding_21_1.png" src="_images/embedding_21_1.png" />
+<img alt="_images/embedding_21_2.png" src="_images/embedding_21_2.png" />
 </div>
 </div>
 <p>What if the graph doesn’t have multiple connected components, but has a <em>fuzzy</em> version
@@ -966,8 +982,8 @@ of this - i.e. some parts of the graph that are mostly disconnected from the res
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0, 0.5, &#39;Eigenvector element&#39;)]
 </pre></div>
 </div>
-<img alt="_images/embedding_21_1.png" src="_images/embedding_21_1.png" />
-<img alt="_images/embedding_21_2.png" src="_images/embedding_21_2.png" />
+<img alt="_images/embedding_23_1.png" src="_images/embedding_23_1.png" />
+<img alt="_images/embedding_23_2.png" src="_images/embedding_23_2.png" />
 </div>
 </div>
 <div class="admonition-question admonition">
@@ -1011,7 +1027,7 @@ from <span id="id3">Cook <em>et al.</em> [<a class="reference internal" href="#i
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0, &#39;Index (node)&#39;), Text(0, 0.5, &#39;Value in eigenvector&#39;)]
 </pre></div>
 </div>
-<img alt="_images/embedding_25_1.png" src="_images/embedding_25_1.png" />
+<img alt="_images/embedding_27_1.png" src="_images/embedding_27_1.png" />
 </div>
 </div>
 <div class="tip admonition">
@@ -1045,8 +1061,8 @@ in this eigenvector?</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_27_1.png" src="_images/embedding_27_1.png" />
-<img alt="_images/embedding_27_2.png" src="_images/embedding_27_2.png" />
+<img alt="_images/embedding_29_1.png" src="_images/embedding_29_1.png" />
+<img alt="_images/embedding_29_2.png" src="_images/embedding_29_2.png" />
 </div>
 </div>
 <p>In practice, we often use LSE much like ASE. We can use the implementation in
@@ -1075,7 +1091,7 @@ Again, I recommend trying the the pass-to-ranks method if working on a weighted 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1495ee4f0&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_30_1.png" src="_images/embedding_30_1.png" />
+<img alt="_images/embedding_32_1.png" src="_images/embedding_32_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1088,7 +1104,7 @@ Again, I recommend trying the the pass-to-ranks method if working on a weighted 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1472ce460&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_31_1.png" src="_images/embedding_31_1.png" />
+<img alt="_images/embedding_33_1.png" src="_images/embedding_33_1.png" />
 </div>
 </div>
 <div class="tip admonition">
@@ -1268,7 +1284,7 @@ techniques to further compress these vectors into a 2D plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_43_0.png" src="_images/embedding_43_0.png" />
+<img alt="_images/embedding_45_0.png" src="_images/embedding_45_0.png" />
 </div>
 </div>
 <p>Now let’s try using the Cora dataset, which is a network of academic citations.</p>
@@ -1366,7 +1382,7 @@ WARNING:gensim.models.base_any2vec:under 10 jobs per worker: consider setting a 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_51_0.png" src="_images/embedding_51_0.png" />
+<img alt="_images/embedding_53_0.png" src="_images/embedding_53_0.png" />
 </div>
 </div>
 <p>You can also use this representation to make a network layout at the same time, which
@@ -1396,7 +1412,7 @@ is something we often do.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_53_0.png" src="_images/embedding_53_0.png" />
+<img alt="_images/embedding_55_0.png" src="_images/embedding_55_0.png" />
 </div>
 </div>
 </div>
@@ -1491,7 +1507,7 @@ space.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_59_0.png" src="_images/embedding_59_0.png" />
+<img alt="_images/embedding_61_0.png" src="_images/embedding_61_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1543,9 +1559,9 @@ space.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;umap_0&#39;, ylabel=&#39;umap_1&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_60_1.png" src="_images/embedding_60_1.png" />
-<img alt="_images/embedding_60_2.png" src="_images/embedding_60_2.png" />
-<img alt="_images/embedding_60_3.png" src="_images/embedding_60_3.png" />
+<img alt="_images/embedding_62_1.png" src="_images/embedding_62_1.png" />
+<img alt="_images/embedding_62_2.png" src="_images/embedding_62_2.png" />
+<img alt="_images/embedding_62_3.png" src="_images/embedding_62_3.png" />
 </div>
 </div>
 <p>Note that it can be difficult to interpret exactly what this recommendation is based on.
