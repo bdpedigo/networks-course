@@ -76,6 +76,7 @@ Be able to load in and somehow plot your dataset(s) in Python.
    - Recommendations using an embedding 
 
 ### Jan 13th (Thursday)
+- [Connected components](connected_components.ipynb)
 - [Network embeddings (Part 2)](embedding.ipynb)
   - Spectral methods
     - Adjacency spectral embedding
