@@ -819,7 +819,7 @@ has a bit of a learning curve.</p>
 </div>
 <div class="section" id="random-dot-product-graph-rdpg">
 <h3>Random dot product graph (RDPG)<a class="headerlink" href="#random-dot-product-graph-rdpg" title="Permalink to this headline">¶</a></h3>
-<p>The <strong>random dot product graph model (RDPG)</strong> <span id="id1">[<a class="reference internal" href="#id26">1</a>, <a class="reference internal" href="#id34">2</a>]</span> is a (relatively speaking) newer network model under the umbrella of latent position random graphs <span id="id2">[<a class="reference internal" href="#id33">3</a>]</span>. Under <strong>latent position models</strong>, each node has an associated, typically unobserved vector which is referred to as the <strong>latent position</strong> of that node. For the directed network case, we can allow each node to have associated “in” and “out” latent position vectors which may not be the same, with the former governing the nodes inputs and the latter governing its outputs. If <span class="math notranslate nohighlight">\(x_i\)</span> is the out latent position for node <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(y_j\)</span> the input latent position for node <span class="math notranslate nohighlight">\(j\)</span>, then the probability of an edge between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is some function of these vectors:</p>
+<p>The <strong>random dot product graph model (RDPG)</strong> <span id="id1">[<a class="reference internal" href="#id25">1</a>, <a class="reference internal" href="#id33">2</a>]</span> is a (relatively speaking) newer network model under the umbrella of latent position random graphs <span id="id2">[<a class="reference internal" href="#id32">3</a>]</span>. Under <strong>latent position models</strong>, each node has an associated, typically unobserved vector which is referred to as the <strong>latent position</strong> of that node. For the directed network case, we can allow each node to have associated “in” and “out” latent position vectors which may not be the same, with the former governing the nodes inputs and the latter governing its outputs. If <span class="math notranslate nohighlight">\(x_i\)</span> is the out latent position for node <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(y_j\)</span> the input latent position for node <span class="math notranslate nohighlight">\(j\)</span>, then the probability of an edge between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is some function of these vectors:</p>
 <div class="math notranslate nohighlight">
 \[P[A_{ij} = 1] = P_{ij} = f(x_i, y_j)\]</div>
 <p>More specifically for the RDPG, the link function <span class="math notranslate nohighlight">\(f\)</span> is the dot product:</p>
@@ -833,7 +833,7 @@ restriction on the latent positions (say, a region of space) such that all proba
 are well defined.</p>
 <p>Hint: what would the restriction be when <span class="math notranslate nohighlight">\(d=1\)</span>? When <span class="math notranslate nohighlight">\(d=2\)</span>?</p>
 </div>
-<p>In practical applications, we never observe the latent positions in <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> - they must be estimated from the observed network, <span class="math notranslate nohighlight">\(A\)</span>. Fortunately, this can be done via an established technique known as <strong>adjacency spectral embedding (ASE)</strong> <span id="id3">[<a class="reference internal" href="#id26">1</a>]</span>, which was recently shown to be a consistent estimator of these latent positions. We’ll discuss this more when we talk about network embeddings.</p>
+<p>In practical applications, we never observe the latent positions in <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> - they must be estimated from the observed network, <span class="math notranslate nohighlight">\(A\)</span>. Fortunately, this can be done via an established technique known as <strong>adjacency spectral embedding (ASE)</strong> <span id="id3">[<a class="reference internal" href="#id25">1</a>]</span>, which was recently shown to be a consistent estimator of these latent positions. We’ll discuss this more when we talk about network embeddings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.models</span> <span class="kn">import</span> <span class="n">RDPGEstimator</span>
@@ -962,7 +962,7 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 <div class="figure align-default" id="model-relationships">
 <img alt="_images/model-relationships.png" src="_images/model-relationships.png" />
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Relationships among independent edge models (some not mentioned here). Figure from
-<span id="id4">Chung <em>et al.</em> [<a class="reference internal" href="#id25">4</a>]</span>.</span><a class="headerlink" href="#model-relationships" title="Permalink to this image">¶</a></p>
+<span id="id4">Chung <em>et al.</em> [<a class="reference internal" href="#id24">4</a>]</span>.</span><a class="headerlink" href="#model-relationships" title="Permalink to this image">¶</a></p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Question</p>
@@ -1032,25 +1032,25 @@ include other factors relevant to the application domain. For instance, one coul
 the spatial location of brain regions as part of a network model of the brain.</p>
 <div class="figure align-default" id="model-examples-brain">
 <img alt="_images/model-examples-brain.png" src="_images/model-examples-brain.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Example models of brain connectivity. Figure from <span id="id5">Klimm <em>et al.</em> [<a class="reference internal" href="#id57">5</a>]</span></span><a class="headerlink" href="#model-examples-brain" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Example models of brain connectivity. Figure from <span id="id5">Klimm <em>et al.</em> [<a class="reference internal" href="#id56">5</a>]</span></span><a class="headerlink" href="#model-examples-brain" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id6"><dl class="citation">
-<dt class="label" id="id26"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dt class="label" id="id25"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
 <dd><p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
 </dd>
-<dt class="label" id="id34"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
 <dd><p>Stephen J Young and Edward R Scheinerman. Random dot product graph models for social networks. In <em>International Workshop on Algorithms and Models for the Web-Graph</em>, 138–149. Springer, 2007.</p>
 </dd>
-<dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
+<dt class="label" id="id32"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
 <dd><p>Peter D Hoff, Adrian E Raftery, and Mark S Handcock. Latent space approaches to social network analysis. <em>Journal of the american Statistical association</em>, 97(460):1090–1098, 2002.</p>
 </dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Jaewon Chung, Eric Bridgeford, Jesús Arroyo, Benjamin D Pedigo, Ali Saad-Eldin, Vivek Gopalakrishnan, Liang Xiang, Carey E Priebe, and Joshua T Vogelstein. Statistical connectomics. <em>Annual Review of Statistics and Its Application</em>, 8:463–492, 2021.</p>
 </dd>
-<dt class="label" id="id57"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="id56"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>Florian Klimm, Danielle S Bassett, Jean M Carlson, and Peter J Mucha. Resolving structural variability in network models and the brain. <em>PLoS computational biology</em>, 10(3):e1003491, 2014.</p>
 </dd>
 </dl>
