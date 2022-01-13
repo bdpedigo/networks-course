@@ -781,7 +781,7 @@ just returns <code class="docutils literal notranslate"><span class="pre">X</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1393bd0a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x144f27550&gt;
 </pre></div>
 </div>
 <img alt="_images/embedding_9_1.png" src="_images/embedding_9_1.png" />
@@ -798,6 +798,7 @@ number of edges which have very high weights.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 
 <span class="n">row_indices</span><span class="p">,</span> <span class="n">col_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># gives me the location of each edge</span>
 
@@ -843,7 +844,7 @@ putting edges closer to the same scale.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x14284a520&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1491733d0&gt;
 </pre></div>
 </div>
 <img alt="_images/embedding_13_1.png" src="_images/embedding_13_1.png" />
@@ -1013,6 +1014,11 @@ from <span id="id3">Cook <em>et al.</em> [<a class="reference internal" href="#i
 <img alt="_images/embedding_25_1.png" src="_images/embedding_25_1.png" />
 </div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>What do you think is different or special about the nodes that are well represented
+in this eigenvector?</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -1039,8 +1045,8 @@ from <span id="id3">Cook <em>et al.</em> [<a class="reference internal" href="#i
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_26_1.png" src="_images/embedding_26_1.png" />
-<img alt="_images/embedding_26_2.png" src="_images/embedding_26_2.png" />
+<img alt="_images/embedding_27_1.png" src="_images/embedding_27_1.png" />
+<img alt="_images/embedding_27_2.png" src="_images/embedding_27_2.png" />
 </div>
 </div>
 <p>In practice, we often use LSE much like ASE. We can use the implementation in
@@ -1066,10 +1072,10 @@ Again, I recommend trying the the pass-to-ranks method if working on a weighted 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13f4dde50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1495ee4f0&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_29_1.png" src="_images/embedding_29_1.png" />
+<img alt="_images/embedding_30_1.png" src="_images/embedding_30_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1079,10 +1085,10 @@ Again, I recommend trying the the pass-to-ranks method if working on a weighted 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13f8c67c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1472ce460&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_30_1.png" src="_images/embedding_30_1.png" />
+<img alt="_images/embedding_31_1.png" src="_images/embedding_31_1.png" />
 </div>
 </div>
 <div class="tip admonition">
@@ -1262,7 +1268,7 @@ techniques to further compress these vectors into a 2D plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_42_0.png" src="_images/embedding_42_0.png" />
+<img alt="_images/embedding_43_0.png" src="_images/embedding_43_0.png" />
 </div>
 </div>
 <p>Now let’s try using the Cora dataset, which is a network of academic citations.</p>
@@ -1360,7 +1366,7 @@ WARNING:gensim.models.base_any2vec:under 10 jobs per worker: consider setting a 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_50_0.png" src="_images/embedding_50_0.png" />
+<img alt="_images/embedding_51_0.png" src="_images/embedding_51_0.png" />
 </div>
 </div>
 <p>You can also use this representation to make a network layout at the same time, which
@@ -1390,7 +1396,7 @@ is something we often do.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_52_0.png" src="_images/embedding_52_0.png" />
+<img alt="_images/embedding_53_0.png" src="_images/embedding_53_0.png" />
 </div>
 </div>
 </div>
@@ -1485,7 +1491,7 @@ space.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_58_0.png" src="_images/embedding_58_0.png" />
+<img alt="_images/embedding_59_0.png" src="_images/embedding_59_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1537,9 +1543,9 @@ space.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;umap_0&#39;, ylabel=&#39;umap_1&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_59_1.png" src="_images/embedding_59_1.png" />
-<img alt="_images/embedding_59_2.png" src="_images/embedding_59_2.png" />
-<img alt="_images/embedding_59_3.png" src="_images/embedding_59_3.png" />
+<img alt="_images/embedding_60_1.png" src="_images/embedding_60_1.png" />
+<img alt="_images/embedding_60_2.png" src="_images/embedding_60_2.png" />
+<img alt="_images/embedding_60_3.png" src="_images/embedding_60_3.png" />
 </div>
 </div>
 <p>Note that it can be difficult to interpret exactly what this recommendation is based on.
