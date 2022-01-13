@@ -386,6 +386,11 @@
      Adjacency Spectral Embedding
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#laplacian-spectral-embed">
+     Laplacian spectral embed
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -458,6 +463,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#junk">
+   Junk
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -514,6 +524,11 @@
      Adjacency Spectral Embedding
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#laplacian-spectral-embed">
+     Laplacian spectral embed
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -586,6 +601,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#junk">
+   Junk
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -685,7 +705,7 @@ using another matrix, <span class="math notranslate nohighlight">\(A_d\)</span>,
 you approximate my matrix <span class="math notranslate nohighlight">\(A\)</span> in the following way:</p>
 <div class="math notranslate nohighlight">
 \[e = \|A - A_d\|_F\]</div>
-<p>where $<span class="math notranslate nohighlight">\(\| \cdot \|_F\)</span><span class="math notranslate nohighlight">\( is the matrix [**Frobenius norm**](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm). The Frobenius norm is like the \)</span>l_2$ or Euclidean norm for
+<p>where <span class="math notranslate nohighlight">\(\| \cdot \|_F\)</span> is the matrix <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm"><strong>Frobenius norm</strong></a>. The Frobenius norm is like the <span class="math notranslate nohighlight">\(l_2\)</span> or Euclidean norm for
 vectors, but applied to a matrix. I simply sum up the squared values in the matrix, and
 then take the square root of that sum.</p>
 <p>What the <a class="reference external" href="https://en.wikipedia.org/wiki/Low-rank_approximation#Proof_of_Eckart%E2%80%93Young%E2%80%93Mirsky_theorem_(for_Frobenius_norm)">Eckart-Young-Mirsky theorem</a> says is that the best solution to the problem I posed above (i.e. the <span class="math notranslate nohighlight">\(A_d\)</span>
@@ -723,6 +743,191 @@ in the RDPG setting. What “consistent” means in this setting is that is we h
 generated from an RDPG, and then let the number of nodes in the network grow to infinity,
 then the <span class="math notranslate nohighlight">\(\hat{X}\)</span> matrix we estimate via ASE would converge to the true latent position
 matrix, <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Let’s see what this looks like in terms of implementation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.datasets</span> <span class="kn">import</span> <span class="n">load_drosophila_right</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">binarize</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">load_drosophila_right</span><span class="p">(</span><span class="n">return_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">A_bin</span> <span class="o">=</span> <span class="n">binarize</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A_bin</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">sigma_root</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">S</span><span class="p">[:</span><span class="n">d</span><span class="p">]))</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">d</span><span class="p">]</span> <span class="o">@</span> <span class="n">sigma_root</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">Vt</span><span class="o">.</span><span class="n">T</span><span class="p">[:,</span> <span class="p">:</span><span class="n">d</span><span class="p">]</span> <span class="o">@</span> <span class="n">sigma_root</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pretty simple! We can use these estimates to reconstruct an estimate of the probability
+matrix if we wanted to model the network as an RDPG.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">A_bin</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adjacency matrix&quot;</span><span class="p">,</span>
+    <span class="n">hier_label_fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">X</span> <span class="o">@</span> <span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Probability matrix estimate&quot;</span><span class="p">,</span>
+    <span class="n">hier_label_fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/embedding_5_0.png" src="_images/embedding_5_0.png" />
+</div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>, this functionality is implemented under the <code class="docutils literal notranslate"><span class="pre">AdjacencySpectralEmbed</span></code>
+estimator class. There are a few extra bells and whistles, but the core algorithm is
+exactly the same as the one above - just an SVD of the adjacency matrix. Note that this
+algorithm also works well for weighted networks, but we lose some of the interpretation
+of the approximation matrix as a matrix of probabilities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span>
+
+<span class="n">ase</span> <span class="o">=</span> <span class="n">AdjacencySpectralEmbed</span><span class="p">()</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">ase.fit_transform()</span></code> returns a tuple <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">Y)</span></code> if the graph is directed. Otherwise, it
+just returns <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">pairplot</span>
+
+<span class="n">pairplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1384c77f0&gt;
+</pre></div>
+</div>
+<img alt="_images/embedding_9_1.png" src="_images/embedding_9_1.png" />
+</div>
+</div>
+<p>This is a perfectly fine ASE - but note that the embedding above is somewhat dominated
+by a few nodes.</p>
+<div class="admonition">
+<p class="admonition-title">Question</p>
+<p>What do you think is special about the nodes which are most salient in the plot above?</p>
+</div>
+<p>The edge weights in this dataset cover a few orders of magnitude - there are a small
+number of edges which have very high weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_indices</span><span class="p">,</span> <span class="n">col_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># gives me the location of each edge</span>
+
+<span class="n">edges</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">row_indices</span><span class="p">,</span> <span class="n">col_indices</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">discrete</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Edge weight&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">discrete</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Edge weight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0, &#39;Edge weight&#39;)]
+</pre></div>
+</div>
+<img alt="_images/embedding_11_1.png" src="_images/embedding_11_1.png" />
+</div>
+</div>
+<p>For spectral methods on weighted networks, we often find it useful to do an operation
+called <code class="docutils literal notranslate"><span class="pre">pass_to_ranks</span></code>. This essentially ranks each edge from smallest to largest weight,
+then replaces the edge weight by a normalized version of the rank. It has the effect of
+putting edges closer to the same scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+
+<span class="n">ase</span> <span class="o">=</span> <span class="n">AdjacencySpectralEmbed</span><span class="p">()</span>
+
+<span class="n">A_ptr</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">A_ptr</span><span class="p">)</span>
+
+<span class="n">pairplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x144669a90&gt;
+</pre></div>
+</div>
+<img alt="_images/embedding_13_1.png" src="_images/embedding_13_1.png" />
+</div>
+</div>
+<p>For some applications, we don’t care about having a separate representation for each
+node in terms of its inputs and outputs. We can simply concatenate the “out” and “in”
+representations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(213, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or, we can specify this behavior in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">AdjacencySpectralEmbed</span><span class="p">(</span><span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">A_ptr</span><span class="p">)</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(213, 6)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="laplacian-spectral-embed">
+<h3>Laplacian spectral embed<a class="headerlink" href="#laplacian-spectral-embed" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="deepwalk-node2vec">
@@ -884,7 +1089,7 @@ techniques to further compress these vectors into a 2D plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_11_0.png" src="_images/embedding_11_0.png" />
+<img alt="_images/embedding_28_0.png" src="_images/embedding_28_0.png" />
 </div>
 </div>
 <p>Now let’s try using the Cora dataset, which is a network of academic citations.</p>
@@ -984,7 +1189,7 @@ WARNING:gensim.models.base_any2vec:under 10 jobs per worker: consider setting a 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_19_0.png" src="_images/embedding_19_0.png" />
+<img alt="_images/embedding_36_0.png" src="_images/embedding_36_0.png" />
 </div>
 </div>
 <p>You can also use this representation to make a network layout at the same time, which
@@ -997,7 +1202,7 @@ is something we often do.</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
     <span class="n">adj</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="s2">&quot;umap_0&quot;</span><span class="p">,</span>
@@ -1007,7 +1212,7 @@ is something we often do.</p>
     <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
     <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
     <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
@@ -1015,7 +1220,7 @@ is something we often do.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_21_0.png" src="_images/embedding_21_0.png" />
+<img alt="_images/embedding_38_0.png" src="_images/embedding_38_0.png" />
 </div>
 </div>
 </div>
@@ -1033,7 +1238,7 @@ space.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">NearestNeighbors</span>
 
-<span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
 <span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">node2vec_embedding</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1110,7 +1315,7 @@ space.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/embedding_27_0.png" src="_images/embedding_27_0.png" />
+<img alt="_images/embedding_44_0.png" src="_images/embedding_44_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1136,17 +1341,20 @@ space.</p>
     <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 
     <span class="n">center</span> <span class="o">=</span> <span class="n">get_location</span><span class="p">(</span><span class="n">query_node</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pad</span><span class="p">,</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pad</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
 
     <span class="n">annotate</span><span class="p">(</span><span class="n">query_node</span><span class="p">,</span> <span class="s2">&quot;Query node&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">neighbor_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
         <span class="n">annotate</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">ax</span>
 
-<span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+
+<span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
 <span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">node2vec_embedding</span><span class="p">)</span>
 
 <span class="n">plot_neighbor_query</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
@@ -1159,9 +1367,9 @@ space.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;umap_0&#39;, ylabel=&#39;umap_1&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/embedding_28_1.png" src="_images/embedding_28_1.png" />
-<img alt="_images/embedding_28_2.png" src="_images/embedding_28_2.png" />
-<img alt="_images/embedding_28_3.png" src="_images/embedding_28_3.png" />
+<img alt="_images/embedding_45_1.png" src="_images/embedding_45_1.png" />
+<img alt="_images/embedding_45_2.png" src="_images/embedding_45_2.png" />
+<img alt="_images/embedding_45_3.png" src="_images/embedding_45_3.png" />
 </div>
 </div>
 <p>Note that it can be difficult to interpret exactly what this recommendation is based on.
@@ -1206,6 +1414,48 @@ very different.</p>
 <ul class="simple">
 <li><p>Degree, etc.</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="junk">
+<h2>Junk<a class="headerlink" href="#junk" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from graspologic.simulations import sbm</span>
+
+<span class="c1"># # B = np.array([[0.7, 0.1], [0.1, 0.4]])</span>
+<span class="c1"># B = 0.1*np.ones((4,4))</span>
+<span class="c1"># B += np.diag([0.8, 0.6, 0.4, 0.2])</span>
+<span class="c1"># B[0,1] = 0.4</span>
+<span class="c1"># B[0,2] = 0.2</span>
+<span class="c1"># B[1,0] = 0.4</span>
+<span class="c1"># B[2,0] = 0.2</span>
+
+<span class="c1"># A, labels = sbm([15,15,15,15], B, return_labels=True, directed=False)</span>
+
+<span class="c1"># ase = AdjacencySpectralEmbed(n_components=len(A), algorithm=&quot;full&quot;)</span>
+<span class="c1"># X = ase.fit_transform(A)</span>
+
+<span class="c1"># max_d = 5</span>
+
+<span class="c1"># fig, axs = plt.subplots(max_d - 1, figsize=(5, 10))</span>
+
+<span class="c1"># for d in range(1, max_d):</span>
+<span class="c1">#     Phat = X[:, :d] @ X[:, :d].T</span>
+<span class="c1">#     prob_row = Phat[0, :].reshape(1, -1)</span>
+<span class="c1">#     sns.heatmap(</span>
+<span class="c1">#         prob_row,</span>
+<span class="c1">#         ax=axs[d - 1],</span>
+<span class="c1">#         vmin=0,</span>
+<span class="c1">#         vmax=1,</span>
+<span class="c1">#         center=0,</span>
+<span class="c1">#         cmap=&quot;RdBu_r&quot;,</span>
+<span class="c1">#         xticklabels=False,</span>
+<span class="c1">#         yticklabels=False,</span>
+<span class="c1">#         cbar=False,</span>
+<span class="c1">#     )</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="references">
