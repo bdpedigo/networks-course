@@ -80,11 +80,14 @@ Be able to load in and somehow plot your dataset(s) in Python.
   - Spectral methods
     - Adjacency spectral embedding
     - Laplacian spectral embedding
-  - Regularization
-  - Orthogonal invariance 
-  - Clustering embeddings
+    - Two truths
+  
 
 ### Jan 14th (Friday)
+- Clustering embeddings
+
+OR 
+
 - Ranking and flow through networks
    - Simple rankings (A, A squared)
    - Eigenvector ranking
