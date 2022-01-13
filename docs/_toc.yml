@@ -19,6 +19,7 @@ parts:
     title: What are networks?
   - file: representing_networks
   - file: plotting_networks
+  - file: connected_components
   - file: centrality
   - file: random_graphs
   - file: community_detection
