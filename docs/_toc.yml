@@ -6,6 +6,7 @@ parts:
   - file: syllabus
   - file: calendar
   - file: mini_assignment
+  - file: final_project
 - caption: Resources
   chapters:
   - file: online_resources
