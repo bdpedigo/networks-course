@@ -8,6 +8,7 @@
      - How many nodes and edges are there?
      - Is the network weighted? If so, what do the weights represent?
      - Is the network directed? If so, what does the edge direction come from?
+     - If there are multiple networks, how is each one different?
    - The methods you used, explained at a level that someone else in the class would definitely understand
    - The results you found, with a few figures showing these results
    - A brief discussion of the meaning of these results
