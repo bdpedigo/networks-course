@@ -95,6 +95,11 @@ Be able to load in and somehow plot your dataset(s) in Python.
      - Graphs of different sizes
    - Application example
 
+```{admonition} Due
+
+Complete [exit survey](https://forms.gle/hSB9Z6r773VkXXQx6) for this week.
+```
+
 ## Week 3
 ### Jan 17th (Monday)
 ```{warning} 
