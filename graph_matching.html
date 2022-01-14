@@ -416,6 +416,11 @@
      Graphs with different numbers of nodes
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practical-considerations">
+     Practical considerations
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -486,6 +491,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#graphs-with-different-numbers-of-nodes">
      Graphs with different numbers of nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practical-considerations">
+     Practical considerations
     </a>
    </li>
   </ul>
@@ -898,6 +908,16 @@ Match ratio of nodes remaining in G1, with adopted padding: 1.0
 <img alt="_images/graph_matching_24_1.png" src="_images/graph_matching_24_1.png" />
 </div>
 </div>
+</div>
+<div class="section" id="practical-considerations">
+<h3>Practical considerations<a class="headerlink" href="#practical-considerations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>While the number of edges in the two networks matters, the most important scaling factor is the number of nodes. Solving the graph matching problem using our code may take a while when you have more than a few thousand nodes.</p></li>
+<li><p>The current implementation only works for dense arrays. There is no reason we couldn’t make it work for sparse (and we plan to) but because the most important factor in the scaling is the number of nodes, this wouldn’t make a drastic difference.</p></li>
+<li><p>As with many algorithms we’ve talked about in this course, the results will likely be different with different runs of the algorithm. This is primarily because of the initialization. The <code class="docutils literal notranslate"><span class="pre">n_init</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">GraphMatch</span></code> allows you to do multiple initializations and take the best.</p></li>
+<li><p>You can play with the <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> and <code class="docutils literal notranslate"><span class="pre">eps</span></code> parameters to control how hard the algorithm will try to keep improving its results. Scaling these can give you better performance (but will possibly take longer) or quicker results (but the accuracy may suffer).</p></li>
+<li><p>I recommend always leaving the <code class="docutils literal notranslate"><span class="pre">shuffle_input</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">True</span></code> - for reasons I won’t go into, the input order of the two networks will matter otherwise, and this can give inflated or misleading performance if you aren’t careful.</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="application">
