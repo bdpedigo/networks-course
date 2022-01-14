@@ -428,6 +428,11 @@
    Application
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -505,6 +510,11 @@
    Application
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -530,17 +540,17 @@
 </li>
 <li><p>Neuroscience: finding the same nodes on different sides of a brain</p></li>
 </ul>
-<div class="figure align-default" id="id5">
+<div class="figure align-default" id="id69">
 <img alt="_images/graph-match-cv.jpeg" src="_images/graph-match-cv.jpeg" />
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Application of graph matching in computer vision. Figure from <a class="reference external" href="https://cv.snu.ac.kr/research/~ProgGM/">here</a>.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Application of graph matching in computer vision. Figure from <a class="reference external" href="https://cv.snu.ac.kr/research/~ProgGM/">here</a>.</span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-default" id="id6">
+<div class="figure align-default" id="id70">
 <img alt="_images/the-wire.png" src="_images/the-wire.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Potential application of graph matching in a communication subnetwork. Figure from <em>The Wire</em>, Season 3, Episode 7.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Potential application of graph matching in a communication subnetwork. Figure from <em>The Wire</em>, Season 3, Episode 7.</span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-default" id="id7">
+<div class="figure align-default" id="id71">
 <img alt="_images/match-neuron-morphology.png" src="_images/match-neuron-morphology.png" />
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Application of graph matching to predict homologous neurons in a brain connectome.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Application of graph matching to predict homologous neurons in a brain connectome.</span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="permutations">
@@ -556,10 +566,10 @@ specific ordering or arrangement of some number of objects.</p>
 <p>Permutations, for us, will be represented by <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation_matrix"><strong>permutation matrices</strong></a>.
 A permutation matrix is <span class="math notranslate nohighlight">\(n \times n\)</span>, with all zeros except for <span class="math notranslate nohighlight">\(n\)</span> 1s. Let’s look at
 what a permutation matrix times a vector looks like.</p>
-<div class="figure align-default" id="id8">
+<div class="figure align-default" id="id72">
 <a class="reference internal image-reference" href="_images/perm-matrix.png"><img alt="_images/perm-matrix.png" src="_images/perm-matrix.png" style="width: 200px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">A permutation matrix multiplied by a vector. The red elements of the matrix indicate the
-1s. Image from <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation_matrix">Wikipedia</a>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+1s. Image from <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation_matrix">Wikipedia</a>.</span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
 </div>
 <p>So, we see that if we look at the permutation matrix, the <em>row index</em> represents the
 index of the original position of object <span class="math notranslate nohighlight">\(i\)</span>. The <em>column index</em> represents the new
@@ -607,9 +617,9 @@ unweighted networks?</p>
 </div>
 <p>We can use this same definition above for any type of network: unweighted or weighted,
 directed or undirected, with or without self-loops.</p>
-<div class="figure align-default" id="id9">
+<div class="figure align-default" id="id73">
 <img alt="_images/network-matching-explanation.png" src="_images/network-matching-explanation.png" />
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Diagram explaining graph matching.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Diagram explaining graph matching.</span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="solving-the-graph-matching-problem">
@@ -618,7 +628,7 @@ directed or undirected, with or without self-loops.</p>
 approximate solutions, and they tend to scale fairly poorly (in the number of nodes)
 compared to some of the other algorithms we have discussed so far. Nevertheless, a lot
 of progress has been made. I’m just going to focus on one family of algorithms based
-on the work of <span id="id1"></span>.</p>
+on the work of <span id="id1">Vogelstein <em>et al.</em> [<a class="reference internal" href="#id21">2</a>]</span>.</p>
 <p>As we discussed when looking at the spectral method for maximizing modularity, we have a
 discrete problem, but we’d like to use continuous optimization tools where we can take
 gradients. To make this possible, the Fast Approximate Quadradic (FAQ) method first
@@ -713,7 +723,7 @@ something like:</p>
 <div class="section" id="adding-seed-nodes">
 <h3>Adding seed nodes<a class="headerlink" href="#adding-seed-nodes" title="Permalink to this headline">¶</a></h3>
 <p>Next, we explore the use of “seed” nodes. Imagine you have two networks that you want to match, but you already know that a handful of these nodes are correctly paired. These nodes are called seeds, which you can incorporate into
-the optimization in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> via techniques described in <span id="id2"></span>.</p>
+the optimization in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> via techniques described in <span id="id2">Fishkind <em>et al.</em> [<a class="reference internal" href="#id20">3</a>]</span>.</p>
 <p>For this example, we use a slightly different network model - we create two stochastic block models, but the edges are <em>correlated</em> so that the two networks are similar but not exactly the same.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -873,7 +883,7 @@ with different numbers of nodes.</p>
 <img alt="_images/graph_matching_22_0.png" src="_images/graph_matching_22_0.png" />
 </div>
 </div>
-<p>Now, we have two networks which have two different sizes, and only some of the nodes in the smaller network are well represented in the other. We can still use graph matching here in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> - this code compares two different methods of doing so using techniques dubbed “padding” in <span id="id3"></span>.</p>
+<p>Now, we have two networks which have two different sizes, and only some of the nodes in the smaller network are well represented in the other. We can still use graph matching here in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> - this code compares two different methods of doing so using techniques dubbed “padding” in <span id="id3">Fishkind <em>et al.</em> [<a class="reference internal" href="#id20">3</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -924,10 +934,25 @@ Match ratio of nodes remaining in G1, with adopted padding: 1.0
 <h2>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h2>
 <p>In a recent paper, we applied these same tools for matching the nodes in the left and right <em>Drosophila</em> larva mushroom body connectome datasets, the same
 ones you get from <code class="docutils literal notranslate"><span class="pre">graspologic.datasets.load_drosophila_left()</span></code> etc.</p>
-<div class="figure align-default" id="id10">
+<div class="figure align-default" id="id74">
 <img alt="_images/gm-stat-conn.png" src="_images/gm-stat-conn.png" />
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Figure from <span id="id4">Chung <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id24">4</a>]</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Figure from <span id="id4">Chung <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id24">4</a>]</span>.</span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
 </div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id5"><dl class="citation">
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>Jaewon Chung, Eric Bridgeford, Jesús Arroyo, Benjamin D Pedigo, Ali Saad-Eldin, Vivek Gopalakrishnan, Liang Xiang, Carey E Priebe, and Joshua T Vogelstein. Statistical connectomics. <em>Annual Review of Statistics and Its Application</em>, 8:463–492, 2021.</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p>Joshua T Vogelstein, John M Conroy, Vince Lyzinski, Louis J Podrazik, Steven G Kratzer, Eric T Harley, Donniell E Fishkind, R Jacob Vogelstein, and Carey E Priebe. Fast approximate quadratic programming for graph matching. <em>PLOS one</em>, 10(4):e0121002, 2015.</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets">3</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Donniell E Fishkind, Sancar Adali, Heather G Patsolic, Lingyao Meng, Digvijay Singh, Vince Lyzinski, and Carey E Priebe. Seeded graph matching. <em>Pattern recognition</em>, 87:203–215, 2019.</p>
+</dd>
+</dl>
+</p>
 </div>
 </div>
 
