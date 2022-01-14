@@ -85,19 +85,15 @@ Be able to load in and somehow plot your dataset(s) in Python.
   
 
 ### Jan 14th (Friday)
-- Clustering embeddings
-
-OR 
-
-- Ranking and flow through networks
-   - Simple rankings (A, A squared)
-   - Eigenvector ranking
-   - Minimum violations ranking
-   - Applications of ranking to study hierarchies
-
-OR
-
-- Graph neural networks + supervised embeddings
+- Graph matching
+   - When could we use it 
+   - Why is it hard?
+   - Fast approximate quadratic algorithm
+   - Code in `graspologic`
+     - Basic
+     - Adding seeds
+     - Graphs of different sizes
+   - Application example
 
 ## Week 3
 ### Jan 17th (Monday)
@@ -108,13 +104,9 @@ Martin Luther King Jr. Day
 ```
 
 ### Jan 18th (Tuesday)
-- Graph isomorphism
-- Graph matching
-   - Why is it hard?
-   - Fast approximate quadratic algorithm
-   - Adding seeds
-   - Application to social or criminal networks
-   - Application to ranking
+```{warning}
+TBD
+```
 
 ### Jan 19th (Wednesday)
 - Multiple network embedding
@@ -130,3 +122,22 @@ Martin Luther King Jr. Day
 
 ### Jan 21th (Friday)
 - Project presentations
+
+### TODO
+```{warning}
+We'll see if we get to these topics
+```
+
+- Clustering embeddings
+
+OR 
+
+- Ranking and flow through networks
+   - Simple rankings (A, A squared)
+   - Eigenvector ranking
+   - Minimum violations ranking
+   - Applications of ranking to study hierarchies
+
+OR
+
+- Graph neural networks + supervised embeddings

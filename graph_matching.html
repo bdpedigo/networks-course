@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -342,6 +344,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/graph_matching.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -355,6 +374,53 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-match-graphs">
    Why match graphs?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permutations">
+   Permutations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching-problem">
+   Graph matching problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-graph-matching-problem">
+   Solving the graph matching problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching-with-graspologic">
+   Graph matching with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     graspologic
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-graph-matching">
+     Basic graph matching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-seed-nodes">
+     Adding seed nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphs-with-different-numbers-of-nodes">
+     Graphs with different numbers of nodes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application">
+   Application
   </a>
  </li>
 </ul>
@@ -382,6 +448,53 @@
    Why match graphs?
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permutations">
+   Permutations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching-problem">
+   Graph matching problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-graph-matching-problem">
+   Solving the graph matching problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching-with-graspologic">
+   Graph matching with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     graspologic
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-graph-matching">
+     Basic graph matching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-seed-nodes">
+     Adding seed nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphs-with-different-numbers-of-nodes">
+     Graphs with different numbers of nodes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application">
+   Application
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -393,6 +506,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="graph-matching">
 <h1>Graph matching<a class="headerlink" href="#graph-matching" title="Permalink to this headline">¶</a></h1>
+<p>Some of this lesson is taken directly from the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/index.html#matching"><code class="docutils literal notranslate"><span class="pre">graspologic</span></code> tutorials on graph matching</a>, mostly written by Ali Saad-Eldin with help from myself.</p>
 <div class="section" id="why-match-graphs">
 <h2>Why match graphs?<a class="headerlink" href="#why-match-graphs" title="Permalink to this headline">¶</a></h2>
 <p>Graph matching comes up in a ton of different contexts!</p>
@@ -406,19 +520,394 @@
 </li>
 <li><p>Neuroscience: finding the same nodes on different sides of a brain</p></li>
 </ul>
-<div class="figure align-default" id="id1">
+<div class="figure align-default" id="id5">
 <img alt="_images/graph-match-cv.jpeg" src="_images/graph-match-cv.jpeg" />
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Application of graph matching in computer vision. Figure from <a class="reference external" href="https://cv.snu.ac.kr/research/~ProgGM/">here</a>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Application of graph matching in computer vision. Figure from <a class="reference external" href="https://cv.snu.ac.kr/research/~ProgGM/">here</a>.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-default" id="id2">
+<div class="figure align-default" id="id6">
 <img alt="_images/the-wire.png" src="_images/the-wire.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Potential application of graph matching in a communication subnetwork. Figure from <em>The Wire</em>, Season 3, Episode 7.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Potential application of graph matching in a communication subnetwork. Figure from <em>The Wire</em>, Season 3, Episode 7.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-default" id="id3">
+<div class="figure align-default" id="id7">
 <img alt="_images/match-neuron-morphology.png" src="_images/match-neuron-morphology.png" />
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Application of graph matching to predict homologous neurons in a brain connectome.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Application of graph matching to predict homologous neurons in a brain connectome.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
-<p>To start to understand</p>
+</div>
+<div class="section" id="permutations">
+<h2>Permutations<a class="headerlink" href="#permutations" title="Permalink to this headline">¶</a></h2>
+<p>To start to understand graph matching, we first need to understand permutations and
+permutation matrices.</p>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation"><strong>permutation</strong></a> can be thought of as a
+specific ordering or arrangement of some number of objects.</p>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>How many permutations are there of <span class="math notranslate nohighlight">\(n\)</span> objects?</p>
+</div>
+<p>Permutations, for us, will be represented by <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation_matrix"><strong>permutation matrices</strong></a>.
+A permutation matrix is <span class="math notranslate nohighlight">\(n \times n\)</span>, with all zeros except for <span class="math notranslate nohighlight">\(n\)</span> 1s. Let’s look at
+what a permutation matrix times a vector looks like.</p>
+<div class="figure align-default" id="id8">
+<a class="reference internal image-reference" href="_images/perm-matrix.png"><img alt="_images/perm-matrix.png" src="_images/perm-matrix.png" style="width: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">A permutation matrix multiplied by a vector. The red elements of the matrix indicate the
+1s. Image from <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation_matrix">Wikipedia</a>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>So, we see that if we look at the permutation matrix, the <em>row index</em> represents the
+index of the original position of object <span class="math notranslate nohighlight">\(i\)</span>. The <em>column index</em> represents the new
+position of an object. So, if we have a 1 at position <span class="math notranslate nohighlight">\((1, 4)\)</span>, that means the first
+object in the original arrangement moves to be the fourth object.</p>
+<p>Note that this also works for matrices: each column of a matrix <span class="math notranslate nohighlight">\(A\)</span> would be permuted
+the same way as the vector in the example above. So, we can think of</p>
+<div class="math notranslate nohighlight">
+\[PA\]</div>
+<p>as permuting the <em>rows</em> of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Note that post-multiplication by the matrix <span class="math notranslate nohighlight">\(P\)</span> works the opposite way (try it out
+yourself if you don’t see this, or refer to the Wikipedia article). For this reason, if
+we wanted to permute the columns of <span class="math notranslate nohighlight">\(A\)</span> in the same way, we’d have to do</p>
+<div class="math notranslate nohighlight">
+\[AP^T\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>How can we permute the rows <em>and</em> columns of the matrix <span class="math notranslate nohighlight">\(A\)</span> in the same way? Why do
+we care about this for networks?</p>
+</div>
+</div>
+<div class="section" id="graph-matching-problem">
+<h2>Graph matching problem<a class="headerlink" href="#graph-matching-problem" title="Permalink to this headline">¶</a></h2>
+<p>Why do we care about permutations for the problem of <a class="reference external" href="https://en.wikipedia.org/wiki/Graph_matching"><strong>graph matching</strong></a>?
+Graph matching refers to the problem of finding a mapping between the nodes of one graph (<span class="math notranslate nohighlight">\(A\)</span>)
+and the nodes of some other graph, <span class="math notranslate nohighlight">\(B\)</span>. For now, consider the case where the two networks
+have exactly the same number of nodes. Then, this problem amounts to finding a <em>permutation</em>
+of the nodes of one network with regard to the nodes of the other. Mathematically, we
+can think of this as comparing <span class="math notranslate nohighlight">\(A\)</span> vs. <span class="math notranslate nohighlight">\(P B P^T\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can think of graph matching as a more general case of the <a class="reference external" href="https://en.wikipedia.org/wiki/Graph_isomorphism_problem"><strong>graph isomorphism problem</strong></a>.</p>
+<p>In the case of graph matching, we don’t assume that the graphs must be exactly the same
+when matched, while for the graph isomorphism problem, we do.</p>
+</div>
+<p>How can we measure the quality of this alignment between two networks, given what
+we’ve talked about so far? Like when we talked about approximating matrices in the <span class="xref myst">embeddings</span>
+section, one natural way to do this is via the Frobenius norm of the difference.</p>
+<div class="math notranslate nohighlight">
+\[e(P) = \|A - PBP^T\|_F\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>In words, what is this quantity <span class="math notranslate nohighlight">\(e(P)\)</span> measuring with respect to the edges of two
+unweighted networks?</p>
+</div>
+<p>We can use this same definition above for any type of network: unweighted or weighted,
+directed or undirected, with or without self-loops.</p>
+<div class="figure align-default" id="id9">
+<img alt="_images/network-matching-explanation.png" src="_images/network-matching-explanation.png" />
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Diagram explaining graph matching.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="solving-the-graph-matching-problem">
+<h2>Solving the graph matching problem<a class="headerlink" href="#solving-the-graph-matching-problem" title="Permalink to this headline">¶</a></h2>
+<p>Many solutions for the problem above have been proposed - note that all of these are
+approximate solutions, and they tend to scale fairly poorly (in the number of nodes)
+compared to some of the other algorithms we have discussed so far. Nevertheless, a lot
+of progress has been made. I’m just going to focus on one family of algorithms based
+on the work of <span id="id1"></span>.</p>
+<p>As we discussed when looking at the spectral method for maximizing modularity, we have a
+discrete problem, but we’d like to use continuous optimization tools where we can take
+gradients. To make this possible, the Fast Approximate Quadradic (FAQ) method first
+relaxes the constraint that <span class="math notranslate nohighlight">\(P\)</span> be a permutation matrix. Via the Birkhoff-von Neumann theorem, it can be shown that the <a class="reference external" href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a>
+of the permutation matrices is the set of <a class="reference external" href="https://en.wikipedia.org/wiki/Doubly_stochastic_matrix"><strong>doubly stochastic matrices</strong></a>. A doubly stochastic matrix just has row
+and columns sums equal to 1, but does not necessarily have to have all nonzero elements
+equal to 1. This theorem is just saying that if I take a weighted average of any two
+permutation matrices, the row and columns sums of the result must be 1.</p>
+<p>It can be shown that minimizing our <span class="math notranslate nohighlight">\(e(P)\)</span> above is equivalent to</p>
+<div class="math notranslate nohighlight">
+\[\min_P -\text{trace}(APB^T P^T)\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_assignment_problem"><strong>quadratic assignment problem</strong></a> can be written as <span class="math notranslate nohighlight">\(\min_P \text{trace}(APB^T P^T)\)</span> - since these are just a sign flip away, any algorithm which solves one can be
+easily used to solve the other.</p>
+</div>
+<p>Calling our doubly stochastic matrices <span class="math notranslate nohighlight">\(D\)</span>, we now have</p>
+<div class="math notranslate nohighlight">
+\[\min_D -\text{trace}(ADB^T D^T)\]</div>
+<p>Given this relaxation, we can now begin to take gradients in our space of matrices. I won’t go into every detail, but the algorithm we end up using is
+something like:</p>
+<ol class="simple">
+<li><p>Start with some initial position - note that this position is a doubly stochastic matrix.</p></li>
+<li><p>Compute the gradient of the expression above with respect to <span class="math notranslate nohighlight">\(D\)</span>. This gives us our “step direction.”</p></li>
+<li><p>Compute a step size (how far to go in that direction in the space of matrices) by searching over the line between our current position and the one computed in 2.</p></li>
+<li><p>Update our position based on 3.</p></li>
+<li><p>Repeat 2.-4. until some convergence criterion is reached.</p></li>
+<li><p>Project back to the set of permutation matrices.</p></li>
+</ol>
+</div>
+<div class="section" id="graph-matching-with-graspologic">
+<h2>Graph matching with <code class="docutils literal notranslate"><span class="pre">graspologic</span></code><a class="headerlink" href="#graph-matching-with-graspologic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-graph-matching">
+<h3>Basic graph matching<a class="headerlink" href="#basic-graph-matching" title="Permalink to this headline">¶</a></h3>
+<p>Thankfully, all of this is implemented in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>. Let’s start by generating a random network (ER). We’ll then make a permuted copy of itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.match</span> <span class="kn">import</span> <span class="n">GraphMatch</span>
+<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">er_np</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="n">node_shuffle_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">G2</span> <span class="o">=</span> <span class="n">G1</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">node_shuffle_input</span><span class="p">,</span> <span class="n">node_shuffle_input</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of edge disagreements: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">G1</span><span class="o">-</span><span class="n">G2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edge disagreements:  1012.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;G1 [ER-NP(50, 0.3) Simulation]&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;G2 [G1 Randomly Shuffled]&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/graph_matching_8_0.png" src="_images/graph_matching_8_0.png" />
+</div>
+</div>
+<p>Now, let’s solve the graph matching problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmp</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">()</span>
+<span class="n">gmp</span> <span class="o">=</span> <span class="n">gmp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">)</span>
+<span class="n">G2</span> <span class="o">=</span> <span class="n">G2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">gmp</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">,</span> <span class="n">gmp</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of edge disagreements: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">G1</span><span class="o">-</span><span class="n">G2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edge disagreements:  0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, we’ve exactly recovered the correct permutation - note that this won’t always be true.</p>
+</div>
+<div class="section" id="adding-seed-nodes">
+<h3>Adding seed nodes<a class="headerlink" href="#adding-seed-nodes" title="Permalink to this headline">¶</a></h3>
+<p>Next, we explore the use of “seed” nodes. Imagine you have two networks that you want to match, but you already know that a handful of these nodes are correctly paired. These nodes are called seeds, which you can incorporate into
+the optimization in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> via techniques described in <span id="id2"></span>.</p>
+<p>For this example, we use a slightly different network model - we create two stochastic block models, but the edges are <em>correlated</em> so that the two networks are similar but not exactly the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm_corr</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+
+<span class="n">directed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">loops</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">n_per_block</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">block_members</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n_blocks</span> <span class="o">*</span> <span class="p">[</span><span class="n">n_per_block</span><span class="p">])</span>
+<span class="n">n_verts</span> <span class="o">=</span> <span class="n">block_members</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">.9</span>
+<span class="n">block_probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">block_probs</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;SBM block probabilities&quot;</span><span class="p">)</span>
+
+<span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">sbm_corr</span><span class="p">(</span><span class="n">block_members</span><span class="p">,</span> <span class="n">block_probs</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="n">directed</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="n">loops</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 1&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 2&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Diff (G1 - G2)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/graph_matching_13_0.png" src="_images/graph_matching_13_0.png" />
+<img alt="_images/graph_matching_13_1.png" src="_images/graph_matching_13_1.png" />
+</div>
+</div>
+<p>Here we see that after shuffling the second graph, there are many more edge disagreements, as expected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_shuffle_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">n_verts</span><span class="p">)</span>
+<span class="n">A2_shuffle</span> <span class="o">=</span> <span class="n">A2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">node_shuffle_input</span><span class="p">,</span> <span class="n">node_shuffle_input</span><span class="p">)]</span>
+<span class="n">node_unshuffle_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_verts</span><span class="p">))</span>
+<span class="n">node_unshuffle_input</span><span class="p">[</span><span class="n">node_shuffle_input</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_verts</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 1&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A2_shuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 2 shuffled&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2_shuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Diff (G1 - G2 shuffled)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/graph_matching_15_0.png" src="_images/graph_matching_15_0.png" />
+</div>
+</div>
+<p>First, we will run graph matching on graph 1 and the shuffled graph 2 with no seeds, and return the match ratio, that is the fraction of vertices that have been correctly matched.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sgm</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">()</span>
+<span class="n">sgm</span> <span class="o">=</span> <span class="n">sgm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">A2_shuffle</span><span class="p">)</span>
+<span class="n">A2_unshuffle</span> <span class="o">=</span> <span class="n">A2_shuffle</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">,</span> <span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 1&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 2 unshuffled&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Diff (G1 - G2 unshuffled)&quot;</span><span class="p">)</span>
+
+<span class="n">match_ratio</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="o">-</span><span class="n">node_unshuffle_input</span><span class="p">))</span><span class="o">/</span><span class="n">n_verts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Match Ratio with no seeds: &quot;</span><span class="p">,</span> <span class="n">match_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Match Ratio with no seeds:  0.013333333333333308
+</pre></div>
+</div>
+<img alt="_images/graph_matching_17_1.png" src="_images/graph_matching_17_1.png" />
+</div>
+</div>
+<p>While the predicted permutation for graph 2 did recover the basic structure of the stochastic block model (i.e. graph 1 and graph 2 look qualitatively similar), we see that the number of edge disagreements between them is still quite high, and the match ratio quite low.</p>
+<p>Next, we will run SGM with 10 randomly selected seeds. Although 10 seeds is only about 4% of the 300 node graph, we will observe below how much more accurate the matching will be compared to having no seeds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">W1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_verts</span><span class="p">)),</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">W1</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">W2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">node_unshuffle_input</span><span class="p">[</span><span class="n">W1</span><span class="p">])</span>
+    
+<span class="n">sgm</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">()</span>
+<span class="n">sgm</span> <span class="o">=</span> <span class="n">sgm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">A2_shuffle</span><span class="p">,</span><span class="n">W1</span><span class="p">,</span><span class="n">W2</span><span class="p">)</span>
+<span class="n">A2_unshuffle</span> <span class="o">=</span> <span class="n">A2_shuffle</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">,</span> <span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 1&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 2 unshuffled&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Diff (G1 - G2 unshuffled)&quot;</span><span class="p">)</span>
+
+<span class="n">match_ratio</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="o">-</span><span class="n">node_unshuffle_input</span><span class="p">))</span><span class="o">/</span><span class="n">n_verts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Match Ratio with 10 seeds: &quot;</span><span class="p">,</span> <span class="n">match_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Match Ratio with 10 seeds:  1.0
+</pre></div>
+</div>
+<img alt="_images/graph_matching_20_1.png" src="_images/graph_matching_20_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="graphs-with-different-numbers-of-nodes">
+<h3>Graphs with different numbers of nodes<a class="headerlink" href="#graphs-with-different-numbers-of-nodes" title="Permalink to this headline">¶</a></h3>
+<p>I won’t go into all of the details, but it is also possible to match networks
+with different numbers of nodes.</p>
+<p>Here, we just create two correlated SBMs, and then remove some nodes from each block in one of the networks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulating G1&#39;, G2, deleting 25 vertices</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">directed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">loops</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">block_probs</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.3</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span>
+                <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.7</span><span class="p">]]</span>
+<span class="n">n</span> <span class="o">=</span><span class="mi">100</span>
+<span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">block_members</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n_blocks</span> <span class="o">*</span> <span class="p">[</span><span class="n">n</span><span class="p">])</span>
+<span class="n">n_verts</span> <span class="o">=</span> <span class="n">block_members</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">G1p</span><span class="p">,</span> <span class="n">G2</span> <span class="o">=</span> <span class="n">sbm_corr</span><span class="p">(</span><span class="n">block_members</span><span class="p">,</span><span class="n">block_probs</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">loops</span><span class="p">)</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">G1p</span><span class="p">)</span>
+
+<span class="n">step1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">75</span>
+<span class="n">step2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">75</span>
+<span class="n">step3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">step1</span><span class="p">)):</span>
+    <span class="n">block1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">step1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">step1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">block1</span><span class="p">,:]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">c</span><span class="p">[:,</span> <span class="n">block1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">step3</span><span class="p">)):</span>
+        <span class="n">G1</span><span class="p">[</span><span class="n">step2</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">step2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">step2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span><span class="n">step2</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">G1p</span><span class="p">[</span><span class="n">step3</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">step1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">step3</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span><span class="n">step1</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span>
+        
+<span class="n">topleft_G1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span><span class="mi">400</span><span class="p">))</span>
+<span class="n">topleft_G1</span><span class="p">[:</span><span class="mi">300</span><span class="p">,:</span><span class="mi">300</span><span class="p">]</span> <span class="o">=</span> <span class="n">G1</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G1p</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1&#39;&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G2&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">topleft_G1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1 (to top left corner)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/graph_matching_22_0.png" src="_images/graph_matching_22_0.png" />
+</div>
+</div>
+<p>Now, we have two networks which have two different sizes, and only some of the nodes in the smaller network are well represented in the other. We can still use graph matching here in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> - this code compares two different methods of doing so using techniques dubbed “padding” in <span id="id3"></span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">gmp_naive</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;naive&#39;</span><span class="p">)</span>
+<span class="n">seed1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">seed2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">75</span><span class="p">)</span><span class="o">*</span><span class="mi">25</span> <span class="o">+</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seed1</span><span class="p">]</span>
+<span class="n">gmp_naive</span> <span class="o">=</span> <span class="n">gmp_naive</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">G1</span><span class="p">,</span> <span class="n">seed2</span><span class="p">,</span> <span class="n">seed1</span><span class="p">)</span>
+<span class="n">G1_naive</span> <span class="o">=</span> <span class="n">topleft_G1</span><span class="p">[</span><span class="n">gmp_naive</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">][:,</span> <span class="n">gmp_naive</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">]</span>
+
+<span class="n">gmp_adopted</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;adopted&#39;</span><span class="p">)</span>
+<span class="n">gmp_adopted</span> <span class="o">=</span> <span class="n">gmp_adopted</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">G1</span><span class="p">,</span> <span class="n">seed2</span><span class="p">,</span> <span class="n">seed1</span><span class="p">)</span>
+<span class="n">G1_adopted</span> <span class="o">=</span> <span class="n">topleft_G1</span><span class="p">[</span><span class="n">gmp_adopted</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">][:,</span> <span class="n">gmp_adopted</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G1_naive</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Naive Padding&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G1_adopted</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adopted Padding&quot;</span><span class="p">)</span>
+
+<span class="n">naive_matching</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">gmp_naive</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span> <span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span><span class="p">)])</span>
+<span class="n">adopted_matching</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">gmp_adopted</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span> <span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span><span class="p">)])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Match ratio of nodes remaining in G1, with naive padding: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">naive_matching</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span><span class="o">/</span><span class="mi">300</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Match ratio of nodes remaining in G1, with adopted padding: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">adopted_matching</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span><span class="o">/</span><span class="mi">300</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Match ratio of nodes remaining in G1, with naive padding: 0.10666666666666667
+Match ratio of nodes remaining in G1, with adopted padding: 1.0
+</pre></div>
+</div>
+<img alt="_images/graph_matching_24_1.png" src="_images/graph_matching_24_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="application">
+<h2>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h2>
+<p>In a recent paper, we applied these same tools for matching the nodes in the left and right <em>Drosophila</em> larva mushroom body connectome datasets, the same
+ones you get from <code class="docutils literal notranslate"><span class="pre">graspologic.datasets.load_drosophila_left()</span></code> etc.</p>
+<div class="figure align-default" id="id10">
+<img alt="_images/gm-stat-conn.png" src="_images/gm-stat-conn.png" />
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Figure from <span id="id4">Chung <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id24">4</a>]</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 
