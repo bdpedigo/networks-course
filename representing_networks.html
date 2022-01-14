@@ -651,7 +651,7 @@ from <code class="docutils literal notranslate"><span class="pre">networkx</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x136916be0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x13115ce80&gt;
 </pre></div>
 </div>
 </div>
@@ -751,6 +751,21 @@ from <code class="docutils literal notranslate"><span class="pre">networkx</span
 </div>
 <p>Note that these nodes are stored <em>in the order in which they were added</em> by default, and not in any sorted order.</p>
 <p>This brings up an important point about adjacency matrices - any permutation of the row/column indices of the adjacency matrix are valid. We’ll revisit this point many times throughout the course.</p>
+<p>We can also directly create a sparse array representation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_sparse</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">A_sparse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;5x5 sparse matrix of type &#39;&lt;class &#39;numpy.int64&#39;&gt;&#39;
+	with 8 stored elements in Compressed Sparse Row format&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="bespoke-network-formats">
 <h2>Bespoke network formats<a class="headerlink" href="#bespoke-network-formats" title="Permalink to this headline">¶</a></h2>
