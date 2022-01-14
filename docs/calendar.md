@@ -96,6 +96,7 @@ Be able to load in and somehow plot your dataset(s) in Python.
    - Application example
 
 ```{admonition} Due
+:class: important
 
 Complete [exit survey](https://forms.gle/hSB9Z6r773VkXXQx6) for this week.
 ```
