@@ -603,6 +603,15 @@ adjacency matrix for Twitter in a <code class="docutils literal notranslate"><sp
 </div>
 </div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I do NOT recommend actually building your sparse adjacency matrix by first creating a
+dense array, and then making a sparse one from it. This defeats the purpose of trying
+to save memory since you had to build the dense array. If you want to make a sparse
+array “by hand,” look at the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix">constructor for csr_matrix</a> to see how it can be
+instantiated with arrays of nonzero values only. Otherwise, if you are starting
+from <code class="docutils literal notranslate"><span class="pre">networkx</span></code>, use <code class="docutils literal notranslate"><span class="pre">nx.to_scipy_sparse_matrix(g,</span> <span class="pre">...)</span></code>.</p>
+</div>
 <p>We can verify that the conversion preserved the data itself by converting back to a dense array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
