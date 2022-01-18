@@ -493,10 +493,10 @@
 <h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">¶</a></h1>
 <p>Often, we are interested in more than one network. Sometimes this arises from thinking
 about multiple “layers,” where each layer represents a different kind of relationship.</p>
-<div class="figure align-default" id="id71">
+<div class="figure align-default" id="id72">
 <img alt="_images/stacked-adj.png" src="_images/stacked-adj.png" />
 <p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
-connectome.</span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
+connectome.</span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
 </div>
 <p>Or, we may have networks which arise from the same process, but at different timepoints.</p>
 <p>Regardless of the data, it is common to want to:</p>
@@ -571,7 +571,7 @@ why not just apply these techniques separately to each network, and compare the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x141cf6e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x144ef94f0&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_5_1.png" src="_images/multiple_embedding_5_1.png" />
@@ -720,7 +720,7 @@ and it has an exact solution (fun fact: the solution uses the SVD).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x142530af0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x143d1f6d0&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_16_1.png" src="_images/multiple_embedding_16_1.png" />
@@ -757,7 +757,7 @@ least at a high level?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x142d529a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x145d4f9a0&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_20_1.png" src="_images/multiple_embedding_20_1.png" />
@@ -804,7 +804,7 @@ after aligning them.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13edb75b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x145c4d730&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_24_1.png" src="_images/multiple_embedding_24_1.png" />
@@ -813,6 +813,25 @@ after aligning them.</p>
 </div>
 <div class="section" id="multiple-ase">
 <h2>Multiple ASE<a class="headerlink" href="#multiple-ase" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, we aren’t as interested in having a representation for each node in each
+graph - perhaps we don’t care about what is different between networks, and we are
+interested in grouping nodes based on their <em>shared</em> structure across many different
+networks. An algorithm called <strong>multiple adjacency spectral embedding (MASE)</strong> introduced
+in <span id="id1">Arroyo <em>et al.</em> [<a class="reference internal" href="#id69">1</a>]</span> can be used for this task.</p>
+<p>I won’t go into all the details of the algorithm, though I believe you all could
+understand it based on what we’ve talked about in this course. However, I’ll say that
+this algorithm is associated with a model, where we model the probability matrix for
+graph <span class="math notranslate nohighlight">\(k\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[P^{(k)} = V R^{(k)} V^T\]</div>
+<p>Note that there is no superscript on the <span class="math notranslate nohighlight">\(V\)</span> - these are node-wise representations
+which are <em>shared</em> across all of the networks. You can think of this as one embedding
+for each node in the network, but we got it using all of the networks to form this
+representation. The <span class="math notranslate nohighlight">\(R^{(k)}\)</span> matrices, sometimes called
+the “score” matrices, are able of representing how each network is (potentially)
+different.</p>
+<p>Using MASE is easy in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>. Here, we apply it to form a latent position
+estimate for each node pair</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -837,22 +856,28 @@ after aligning them.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1433a92e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x146a93e50&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_26_1.png" src="_images/multiple_embedding_26_1.png" />
 </div>
 </div>
-<div class="figure align-default" id="id72">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The MASE algorithm also has a method for extracting a representation per <em>network</em>. In
+<code class="docutils literal notranslate"><span class="pre">graspologic</span></code>, these can be accessed using the <code class="docutils literal notranslate"><span class="pre">.score_</span></code> attribute of the fitted object.
+More details can be found in the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/embedding/MASE.html">MASE tutorial</a>.</p>
+</div>
+<div class="figure align-default" id="id73">
 <img alt="_images/mase-brain.png" src="_images/mase-brain.png" />
 <p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
-<span id="id1">Arroyo <em>et al.</em> [<a class="reference internal" href="#id68">1</a>]</span>.</span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
+<span id="id2">Arroyo <em>et al.</em> [<a class="reference internal" href="#id69">1</a>]</span>.</span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="representations-for-each-network">
 <h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this headline">¶</a></h2>
-<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id2">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id69">2</a>]</span>.
-The data comes from <span id="id3">Wang <em>et al.</em> [<a class="reference internal" href="#id70">3</a>]</span>.</p>
+<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id3">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span>.
+The data comes from <span id="id4">Wang <em>et al.</em> [<a class="reference internal" href="#id71">3</a>]</span>.</p>
 <p>Below, we load in 32 networks - these networks come from MRI scans of mice brains, and
 these mouse came from one of 4 different genotypes. There are 8 mice from each genotype.</p>
 <div class="cell docutils container">
@@ -928,10 +953,7 @@ we can do something like</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="_images/multiple_embedding_35_1.png" src="_images/multiple_embedding_35_1.png" />
+<img alt="_images/multiple_embedding_36_0.png" src="_images/multiple_embedding_36_0.png" />
 </div>
 </div>
 <p>A technique called <a class="reference external" href="https://en.wikipedia.org/wiki/Multidimensional_scaling#Classical_multidimensional_scaling"><strong>classical multidimensional scaling</strong></a>
@@ -951,13 +973,15 @@ directly pass in <code class="docutils literal notranslate"><span class="pre">om
 <span class="n">cmds_embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cmds_embedding</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Dimension 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Dimension 2&quot;</span><span class="p">])</span>
 <span class="n">cmds_embedding</span><span class="p">[</span><span class="s2">&quot;Genotype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mice</span><span class="o">.</span><span class="n">labels</span>
 
+<span class="n">palette</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;DBA2&quot;</span><span class="p">:</span> <span class="s2">&quot;#e7298a&quot;</span><span class="p">,</span> <span class="s2">&quot;B6&quot;</span><span class="p">:</span> <span class="s2">&quot;#1b9e77&quot;</span><span class="p">,</span> <span class="s2">&quot;BTBR&quot;</span><span class="p">:</span> <span class="s2">&quot;#d95f02&quot;</span><span class="p">,</span> <span class="s2">&quot;CAST&quot;</span><span class="p">:</span> <span class="s2">&quot;#7570b3&quot;</span><span class="p">}</span>
+
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Dimension 1&quot;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Dimension 2&quot;</span><span class="p">,</span>
     <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Genotype&quot;</span><span class="p">,</span>
     <span class="n">data</span><span class="o">=</span><span class="n">cmds_embedding</span><span class="p">,</span>
-    <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#e7298a&quot;</span><span class="p">,</span> <span class="s2">&quot;#1b9e77&quot;</span><span class="p">,</span> <span class="s2">&quot;#d95f02&quot;</span><span class="p">,</span> <span class="s2">&quot;#7570b3&quot;</span><span class="p">],</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
@@ -966,10 +990,7 @@ directly pass in <code class="docutils literal notranslate"><span class="pre">om
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-<img alt="_images/multiple_embedding_37_1.png" src="_images/multiple_embedding_37_1.png" />
+<img alt="_images/multiple_embedding_38_0.png" src="_images/multiple_embedding_38_0.png" />
 </div>
 </div>
 <p>What if we hadn’t known the genotype labels ahead of time, and wanted to cluster the
@@ -983,8 +1004,6 @@ clustering directly on the dissimilarity matrix as I do below.</p>
 
 <span class="n">Z</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">scaled_dissimilarity</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;single&quot;</span><span class="p">)</span>
 
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#e7298a&quot;</span><span class="p">,</span> <span class="s2">&quot;#1b9e77&quot;</span><span class="p">,</span> <span class="s2">&quot;#d95f02&quot;</span><span class="p">,</span> <span class="s2">&quot;#7570b3&quot;</span><span class="p">]</span>
-<span class="n">palette</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;DBA2&quot;</span><span class="p">:</span> <span class="s2">&quot;#e7298a&quot;</span><span class="p">,</span> <span class="s2">&quot;B6&quot;</span><span class="p">:</span> <span class="s2">&quot;#1b9e77&quot;</span><span class="p">,</span> <span class="s2">&quot;BTBR&quot;</span><span class="p">:</span> <span class="s2">&quot;#d95f02&quot;</span><span class="p">,</span> <span class="s2">&quot;CAST&quot;</span><span class="p">:</span> <span class="s2">&quot;#7570b3&quot;</span><span class="p">}</span>
 <span class="n">network_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">palette</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">mice</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
 
 <span class="n">clustergrid</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span>
@@ -1010,10 +1029,7 @@ clustering directly on the dissimilarity matrix as I do below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0, 0.5, &#39;Genotype&#39;)]
-</pre></div>
-</div>
-<img alt="_images/multiple_embedding_39_1.png" src="_images/multiple_embedding_39_1.png" />
+<img alt="_images/multiple_embedding_40_0.png" src="_images/multiple_embedding_40_0.png" />
 </div>
 </div>
 <p>With this representation that we learned from our network embeddings, our clustering
@@ -1021,14 +1037,14 @@ exactly recovered the genotype labels!</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id4"><dl class="citation">
-<dt class="label" id="id68"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<p id="id5"><dl class="citation">
+<dt class="label" id="id69"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
 <dd><p>Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. <em>Journal of Machine Learning Research</em>, 22(142):1–49, 2021.</p>
 </dd>
-<dt class="label" id="id69"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="id70"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
 <dd><p>Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. <em>arXiv preprint arXiv:2011.14990</em>, 2020.</p>
 </dd>
-<dt class="label" id="id70"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="id71"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
 <dd><p>Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. <em>NeuroImage</em>, 222:117274, 2020.</p>
 </dd>
 </dl>
