@@ -26,6 +26,7 @@ parts:
   - file: community_detection
   - file: embedding
   - file: graph_matching
+  - file: multiple_embedding
 - caption: Projects
   chapters:
   - file: projects/clarke.md
