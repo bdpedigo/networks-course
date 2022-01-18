@@ -493,22 +493,27 @@
 <h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">¶</a></h1>
 <p>Often, we are interested in more than one network. Sometimes this arises from thinking
 about multiple “layers,” where each layer represents a different kind of relationship.</p>
-<div class="figure align-default" id="id72">
+<div class="figure align-default" id="id73">
 <img alt="_images/stacked-adj.png" src="_images/stacked-adj.png" />
 <p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
-connectome.</span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
+connectome.</span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
 </div>
 <p>Or, we may have networks which arise from the same process, but at different timepoints.</p>
 <p>Regardless of the data, it is common to want to:</p>
 <ul class="simple">
+<li><p>Compare the role/structure of each node across networks, or</p></li>
 <li><p>Generate a single embedding which summarizes the property of each node, regardless
 of which network it came from, or</p></li>
-<li><p>Compare the role of each node across networks, or</p></li>
 <li><p>Quantitatively compare the networks themselves</p></li>
 </ul>
 <p>Each of these tasks (and many others) can benefit from doing network embeddings which
 somehow deal with multiple networks. We’ll discuss a few approaches and considerations
 below, mainly for the spectral methods.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many other approaches for doing multiple network embeddings exist, including for some of the
+neural network approaches.</p>
+</div>
 <div class="section" id="do-a-couple-of-spectral-embeddings">
 <h2>Do a couple of spectral embeddings<a class="headerlink" href="#do-a-couple-of-spectral-embeddings" title="Permalink to this headline">¶</a></h2>
 <p>Let’s say we have two networks. We wish to come up with an embedding for <em>each node
@@ -571,7 +576,7 @@ why not just apply these techniques separately to each network, and compare the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x144ef94f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x12e684c10&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_5_1.png" src="_images/multiple_embedding_5_1.png" />
@@ -680,7 +685,8 @@ there are an <em>infinite</em> number of orthogonal transformations.</p>
 <div class="section" id="orthogonal-procrustes-problem">
 <h3>Orthogonal procrustes problem<a class="headerlink" href="#orthogonal-procrustes-problem" title="Permalink to this headline">¶</a></h3>
 <p>In practice, how can we resolve this issue? Let’s say we have these two sets of latent
-positions and want to somehow compare them on equal footing. What we can do is try to
+positions, <span class="math notranslate nohighlight">\(X^{(1)}\)</span> and <span class="math notranslate nohighlight">\(X^{(2)} W\)</span>, and want to somehow compare them on equal footing.
+What we can do is try to
 uncover a orthogonal transformation of one set of latent positions with regard to the
 other, e.g.</p>
 <div class="math notranslate nohighlight">
@@ -720,7 +726,7 @@ and it has an exact solution (fun fact: the solution uses the SVD).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x143d1f6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x134f0abe0&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_16_1.png" src="_images/multiple_embedding_16_1.png" />
@@ -757,7 +763,7 @@ least at a high level?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x145d4f9a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x137e3b0d0&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_20_1.png" src="_images/multiple_embedding_20_1.png" />
@@ -783,6 +789,22 @@ after aligning them.</p>
 </div>
 <div class="section" id="omnibus-embedding">
 <h2>Omnibus Embedding<a class="headerlink" href="#omnibus-embedding" title="Permalink to this headline">¶</a></h2>
+<p>The method described above (basically just doing ASE twice) is a totally valid way of
+attacking this multiple network embedding problem, though it has many caveats. In
+practice, we often want to do multiple network embeddings without dealing with this
+alignment issue. For matched networks, we can use a technique called the Omnibus
+embedding (Omni, for short).</p>
+<p>The algorithm itself is pretty simple. We essentially construct a larger matrix
+(described in the figure below) which is constructed from each of the individual
+adjacency matrices. We then decompose that larger matrix <span class="math notranslate nohighlight">\(M\)</span> using the same process as
+ASE. Because this embedding is done in one stage (rather than one for each network) we
+no longer have the same issue with the nonidentifiability above, so we no longer have
+to worry about aligning our embeddings between networks.</p>
+<div class="figure align-default" id="id74">
+<img alt="_images/omni.png" src="_images/omni.png" />
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Construction of the matrix <span class="math notranslate nohighlight">\(M\)</span> which is then decomposed using the SVD in the Omnibus
+embedding. Figure from <span id="id1">Athreya <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id25">1</a>]</span>.</span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">OmnibusEmbed</span>
@@ -804,7 +826,7 @@ after aligning them.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x145c4d730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13807bd00&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_24_1.png" src="_images/multiple_embedding_24_1.png" />
@@ -817,7 +839,7 @@ after aligning them.</p>
 graph - perhaps we don’t care about what is different between networks, and we are
 interested in grouping nodes based on their <em>shared</em> structure across many different
 networks. An algorithm called <strong>multiple adjacency spectral embedding (MASE)</strong> introduced
-in <span id="id1">Arroyo <em>et al.</em> [<a class="reference internal" href="#id69">1</a>]</span> can be used for this task.</p>
+in <span id="id2">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span> can be used for this task.</p>
 <p>I won’t go into all the details of the algorithm, though I believe you all could
 understand it based on what we’ve talked about in this course. However, I’ll say that
 this algorithm is associated with a model, where we model the probability matrix for
@@ -856,7 +878,7 @@ estimate for each node pair</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x146a93e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1387248b0&gt;
 </pre></div>
 </div>
 <img alt="_images/multiple_embedding_26_1.png" src="_images/multiple_embedding_26_1.png" />
@@ -868,16 +890,16 @@ estimate for each node pair</p>
 <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>, these can be accessed using the <code class="docutils literal notranslate"><span class="pre">.score_</span></code> attribute of the fitted object.
 More details can be found in the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/embedding/MASE.html">MASE tutorial</a>.</p>
 </div>
-<div class="figure align-default" id="id73">
+<div class="figure align-default" id="id75">
 <img alt="_images/mase-brain.png" src="_images/mase-brain.png" />
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
-<span id="id2">Arroyo <em>et al.</em> [<a class="reference internal" href="#id69">1</a>]</span>.</span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
+<span id="id3">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span>.</span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="representations-for-each-network">
 <h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this headline">¶</a></h2>
-<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id3">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span>.
-The data comes from <span id="id4">Wang <em>et al.</em> [<a class="reference internal" href="#id71">3</a>]</span>.</p>
+<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id4">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id71">3</a>]</span>.
+The data comes from <span id="id5">Wang <em>et al.</em> [<a class="reference internal" href="#id72">4</a>]</span>.</p>
 <p>Below, we load in 32 networks - these networks come from MRI scans of mice brains, and
 these mouse came from one of 4 different genotypes. There are 8 mice from each genotype.</p>
 <div class="cell docutils container">
@@ -953,7 +975,16 @@ we can do something like</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/multiple_embedding_36_0.png" src="_images/multiple_embedding_36_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">pz</span><span class="o">/</span><span class="n">l5ltdh6x63j99hyc0cy_3pvm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_15924</span><span class="o">/</span><span class="mf">2337849975.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">scaled_dissimilarity</span> <span class="o">=</span> <span class="n">dissimilarity_matrix</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dissimilarity_matrix</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">scaled_dissimilarity</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">mice</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;heatmap&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <p>A technique called <a class="reference external" href="https://en.wikipedia.org/wiki/Multidimensional_scaling#Classical_multidimensional_scaling"><strong>classical multidimensional scaling</strong></a>
@@ -988,9 +1019,6 @@ directly pass in <code class="docutils literal notranslate"><span class="pre">om
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/multiple_embedding_38_0.png" src="_images/multiple_embedding_38_0.png" />
 </div>
 </div>
 <p>What if we hadn’t known the genotype labels ahead of time, and wanted to cluster the
@@ -1028,23 +1056,23 @@ clustering directly on the dissimilarity matrix as I do below.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/multiple_embedding_40_0.png" src="_images/multiple_embedding_40_0.png" />
-</div>
 </div>
 <p>With this representation that we learned from our network embeddings, our clustering
 exactly recovered the genotype labels!</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id5"><dl class="citation">
-<dt class="label" id="id69"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<p id="id6"><dl class="citation">
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
+</dd>
+<dt class="label" id="id70"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
 <dd><p>Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. <em>Journal of Machine Learning Research</em>, 22(142):1–49, 2021.</p>
 </dd>
-<dt class="label" id="id70"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dt class="label" id="id71"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
 <dd><p>Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. <em>arXiv preprint arXiv:2011.14990</em>, 2020.</p>
 </dd>
-<dt class="label" id="id71"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dt class="label" id="id72"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
 <dd><p>Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. <em>NeuroImage</em>, 222:117274, 2020.</p>
 </dd>
 </dl>
