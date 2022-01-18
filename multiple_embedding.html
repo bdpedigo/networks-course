@@ -413,6 +413,11 @@
    Representations for each network
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -470,6 +475,11 @@
    Representations for each network
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -483,10 +493,10 @@
 <h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">¶</a></h1>
 <p>Often, we are interested in more than one network. Sometimes this arises from thinking
 about multiple “layers,” where each layer represents a different kind of relationship.</p>
-<div class="figure align-default" id="id3">
+<div class="figure align-default" id="id69">
 <img alt="_images/stacked-adj.png" src="_images/stacked-adj.png" />
 <p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
-connectome.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+connectome.</span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
 </div>
 <p>Or, we may have networks which arise from the same process, but at different timepoints.</p>
 <p>Regardless of the data, it is common to want to:</p>
@@ -833,15 +843,15 @@ after aligning them.</p>
 <img alt="_images/multiple_embedding_26_1.png" src="_images/multiple_embedding_26_1.png" />
 </div>
 </div>
-<div class="figure align-default" id="id4">
+<div class="figure align-default" id="id70">
 <img alt="_images/mase-brain.png" src="_images/mase-brain.png" />
 <p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
-<span id="id1"></span>.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<span id="id1">Arroyo <em>et al.</em> [<a class="reference internal" href="#id67">1</a>]</span>.</span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="representations-for-each-network">
 <h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this headline">¶</a></h2>
-<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id2"></span>.</p>
+<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id2">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id68">2</a>]</span>.</p>
 <p>Below, we load in 32 networks - these networks come from MRI scans of mice brains, and
 these mouse came from one of 4 different genotypes. There are 8 mice from each genotype.</p>
 <div class="cell docutils container">
@@ -1005,6 +1015,18 @@ clustering directly on the dissimilarity matrix as I do below.</p>
 </div>
 <p>With this representation that we learned from our network embeddings, our clustering
 exactly recovered the genotype labels!</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id3"><dl class="citation">
+<dt class="label" id="id67"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. <em>Journal of Machine Learning Research</em>, 22(142):1–49, 2021.</p>
+</dd>
+<dt class="label" id="id68"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. <em>arXiv preprint arXiv:2011.14990</em>, 2020.</p>
+</dd>
+</dl>
+</p>
 </div>
 </div>
 
