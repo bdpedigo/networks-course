@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Final project &#8212; Network Data Science</title>
+    <title>Embedding multiple networks &#8212; Network Data Science</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -53,8 +55,8 @@
     <link rel="shortcut icon" href="_static/nd_logo_small.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Online" href="online_resources.html" />
-    <link rel="prev" title="Mini-assignment" href="mini_assignment.html" />
+    <link rel="next" title="Clarke - final project placeholder" href="projects/clarke.html" />
+    <link rel="prev" title="Graph matching" href="graph_matching.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -111,7 +113,7 @@
   Course logistics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="syllabus.html">
    Syllabus
@@ -127,8 +129,8 @@
    Mini-assignment
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="final_project.html">
    Final project
   </a>
  </li>
@@ -160,7 +162,7 @@
   Lectures
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
    Welcome
@@ -211,8 +213,8 @@
    Graph matching
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="multiple_embedding.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Embedding multiple networks
   </a>
  </li>
@@ -309,9 +311,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/final_project.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/multiple_embedding.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -329,10 +331,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Ffinal_project.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fmultiple_embedding.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/final_project.md"><button
+        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/multiple_embedding.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -347,6 +349,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/multiple_embedding.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -358,13 +377,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notebook">
-   Notebook
+  <a class="reference internal nav-link" href="#do-a-couple-of-spectral-embeddings">
+   Do a couple of spectral embeddings
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#presentation">
-   Presentation
+  <a class="reference internal nav-link" href="#orthogonal-nonidentifiability">
+   Orthogonal nonidentifiability
   </a>
  </li>
 </ul>
@@ -377,7 +396,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Final project</h1>
+                <h1>Embedding multiple networks</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -388,13 +407,13 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notebook">
-   Notebook
+  <a class="reference internal nav-link" href="#do-a-couple-of-spectral-embeddings">
+   Do a couple of spectral embeddings
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#presentation">
-   Presentation
+  <a class="reference internal nav-link" href="#orthogonal-nonidentifiability">
+   Orthogonal nonidentifiability
   </a>
  </li>
 </ul>
@@ -406,55 +425,122 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="final-project">
-<h1>Final project<a class="headerlink" href="#final-project" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="notebook">
-<h2>Notebook<a class="headerlink" href="#notebook" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>The final project is a short analysis of some dataset in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a></p></li>
-<li><p>The notebook should describe (using text and figures):</p>
-<ul>
-<li><p>The dataset(s) you investigated, and what you wanted to learn. At a bare minimum:</p>
-<ul>
-<li><p>What do the nodes represent?</p></li>
-<li><p>What do the edges represent?</p></li>
-<li><p>How many nodes and edges are there?</p></li>
-<li><p>Is the network weighted? If so, what do the weights represent?</p></li>
-<li><p>Is the network directed? If so, what does the edge direction come from?</p></li>
-<li><p>If there are multiple networks, how is each one different?</p></li>
-</ul>
-</li>
-<li><p>The methods you used, explained at a level that someone else in the class would definitely understand</p></li>
-<li><p>The results you found, with a few figures showing these results</p></li>
-<li><p>A brief discussion of the meaning of these results</p></li>
-</ul>
-</li>
-<li><p>You are welcome to collaborate, but</p>
-<ul>
-<li><p>Each student must submit their own notebook and write their own code.</p></li>
-<li><p>If there’s something you want to collaborate more extensively on, discuss with instructor.</p></li>
-<li><p>Acknowledge any people you collaborated with in the notebook.</p></li>
-</ul>
-</li>
-<li><p>Reference any articles, data sources, etc. you used in your notebook.</p></li>
-<li><p><strong>Notebooks are due Thursday, January 20th at 12pm (noon) ET.</strong> This will give me time to address any issues with your pull requests and merge them by the time we have presentations the next day.</p>
-<ul>
-<li><p>You are encouraged to submit pull requests earlier than this, and I am happy to provide feedback!</p></li>
-</ul>
-</li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="embedding-multiple-networks">
+<h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">¶</a></h1>
+<p>Often, we are interested in more than one network. Sometimes this arises from thinking
+about multiple “layers,” where each layer represents a different kind of relationship.</p>
+<div class="figure align-default" id="id1">
+<img alt="_images/stacked-adj.png" src="_images/stacked-adj.png" />
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
+connectome.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="presentation">
-<h2>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">¶</a></h2>
+<p>Or, we may have networks which arise from the same process, but at different timepoints.</p>
+<p>Regardless of the data, it is common to want to:</p>
 <ul class="simple">
-<li><p>Everyone will present their final projects <strong>on the last day of class, January 21st.</strong></p></li>
-<li><p>Presentations should be &lt;5 minutes (no longer than 5) with 2 minutes for questions.</p></li>
-<li><p>Presentation should briefly cover the same main points from the notebook.</p>
-<ul>
-<li><p>Some details from the notebook you may not have time to cover in the presentation; that’s OK.</p></li>
+<li><p>Generate a single embedding which summarizes the property of each node, regardless
+of which network it came from, or</p></li>
+<li><p>Compare the role of each node across networks, or</p></li>
+<li><p>Quantitatively compare the networks themselves</p></li>
 </ul>
-</li>
-</ul>
+<p>Each of these tasks (and many others) can benefit from doing network embeddings which
+somehow deal with multiple networks. We’ll discuss a few approaches and considerations
+below, mainly for the spectral methods.</p>
+<div class="section" id="do-a-couple-of-spectral-embeddings">
+<h2>Do a couple of spectral embeddings<a class="headerlink" href="#do-a-couple-of-spectral-embeddings" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say we have two networks. We wish to come up with an embedding for <em>each node
+in each network</em>. Since we’ve already learned about techniques for network embedding,
+why not just apply these techniques separately to each network, and compare the results?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">DATA_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;networks-course/data&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_matched</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">):</span>
+    <span class="n">side</span> <span class="o">=</span> <span class="n">side</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="nb">dir</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s2">&quot;processed_maggot&quot;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span>
+        <span class="nb">dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;matched_</span><span class="si">{</span><span class="n">side</span><span class="si">}</span><span class="s2">_edgelist.csv&quot;</span><span class="p">,</span>
+        <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">,</span>
+        <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span>
+        <span class="n">nodetype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;matched_</span><span class="si">{</span><span class="n">side</span><span class="si">}</span><span class="s2">_nodes.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodes</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">adj</span><span class="p">,</span> <span class="n">nodes</span>
+
+<span class="n">left_adj</span><span class="p">,</span> <span class="n">left_nodes</span> <span class="o">=</span> <span class="n">load_matched</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">right_adj</span><span class="p">,</span> <span class="n">right_nodes</span> <span class="o">=</span> <span class="n">load_matched</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">AdjacencySpectralEmbed</span>
+
+<span class="n">ase</span> <span class="o">=</span> <span class="n">AdjacencySpectralEmbed</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">X_left</span><span class="p">,</span> <span class="n">Y_left</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">left_adj</span><span class="p">)</span>
+<span class="n">X_right</span><span class="p">,</span> <span class="n">Y_right</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">right_adj</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">pairplot</span>
+
+<span class="n">X_both</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X_left</span><span class="p">,</span> <span class="n">X_right</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_left</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;Left&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_right</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;Right&#39;</span><span class="p">])</span>
+
+<span class="n">pairplot</span><span class="p">(</span><span class="n">X_both</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">legend_name</span><span class="o">=</span><span class="s1">&#39;Side&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Out latent positions&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x141043820&gt;
+</pre></div>
+</div>
+<img alt="_images/multiple_embedding_5_1.png" src="_images/multiple_embedding_5_1.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Based on this plot, would you say that these networks are similar? Why or why not?</p>
+<p>Do you notice anything about the relationship of one embedding with regard to the
+other?</p>
+</div>
+</div>
+<div class="section" id="orthogonal-nonidentifiability">
+<h2>Orthogonal nonidentifiability<a class="headerlink" href="#orthogonal-nonidentifiability" title="Permalink to this headline">¶</a></h2>
+<p>Earlier in the course, we discussed a model with a nonidentifiability in its parameters.
+As a reminder, this just means that we have some flexibility in the parameters we use
+which gives us the same model behavior. Can this arise for the RDPG model, which is the
+motivation behind doing ASE? Let’s have a look.</p>
+<p>Remember that for the RDPG, we are using the model of <span class="math notranslate nohighlight">\(A\)</span> being sampled from a
+probability matrix, <span class="math notranslate nohighlight">\(P\)</span>. <span class="math notranslate nohighlight">\(P\)</span> has the structure</p>
+<div class="math notranslate nohighlight">
+\[P = XX^T\]</div>
+<p>for an undirected network, or for a directed network,</p>
+<div class="math notranslate nohighlight">
+\[P = XY^T\]</div>
+<p>How can a nonidentifiability pop up here? Note that an <a class="reference external" href="https://en.wikipedia.org/wiki/Orthogonal_matrix"><strong>orthogonal matrix</strong></a> <span class="math notranslate nohighlight">\(W\)</span> is one
+such that</p>
+<div class="math notranslate nohighlight">
+\[W W^T = W^T W = I\]</div>
+<p>Intuitively, these orthogonal matrices represent <em>rotations</em> and <em>reflections</em> in our
+<span class="math notranslate nohighlight">\(d\)</span>-dimensional space. They are often called <strong>isometric</strong> transformations of the space,
+because they <em>preserve all interpoint distances</em>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Can you think of another set of latent positions, say <span class="math notranslate nohighlight">\(Z\)</span>, such that or probability
+matrix <span class="math notranslate nohighlight">\(P = XX^T = ZZ^T\)</span>, but <span class="math notranslate nohighlight">\(Z \neq X\)</span>?</p>
+<p>Hint: where can you insert some orthogonal matrices into the formula <span class="math notranslate nohighlight">\(P = XX^T\)</span> such
+that the matrix <span class="math notranslate nohighlight">\(P\)</span> is unchanged?</p>
+</div>
 </div>
 </div>
 
@@ -483,17 +569,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="mini_assignment.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="graph_matching.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Mini-assignment</p>
+            <p class="prev-next-title">Graph matching</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="online_resources.html" title="next page">
+    <a class='right-next' id="next-link" href="projects/clarke.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Online</p>
+        <p class="prev-next-title">Clarke - final project placeholder</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
