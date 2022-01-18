@@ -493,10 +493,10 @@
 <h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">¶</a></h1>
 <p>Often, we are interested in more than one network. Sometimes this arises from thinking
 about multiple “layers,” where each layer represents a different kind of relationship.</p>
-<div class="figure align-default" id="id69">
+<div class="figure align-default" id="id71">
 <img alt="_images/stacked-adj.png" src="_images/stacked-adj.png" />
 <p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
-connectome.</span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
+connectome.</span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
 </div>
 <p>Or, we may have networks which arise from the same process, but at different timepoints.</p>
 <p>Regardless of the data, it is common to want to:</p>
@@ -843,15 +843,16 @@ after aligning them.</p>
 <img alt="_images/multiple_embedding_26_1.png" src="_images/multiple_embedding_26_1.png" />
 </div>
 </div>
-<div class="figure align-default" id="id70">
+<div class="figure align-default" id="id72">
 <img alt="_images/mase-brain.png" src="_images/mase-brain.png" />
 <p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
-<span id="id1">Arroyo <em>et al.</em> [<a class="reference internal" href="#id67">1</a>]</span>.</span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
+<span id="id1">Arroyo <em>et al.</em> [<a class="reference internal" href="#id68">1</a>]</span>.</span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="representations-for-each-network">
 <h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this headline">¶</a></h2>
-<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id2">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id68">2</a>]</span>.</p>
+<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id2">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id69">2</a>]</span>.
+The data comes from <span id="id3">Wang <em>et al.</em> [<a class="reference internal" href="#id70">3</a>]</span>.</p>
 <p>Below, we load in 32 networks - these networks come from MRI scans of mice brains, and
 these mouse came from one of 4 different genotypes. There are 8 mice from each genotype.</p>
 <div class="cell docutils container">
@@ -922,7 +923,7 @@ we can do something like</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_dissimilarity</span> <span class="o">=</span> <span class="n">dissimilarity_matrix</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dissimilarity_matrix</span><span class="p">)</span>
 
-<span class="n">heatmap</span><span class="p">(</span><span class="n">scaled_dissimilarity</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">mice</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">scaled_dissimilarity</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">mice</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -960,7 +961,7 @@ directly pass in <code class="docutils literal notranslate"><span class="pre">om
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 </pre></div>
 </div>
 </div>
@@ -998,11 +999,13 @@ clustering directly on the dissimilarity matrix as I do below.</p>
     <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 
+<span class="c1"># label the colorbar</span>
 <span class="n">clustergrid</span><span class="o">.</span><span class="n">ax_cbar</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Dissimilarity&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
+<span class="c1"># label one of the object color labels</span>
 <span class="n">col_ax</span> <span class="o">=</span> <span class="n">clustergrid</span><span class="o">.</span><span class="n">ax_col_colors</span>
 <span class="n">col_ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">])</span>
-<span class="n">col_ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;Genotype&quot;</span><span class="p">],</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">col_ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;Genotype&quot;</span><span class="p">],</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1018,12 +1021,15 @@ exactly recovered the genotype labels!</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id3"><dl class="citation">
-<dt class="label" id="id67"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<p id="id4"><dl class="citation">
+<dt class="label" id="id68"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. <em>Journal of Machine Learning Research</em>, 22(142):1–49, 2021.</p>
 </dd>
-<dt class="label" id="id68"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="id69"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. <em>arXiv preprint arXiv:2011.14990</em>, 2020.</p>
+</dd>
+<dt class="label" id="id70"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. <em>NeuroImage</em>, 222:117274, 2020.</p>
 </dd>
 </dl>
 </p>
