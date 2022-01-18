@@ -1011,10 +1011,10 @@ of the Laplacian (say, by clustering it), often we can understand meaningful par
 of a network.</p>
 <p>Let’s look at how this type of analysis looks on the C. elegans connectome from
 <span id="id2">Cook <em>et al.</em> [<a class="reference internal" href="#id71">2</a>]</span>.</p>
-<div class="figure align-default" id="id74">
+<div class="figure align-default" id="id76">
 <img alt="_images/c-elegans.png" src="_images/c-elegans.png" />
 <p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Network diagram and 3D position of neurons in the C. elegans male connectome. Figure
-from <span id="id3">Cook <em>et al.</em> [<a class="reference internal" href="#id71">2</a>]</span>.</span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
+from <span id="id3">Cook <em>et al.</em> [<a class="reference internal" href="#id71">2</a>]</span>.</span><a class="headerlink" href="#id76" title="Permalink to this image">¶</a></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1135,9 +1135,9 @@ than another, they’re simply different. Often, different network embedding met
 will capture different aspects of network structure. It will be up to you to choose or
 experiment and see which is best for your application.</p>
 <p>In a recent paper, <span id="id4">Priebe <em>et al.</em> [<a class="reference internal" href="#id73">3</a>]</span> showed that when applied to a dataset of human brain networks, ASE and LSE both captured meaningful, but different,aspects of the network. The LSE representation captured the left hemisphere/right hemisphere split in the human brain, while the ASE representation captured the grey matter/white matter difference.</p>
-<div class="figure align-default" id="id75">
+<div class="figure align-default" id="id77">
 <img alt="_images/two-truths.jpeg" src="_images/two-truths.jpeg" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of a “Two truths” phenomenon in spectral graph clustering. Figure from <span id="id5">Priebe <em>et al.</em> [<a class="reference internal" href="#id73">3</a>]</span>.</span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of a “Two truths” phenomenon in spectral graph clustering. Figure from <span id="id5">Priebe <em>et al.</em> [<a class="reference internal" href="#id73">3</a>]</span>.</span><a class="headerlink" href="#id77" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -1159,10 +1159,10 @@ sliding window over each sentence, and creating (<em>center word</em>, <em>surro
 pairs. The task, then, is to predict the surrounding words from the word in the center.
 In this way, we are training a model to understand the <em>context</em> of the center word
 as it is used in language.</p>
-<div class="figure align-default" id="id76">
+<div class="figure align-default" id="id78">
 <img alt="_images/w2v-training-data.png" src="_images/w2v-training-data.png" />
 <p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Diagram showing how source text is converted to training data for the Word2Vec / Skip-gram
-model. Figure from <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick’s blog</a>.</span><a class="headerlink" href="#id76" title="Permalink to this image">¶</a></p>
+model. Figure from <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick’s blog</a>.</span><a class="headerlink" href="#id78" title="Permalink to this image">¶</a></p>
 </div>
 <p>What does this model actually look like? In the case of Word2Vec, it is simply a 2-layer
 neural network. We wont talk much about the details of neural networks for the purposes
@@ -1171,9 +1171,9 @@ of this course, but the key idea is that neural networks are functions which we 
 do so by taking input that can be represented mathematically somehow (e.g. as a vector),
 and more or less performing a series of matrix-vector multiplications followed by some nonlinearities to reach an output which usually represents the probability of some
 particular output.</p>
-<div class="figure align-default" id="id77">
+<div class="figure align-default" id="id79">
 <img alt="_images/word2vec-skip-gram.png" src="_images/word2vec-skip-gram.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Diagram showing the architecture of Word2Vec. Figure from <a class="reference external" href="https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html">here</a>.</span><a class="headerlink" href="#id77" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Diagram showing the architecture of Word2Vec. Figure from <a class="reference external" href="https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html">here</a>.</span><a class="headerlink" href="#id79" title="Permalink to this image">¶</a></p>
 </div>
 <p>Note that the first part of this neural network architecture is just a weight, which
 maps each word in our vocabulary to some hidden representation which is useful for
@@ -1187,9 +1187,9 @@ to wonder whether this fairly simple tool could be applied to other contexts, li
 networks.</p>
 <p>One “sequence on a network” that keeps coming up for us is random walks (see <a class="reference internal" href="centrality.html"><span class="doc std std-doc">Centrality measures</span></a>). So, what if we generate a ton of random walks on our network, and then trained a
 Word2Vec model to predict context nodes from the nodes in the center of a window.</p>
-<div class="figure align-default" id="id78">
+<div class="figure align-default" id="id80">
 <img alt="_images/deepwalk.png" src="_images/deepwalk.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Overview of DeepWalk. Figure from <span id="id7">Perozzi <em>et al.</em> [<a class="reference internal" href="#id68">5</a>]</span></span><a class="headerlink" href="#id78" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Overview of DeepWalk. Figure from <span id="id7">Perozzi <em>et al.</em> [<a class="reference internal" href="#id68">5</a>]</span></span><a class="headerlink" href="#id80" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="from-deepwalk-to-node2vec">
@@ -1200,9 +1200,9 @@ the network are biased to be more or less likely to travel in the neighborhood t
 from based on some user provided parameters. The authors claimed that adjusting these
 parameters based on the application let them find more useful representations for
 some datasets, but this result has been debated somewhat.</p>
-<div class="figure align-default" id="id79">
+<div class="figure align-default" id="id81">
 <img alt="_images/n2v-modification.png" src="_images/n2v-modification.png" />
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Modification to random walks from Node2Vec. Figure from <span id="id8">Grover and Leskovec [<a class="reference internal" href="#id69">6</a>]</span></span><a class="headerlink" href="#id79" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Modification to random walks from Node2Vec. Figure from <span id="id8">Grover and Leskovec [<a class="reference internal" href="#id69">6</a>]</span></span><a class="headerlink" href="#id81" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="running-node2vec">
