@@ -27,6 +27,7 @@ parts:
   - file: embedding
   - file: graph_matching
   - file: multiple_embedding
+  - file: ranking
 - caption: Projects
   chapters:
   - file: projects/clarke.md
