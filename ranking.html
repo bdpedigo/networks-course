@@ -656,79 +656,6 @@ note that it could apply to something other than teams and games.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_adjacency</span><span class="p">(</span><span class="n">adjacency_df</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
-<span class="n">g_sym</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_adjacency</span><span class="p">(</span><span class="n">adjacency_df</span> <span class="o">+</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-
-<span class="n">nodelist</span> <span class="o">=</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span>
-<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
-<span class="n">node_data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Abilene Christian</th>
-    </tr>
-    <tr>
-      <th>Air Force</th>
-    </tr>
-    <tr>
-      <th>Akron</th>
-    </tr>
-    <tr>
-      <th>Alabama</th>
-    </tr>
-    <tr>
-      <th>Alabama-Birmingham</th>
-    </tr>
-    <tr>
-      <th>...</th>
-    </tr>
-    <tr>
-      <th>Western Carolina</th>
-    </tr>
-    <tr>
-      <th>Western Kentucky</th>
-    </tr>
-    <tr>
-      <th>Western Michigan</th>
-    </tr>
-    <tr>
-      <th>Wisconsin</th>
-    </tr>
-    <tr>
-      <th>Wyoming</th>
-    </tr>
-  </tbody>
-</table>
-<p>143 rows × 0 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
 <span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
 
@@ -771,6 +698,9 @@ note that it could apply to something other than teams and games.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/ranking_3_0.png" src="_images/ranking_3_0.png" />
+</div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Question</p>
@@ -779,6 +709,13 @@ note that it could apply to something other than teams and games.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Arizona&#39;, &#39;Arizona State&#39;, &#39;California&#39;, &#39;Colorado&#39;, &#39;Oregon&#39;,
+       &#39;Oregon State&#39;, &#39;Southern California&#39;, &#39;Stanford&#39;, &#39;UCLA&#39;, &#39;Utah&#39;,
+       &#39;Washington&#39;, &#39;Washington State&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -805,6 +742,22 @@ counts of wins in its elements.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alabama              13.0
+Brigham Young        11.0
+Coastal Carolina     11.0
+Notre Dame           10.0
+Clemson              10.0
+                     ... 
+Nevada-Las Vegas      0.0
+New Mexico State      0.0
+North Alabama         0.0
+Northern Illinois     0.0
+Abilene Christian     0.0
+Length: 143, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note that it is easy to have ties in this ranking. Also, teams could play different
 numbers of games in some leagues/situations, which we might want to account for. With
@@ -824,6 +777,22 @@ a matrix with these degrees on the diagonal we could make an adjustment like</p>
 <span class="n">win_rates</span> <span class="o">=</span> <span class="n">n_wins</span> <span class="o">/</span> <span class="n">n_games</span>
 <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;win_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win_rates</span>
 <span class="n">win_rates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alabama              1.000000
+Tarleton State       1.000000
+Brigham Young        0.916667
+Coastal Carolina     0.916667
+Louisiana            0.909091
+                       ...   
+Mercer               0.000000
+Missouri State       0.000000
+Nevada-Las Vegas     0.000000
+New Mexico State     0.000000
+Abilene Christian    0.000000
+Length: 143, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -894,6 +863,22 @@ exactly when we’d expect it to.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Oklahoma                 0.446343
+Iowa State               0.439824
+Oklahoma State           0.328123
+Texas                    0.258606
+Alabama                  0.239614
+                           ...   
+Florida International    0.000000
+Tarleton State           0.000000
+Temple                   0.000000
+Ohio                     0.000000
+Abilene Christian        0.000000
+Length: 143, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -934,6 +919,12 @@ exactly when we’d expect it to.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_16_1.png" src="_images/ranking_16_1.png" />
+</div>
 </div>
 <div class="section" id="brief-aside">
 <h3>Brief aside<a class="headerlink" href="#brief-aside" title="Permalink to this headline">¶</a></h3>
@@ -953,12 +944,33 @@ exactly when we’d expect it to.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stanford               0.432102
+Oregon                 0.394296
+Washington             0.365687
+Southern California    0.337310
+Utah                   0.330062
+California             0.253709
+Colorado               0.249628
+Oregon State           0.238261
+Washington State       0.153309
+Arizona State          0.153309
+dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;evec_rank_lap&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_19_1.png" src="_images/ranking_19_1.png" />
 </div>
 </div>
 </div>
@@ -1072,12 +1084,34 @@ Laplacian. Let’s write down a couple of definitions:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alabama                  2.072149
+Texas A&amp;M                1.655812
+Georgia                  1.578020
+Ohio State               1.527953
+Ball State               1.502823
+                           ...   
+Stephen F. Austin       -1.256503
+Abilene Christian       -1.290551
+Houston Baptist         -1.335099
+Florida International   -1.531728
+Chattanooga             -1.636243
+Length: 143, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="s2">&quot;sf_rank_order&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_22_1.png" src="_images/ranking_22_1.png" />
 </div>
 </div>
 </div>
@@ -1147,6 +1181,28 @@ that we talked about in this course?</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of games: 569.0
+Number of non-upsets (graph matching score): 524.0
+Number of upsets: 45.0
+Upset ratio: 0.07908611599297012
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Liberty             143
+Coastal Carolina    142
+Alabama             141
+Louisiana           140
+Ohio State          139
+                   ... 
+Tarleton State        5
+Missouri State        4
+Chattanooga           3
+Mercer                2
+New Mexico State      1
+Length: 143, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1199,12 +1255,24 @@ that we talked about in this course?</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_26_1.png" src="_images/ranking_26_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="s2">&quot;gm_rank_order&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_27_1.png" src="_images/ranking_27_1.png" />
 </div>
 </div>
 <div class="tip admonition">
@@ -1233,6 +1301,9 @@ would a good choice of initialization be?</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ranking_30_0.png" src="_images/ranking_30_0.png" />
 </div>
 </div>
 </div>
@@ -1445,6 +1516,13 @@ would a good choice of initialization be?</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Ranking&#39;)
+</pre></div>
+</div>
+<img alt="_images/ranking_36_1.png" src="_images/ranking_36_1.png" />
+<img alt="_images/ranking_36_2.png" src="_images/ranking_36_2.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1460,6 +1538,9 @@ would a good choice of initialization be?</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ranking_37_0.png" src="_images/ranking_37_0.png" />
 </div>
 </div>
 </div>
