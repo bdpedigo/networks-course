@@ -498,10 +498,10 @@
 <h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">¶</a></h1>
 <p>Often, we are interested in more than one network. Sometimes this arises from thinking
 about multiple “layers,” where each layer represents a different kind of relationship.</p>
-<div class="figure align-default" id="id73">
+<div class="figure align-default" id="id75">
 <img alt="_images/stacked-adj.png" src="_images/stacked-adj.png" />
 <p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
-connectome.</span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
+connectome.</span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
 </div>
 <p>Or, we may have networks which arise from the same process, but at different timepoints.</p>
 <p>Regardless of the data, it is common to want to:</p>
@@ -805,10 +805,10 @@ adjacency matrices. We then decompose that larger matrix <span class="math notra
 ASE. Because this embedding is done in one stage (rather than one for each network) we
 no longer have the same issue with the nonidentifiability above, so we no longer have
 to worry about aligning our embeddings between networks.</p>
-<div class="figure align-default" id="id74">
+<div class="figure align-default" id="id76">
 <img alt="_images/omni.png" src="_images/omni.png" />
 <p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Construction of the matrix <span class="math notranslate nohighlight">\(M\)</span> which is then decomposed using the SVD in the Omnibus
-embedding. Figure from <span id="id1">Athreya <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id25">1</a>]</span>.</span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
+embedding. Figure from <span id="id1">Athreya <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id25">1</a>]</span>.</span><a class="headerlink" href="#id76" title="Permalink to this image">¶</a></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,10 +895,10 @@ estimate for each node pair</p>
 <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>, these can be accessed using the <code class="docutils literal notranslate"><span class="pre">.score_</span></code> attribute of the fitted object.
 More details can be found in the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/embedding/MASE.html">MASE tutorial</a>.</p>
 </div>
-<div class="figure align-default" id="id75">
+<div class="figure align-default" id="id77">
 <img alt="_images/mase-brain.png" src="_images/mase-brain.png" />
 <p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
-<span id="id3">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span>.</span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
+<span id="id3">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span>.</span><a class="headerlink" href="#id77" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="representations-for-each-network">

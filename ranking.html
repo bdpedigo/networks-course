@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -352,11 +354,111 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/ranking.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ncaa-football-network">
+   NCAA Football network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-and-eigenvector-rankings">
+   Simple and eigenvector rankings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brief-aside">
+     Brief aside
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signal-flow-laplacian-ranking">
+   Signal flow / laplacian ranking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-an-energy-objective-function">
+     Defining an energy (objective) function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-for-z">
+     Solving for
+     <span class="math notranslate nohighlight">
+      \(z\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-delta">
+     Defining
+     <span class="math notranslate nohighlight">
+      \(\Delta\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-intuition">
+     Some intuition
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upset-minimization-or-minimum-violations-ranking">
+   Upset minimization or minimum violations ranking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-these-ranking-schemes">
+   Compare these ranking schemes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranking-soccer-teams">
+   Ranking soccer teams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-applications">
+   Other applications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -369,6 +471,89 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ncaa-football-network">
+   NCAA Football network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-and-eigenvector-rankings">
+   Simple and eigenvector rankings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brief-aside">
+     Brief aside
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signal-flow-laplacian-ranking">
+   Signal flow / laplacian ranking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-an-energy-objective-function">
+     Defining an energy (objective) function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-for-z">
+     Solving for
+     <span class="math notranslate nohighlight">
+      \(z\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-delta">
+     Defining
+     <span class="math notranslate nohighlight">
+      \(\Delta\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-intuition">
+     Some intuition
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upset-minimization-or-minimum-violations-ranking">
+   Upset minimization or minimum violations ranking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-these-ranking-schemes">
+   Compare these ranking schemes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranking-soccer-teams">
+   Ranking soccer teams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-applications">
+   Other applications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -377,6 +562,1000 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="ranking-and-flow">
 <h1>Ranking and flow<a class="headerlink" href="#ranking-and-flow" title="Permalink to this headline">¶</a></h1>
+<p>This is the first type of analysis we’ll talk about that really only makes sense for
+directed networks. There are a few ways to motivate a similar kind of analysis, which
+I’ll put under the umbrella of “ranking” or “flow” through a directed network.</p>
+<ul class="simple">
+<li><p>Let’s say we have a network, where directed edges represent some kind of “dominance”
+relationship. An example could be a network of teams, where edges represent a victory
+by team <span class="math notranslate nohighlight">\(i\)</span> over team <span class="math notranslate nohighlight">\(j\)</span>. Or, it could be a network of individual animals, and edges
+represent an interaction where an ecologist watched one animal somehow dominate another.
+Or, it could be a food web, where an edge represents that organism <span class="math notranslate nohighlight">\(i\)</span> consumes organism
+<span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p>Another perspective is that we just have a directed network, and we want to understand
+how information/signal/etc flows through it. An example would be a network of neurons
+(connectome), and we might want to understand which neurons are closer to sensory input
+and which neurons are closer to motor output.</p></li>
+</ul>
+<div class="section" id="ncaa-football-network">
+<h2>NCAA Football network<a class="headerlink" href="#ncaa-football-network" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start by considering the ranking problem, where an edge from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> represents
+a victory of team <span class="math notranslate nohighlight">\(i\)</span> over team <span class="math notranslate nohighlight">\(j\)</span>. We could use weights if we want (for something like
+a score differential, say). I’ll stick with this nomenclature for this discussion, but
+note that it could apply to something other than teams and games.</p>
+<p>Below, I’ll create a network from the 2020 NCAA Football season.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">adjplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># REF: https://www.sports-reference.com/cfb/years/2020.html</span>
+<span class="n">schedule</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;networks-course/data/sports/ncaa_football_2020.csv&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">filt</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\([0123456789]*\) &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+
+
+<span class="n">vec_filt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">filt</span><span class="p">)</span>
+
+<span class="n">schedule</span><span class="p">[</span><span class="s2">&quot;Winner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vec_filt</span><span class="p">(</span><span class="n">schedule</span><span class="p">[</span><span class="s2">&quot;Winner&quot;</span><span class="p">])</span>
+<span class="n">schedule</span><span class="p">[</span><span class="s2">&quot;Loser&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vec_filt</span><span class="p">(</span><span class="n">schedule</span><span class="p">[</span><span class="s2">&quot;Loser&quot;</span><span class="p">])</span>
+
+
+<span class="n">unique_winners</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">schedule</span><span class="p">[</span><span class="s2">&quot;Winner&quot;</span><span class="p">])</span>
+<span class="n">unique_losers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">schedule</span><span class="p">[</span><span class="s2">&quot;Loser&quot;</span><span class="p">])</span>
+<span class="n">teams</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">union1d</span><span class="p">(</span><span class="n">unique_winners</span><span class="p">,</span> <span class="n">unique_losers</span><span class="p">)</span>
+<span class="n">n_teams</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">teams</span><span class="p">)</span>
+
+<span class="n">adjacency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">teams</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">teams</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_teams</span><span class="p">,</span> <span class="n">n_teams</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">schedule</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">winner</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Winner&quot;</span><span class="p">]</span>
+    <span class="n">loser</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Loser&quot;</span><span class="p">]</span>
+    <span class="n">adjacency_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">winner</span><span class="p">,</span> <span class="n">loser</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">remove_winless</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">n_wins</span> <span class="o">=</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">remove_winless</span><span class="p">:</span>
+    <span class="n">teams</span> <span class="o">=</span> <span class="n">teams</span><span class="p">[</span><span class="n">n_wins</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_wins</span> <span class="o">=</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">adjacency_df</span> <span class="o">=</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">teams</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">teams</span><span class="p">)</span>
+
+<span class="n">n_teams</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">teams</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">adjplot</span><span class="p">(</span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;scattermap&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;2020 NCAA Footbal Season Graph&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Winning team&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Losing team&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of teams </span><span class="si">{</span><span class="n">n_teams</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of teams 143
+</pre></div>
+</div>
+<img alt="_images/ranking_2_1.png" src="_images/ranking_2_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_adjacency</span><span class="p">(</span><span class="n">adjacency_df</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+<span class="n">g_sym</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_adjacency</span><span class="p">(</span><span class="n">adjacency_df</span> <span class="o">+</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span>
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">adjacency_df</span><span class="p">:</span>
+    <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
+
+<span class="n">partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g_sym</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">8888</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partition_map</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;leiden_labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">adjacency_df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>  <span class="c1"># bug in this function requires the .reset_index</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;leiden_labels&quot;</span><span class="p">,</span>
+    <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ranking_3_0.png" src="_images/ranking_3_0.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>What do you think the communities I plot above correspond to?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Arizona&#39;, &#39;Arizona State&#39;, &#39;California&#39;, &#39;Colorado&#39;, &#39;Oregon&#39;,
+       &#39;Oregon State&#39;, &#39;Southern California&#39;, &#39;Stanford&#39;, &#39;UCLA&#39;, &#39;Utah&#39;,
+       &#39;Washington&#39;, &#39;Washington State&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simple-and-eigenvector-rankings">
+<h2>Simple and eigenvector rankings<a class="headerlink" href="#simple-and-eigenvector-rankings" title="Permalink to this headline">¶</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>What is perhaps the simplest way to say which teams are doing well in a given year, say
+just given the outcome of each game in a season?</p>
+<p>For the metric you just described, how can we compute it using the adjacency matrix?</p>
+</div>
+<p>Let <span class="math notranslate nohighlight">\(r_0\)</span> be the vector of all ones. Note now that</p>
+<div class="math notranslate nohighlight">
+\[r = A r_0\]</div>
+<p>is calculating the <em>number of wins</em> for each team if the adjacency matrix just has
+counts of wins in its elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_wins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adjacency_df</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;n_wins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_wins</span>
+<span class="n">n_wins</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alabama              13.0
+Brigham Young        11.0
+Coastal Carolina     11.0
+Notre Dame           10.0
+Clemson              10.0
+                     ... 
+Nevada-Las Vegas      0.0
+New Mexico State      0.0
+North Alabama         0.0
+Northern Illinois     0.0
+Abilene Christian     0.0
+Length: 143, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that it is easy to have ties in this ranking. Also, teams could play different
+numbers of games in some leagues/situations, which we might want to account for. With
+<span class="math notranslate nohighlight">\(d_i\)</span> being the total degree of node <span class="math notranslate nohighlight">\(i\)</span> (numbers of wins AND losses), and <span class="math notranslate nohighlight">\(D\)</span> being
+a matrix with these degrees on the diagonal we could make an adjustment like</p>
+<div class="math notranslate nohighlight">
+\[r = D^{-1} A r_0\]</div>
+<div class="math notranslate nohighlight">
+\[r = P r_0\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>How can we interpret this new ranking scheme in terms of wins/losses for a given team?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_games</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adjacency_df</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adjacency_df</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">win_rates</span> <span class="o">=</span> <span class="n">n_wins</span> <span class="o">/</span> <span class="n">n_games</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;win_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win_rates</span>
+<span class="n">win_rates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alabama              1.000000
+Tarleton State       1.000000
+Brigham Young        0.916667
+Coastal Carolina     0.916667
+Louisiana            0.909091
+                       ...   
+Mercer               0.000000
+Missouri State       0.000000
+Nevada-Las Vegas     0.000000
+New Mexico State     0.000000
+Abilene Christian    0.000000
+Length: 143, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span>
+
+<span class="k">def</span> <span class="nf">rank_to_order</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="n">node_data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">_order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+<span class="n">rank_to_order</span><span class="p">(</span><span class="s1">&#39;win_rate&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In a league like NCAA where not all teams play each other, this ranking does
+not account for strength of schedule. Perhaps our ranking scheme should account not just
+for the number or proportion of wins, but also the quality of the teams that we beat. We
+can account for this by instead, say, calculating the sum of the number of wins of the
+teams that team <span class="math notranslate nohighlight">\(i\)</span> beat:</p>
+<div class="math notranslate nohighlight">
+\[r = A A r_0 = A^2 r_0\]</div>
+<p>I love this quote from <span id="id1">Keener [<a class="reference internal" href="#id71">1</a>]</span> (I have changed the mathematical
+notation only to match ours):</p>
+<blockquote>
+<div><p>“I have heard it suggested by a nationally prominent football coach that <span class="math notranslate nohighlight">\(A^2 r_0\)</span> should be used to determine a
+national champion… Of course, he did not express his scheme in mathematical notation,
+and, therefore, did not see the obvious generalization of using <span class="math notranslate nohighlight">\(A^s r_0\)</span> with large
+<span class="math notranslate nohighlight">\(s\)</span>.”</p>
+</div></blockquote>
+<p>Earlier in the course, we talked about <a class="reference external" href="https://en.wikipedia.org/wiki/Power_iteration">power iteration</a>.
+This is a method for calculating the principal eigenvector/eigenvalue of a matrix. It is
+based on the idea that, as <span class="math notranslate nohighlight">\(s\)</span> goes to infinity,</p>
+<div class="math notranslate nohighlight">
+\[\lim_{s \rightarrow \infty} \frac{A^s r_0}{\|A^s r_0\|} = r\]</div>
+<p>where here <span class="math notranslate nohighlight">\(r\)</span> is now the principal eigenvector of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fun fact: this positive principal eigenvector is only guaranteed to exist when the
+network is fully (weakly) connected (see the <a class="reference external" href="https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a>
+or <span id="id2">Keener [<a class="reference internal" href="#id71">1</a>]</span>). But this is kind of cool - if the network weren’t
+fully connected, it would mean that we can divide the set of teams into groups that
+never play each other - in other words, they are different leagues! So this breaks down
+exactly when we’d expect it to.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">values</span>
+
+
+<span class="k">def</span> <span class="nf">eig</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">evals</span><span class="p">,</span> <span class="n">evecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">sort_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">evals</span><span class="p">)</span>
+    <span class="n">evals</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">sort_inds</span><span class="p">]</span>
+    <span class="n">evecs</span> <span class="o">=</span> <span class="n">evecs</span><span class="p">[:,</span> <span class="n">sort_inds</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">evals</span><span class="p">,</span> <span class="n">evecs</span>
+
+
+<span class="n">evals</span><span class="p">,</span> <span class="n">evecs</span> <span class="o">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">principal_evec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">evecs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">eigvec_ranking</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">principal_evec</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;evec_rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eigvec_ranking</span>
+<span class="n">rank_to_order</span><span class="p">(</span><span class="s1">&#39;evec_rank&#39;</span><span class="p">)</span>
+<span class="n">eigvec_ranking</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Oklahoma                 0.446343
+Iowa State               0.439824
+Oklahoma State           0.328123
+Texas                    0.258606
+Alabama                  0.239614
+                           ...   
+Florida International    0.000000
+Tarleton State           0.000000
+Temple                   0.000000
+Ohio                     0.000000
+Abilene Christian        0.000000
+Length: 143, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+
+
+<span class="k">def</span> <span class="nf">plot_network_color_scaled</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">adjacency_df</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>  <span class="c1"># bug in this function requires the .reset_index</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="s2">&quot;evec_rank_order&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_16_1.png" src="_images/ranking_16_1.png" />
+</div>
+</div>
+<div class="section" id="brief-aside">
+<h3>Brief aside<a class="headerlink" href="#brief-aside" title="Permalink to this headline">¶</a></h3>
+<p>Watch what happens if you use the normalized adjacency / Laplacian here instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">D_inv</span> <span class="o">@</span> <span class="n">A</span>
+
+<span class="n">evals</span><span class="p">,</span> <span class="n">evecs</span> <span class="o">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="n">principal_evec_lap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">evecs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">eigvec_ranking_lap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">principal_evec_lap</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;evec_rank_lap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eigvec_ranking_lap</span>
+<span class="n">rank_to_order</span><span class="p">(</span><span class="s1">&#39;evec_rank_lap&#39;</span><span class="p">)</span>
+<span class="n">eigvec_ranking_lap</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stanford               0.432102
+Oregon                 0.394296
+Washington             0.365687
+Southern California    0.337310
+Utah                   0.330062
+California             0.253709
+Colorado               0.249628
+Oregon State           0.238261
+Washington State       0.153309
+Arizona State          0.153309
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;evec_rank_lap&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_19_1.png" src="_images/ranking_19_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="signal-flow-laplacian-ranking">
+<h2>Signal flow / laplacian ranking<a class="headerlink" href="#signal-flow-laplacian-ranking" title="Permalink to this headline">¶</a></h2>
+<p>There is another, similar but distinct notion of ranking which is related to the network
+Laplacian. Let’s write down a couple of definitions:</p>
+<p><span class="math notranslate nohighlight">\(W \in \mathbb{R}^{n \times n}\)</span>: <span class="math notranslate nohighlight">\(\frac{A + A^T}{2}\)</span>, the symmetrized adjacency matrix</p>
+<p><span class="math notranslate nohighlight">\(\Delta \in \mathbb{R}^{n \times n}\)</span>: an antisymmetric matrix, which we will specify later</p>
+<p><span class="math notranslate nohighlight">\(z \in \mathbb{R}^{n}\)</span>: the vector of signal flows for each node <span class="math notranslate nohighlight">\(\{1, 2, ... ,n\}\)</span></p>
+<div class="section" id="defining-an-energy-objective-function">
+<h3>Defining an energy (objective) function<a class="headerlink" href="#defining-an-energy-objective-function" title="Permalink to this headline">¶</a></h3>
+<p>We start by defining an energy function:</p>
+<div class="math notranslate nohighlight">
+\[E(z) = \frac{1}{2} \sum_{i, j = 1}^n w_{ij} (z_i - z_j - \delta_{ij})^2\]</div>
+<div class="math notranslate nohighlight">
+\[E(z) = \frac{1}{2} \sum_{i, j = 1}^n w_{ij} (z_i - z_j)^2 - \sum_{i, j = 1}^n w_{ij} \delta_{ij} (z_i - z_j) + \frac{1}{2} \sum_{i, j = 1}^n w_{ij} x_{ij}^2\]</div>
+<p>Let <span class="math notranslate nohighlight">\(E_0 = \frac{1}{2} \sum_{i, j = 1}^n w_{ij} x_{ij}^2\)</span></p>
+<p>Note that <span class="math notranslate nohighlight">\(\frac{1}{2} \sum_{i, j = 1}^n w_{ij} (z_i - z_j)^2\)</span> is related to the unnormalized graph laplacian: <span class="math notranslate nohighlight">\(L = D - W\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2} \sum_{i, j = 1}^n w_{ij} (z_i - z_j)^2\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2} \sum_{i, j = 1}^n w_{ij} (z_i^2 - 2z_i z_j - z_j^2)\]</div>
+<p>Let <span class="math notranslate nohighlight">\(d_i = \sum_{j = 1}^n w_{ij}\)</span>, the degree of node <span class="math notranslate nohighlight">\(i\)</span>. Since <span class="math notranslate nohighlight">\(W\)</span> is symmetric</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2} \sum_{i = 1}^n d_i z_i^2 - \sum_{i, j = 1}^n w_{ij} z_i z_j + \frac{1}{2} \sum_{j = 1}^n d_j z_j^2\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2} \sum_{i = 1}^n d_i z_i^2 - \sum_{i, j = 1}^n w_{ij} z_i z_j + \frac{1}{2} \sum_{j = 1}^n d_j z_j^2\]</div>
+<div class="math notranslate nohighlight">
+\[\sum_{i = 1}^n d_i z_i^2 - \sum_{i, j = 1}^n w_{ij} z_i z_j\]</div>
+<div class="math notranslate nohighlight">
+\[z^T D z - z^T W z\]</div>
+<div class="math notranslate nohighlight">
+\[z^T (D - W) z\]</div>
+<div class="math notranslate nohighlight">
+\[z^T L z\]</div>
+<p>Now, consider the term</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i, j = 1}^n w_{ij} \delta_{ij} (z_i - z_j)\]</div>
+<div class="math notranslate nohighlight">
+\[\sum_{i, j = 1}^n w_{ij} \delta_{ij} z_i  -  \sum_{i, j = 1}^n w_{ij} \delta_{ij}z_j\]</div>
+<div class="math notranslate nohighlight">
+\[\sum_{i, j = 1}^n w_{ji}( - \delta_{ji}) z_i  -  \sum_{i, j = 1}^n w_{ij} \delta_{ij}z_j\]</div>
+<div class="math notranslate nohighlight">
+\[\sum_{i, j = 1}^n w_{ji}( - \delta_{ji}) z_i  -  \sum_{i, j = 1}^n w_{ij} \delta_{ij}z_j\]</div>
+<p>define <span class="math notranslate nohighlight">\(b_i = \sum_{j=1}^n w_{ij}x_{ij}\)</span>. Now the above reduces to</p>
+<div class="math notranslate nohighlight">
+\[-z^Tb - z^Tb = -2z^Tb\]</div>
+<div class="math notranslate nohighlight">
+\[E(z) = \frac{1}{2} \sum_{i, j = 1}^n w_{ij} (z_i - z_j)^2 - \sum_{i, j = 1}^n w_{ij} \delta_{ij} (z_i - z_j) + \frac{1}{2} \sum_{i, j = 1}^n w_{ij} x_{ij}^2 = z^T L z - 2z^T b + E_0\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_0\)</span> is the remaining constant (which does not depend on <span class="math notranslate nohighlight">\(z\)</span>).</p>
+</div>
+<div class="section" id="solving-for-z">
+<h3>Solving for <span class="math notranslate nohighlight">\(z\)</span><a class="headerlink" href="#solving-for-z" title="Permalink to this headline">¶</a></h3>
+<p>Taking the derivative of <span class="math notranslate nohighlight">\(E(z)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\frac{dE(z)}{dz} = \frac{d}{dz} (z^T L z - 2z^T b + E_0) =  2 L z - 2 b\]</div>
+<p>Setting equal to 0,</p>
+<div class="math notranslate nohighlight">
+\[L z = b\]</div>
+<p><span class="math notranslate nohighlight">\(L\)</span> is singular. To see this, recall that</p>
+<div class="math notranslate nohighlight">
+\[Lx = (D - W)x\]</div>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be the vector of all ones, then</p>
+<div class="math notranslate nohighlight">
+\[(Dx - Wx)_i = d_i - \sum_{j=1}^n w_{ij} = 0\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(Lx = 0 = 0x\)</span> so the vector of all ones is an eigenvector of <span class="math notranslate nohighlight">\(L\)</span> with eigenvalue <span class="math notranslate nohighlight">\(0\)</span>, so <span class="math notranslate nohighlight">\(L\)</span> is not invertible.</p>
+<p>However, we can solve</p>
+<div class="math notranslate nohighlight">
+\[\min_z \| Lz - b \|_2 \]</div>
+<p>via the Moore-Penrose inverse of <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(L^\dagger\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[z^* = L^\dagger b\]</div>
+<p>The Moore-Penrose inverse yields the <em>unique</em> solution to <span class="math notranslate nohighlight">\(\min_z \| Lz - b \|_2\)</span> <em>with minimum 2-norm</em>. However, there are many solutions, all of the form</p>
+<div class="math notranslate nohighlight">
+\[z^* = L^\dagger b + y\]</div>
+<p>where <span class="math notranslate nohighlight">\(y \in Null(L)\)</span>. What is in <span class="math notranslate nohighlight">\(Null(L)\)</span>? Any vector spanned by the vector of all ones, as shown above! This means that all of the values of the signal flow vector <span class="math notranslate nohighlight">\(z\)</span> could be shifted by a constant and the value of the objective function <span class="math notranslate nohighlight">\(E(z)\)</span> would remain the same. Signal flow is not an absolute measure, but rather, a measure of where a node lives in the graph relative to its peers.</p>
+</div>
+<div class="section" id="defining-delta">
+<h3>Defining <span class="math notranslate nohighlight">\(\Delta\)</span><a class="headerlink" href="#defining-delta" title="Permalink to this headline">¶</a></h3>
+<p>What we have seen is that</p>
+<div class="math notranslate nohighlight">
+\[E(z) = \frac{1}{2} \sum_{i, j = 1}^n w_{ij} (z_i - z_j - \delta_{ij})^2\]</div>
+<p>is minimized by <span class="math notranslate nohighlight">\(z = L^\dagger b\)</span>, where <span class="math notranslate nohighlight">\(b\)</span> is a vector such that <span class="math notranslate nohighlight">\(b_i = \sum_{j=1}w_{ij}\delta_{ij}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Delta\)</span> can be whatever we choose, as long as it is antisymmetric. One choice used in <em>Varshney et al. 2011</em> is <span class="math notranslate nohighlight">\(\delta_{ij} = sgn(A_{ij} - A_{ji})\)</span> This choice makes some intuitive sense.</p>
+</div>
+<div class="section" id="some-intuition">
+<h3>Some intuition<a class="headerlink" href="#some-intuition" title="Permalink to this headline">¶</a></h3>
+<p>Considering a single pair of nodes, <span class="math notranslate nohighlight">\(i, j\)</span>, the energy function looks like</p>
+<div class="math notranslate nohighlight">
+\[ w_{ij} (z_i - z_j - sgn(A_{ij} - A_{ji})) \]</div>
+<p>If <span class="math notranslate nohighlight">\(A_{ij} &gt; A_{ji}\)</span>, then node <span class="math notranslate nohighlight">\(i\)</span> projects more strongly to <span class="math notranslate nohighlight">\(j\)</span> than <span class="math notranslate nohighlight">\(j\)</span> does to it. <span class="math notranslate nohighlight">\(sgn(A_{ij} - A_{ji})\)</span> returns 1, and so the optinal configuration of <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> is to have <span class="math notranslate nohighlight">\(z_i = z_j + 1\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(z\)</span> is chosen by weighting each of these terms by the average projection weight <span class="math notranslate nohighlight">\(w_{ij}\)</span>, and finding the solution <span class="math notranslate nohighlight">\(z\)</span> which minimizes these terms over all <span class="math notranslate nohighlight">\(i, j\)</span> pairs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="n">D</span> <span class="o">-</span> <span class="n">W</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">L_dagger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># this is the Moore-Penrose inverse</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">L_dagger</span> <span class="o">@</span> <span class="n">b</span>
+
+<span class="n">signal_flow_rank</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;sf_rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_flow_rank</span> <span class="o">-</span> <span class="n">signal_flow_rank</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">rank_to_order</span><span class="p">(</span><span class="s2">&quot;sf_rank&quot;</span><span class="p">)</span>
+<span class="n">signal_flow_rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alabama                  2.072149
+Texas A&amp;M                1.655812
+Georgia                  1.578020
+Ohio State               1.527953
+Ball State               1.502823
+                           ...   
+Stephen F. Austin       -1.256503
+Abilene Christian       -1.290551
+Houston Baptist         -1.335099
+Florida International   -1.531728
+Chattanooga             -1.636243
+Length: 143, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="s2">&quot;sf_rank_order&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_22_1.png" src="_images/ranking_22_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="upset-minimization-or-minimum-violations-ranking">
+<h2>Upset minimization or minimum violations ranking<a class="headerlink" href="#upset-minimization-or-minimum-violations-ranking" title="Permalink to this headline">¶</a></h2>
+<p>Now, let’s switch gears entirely, and talk about a completely different perspective on
+the ranking problem. I’ll start by making a very simple claim: a good ranking of my
+teams is one in which, as often as is possible, the higher ranked team beat the lower
+ranked one.</p>
+<p>How can we write what we are after mathematically? If <span class="math notranslate nohighlight">\(P\)</span> is a permutation matrix, then
+we can write:</p>
+<div class="math notranslate nohighlight">
+\[\min_P \sum_{i&lt;j}^n (P A P^T)_{ij}\]</div>
+<p>In other words, this is the sum of the upper triangular elements of some permuted
+version of the adjacency matrix.</p>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Let’s say we trust this ordering of the teams under some <span class="math notranslate nohighlight">\(P\)</span>. What does the sum of the
+upper triangle represent? The sum of the lower triangle?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Can you think of a way to formulate the optimization problem above, using the tools
+that we talked about in this course?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.match</span> <span class="kn">import</span> <span class="n">GraphMatch</span>
+
+<span class="n">adj</span> <span class="o">=</span> <span class="n">adjacency_df</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># constructing the match matrix</span>
+<span class="n">match_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+<span class="n">triu_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">match_mat</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">match_mat</span><span class="p">[</span><span class="n">triu_inds</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># running graph matching</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+<span class="n">gm</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">(</span><span class="n">n_init</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">gm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">match_mat</span><span class="p">,</span> <span class="n">adj</span><span class="p">)</span>
+<span class="n">gm_perm_inds</span> <span class="o">=</span> <span class="n">gm</span><span class="o">.</span><span class="n">perm_inds_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adj_matched</span> <span class="o">=</span> <span class="n">adj</span><span class="p">[</span><span class="n">gm_perm_inds</span><span class="p">][:,</span> <span class="n">gm_perm_inds</span><span class="p">]</span>
+<span class="n">upsets</span> <span class="o">=</span> <span class="n">adj_matched</span><span class="p">[</span><span class="n">triu_inds</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">n_games</span> <span class="o">=</span> <span class="n">adj_matched</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">gm_ranking_teams</span> <span class="o">=</span> <span class="n">teams</span><span class="p">[</span><span class="n">gm_perm_inds</span><span class="p">]</span>
+
+<span class="n">gm_rank_order</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">gm_ranking_teams</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">teams</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">teams</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;gm_rank_order&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gm_rank_order</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of games: </span><span class="si">{</span><span class="n">n_games</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of non-upsets (graph matching score): </span><span class="si">{</span><span class="n">gm</span><span class="o">.</span><span class="n">score_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of upsets: </span><span class="si">{</span><span class="n">upsets</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Upset ratio: </span><span class="si">{</span><span class="n">upsets</span><span class="o">/</span><span class="n">n_games</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">gm_rank_order</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of games: 569.0
+Number of non-upsets (graph matching score): 524.0
+Number of upsets: 45.0
+Upset ratio: 0.07908611599297012
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Liberty             143
+Coastal Carolina    142
+Alabama             141
+Louisiana           140
+Ohio State          139
+                   ... 
+Tarleton State        5
+Missouri State        4
+Chattanooga           3
+Mercer                2
+New Mexico State      1
+Length: 143, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sorted_adjacency</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">shade_upsets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">perm_inds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;scattermap&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">perm_inds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">adj</span><span class="p">[</span><span class="n">perm_inds</span><span class="p">][:,</span> <span class="n">perm_inds</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s2">&quot;scattermap&quot;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">adjplot</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;scattermap&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">adjplot</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;heatmap&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="n">triu_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">match_mat</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">n_upsets</span> <span class="o">=</span> <span class="n">adj</span><span class="p">[</span><span class="n">triu_inds</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">n_games</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">p_upset</span> <span class="o">=</span> <span class="n">n_upsets</span> <span class="o">/</span> <span class="n">n_games</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_teams</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_teams</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">ylabel</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\leftarrow$ Ranked low         &quot;</span>
+        <span class="n">ylabel</span> <span class="o">+=</span> <span class="s2">&quot;Winning team           &quot;</span>
+        <span class="n">ylabel</span> <span class="o">+=</span> <span class="sa">r</span><span class="s2">&quot;Ranked high $\rightarrow$&quot;</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;large&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Losing team&quot;</span><span class="p">)</span>
+    <span class="c1"># ax.set_title(&quot;2020 NCAA Footbal Season Graph&quot;, fontsize=25)</span>
+    <span class="k">if</span> <span class="n">shade_upsets</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_teams</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_teams</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">n_teams</span><span class="p">,</span> <span class="n">n_teams</span><span class="p">],</span>
+            <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">n_teams</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">n_teams</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Upsets: </span><span class="si">{</span><span class="n">p_upset</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+
+
+<span class="n">plot_sorted_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">perm_inds</span><span class="o">=</span><span class="n">gm_perm_inds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_26_1.png" src="_images/ranking_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="s2">&quot;gm_rank_order&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ranking_27_1.png" src="_images/ranking_27_1.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Question</p>
+<p>Graph matching requires an initialization. This could be an initial permutation. What
+would a good choice of initialization be?</p>
+</div>
+</div>
+<div class="section" id="compare-these-ranking-schemes">
+<h2>Compare these ranking schemes<a class="headerlink" href="#compare-these-ranking-schemes" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wr_perm_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">win_rates</span><span class="p">)</span>
+
+<span class="n">evec_perm_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">principal_evec</span><span class="p">)</span>
+
+<span class="n">sf_perm_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plot_sorted_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">perm_inds</span><span class="o">=</span><span class="n">wr_perm_inds</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Win rate&quot;</span><span class="p">)</span>
+<span class="n">plot_sorted_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">perm_inds</span><span class="o">=</span><span class="n">evec_perm_inds</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Eigenvector&quot;</span><span class="p">)</span>
+<span class="n">plot_sorted_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">perm_inds</span><span class="o">=</span><span class="n">sf_perm_inds</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Signal flow&quot;</span><span class="p">)</span>
+<span class="n">plot_sorted_adjacency</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span> <span class="n">perm_inds</span><span class="o">=</span><span class="n">gm_perm_inds</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Upset minimization&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ranking_30_0.png" src="_images/ranking_30_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ranking-soccer-teams">
+<h2>Ranking soccer teams<a class="headerlink" href="#ranking-soccer-teams" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">league</span> <span class="o">=</span> <span class="s2">&quot;LALIGA1&quot;</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./networks-course/data/sports/soccer&quot;</span><span class="p">)</span>
+<span class="n">start_year</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">seasons</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">league</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">.csv&quot;</span>
+    <span class="n">season_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="n">data_dir</span> <span class="o">/</span> <span class="n">filename</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">season_df</span><span class="p">[</span><span class="s2">&quot;season&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">seasons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">season_df</span><span class="p">)</span>
+<span class="n">games</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">seasons</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">games</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+<span class="n">games</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">games</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;FTHG&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;FTAG&quot;</span><span class="p">]:</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;HomeTeam&quot;</span><span class="p">]</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;AwayTeam&quot;</span><span class="p">]</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;FTHG&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;FTAG&quot;</span><span class="p">]:</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;HomeTeam&quot;</span><span class="p">]</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;AwayTeam&quot;</span><span class="p">]</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;HomeTeam&quot;</span><span class="p">]</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;AwayTeam&quot;</span><span class="p">]</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span>
+                <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span>
+                <span class="s2">&quot;season&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;season&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;HomeTeam&quot;</span><span class="p">]</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;AwayTeam&quot;</span><span class="p">]</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="c1"># ignore ties for now</span>
+    <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span> <span class="s2">&quot;season&quot;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;season&quot;</span><span class="p">],</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">}</span>
+    <span class="p">)</span>
+<span class="n">edgelist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">edgelist</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">edgelist</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">nodelist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">remove_loops</span>
+
+
+<span class="k">def</span> <span class="nf">signal_flow</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implementation of the signal flow metric from Varshney et al 2011</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    A : [type]</span>
+<span class="sd">        [description]</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    [type]</span>
+<span class="sd">        [description]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">remove_loops</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">L</span> <span class="o">=</span> <span class="n">D</span> <span class="o">-</span> <span class="n">W</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">L_pinv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">L_pinv</span> <span class="o">@</span> <span class="n">b</span>
+
+    <span class="k">return</span> <span class="n">z</span>
+
+
+<span class="k">def</span> <span class="nf">rank_signal_flow</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">sf</span> <span class="o">=</span> <span class="n">signal_flow</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">perm_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">sf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">perm_inds</span>
+
+
+<span class="k">def</span> <span class="nf">rank_graph_match_flow</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">initial_perm</span> <span class="o">=</span> <span class="n">rank_signal_flow</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="n">initial_perm</span><span class="p">]</span>
+    <span class="n">match_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">triu_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">match_mat</span><span class="p">[</span><span class="n">triu_inds</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">gm</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">(</span>
+        <span class="n">n_init</span><span class="o">=</span><span class="n">n_init</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="n">max_iter</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s2">&quot;barycenter&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+    <span class="n">perm_inds</span> <span class="o">=</span> <span class="n">gm</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">match_mat</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">perm_inds</span>
+
+
+<span class="k">def</span> <span class="nf">calculate_p_upper</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">remove_loops</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">triu_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">upper_triu_sum</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">triu_inds</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">total_sum</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">upper_triu_p</span> <span class="o">=</span> <span class="n">upper_triu_sum</span> <span class="o">/</span> <span class="n">total_sum</span>
+    <span class="k">return</span> <span class="n">upper_triu_p</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rankings</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ranking_stats</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">season</span><span class="p">,</span> <span class="n">season_edges</span> <span class="ow">in</span> <span class="n">edgelist</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;season&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span>
+        <span class="n">season_edges</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span>
+    <span class="p">)</span>
+    <span class="n">season_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">season_nodes</span><span class="p">)</span>
+    <span class="n">perm_inds</span> <span class="o">=</span> <span class="n">rank_graph_match_flow</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">p_upper</span> <span class="o">=</span> <span class="n">calculate_p_upper</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">perm_inds</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">)])</span>
+    <span class="n">rankings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">season_nodes</span><span class="p">)),</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">season</span><span class="p">,</span>
+            <span class="n">index</span><span class="o">=</span><span class="n">season_nodes</span><span class="p">[</span><span class="n">perm_inds</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">ranking_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;p_upper&quot;</span><span class="p">:</span> <span class="n">p_upper</span><span class="p">,</span>
+            <span class="s2">&quot;season&quot;</span><span class="p">:</span> <span class="n">season</span><span class="p">,</span>
+            <span class="s2">&quot;season_start&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">season</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="n">ranking_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ranking_stats</span><span class="p">)</span>
+<span class="n">rankings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rankings</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">rankings</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;team&quot;</span>
+<span class="n">rankings</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rankings</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rankings</span> <span class="o">=</span> <span class="n">rankings</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">times_not_in_league</span> <span class="o">=</span> <span class="n">rankings</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">common_teams</span> <span class="o">=</span> <span class="n">rankings</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">times_not_in_league</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">colorcet</span> <span class="k">as</span> <span class="nn">cc</span>
+
+<span class="n">plot_rankings</span> <span class="o">=</span> <span class="n">rankings</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">parallel_coordinates</span><span class="p">(</span>
+    <span class="n">plot_rankings</span><span class="p">,</span>
+    <span class="n">class_column</span><span class="o">=</span><span class="s2">&quot;team&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">cc</span><span class="o">.</span><span class="n">glasbey_light</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Team&quot;</span><span class="p">)</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="n">ticks</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">ticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;La Liga&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;xx-large&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Season&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;x-large&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Ranking&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;x-large&quot;</span><span class="p">)</span>
+
+<span class="c1"># plot only the teams that are usually in la liga</span>
+<span class="n">plot_rankings</span> <span class="o">=</span> <span class="n">plot_rankings</span><span class="p">[</span><span class="n">plot_rankings</span><span class="p">[</span><span class="s2">&quot;team&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">common_teams</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">parallel_coordinates</span><span class="p">(</span>
+    <span class="n">plot_rankings</span><span class="p">,</span>
+    <span class="n">class_column</span><span class="o">=</span><span class="s2">&quot;team&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">cc</span><span class="o">.</span><span class="n">glasbey_light</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Team&quot;</span><span class="p">)</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="n">ticks</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">ticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;La Liga (common teams only)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;xx-large&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Season&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;x-large&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Ranking&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;x-large&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Ranking&#39;)
+</pre></div>
+</div>
+<img alt="_images/ranking_36_1.png" src="_images/ranking_36_1.png" />
+<img alt="_images/ranking_36_2.png" src="_images/ranking_36_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">ranking_stats</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;season_start&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;p_upper&quot;</span><span class="p">)</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+    <span class="n">xticks</span><span class="o">=</span><span class="n">ticks</span><span class="p">,</span>
+    <span class="n">xticklabels</span><span class="o">=</span><span class="n">ticks</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Season start year&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Non-upset proportion&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ranking_37_0.png" src="_images/ranking_37_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="other-applications">
+<h2>Other applications<a class="headerlink" href="#other-applications" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="id73">
+<img alt="slide_images/fac-network-sorted.png" src="slide_images/fac-network-sorted.png" />
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Ranking of a network of faculty hires in computer science. Figure from <span id="id3">Clauset <em>et al.</em> [<a class="reference internal" href="#id72">2</a>]</span>.</span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id4"><dl class="citation">
+<dt class="label" id="id71"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>James P Keener. The perron–frobenius theorem and the ranking of football teams. <em>SIAM review</em>, 35(1):80–93, 1993.</p>
+</dd>
+<dt class="label" id="id72"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>Aaron Clauset, Samuel Arbesman, and Daniel B Larremore. Systematic inequality and hierarchy in faculty hiring networks. <em>Science advances</em>, 1(1):e1400005, 2015.</p>
+</dd>
+</dl>
+</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
