@@ -968,23 +968,15 @@ we can do something like</p>
 <p>What does this matrix of dissimilarities look like?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_dissimilarity</span> <span class="o">=</span> <span class="n">dissimilarity_matrix</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dissimilarity_matrix</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<span class="n">scaled_dissimilarity</span> <span class="o">=</span> <span class="n">dissimilarity_matrix</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dissimilarity_matrix</span><span class="p">)</span>
 
 <span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">scaled_dissimilarity</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">mice</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">pz</span><span class="o">/</span><span class="n">l5ltdh6x63j99hyc0cy_3pvm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_15924</span><span class="o">/</span><span class="mf">2337849975.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">scaled_dissimilarity</span> <span class="o">=</span> <span class="n">dissimilarity_matrix</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dissimilarity_matrix</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">scaled_dissimilarity</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">mice</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;heatmap&#39; is not defined
-</pre></div>
-</div>
+<img alt="_images/multiple_embedding_36_0.png" src="_images/multiple_embedding_36_0.png" />
 </div>
 </div>
 <p>A technique called <a class="reference external" href="https://en.wikipedia.org/wiki/Multidimensional_scaling#Classical_multidimensional_scaling"><strong>classical multidimensional scaling</strong></a>
@@ -1019,6 +1011,9 @@ directly pass in <code class="docutils literal notranslate"><span class="pre">om
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/multiple_embedding_38_0.png" src="_images/multiple_embedding_38_0.png" />
 </div>
 </div>
 <p>What if we hadn’t known the genotype labels ahead of time, and wanted to cluster the
@@ -1055,6 +1050,9 @@ clustering directly on the dissimilarity matrix as I do below.</p>
 <span class="n">_</span> <span class="o">=</span> <span class="n">col_ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;Genotype&quot;</span><span class="p">],</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/multiple_embedding_40_0.png" src="_images/multiple_embedding_40_0.png" />
 </div>
 </div>
 <p>With this representation that we learned from our network embeddings, our clustering
