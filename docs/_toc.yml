@@ -30,6 +30,7 @@ parts:
   - file: ranking
 - caption: Projects
   chapters:
+  - file: projects/pedigo.ipynb
   - file: projects/clarke.md
   - file: projects/fry.md
   - file: projects/geason.md
