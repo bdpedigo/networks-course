@@ -5,22 +5,37 @@ parts:
   chapters:
   - file: syllabus
   - file: calendar
+  - file: mini_assignment
+  - file: final_project
 - caption: Resources
-  chapters: 
+  chapters:
+  - file: online_resources
+  - file: books
   - file: datasets
-- caption: Introduction
+- caption: Lectures
   chapters:
   - url: https://bdpedigo.github.io/networks-course/welcome.html
     title: Welcome
   - url: https://bdpedigo.github.io/networks-course/what_are_networks.html
     title: What are networks?
-  - file: mini_assignment
   - file: representing_networks
-- caption: Week 1
-  chapters:
+  - file: plotting_networks
+  - file: connected_components
   - file: centrality
+  - file: random_graphs
+  - file: community_detection
+  - file: embedding
+  - file: graph_matching
+  - file: multiple_embedding
+  - file: ranking
 - caption: Projects
-  chapters: 
-  - file: test.md
-  - file: fry.md
-  - file: liu.md
+  chapters:
+  - file: projects/clarke.md
+  - file: projects/fry.md
+  - file: projects/geason.md
+  - file: projects/larson.md
+  - file: projects/liu.md  
+  - file: projects/song.md
+  - file: projects/sood.md
+  - file: projects/wang.md
+  - file: projects/harounakenfack.md
