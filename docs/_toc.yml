@@ -32,7 +32,7 @@ parts:
   chapters:
   - file: projects/clarke.md
   - file: projects/fry.md
-  - file: projects/geason.md
+  - file: geason.ipynb
   - file: projects/larson.md
   - file: projects/liu.md  
   - file: projects/song.md
