@@ -85,7 +85,7 @@ Be able to load in and somehow plot your dataset(s) in Python.
   
 
 ### Jan 14th (Friday)
-- Graph matching
+- [Graph matching](graph_matching.ipynb)
    - When could we use it 
    - Why is it hard?
    - Fast approximate quadratic algorithm
@@ -110,15 +110,18 @@ Martin Luther King Jr. Day
 ```
 
 ### Jan 18th (Tuesday)
-```{warning}
-TBD
-```
-
-### Jan 19th (Wednesday)
-- Multiple network embedding
+- Review of embeddings
+- [Multiple network embedding](multiple_embedding.ipynb)
+   - ASE x 2 
    - Omnibus embedding
    - Multiple ASE
-   - ___ neural net approaches
+
+### Jan 19th (Wednesday)
+- [Ranking](ranking.ipynb)
+   - Simple rankings (A, A squared)
+   - Eigenvector ranking
+   - Minimum violations ranking
+   - Applications of ranking to study hierarchies
 
 ### Jan 20th (Thursday)
 - Network kernels/metrics
@@ -135,15 +138,4 @@ We'll see if we get to these topics
 ```
 
 - Clustering embeddings
-
-OR 
-
-- Ranking and flow through networks
-   - Simple rankings (A, A squared)
-   - Eigenvector ranking
-   - Minimum violations ranking
-   - Applications of ranking to study hierarchies
-
-OR
-
 - Graph neural networks + supervised embeddings
