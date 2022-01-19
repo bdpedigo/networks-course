@@ -796,10 +796,12 @@ Length: 143, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span>
 
-<span class="k">def</span> <span class="nf">rank_to_order</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-    <span class="n">node_data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">_order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
 
-<span class="n">rank_to_order</span><span class="p">(</span><span class="s1">&#39;win_rate&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">rank_to_order</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="n">node_data</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">_order&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+
+<span class="n">rank_to_order</span><span class="p">(</span><span class="s2">&quot;win_rate&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -851,7 +853,7 @@ exactly when we’d expect it to.</p>
 <span class="n">principal_evec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">evecs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">eigvec_ranking</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">principal_evec</span><span class="p">)</span>
 <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;evec_rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eigvec_ranking</span>
-<span class="n">rank_to_order</span><span class="p">(</span><span class="s1">&#39;evec_rank&#39;</span><span class="p">)</span>
+<span class="n">rank_to_order</span><span class="p">(</span><span class="s2">&quot;evec_rank&quot;</span><span class="p">)</span>
 <span class="n">eigvec_ranking</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -932,7 +934,7 @@ Length: 143, dtype: float64
 <span class="n">principal_evec_lap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">evecs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">eigvec_ranking_lap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">adjacency_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">principal_evec_lap</span><span class="p">)</span>
 <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;evec_rank_lap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eigvec_ranking_lap</span>
-<span class="n">rank_to_order</span><span class="p">(</span><span class="s1">&#39;evec_rank_lap&#39;</span><span class="p">)</span>
+<span class="n">rank_to_order</span><span class="p">(</span><span class="s2">&quot;evec_rank_lap&quot;</span><span class="p">)</span>
 <span class="n">eigvec_ranking_lap</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1542,6 +1544,11 @@ would a good choice of initialization be?</p>
 <div class="figure align-default" id="id73">
 <img alt="slide_images/fac-network-sorted.png" src="slide_images/fac-network-sorted.png" />
 <p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Ranking of a network of faculty hires in computer science. Figure from <span id="id3">Clauset <em>et al.</em> [<a class="reference internal" href="#id72">2</a>]</span>.</span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id74">
+<a class="reference internal image-reference" href="slide_images/ranking-neuro.png"><img alt="slide_images/ranking-neuro.png" src="slide_images/ranking-neuro.png" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Ordering the predominant direction of flow in a network of neurons, and comparing between
+edge types. Figure by Michael Winding.</span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="references">
