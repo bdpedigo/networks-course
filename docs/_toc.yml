@@ -6,7 +6,7 @@ parts:
   - file: syllabus
   - file: calendar
 - caption: Resources
-  chapters: 
+  chapters:
   - file: datasets
 - caption: Introduction
   chapters:
@@ -20,9 +20,10 @@ parts:
   chapters:
   - file: centrality
 - caption: Projects
-  chapters: 
+  chapters:
   - file: test.md
   - file: fry.md
   - file: liu.md
   - file: geason.md
   - file: clarke.md
+  - file: sood.md
