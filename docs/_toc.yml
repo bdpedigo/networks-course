@@ -32,7 +32,7 @@ parts:
   chapters:
   - file: projects/pedigo.ipynb
   - file: projects/clarke.md
-  - file: projects/fry.md
+  - file: projects/fry.ipynb
   - file: projects/geason.md
   - file: projects/larson.md
   - file: projects/liu.md  
