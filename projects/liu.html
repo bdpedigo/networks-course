@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Liu - final project placeholder &#8212; Network Data Science</title>
+    <title>Human Connectome Network Analysis and Classification &#8212; Network Data Science</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/nd_logo_small.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Song - final project placeholder" href="song.html" />
-    <link rel="prev" title="Clarke - final project placeholder" href="clarke.html" />
+    <link rel="next" title="Clarke - final project placeholder" href="clarke.html" />
+    <link rel="prev" title="Analyzing Flight Networks" href="geason.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -248,14 +248,14 @@
    Analyzing Flight Networks
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Human Connectome Network Analysis and Classification
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="clarke.html">
    Clarke - final project placeholder
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Liu - final project placeholder
   </a>
  </li>
  <li class="toctree-l1">
@@ -319,9 +319,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/projects/liu.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/projects/liu.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -342,7 +342,7 @@
             href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/liu.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/liu.md"><button
+        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/liu.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -357,11 +357,120 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/liu.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Human Connectome Network Analysis and Classification
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-citation">
+   Data Citation:
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries">
+   Import Libraries
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-network-exploratory-analysis">
+   Sample Network - Exploratory Analysis
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-pre-processing-and-heatmap">
+   Data Pre-processing and heatmap
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#network-plot-and-description">
+   Network Plot and description
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leiden-partitioning">
+   Leiden Partitioning
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-classification-using-standard-ml-algorithms">
+   Graph classification using standard ML algorithms
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-all-graphs">
+     Load all graphs
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-subject-data">
+     Load subject data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gender-classification-svm">
+     Gender Classification – SVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ml-using-graph-embeddings">
+   ML using graph embeddings
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multigraph-embedding-with-omnibus-embed">
+     Multigraph embedding with Omnibus Embed
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gender-classification-with-graph-embeddings-and-svm">
+     Gender classification with graph embeddings and SVM
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graph-regression-using-graph-embeddings-and-linear-regression">
+     Graph regression using graph embeddings and linear regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-considerations">
+   Further Considerations
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -369,19 +478,940 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Liu - final project placeholder</h1>
+                <h1>Human Connectome Network Analysis and Classification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Human Connectome Network Analysis and Classification
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-citation">
+   Data Citation:
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries">
+   Import Libraries
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-network-exploratory-analysis">
+   Sample Network - Exploratory Analysis
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-pre-processing-and-heatmap">
+   Data Pre-processing and heatmap
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#network-plot-and-description">
+   Network Plot and description
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leiden-partitioning">
+   Leiden Partitioning
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-classification-using-standard-ml-algorithms">
+   Graph classification using standard ML algorithms
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-all-graphs">
+     Load all graphs
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-subject-data">
+     Load subject data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gender-classification-svm">
+     Gender Classification – SVM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ml-using-graph-embeddings">
+   ML using graph embeddings
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multigraph-embedding-with-omnibus-embed">
+     Multigraph embedding with Omnibus Embed
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gender-classification-with-graph-embeddings-and-svm">
+     Gender classification with graph embeddings and SVM
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graph-regression-using-graph-embeddings-and-linear-regression">
+     Graph regression using graph embeddings and linear regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-considerations">
+   Further Considerations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="liu-final-project-placeholder">
-<h1>Liu - final project placeholder<a class="headerlink" href="#liu-final-project-placeholder" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="human-connectome-network-analysis-and-classification">
+<h1>Human Connectome Network Analysis and Classification<a class="headerlink" href="#human-connectome-network-analysis-and-classification" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author: Brandon Liu</strong></p>
+<br>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="data-citation">
+<h1>Data Citation:<a class="headerlink" href="#data-citation" title="Permalink to this headline">¶</a></h1>
+<p>Csaba Kerepesi, Balázs Szalkai, Bálint Varga, Vince Grolmusz: The <a class="reference external" href="http://braingraph.org">braingraph.org</a> Database of High Resolution Structural Connectomes and the Brain Graph Tools, Cognitive Neurodynamics Vol. 11 No. 5, pp. 483-486 (2017)<br> <a href="http://dx.doi.org/10.1007/s11571-017-9445-1">http://dx.doi.org/10.1007/s11571-017-9445-1</a></p>
+<p><strong>Description:</strong> 86 nodes set, 1064 brains, 1 000 000 streamlines, 10x repeated &amp; averaged</p>
+<p>In this jupyter notebook, we will perform network analysis on a large dataset of 1064 healthy adult brains’ connectivity data derived from MRI scans. We will begin by visualizing a single brain network and exploring its properties. Then, we will look for features in each network and attempt graph classification/regression using known information about the subjects, such as gender, age, and various other fields.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="import-libraries">
+<h1>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span><span class="p">,</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span><span class="p">,</span> <span class="n">modularity</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_symmetric</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">largest_connected_component</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="sample-network-exploratory-analysis">
+<h1>Sample Network - Exploratory Analysis<a class="headerlink" href="#sample-network-exploratory-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Let’s begin by loading a single graph from our dataset, visualizing it and exploring some of it’s basic properties</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_mats</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;braingraph_low&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_graphml</span><span class="p">(</span><span class="s2">&quot;braingraph_low/&quot;</span> <span class="o">+</span> <span class="n">all_mats</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of nodes: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of nodes: 83
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="data-pre-processing-and-heatmap">
+<h1>Data Pre-processing and heatmap<a class="headerlink" href="#data-pre-processing-and-heatmap" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Use the largest connected component</span>
+<span class="n">lcc</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">lcc</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1">#Extract the weight data</span>
+<span class="n">fibers</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;number_of_fibers&#39;</span><span class="p">)</span>
+<span class="n">weights_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fibers</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1">#Convert weights to a log 10 representation for easier visualization and normalize between 0 and 1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weights_only</span><span class="p">)</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fibers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span>
+    <span class="n">fibers</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span>
+    <span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">fibers</span><span class="p">,</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+
+<span class="c1">#Return adjacency matrix</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Graph is symmetric: &quot;</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">is_symmetric</span><span class="p">(</span><span class="n">A</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Graph is symmetric: True
+</pre></div>
+</div>
+<img alt="../_images/liu_5_1.png" src="../_images/liu_5_1.png" />
+</div>
+</div>
+<br>
+Our graph appears to be weighted and symmetric. Looking at the heatmap, we can observe two distinct groups in our dataset. Let's plot the network graph to see if we can identify what each group represent.</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="network-plot-and-description">
+<h1>Network Plot and description<a class="headerlink" href="#network-plot-and-description" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1">#Extract position data from each node</span>
+<span class="n">posdict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;dn_position_x&quot;</span><span class="p">))</span>
+<span class="n">xpos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">ypos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">posdict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">posdict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;dn_position_x&#39;</span><span class="p">],</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;dn_position_y&#39;</span><span class="p">]]</span>
+    <span class="n">xpos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;dn_position_x&#39;</span><span class="p">])</span>
+    <span class="n">ypos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;dn_position_y&#39;</span><span class="p">])</span>
+    <span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xpos</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ypos</span>
+
+<span class="c1"># Vary edge color opacity based on weight for visualization</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fibers</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">]</span>
+
+<span class="c1">#Get degree of each node to adjust node size</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">g</span><span class="p">)))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">posdict</span><span class="p">,</span>  <span class="n">node_size</span><span class="o">=</span><span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">edge_color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+
+
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;dn_name&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="c1"># node_data.reset_index(inplace=True)</span>
+<span class="c1"># node_data.rename(columns={&quot;index&quot;:&quot;node number&quot;})</span>
+<span class="n">node_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>degree</th>
+      <th>region</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>34.088963</td>
+      <td>83.558516</td>
+      <td>6</td>
+      <td>rh.lateralorbitofrontal</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>21.598875</td>
+      <td>82.398714</td>
+      <td>13</td>
+      <td>rh.parstriangularis</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>20.672714</td>
+      <td>73.928882</td>
+      <td>16</td>
+      <td>rh.parsopercularis</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>28.557744</td>
+      <td>87.776445</td>
+      <td>23</td>
+      <td>rh.rostralmiddlefrontal</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>39.803047</td>
+      <td>79.357587</td>
+      <td>22</td>
+      <td>rh.superiorfrontal</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>28.521118</td>
+      <td>69.707277</td>
+      <td>21</td>
+      <td>rh.caudalmiddlefrontal</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>25.132873</td>
+      <td>59.628991</td>
+      <td>21</td>
+      <td>rh.precentral</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>39.856858</td>
+      <td>49.962051</td>
+      <td>17</td>
+      <td>rh.paracentral</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>42.655660</td>
+      <td>83.836478</td>
+      <td>3</td>
+      <td>rh.rostralanteriorcingulate</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>42.099256</td>
+      <td>75.640199</td>
+      <td>21</td>
+      <td>rh.caudalanteriorcingulate</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../_images/liu_8_1.png" src="../_images/liu_8_1.png" />
+</div>
+</div>
+<p>In our dataset, each node corresponds to a region in the brain. The weights between the edges represent the number of fibers connecting one region of the brain to another. The greater the number the fibers, the stronger the connection. In the network plot visualization, each hemisphere of the brain appears to mostly form connections within itself, with a few nodes in the middle connecting the two, possibly from the activity of the corpus callosum. The dense connections made in each hemisphere explains the two groups we observed the in heatmap.</p>
+<p>Let’s also run a leiden partitioning algorithm on our sample dataset to detect further community. Will community detection identity more specialized regions in the brain?</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="leiden-partitioning">
+<h1>Leiden Partitioning<a class="headerlink" href="#leiden-partitioning" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">trials</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modularity</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">leiden_partition_map</span><span class="p">))</span>
+
+
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;leiden_partition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">partition_key</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">adj</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">partition_key</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+        <span class="n">edge_hue</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span>
+        <span class="n">adj</span><span class="p">,</span>
+        <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">node_data</span><span class="p">[</span><span class="n">partition_key</span><span class="p">],</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">sort_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">plot_network_partition</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s1">&#39;leiden_partition&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.45514142068747426
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1152x576 with 4 Axes&gt;, &lt;AxesSubplot:&gt;)
+</pre></div>
+</div>
+<img alt="../_images/liu_10_2.png" src="../_images/liu_10_2.png" />
+</div>
+</div>
+<p>For this brain graph in the dataset, the leiden partitioning algorithms reveals that connections within the brain are highly localized. Each node in the brain is more likely to form connections with nearby nodes. This confirms what we know about the brain being made up of specialized and distinct structures. Visually, the shape of the groups in the left and right hemispheres look fairly similar. We can do some more digging to see what regions each group corresponds to.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;leiden_partition&quot;</span><span class="p">,</span><span class="s2">&quot;degree&quot;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;stable&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 5 regions in group 0: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;leiden_partition&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 5 regions in group 1: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;leiden_partition&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 5 regions in group 2: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;leiden_partition&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">2</span><span class="p">][</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 5 regions in group 3: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;leiden_partition&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span><span class="p">][</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top 5 regions in group 0: Right-Thalamus-Proper, Right-Caudate, rh.superiorparietal, rh.insula, Right-Putamen
+Top 5 regions in group 1: Left-Thalamus-Proper, lh.posteriorcingulate, Left-Caudate, lh.supramarginal, lh.insula
+Top 5 regions in group 2: rh.precuneus, rh.inferiorparietal, rh.isthmuscingulate, Right-Hippocampus, rh.lingual
+Top 5 regions in group 3: lh.superiorparietal, lh.isthmuscingulate, Left-Hippocampus, lh.precuneus, lh.inferiorparietal
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observing the brain regions with the greatest number of connections in each group, we can see some correspondence for the left and right hemispheres. For example, we see the right and left thalamus both have the greatest degrees in their respective groups. Upon closer inspection, the left and right have nearly identical regions in the top 5 with a few exceptions.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="graph-classification-using-standard-ml-algorithms">
+<h1>Graph classification using standard ML algorithms<a class="headerlink" href="#graph-classification-using-standard-ml-algorithms" title="Permalink to this headline">¶</a></h1>
+<p>Now let’s load all 1064 graphs from our dataset and try to classify them with some simple machine learning algorithms. One simple approach would be to get the centrality of each node, and use them as features. Previously, we found that connections in the brain are highly localized. Moreover, considering the importance of information flow in the brain, betweenness centrality appears to be promising measure. Let’s extract the betweenness centrality data for each graph and use them as features for machine learning.</p>
+<div class="section" id="load-all-graphs">
+<h2>Load all graphs<a class="headerlink" href="#load-all-graphs" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_brains</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_mats</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+<span class="n">subjects_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">all_centralities</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_mats</span><span class="p">)):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_graphml</span><span class="p">(</span><span class="s2">&quot;braingraph_low/&quot;</span> <span class="o">+</span> <span class="n">all_mats</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+    <span class="c1">#computes centrality</span>
+    <span class="n">all_centralities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;number_of_fibers&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;number_of_fibers&quot;</span><span class="p">)</span>
+    <span class="n">subjects_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">all_mats</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]))</span>
+    <span class="n">all_brains</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-subject-data">
+<h2>Load subject data<a class="headerlink" href="#load-subject-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subject_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;labels.csv&quot;</span><span class="p">)</span>
+<span class="n">subject_labels</span> <span class="o">=</span> <span class="n">subject_labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">subject_labels</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">subjects_list</span><span class="p">)]</span>
+<span class="n">subject_labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Subject</th>
+      <th>Release</th>
+      <th>Acquisition</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>3T_Full_MR_Compl</th>
+      <th>T1_Count</th>
+      <th>T2_Count</th>
+      <th>3T_RS-fMRI_Count</th>
+      <th>3T_RS-fMRI_PctCompl</th>
+      <th>...</th>
+      <th>Noise_Comp</th>
+      <th>Odor_Unadj</th>
+      <th>Odor_AgeAdj</th>
+      <th>PainIntens_RawScore</th>
+      <th>PainInterf_Tscore</th>
+      <th>Taste_Unadj</th>
+      <th>Taste_AgeAdj</th>
+      <th>Mars_Log_Score</th>
+      <th>Mars_Errs</th>
+      <th>Mars_Final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>100206</td>
+      <td>S900</td>
+      <td>Q11</td>
+      <td>M</td>
+      <td>26-30</td>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>6.0</td>
+      <td>108.79</td>
+      <td>97.19</td>
+      <td>1.0</td>
+      <td>49.7</td>
+      <td>72.63</td>
+      <td>72.03</td>
+      <td>1.84</td>
+      <td>0.0</td>
+      <td>1.84</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>100307</td>
+      <td>Q1</td>
+      <td>Q01</td>
+      <td>F</td>
+      <td>26-30</td>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>3.6</td>
+      <td>101.12</td>
+      <td>86.45</td>
+      <td>0.0</td>
+      <td>38.6</td>
+      <td>71.69</td>
+      <td>71.76</td>
+      <td>1.76</td>
+      <td>0.0</td>
+      <td>1.76</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>100408</td>
+      <td>Q3</td>
+      <td>Q03</td>
+      <td>M</td>
+      <td>31-35</td>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>108.79</td>
+      <td>98.04</td>
+      <td>2.0</td>
+      <td>52.6</td>
+      <td>114.01</td>
+      <td>113.59</td>
+      <td>1.76</td>
+      <td>2.0</td>
+      <td>1.68</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>100610</td>
+      <td>S900</td>
+      <td>Q08</td>
+      <td>M</td>
+      <td>26-30</td>
+      <td>True</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>2.0</td>
+      <td>122.25</td>
+      <td>110.45</td>
+      <td>0.0</td>
+      <td>38.6</td>
+      <td>84.84</td>
+      <td>85.31</td>
+      <td>1.92</td>
+      <td>1.0</td>
+      <td>1.88</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>101006</td>
+      <td>S500</td>
+      <td>Q06</td>
+      <td>F</td>
+      <td>31-35</td>
+      <td>True</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>6.0</td>
+      <td>122.25</td>
+      <td>111.41</td>
+      <td>0.0</td>
+      <td>38.6</td>
+      <td>123.80</td>
+      <td>123.31</td>
+      <td>1.80</td>
+      <td>0.0</td>
+      <td>1.80</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1201</th>
+      <td>992774</td>
+      <td>Q2</td>
+      <td>Q02</td>
+      <td>M</td>
+      <td>31-35</td>
+      <td>True</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>8.4</td>
+      <td>122.25</td>
+      <td>111.41</td>
+      <td>4.0</td>
+      <td>50.1</td>
+      <td>107.17</td>
+      <td>103.55</td>
+      <td>1.76</td>
+      <td>0.0</td>
+      <td>1.76</td>
+    </tr>
+    <tr>
+      <th>1202</th>
+      <td>993675</td>
+      <td>S900</td>
+      <td>Q09</td>
+      <td>F</td>
+      <td>26-30</td>
+      <td>True</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>0.4</td>
+      <td>122.25</td>
+      <td>110.45</td>
+      <td>0.0</td>
+      <td>38.6</td>
+      <td>84.07</td>
+      <td>84.25</td>
+      <td>1.80</td>
+      <td>1.0</td>
+      <td>1.76</td>
+    </tr>
+    <tr>
+      <th>1203</th>
+      <td>994273</td>
+      <td>S500</td>
+      <td>Q06</td>
+      <td>M</td>
+      <td>26-30</td>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>6.0</td>
+      <td>122.25</td>
+      <td>111.41</td>
+      <td>7.0</td>
+      <td>63.8</td>
+      <td>110.65</td>
+      <td>109.73</td>
+      <td>1.80</td>
+      <td>1.0</td>
+      <td>1.76</td>
+    </tr>
+    <tr>
+      <th>1204</th>
+      <td>995174</td>
+      <td>S1200</td>
+      <td>Q13</td>
+      <td>M</td>
+      <td>22-25</td>
+      <td>False</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>3.6</td>
+      <td>88.61</td>
+      <td>64.58</td>
+      <td>3.0</td>
+      <td>50.1</td>
+      <td>117.16</td>
+      <td>117.40</td>
+      <td>1.80</td>
+      <td>0.0</td>
+      <td>1.80</td>
+    </tr>
+    <tr>
+      <th>1205</th>
+      <td>996782</td>
+      <td>S900</td>
+      <td>Q08</td>
+      <td>F</td>
+      <td>26-30</td>
+      <td>True</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>100.0</td>
+      <td>...</td>
+      <td>6.0</td>
+      <td>108.79</td>
+      <td>97.19</td>
+      <td>0.0</td>
+      <td>38.6</td>
+      <td>75.43</td>
+      <td>73.72</td>
+      <td>1.84</td>
+      <td>0.0</td>
+      <td>1.84</td>
+    </tr>
+  </tbody>
+</table>
+<p>1064 rows × 582 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="gender-classification-svm">
+<h2>Gender Classification – SVM<a class="headerlink" href="#gender-classification-svm" title="Permalink to this headline">¶</a></h2>
+<p>Let’s try a quick test by trying to predict the gender of the subject using the betweenness centrality of each node as input features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="c1"># Encode the gender labels</span>
+<span class="n">labelencoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">gender_labels</span> <span class="o">=</span> <span class="n">labelencoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">subject_labels</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="c1">#Split into training and test set</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">all_centralities</span><span class="p">,</span> <span class="n">gender_labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">109</span><span class="p">)</span> <span class="c1"># 80% training and 20% test</span>
+
+<span class="c1">#Hyperparameter tuning</span>
+<span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="s1">&#39;kernel&#39;</span><span class="p">:[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">]}</span>
+<span class="n">svc</span><span class="o">=</span><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span><span class="n">param_grid</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Prediction</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recall:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.6197183098591549
+Precision: 0.6179775280898876
+Recall: 0.5392156862745098
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using a SVM for classfication and betweeness centrality of each node as features, the accuracy achieved is quite low. Frankly, it is not much better than guessing at random. Perhaps betweeness centrality doesn’t encode enough information unique to each graph. Let’s using another approach to extract features from our graphs.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="ml-using-graph-embeddings">
+<h1>ML using graph embeddings<a class="headerlink" href="#ml-using-graph-embeddings" title="Permalink to this headline">¶</a></h1>
+<p>Another way to convert our graphs into standard input data is with graph embeddings. Graph embedding transforms the nodes and edges of a graph into vector representations that encodes some relevant information with the associated node. Since all of our graphs contain the same number of nodes representing the same regions, we can use OmnibusEmbed to get vector representations of every node in our dataset and use that as input data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">OmnibusEmbed</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">multigraph_lcc_intersection</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">multigraph_lcc_union</span>
+
+
+<span class="c1">#Only use the largest fully connected component common to all graphs in our dataset.</span>
+<span class="n">all_brains</span> <span class="o">=</span> <span class="n">multigraph_lcc_intersection</span><span class="p">(</span><span class="n">all_brains</span><span class="p">)</span>
+<span class="n">all_brains</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1064, 52, 52)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="multigraph-embedding-with-omnibus-embed">
+<h2>Multigraph embedding with Omnibus Embed<a class="headerlink" href="#multigraph-embedding-with-omnibus-embed" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedder</span> <span class="o">=</span> <span class="n">OmnibusEmbed</span><span class="p">()</span>
+<span class="n">omni_embedding</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">all_brains</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After using omnibus embed, we are left with an 8-dimensional vector for each of the 52 connected-nodes common to all of our brain graphs. To use the data as training data, we need to flatten the matrix into a 2d matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Resize for SVM data input</span>
+<span class="n">resized</span> <span class="o">=</span> <span class="n">omni_embedding</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">omni_embedding</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;input.txt&quot;</span><span class="p">,</span> <span class="n">resized</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gender-classification-with-graph-embeddings-and-svm">
+<h2>Gender classification with graph embeddings and SVM<a class="headerlink" href="#gender-classification-with-graph-embeddings-and-svm" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;input.txt&quot;</span><span class="p">)</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gender_labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">109</span><span class="p">)</span> <span class="c1"># 70% training and 30% test</span>
+<span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="s1">&#39;kernel&#39;</span><span class="p">:[</span><span class="s1">&#39;poly&#39;</span><span class="p">],</span> <span class="s1">&#39;degree&#39;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]}</span>
+<span class="n">svc</span><span class="o">=</span><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span><span class="o">=</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span><span class="n">param_grid</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recall:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.803125
+Precision: 0.7986111111111112
+Recall: 0.7718120805369127
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using graph embeddings and a SVM with a polynomial kernel, we get an accuracy of around <em>80%</em> for classifying gender, which is a 20% increase from our previous accuracy achieved using betweenness centrality. How does this approach perform with regression? In the dataset, each subject has an MMSE score associated, which is a measure of basic mental skills. Let’s try using linear regression to predict MMSE scores.</p>
+</div>
+<div class="section" id="graph-regression-using-graph-embeddings-and-linear-regression">
+<h2>Graph regression using graph embeddings and linear regression<a class="headerlink" href="#graph-regression-using-graph-embeddings-and-linear-regression" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">str_labels</span> <span class="o">=</span> <span class="n">subject_labels</span><span class="p">[</span><span class="s2">&quot;MMSE_Score&quot;</span><span class="p">]</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">str_labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">109</span><span class="p">)</span> <span class="c1"># 70% training and 30% test</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str_labels</span><span class="o">.</span><span class="n">describe</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">y_pred</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean Absolute Error:&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error:&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Root Mean Squared Error:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    1064.000000
+mean       29.008459
+std         1.022293
+min        23.000000
+25%        28.000000
+50%        29.000000
+75%        30.000000
+max        30.000000
+Name: MMSE_Score, dtype: float64 
+
+      Actual  Predicted
+632       30  28.855957
+578       28  30.738770
+538       30  28.663574
+842       30  28.934082
+676       28  28.309082
+...      ...        ...
+80        28  29.533691
+801       28  29.770020
+915       29  29.515137
+1007      28  30.840332
+1116      30  28.262207
+
+[320 rows x 2 columns]
+Mean Absolute Error: 1.2976547241210938
+Mean Squared Error: 2.7745994668453933
+Root Mean Squared Error: 1.665712900485973
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given our dataset, the linear regression to the dataset was fairly poor in predicting subject’s MMSE scores. The error metrics are very high relative to the original data’s standard deviation.</p>
+<p>Some possible explanations for this large error are:<br><br></p>
+<li>Linear regression is insufficent to characterize the high dimensional data from the embedding</li>
+<li>The information encoded from omnibus embedding does not characterize the graph well enough to predict MMSE scores</li>
+<li>The graph itself does not contain enough nodes or features to predict a rather nuanced measure of mental abilities</li>
+<li>Mistake in implementation</li></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="further-considerations">
+<h1>Further Considerations<a class="headerlink" href="#further-considerations" title="Permalink to this headline">¶</a></h1>
+<p>In this analysis, the dataset used contained only 83 nodes for each brain graph. From the source, graphs of over 1000 nodes for each subject is available. With more computing power, a more comprehensive analysis, such as identification of smaller and distinct communities, as well as more accurate prediction accuracy may be possible. Moreover, different methods of multigraph embeddings or feature extraction, as well as other graph machine learning methods such as CNNs may also be considered for increasing accuracy.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -409,17 +1439,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="clarke.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="geason.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Clarke - final project placeholder</p>
+            <p class="prev-next-title">Analyzing Flight Networks</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="song.html" title="next page">
+    <a class='right-next' id="next-link" href="clarke.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Song - final project placeholder</p>
+        <p class="prev-next-title">Clarke - final project placeholder</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
