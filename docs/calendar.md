@@ -128,6 +128,7 @@ Martin Luther King Jr. Day
   - [Example of COVID effects on organizational communication from MSFT](http://116.203.245.78/studii/sars-cov-2/2104.00641.pdf) 
 - [Two-sample testing (external link)](https://docs.neurodata.io/bilateral-connectome/nmc.pdf)
   - Code and more info can be found [here](https://github.com/neurodata/bilateral-connectome).
+- [Network kernels](https://ysig.github.io/GraKeL/0.1a8/classes.html#kernels)
 
 ```{admonition} Due
 :class: important
