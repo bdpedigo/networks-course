@@ -1,0 +1,7 @@
+# prop_name, value
+name,word_adjacency (spanish)
+description,"Directed Networks of word adjacency in texts of several languages including English, French, Spanish and Japanese[^icon]
+[^icon]: Description obtained from the [ICON](https://icon.colorado.edu) project."
+citation,"['R. Milo. et al., \"Superfamilies of Evolved and Designed Networks.\" Science (2004), https://doi.org/10.1126/science.1089167']"
+url,https://doi.org/10.1126/science.1089167
+tags,"['Informational', 'Language', 'Unweighted']"
