@@ -34,7 +34,7 @@ parts:
   - file: projects/clarke.md
   - file: projects/fry.ipynb
   - file: projects/geason.md
-  - file: projects/larson.md
+  - file: projects/larson.ipynb
   - file: projects/liu.md  
   - file: projects/song.md
   - file: projects/sood.md
