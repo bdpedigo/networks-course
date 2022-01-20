@@ -189,20 +189,3 @@ section {
 # What can we do with networks? (i.e. What is this class about?)
 
 ## [Class Calendar](https://bdpedigo.github.io/networks-course/calendar.html)
-
----
-# Appendix
-
----
-# The Wire
-
---- 
-# Sports
-
-
---- 
-# Prediction/supervised learning 
-
----
-# Networks are a backbone in many modern ML algorithms
-
