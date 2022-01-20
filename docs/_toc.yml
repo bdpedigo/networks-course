@@ -35,7 +35,7 @@ parts:
   - file: projects/fry.md
   - file: projects/geason.md
   - file: projects/larson.md
-  - file: projects/liu.md  
+  - file: projects/liu.ipynb  
   - file: projects/song.md
   - file: projects/sood.md
   - file: projects/wang.md
