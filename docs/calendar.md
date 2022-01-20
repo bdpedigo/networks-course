@@ -125,6 +125,7 @@ Martin Luther King Jr. Day
 
 ### Jan 20th (Thursday)
 - [One-sample testing (external link)](https://docs.neurodata.io/maggot_connectome/feedforwardness_data.html)
+  - [Example of COVID effects on organizational communication from MSFT](http://116.203.245.78/studii/sars-cov-2/2104.00641.pdf) 
 - [Two-sample testing (external link)](https://docs.neurodata.io/bilateral-connectome/nmc.pdf)
   - Code and more info can be found [here](https://github.com/neurodata/bilateral-connectome).
 
