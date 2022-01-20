@@ -129,8 +129,26 @@ Martin Luther King Jr. Day
 - [Two-sample testing (external link)](https://docs.neurodata.io/bilateral-connectome/nmc.pdf)
   - Code and more info can be found [here](https://github.com/neurodata/bilateral-connectome).
 
+```{admonition} Due
+:class: important
+
+Submit final project notebooks *before* class.
+```
+
 ### Jan 21th (Friday)
 - Project presentations
+
+```{admonition} Due
+:class: important
+
+Final project presentations
+```
+
+```{admonition} Due
+:class: important
+
+End of class exit survey
+```
 
 ### Topics we didn't get to
 - Clustering embeddings
