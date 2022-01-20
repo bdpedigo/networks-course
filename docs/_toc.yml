@@ -30,10 +30,11 @@ parts:
   - file: ranking
 - caption: Projects
   chapters:
-  - file: projects/clarke.md
-  - file: projects/fry.md
+  - file: projects/pedigo.ipynb
+  - file: projects/fry.ipynb
+  - file: projects/larson.ipynb
   - file: projects/geason.ipynb
-  - file: projects/larson.md
+  - file: projects/clarke.md
   - file: projects/liu.md  
   - file: projects/song.md
   - file: projects/sood.md

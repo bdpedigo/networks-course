@@ -1,1 +1,0 @@
-# Larson - final project placeholder
