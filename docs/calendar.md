@@ -133,7 +133,7 @@ Martin Luther King Jr. Day
 ```{admonition} Due
 :class: important
 
-Submit final project notebooks *before* class.
+Submit final project notebooks by midnight.
 ```
 
 ### Jan 21th (Friday)
