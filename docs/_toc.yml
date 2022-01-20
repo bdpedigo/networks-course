@@ -31,11 +31,11 @@ parts:
 - caption: Projects
   chapters:
   - file: projects/pedigo.ipynb
-  - file: projects/clarke.md
-  - file: projects/fry.md
-  - file: projects/geason.md
-  - file: projects/larson.md
+  - file: projects/fry.ipynb
+  - file: projects/larson.ipynb
+  - file: projects/geason.ipynb
   - file: projects/liu.ipynb  
+  - file: projects/clarke.md
   - file: projects/song.md
   - file: projects/sood.md
   - file: projects/wang.md
