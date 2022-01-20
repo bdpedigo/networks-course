@@ -124,18 +124,13 @@ Martin Luther King Jr. Day
    - Applications of ranking to study hierarchies
 
 ### Jan 20th (Thursday)
-- Network kernels/metrics
-- Network hypothesis testing
-   - Latent distribution test
-   - Latent position test 
+- [One-sample testing (external link)](https://docs.neurodata.io/maggot_connectome/feedforwardness_data.html)
+- [Two-sample testing (external link)](https://docs.neurodata.io/bilateral-connectome/nmc.pdf)
+  - Code and more info can be found [here](https://github.com/neurodata/bilateral-connectome).
 
 ### Jan 21th (Friday)
 - Project presentations
 
-### TODO
-```{warning}
-We'll see if we get to these topics
-```
-
+### Topics we didn't get to
 - Clustering embeddings
 - Graph neural networks + supervised embeddings
