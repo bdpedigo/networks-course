@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clarke - final project placeholder &#8212; Network Data Science</title>
+    <title>Word adjacency networks &#8212; Network Data Science</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -255,7 +255,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Clarke - final project placeholder
+   Word adjacency networks
   </a>
  </li>
  <li class="toctree-l1">
@@ -319,9 +319,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/projects/clarke.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/projects/clarke.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -342,7 +342,7 @@
             href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/clarke.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/clarke.md"><button
+        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/clarke.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -357,6 +357,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/clarke.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -369,7 +386,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Clarke - final project placeholder</h1>
+                <h1>Word adjacency networks</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -380,8 +397,347 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="clarke-final-project-placeholder">
-<h1>Clarke - final project placeholder<a class="headerlink" href="#clarke-final-project-placeholder" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="word-adjacency-networks">
+<h1>Word adjacency networks<a class="headerlink" href="#word-adjacency-networks" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author:</strong> Jillayne Clarke</p>
+<p><strong>Word Adjacency Networks</strong></p>
+<p>Multiple networks of words in French, Spanish, English and Japanese: <a class="reference external" href="https://networks.skewed.de/net/word_adjacency">https://networks.skewed.de/net/word_adjacency</a>, <a class="reference external" href="https://www.science.org/doi/10.1126/science.1089167">https://www.science.org/doi/10.1126/science.1089167</a></p>
+<p>The nodes of each of these networks are words of the language and there is a directed edge between two nodes if the source node word is immediately followed by the target node word at some point in the corpus. The networks are unweighted. The nodes are not labelled with the words that they correspond to.</p>
+<ul class="simple">
+<li><p>The French network has 8,325 nodes and 24,295 edges with an average degree of 2.92.</p></li>
+<li><p>The Spanish network has 11,586 nodes and 45,129 edges with an average degree of 3.90.</p></li>
+<li><p>The Japanese network has 2,704 nodes and 8,300 edges with an average degree of 3.07.</p></li>
+<li><p>The English network has 7,381 nodes and 46,281 edges with an average degree of 6.27.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">map_to_nodes</span><span class="p">(</span><span class="n">node_map</span><span class="p">):</span>
+    <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># utility function to make it easy to compare dicts to array outputs</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))(</span><span class="n">nodelist</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For French, Spanish, and English, I only considered the first 3000 nodes because otherwise it took way too long to run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;french/edges.csv&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">AF</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+<span class="n">AF</span> <span class="o">=</span> <span class="n">AF</span><span class="p">[:</span><span class="mi">3000</span><span class="p">,:</span><span class="mi">3000</span><span class="p">]</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">AF</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;spanish/edges.csv&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">AS</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">AS</span> <span class="o">=</span> <span class="n">AS</span><span class="p">[:</span><span class="mi">3000</span><span class="p">,:</span><span class="mi">3000</span><span class="p">]</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+
+<span class="n">J</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;japanese/edges.csv&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">AJ</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+<span class="n">AJ</span> <span class="o">=</span> <span class="n">AJ</span><span class="p">[:,:]</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">AJ</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;darwin/edges.csv&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">AD</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="n">AD</span> <span class="o">=</span> <span class="n">AD</span><span class="p">[:</span><span class="mi">3000</span><span class="p">,:</span><span class="mi">3000</span><span class="p">]</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">AD</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+
+
+<span class="n">node_dataF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">F</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_dataF</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataF</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">F</span><span class="p">)))</span>
+<span class="n">node_dataF</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataF</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">F</span><span class="p">))</span>
+<span class="n">node_dataF</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataF</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">F</span><span class="p">))</span>
+<span class="c1">#node_data[&quot;betweenness&quot;] = node_data.index.map(nx.betweenness_centrality(F))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_dataF</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataF</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_dataF</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataF</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AF</span><span class="p">,</span> <span class="n">node_dataF</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AF</span><span class="p">,</span> <span class="n">node_dataF</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AF</span><span class="p">,</span> <span class="n">node_dataF</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="c1">#ax = axs[3]</span>
+<span class="c1">#plot_node_scaled_network(A, node_data, &quot;betweenness&quot;, ax)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clarke_7_0.png" src="../_images/clarke_7_0.png" />
+</div>
+</div>
+<p>Plotting different centrality measures: degree centrality, eigenvector centrality, PageRank for the French network.
+Notice the one dark blue dot in most of these is probably one of the functional words of French that is very common (determiner “le” etc.) The highest degree is 1858.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_dataS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">S</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_dataS</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataS</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">S</span><span class="p">)))</span>
+<span class="n">node_dataS</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataS</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
+<span class="n">node_dataS</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataS</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
+<span class="n">posS</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_dataS</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">posS</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataS</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_dataS</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">posS</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataS</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span> <span class="n">node_dataS</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span> <span class="n">node_dataS</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span> <span class="n">node_dataS</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="c1">#ax = axs[3]</span>
+<span class="c1">#plot_node_scaled_network(A, node_data, &quot;betweenness&quot;, ax)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clarke_10_0.png" src="../_images/clarke_10_0.png" />
+</div>
+</div>
+<p>Plotting different centrality measures: degree centrality, eigenvector centrality, PageRank for the Spanish network.
+Notice the darkest dots in most of these are probably  functional words of Spanish that are very common (determiner “el”, “la” etc.) The highest degree is 3460.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_dataJ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">J</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_dataJ</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataJ</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">J</span><span class="p">)))</span>
+<span class="n">node_dataJ</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataJ</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+<span class="n">node_dataJ</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataJ</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+<span class="n">posJ</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_dataJ</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">posJ</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataJ</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_dataJ</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">posJ</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataJ</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AJ</span><span class="p">,</span> <span class="n">node_dataJ</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AJ</span><span class="p">,</span> <span class="n">node_dataJ</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AJ</span><span class="p">,</span> <span class="n">node_dataJ</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="c1">#ax = axs[3]</span>
+<span class="c1">#plot_node_scaled_network(A, node_data, &quot;betweenness&quot;, ax)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clarke_13_0.png" src="../_images/clarke_13_0.png" />
+</div>
+</div>
+<p>Plotting different centrality measures: degree centrality, eigenvector centrality, PageRank for the Japanese network. The highest degree is 1450.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_dataD</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">D</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_dataD</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataD</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="n">node_dataD</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataD</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="n">node_dataD</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_dataD</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="n">posD</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_dataD</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">posD</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataD</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_dataD</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">posD</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_dataD</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AF</span><span class="p">,</span> <span class="n">node_dataD</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AF</span><span class="p">,</span> <span class="n">node_dataD</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">AF</span><span class="p">,</span> <span class="n">node_dataD</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="c1">#ax = axs[3]</span>
+<span class="c1">#plot_node_scaled_network(A, node_data, &quot;betweenness&quot;, ax)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clarke_16_0.png" src="../_images/clarke_16_0.png" />
+</div>
+</div>
+<p>Plotting different centrality measures: degree centrality, eigenvector centrality, PageRank for the English network.
+Notice the darkest dots in most of these are probably functional words of English that are very common (determiner “the” etc.) The highest degree is 4400.</p>
 </div>
 
     <script type="text/x-thebe-config">
