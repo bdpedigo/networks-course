@@ -36,6 +36,7 @@ parts:
   - file: projects/harounakenfack.ipynb
   - file: projects/larson.ipynb
   - file: projects/liu.ipynb  
+  - file: projects/onadeko.ipynb
   - file: projects/song.ipynb
   - file: projects/sood.ipynb  
   
