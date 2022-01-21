@@ -16,9 +16,9 @@ BALL_COLOR = colors[1]
 LINE_COLOR = colors[0]
 
 
-def draw_path(path):
-    last_vertex = path.vertices[1]
-    for vertex in path.vertices[:-1]:
+def draw_path(vertices, ax=None):
+    last_vertex = vertices[1]
+    for vertex in vertices[:-1]:
         x1 = last_vertex[0]
         y1 = last_vertex[1]
         x2 = vertex[0]
@@ -34,3 +34,12 @@ path = TextPath((14, 0), "D", size=20)
 draw_path(path)
 path = TextPath((28, 0), "S", size=20)
 draw_path(path)
+
+#%%
+fig, ax = plt.subplots(1, 1, figsize=(8, 4))
+path = TextPath((14, 0), "D", size=20)
+draw_path(path.vertices[:23], ax=ax)
+
+fig, ax = plt.subplots(1, 1, figsize=(8, 4))
+path = TextPath((14, 0), "D", size=20)
+draw_path(path.vertices[:23], ax=ax)
