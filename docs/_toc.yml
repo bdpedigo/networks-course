@@ -37,7 +37,7 @@ parts:
   - file: projects/liu.ipynb  
   - file: projects/clarke.ipynb
   - file: projects/song.ipynb
-  - file: projects/sood.md
+  - file: projects/sood.ipynb
   - file: projects/wang.md
   - file: projects/harounakenfack.ipynb
   
