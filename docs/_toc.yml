@@ -35,7 +35,7 @@ parts:
   - file: projects/larson.ipynb
   - file: projects/geason.ipynb
   - file: projects/liu.ipynb  
-  - file: projects/clarke.md
+  - file: projects/clarke.ipynb
   - file: projects/song.md
   - file: projects/sood.md
   - file: projects/wang.md
