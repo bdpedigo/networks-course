@@ -1,1 +1,0 @@
-# HarounaKenfack - final project placeholder
