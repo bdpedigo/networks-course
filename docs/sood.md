@@ -1,1 +1,0 @@
-# Sood - Final project placeholder
