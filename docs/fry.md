@@ -1,1 +1,0 @@
-# Fry - final project placeholder
