@@ -30,14 +30,12 @@ parts:
   - file: ranking
 - caption: Projects
   chapters:
-  - file: projects/pedigo.ipynb
-  - file: projects/fry.ipynb
-  - file: projects/larson.ipynb
-  - file: projects/geason.ipynb
-  - file: projects/liu.ipynb  
   - file: projects/clarke.ipynb
-  - file: projects/song.ipynb
-  - file: projects/sood.ipynb
-  - file: projects/wang.md
+  - file: projects/fry.ipynb
+  - file: projects/geason.ipynb
   - file: projects/harounakenfack.ipynb
+  - file: projects/larson.ipynb
+  - file: projects/liu.ipynb  
+  - file: projects/song.ipynb
+  - file: projects/sood.ipynb  
   
