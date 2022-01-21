@@ -1,0 +1,2055 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nigerian airports &#8212; Network Data Science</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/nd_logo_small.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Messel shale food web" href="song.html" />
+    <link rel="prev" title="Human connectome analysis and classification" href="liu.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-JYHFQNEPZN');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/nd_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Network Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course logistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../calendar.html">
+   Calendar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mini_assignment.html">
+   Mini-assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../final_project.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../online_resources.html">
+   Online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../books.html">
+   Books
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
+   Welcome
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
+   What are networks?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../representing_networks.html">
+   Representing networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plotting_networks.html">
+   Plotting networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../connected_components.html">
+   Connected components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../centrality.html">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../random_graphs.html">
+   Random network models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../community_detection.html">
+   Community detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embedding.html">
+   Network embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph_matching.html">
+   Graph matching
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../multiple_embedding.html">
+   Embedding multiple networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ranking.html">
+   Ranking and flow
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="clarke.html">
+   Word adjacency networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fry.html">
+   Staphylococcal nuclease
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="geason.html">
+   Flight networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="harounakenfack.html">
+   Network data scientists in California
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="larson.html">
+   Reddit network centrality
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="liu.html">
+   Human connectome analysis and classification
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Nigerian airports
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="song.html">
+   Messel shale food web
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sood.html">
+   <em>
+    E.coli
+   </em>
+   transcription network
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/projects/onadeko.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bdpedigo/networks-course"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/onadeko.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/onadeko.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/onadeko.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Nigerian airports</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="nigerian-airports">
+<h1>Nigerian airports<a class="headerlink" href="#nigerian-airports" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author: Mofopeofluwa Onadeko</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1">#import important libraries</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges_data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;edges.csv&#39;</span><span class="p">)</span>
+<span class="n">edges_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#extract edge data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># source</th>
+      <th>target</th>
+      <th>distance</th>
+      <th>airline</th>
+      <th>airline_code</th>
+      <th>codeshare</th>
+      <th>equipment</th>
+      <th>stops</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>2</td>
+      <td>124.520121</td>
+      <td>CG</td>
+      <td>1308</td>
+      <td>0</td>
+      <td>DH8 DHT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>3</td>
+      <td>157.150822</td>
+      <td>CG</td>
+      <td>1308</td>
+      <td>0</td>
+      <td>DH8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>106.747399</td>
+      <td>CG</td>
+      <td>1308</td>
+      <td>0</td>
+      <td>DH8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>4</td>
+      <td>424.726096</td>
+      <td>CG</td>
+      <td>1308</td>
+      <td>0</td>
+      <td>DH8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>4</td>
+      <td>424.726096</td>
+      <td>PX</td>
+      <td>328</td>
+      <td>0</td>
+      <td>DH4 DH8 DH3</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes_data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;nodes.csv&#39;</span><span class="p">)</span>
+<span class="n">nigerian_nodes</span><span class="o">=</span><span class="n">nodes_data</span><span class="p">[</span><span class="n">nodes_data</span><span class="p">[</span><span class="s1">&#39; country&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Nigeria&#39;</span><span class="p">]</span>
+<span class="n">nigerian_nodes</span>
+
+<span class="c1">#extract node data and refine it to nodes located in Nigeria</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># index</th>
+      <th>id</th>
+      <th>name</th>
+      <th>city</th>
+      <th>country</th>
+      <th>IATA/FAA</th>
+      <th>ICAO</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>altitude</th>
+      <th>timezone</th>
+      <th>DST</th>
+      <th>_pos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>161</th>
+      <td>161</td>
+      <td>260</td>
+      <td>Nnamdi Azikiwe International Airport</td>
+      <td>Abuja</td>
+      <td>Nigeria</td>
+      <td>ABV</td>
+      <td>DNAA</td>
+      <td>9.00679</td>
+      <td>7.26317</td>
+      <td>1123</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.89227097, 1.22581984])</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>162</td>
+      <td>262</td>
+      <td>Benin Airport</td>
+      <td>Benin</td>
+      <td>Nigeria</td>
+      <td>BNI</td>
+      <td>DNBE</td>
+      <td>6.31698</td>
+      <td>5.59950</td>
+      <td>258</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.82652138, 1.24947111])</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>163</td>
+      <td>263</td>
+      <td>Margaret Ekpo International Airport</td>
+      <td>Calabar</td>
+      <td>Nigeria</td>
+      <td>CBQ</td>
+      <td>DNCA</td>
+      <td>4.97602</td>
+      <td>8.34720</td>
+      <td>210</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.83364483, 1.25688692])</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>164</td>
+      <td>264</td>
+      <td>Akanu Ibiam International Airport</td>
+      <td>Enugu</td>
+      <td>Nigeria</td>
+      <td>ENU</td>
+      <td>DNEN</td>
+      <td>6.47427</td>
+      <td>7.56196</td>
+      <td>466</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.8611661 , 1.26900437])</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>165</td>
+      <td>266</td>
+      <td>Ibadan Airport</td>
+      <td>Ibadan</td>
+      <td>Nigeria</td>
+      <td>IBA</td>
+      <td>DNIB</td>
+      <td>7.36246</td>
+      <td>3.97833</td>
+      <td>725</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.77849562, 1.28440042])</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>166</td>
+      <td>267</td>
+      <td>Ilorin International Airport</td>
+      <td>Ilorin</td>
+      <td>Nigeria</td>
+      <td>ILR</td>
+      <td>DNIL</td>
+      <td>8.44021</td>
+      <td>4.49392</td>
+      <td>1126</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.7667102 , 1.27778974])</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>167</td>
+      <td>268</td>
+      <td>Yakubu Gowon Airport</td>
+      <td>Jos</td>
+      <td>Nigeria</td>
+      <td>JOS</td>
+      <td>DNJO</td>
+      <td>9.63983</td>
+      <td>8.86905</td>
+      <td>4232</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.80795479, 1.24882712])</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>168</td>
+      <td>269</td>
+      <td>Kaduna Airport</td>
+      <td>Kaduna</td>
+      <td>Nigeria</td>
+      <td>KAD</td>
+      <td>DNKA</td>
+      <td>10.69600</td>
+      <td>7.32011</td>
+      <td>2073</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.81608725, 1.2657922 ])</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>169</td>
+      <td>270</td>
+      <td>Mallam Aminu International Airport</td>
+      <td>Kano</td>
+      <td>Nigeria</td>
+      <td>KAN</td>
+      <td>DNKN</td>
+      <td>12.04760</td>
+      <td>8.52462</td>
+      <td>1562</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.93521986, 1.25622718])</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>170</td>
+      <td>273</td>
+      <td>Murtala Muhammed International Airport</td>
+      <td>Lagos</td>
+      <td>Nigeria</td>
+      <td>LOS</td>
+      <td>DNMM</td>
+      <td>6.57737</td>
+      <td>3.32116</td>
+      <td>135</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.93753793, 1.20869642])</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>171</td>
+      <td>275</td>
+      <td>Port Harcourt International Airport</td>
+      <td>Port Hartcourt</td>
+      <td>Nigeria</td>
+      <td>PHC</td>
+      <td>DNPO</td>
+      <td>5.01549</td>
+      <td>6.94959</td>
+      <td>87</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.86989284, 1.22791521])</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>172</td>
+      <td>276</td>
+      <td>Sadiq Abubakar III International Airport</td>
+      <td>Sokoto</td>
+      <td>Nigeria</td>
+      <td>SKO</td>
+      <td>DNSO</td>
+      <td>12.91630</td>
+      <td>5.20719</td>
+      <td>1010</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.76060182, 1.26232544])</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>173</td>
+      <td>277</td>
+      <td>Yola Airport</td>
+      <td>Yola</td>
+      <td>Nigeria</td>
+      <td>YOL</td>
+      <td>DNYO</td>
+      <td>9.25755</td>
+      <td>12.43040</td>
+      <td>599</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.77274829, 1.26768298])</td>
+    </tr>
+    <tr>
+      <th>2868</th>
+      <td>2868</td>
+      <td>6730</td>
+      <td>Sam Mbakwe International Airport</td>
+      <td>Imo</td>
+      <td>Nigeria</td>
+      <td>QOW</td>
+      <td>DNIM</td>
+      <td>5.42706</td>
+      <td>7.20603</td>
+      <td>373</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.82648558, 1.23762315])</td>
+    </tr>
+    <tr>
+      <th>2946</th>
+      <td>2946</td>
+      <td>6972</td>
+      <td>Warri Airport</td>
+      <td>Osubi</td>
+      <td>Nigeria</td>
+      <td>QRW</td>
+      <td>DNSU</td>
+      <td>5.59611</td>
+      <td>5.81778</td>
+      <td>242</td>
+      <td>1.0</td>
+      <td>U</td>
+      <td>array([5.83461586, 1.24420132])</td>
+    </tr>
+    <tr>
+      <th>3185</th>
+      <td>3185</td>
+      <td>9826</td>
+      <td>Akwa Ibom International Airport</td>
+      <td>Uyo</td>
+      <td>Nigeria</td>
+      <td>QUO</td>
+      <td>DNAI</td>
+      <td>4.87250</td>
+      <td>8.09300</td>
+      <td>170</td>
+      <td>1.0</td>
+      <td>N</td>
+      <td>array([5.8241249 , 1.27531056])</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ng_nodes</span><span class="o">=</span><span class="n">nodes_data</span><span class="p">[</span><span class="n">nodes_data</span><span class="p">[</span><span class="s1">&#39; country&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Nigeria&#39;</span><span class="p">]</span>
+<span class="n">airport_id</span><span class="o">=</span><span class="n">ng_nodes</span><span class="p">[</span><span class="s1">&#39;# index&#39;</span><span class="p">]</span>
+<span class="n">ng_city_nodes</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">airport_id</span><span class="p">)</span>
+
+<span class="n">ng_city_nodes</span><span class="p">[</span><span class="s1">&#39;airport&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">nigerian_nodes</span><span class="p">[</span><span class="s1">&#39; IATA/FAA&#39;</span><span class="p">]</span>
+<span class="n">ng_city_nodes</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">nigerian_nodes</span><span class="p">[</span><span class="s1">&#39; city&#39;</span><span class="p">]</span>
+<span class="n">ng_city_nodes</span>
+
+<span class="c1">#Create dataframe of airports in nigeria and their corresponding cities</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>airport</th>
+      <th>city</th>
+    </tr>
+    <tr>
+      <th># index</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>161</th>
+      <td>ABV</td>
+      <td>Abuja</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>BNI</td>
+      <td>Benin</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>CBQ</td>
+      <td>Calabar</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>ENU</td>
+      <td>Enugu</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>IBA</td>
+      <td>Ibadan</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>ILR</td>
+      <td>Ilorin</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>JOS</td>
+      <td>Jos</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>KAD</td>
+      <td>Kaduna</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>KAN</td>
+      <td>Kano</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>LOS</td>
+      <td>Lagos</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>PHC</td>
+      <td>Port Hartcourt</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>SKO</td>
+      <td>Sokoto</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>YOL</td>
+      <td>Yola</td>
+    </tr>
+    <tr>
+      <th>2868</th>
+      <td>QOW</td>
+      <td>Imo</td>
+    </tr>
+    <tr>
+      <th>2946</th>
+      <td>QRW</td>
+      <td>Osubi</td>
+    </tr>
+    <tr>
+      <th>3185</th>
+      <td>QUO</td>
+      <td>Uyo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zero</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">column_name_dict</span><span class="o">=</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">edges_data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">column_name_dict</span>
+
+<span class="c1">#Create dictionary for column names of edgelist</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;# source&#39;: [0, 0],
+ &#39; target&#39;: [0, 0],
+ &#39; distance&#39;: [0, 0],
+ &#39; airline&#39;: [0, 0],
+ &#39; airline_code&#39;: [0, 0],
+ &#39; codeshare&#39;: [0, 0],
+ &#39; equipment&#39;: [0, 0],
+ &#39; stops&#39;: [0, 0]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ng_edges</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">column_name_dict</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes_data</span><span class="p">[</span><span class="s1">&#39;# index&#39;</span><span class="p">])):</span>
+    <span class="k">if</span> <span class="n">edges_data</span><span class="p">[</span><span class="s1">&#39;# source&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nodes</span><span class="o">.</span><span class="n">index</span> <span class="ow">or</span> <span class="n">edges_data</span><span class="p">[</span><span class="s1">&#39; target&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">nodes</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">ng_edges</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">edges_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+                
+<span class="n">ng_edges</span><span class="o">=</span><span class="n">ng_edges</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>      
+<span class="n">ng_edges</span> 
+
+<span class="c1">#create edgelist comprising of edges in and out of nigeria</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># source</th>
+      <th>target</th>
+      <th>distance</th>
+      <th>airline</th>
+      <th>airline_code</th>
+      <th>codeshare</th>
+      <th>equipment</th>
+      <th>stops</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1981</th>
+      <td>153</td>
+      <td>170</td>
+      <td>106.394058</td>
+      <td>AT</td>
+      <td>4248</td>
+      <td>0</td>
+      <td>738</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1992</th>
+      <td>153</td>
+      <td>161</td>
+      <td>613.209062</td>
+      <td>ET</td>
+      <td>2220</td>
+      <td>1</td>
+      <td>DH8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>153</td>
+      <td>170</td>
+      <td>106.394058</td>
+      <td>W3</td>
+      <td>20976</td>
+      <td>0</td>
+      <td>CR9 73G</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2055</th>
+      <td>156</td>
+      <td>170</td>
+      <td>400.637086</td>
+      <td>3G</td>
+      <td>595</td>
+      <td>0</td>
+      <td>319</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2061</th>
+      <td>156</td>
+      <td>170</td>
+      <td>400.637086</td>
+      <td>AW</td>
+      <td>16960</td>
+      <td>0</td>
+      <td>ER4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2277</th>
+      <td>173</td>
+      <td>161</td>
+      <td>568.144830</td>
+      <td>W3</td>
+      <td>20976</td>
+      <td>0</td>
+      <td>CR9 73G</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2287</th>
+      <td>174</td>
+      <td>161</td>
+      <td>744.735046</td>
+      <td>ET</td>
+      <td>2220</td>
+      <td>1</td>
+      <td>DH8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2448</th>
+      <td>182</td>
+      <td>161</td>
+      <td>733.938471</td>
+      <td>ET</td>
+      <td>2220</td>
+      <td>1</td>
+      <td>DH8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2457</th>
+      <td>182</td>
+      <td>170</td>
+      <td>232.998365</td>
+      <td>ET</td>
+      <td>2220</td>
+      <td>0</td>
+      <td>73W</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3173</th>
+      <td>191</td>
+      <td>161</td>
+      <td>4564.978758</td>
+      <td>LH</td>
+      <td>3320</td>
+      <td>0</td>
+      <td>343</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>131 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">ng_edges</span><span class="p">,</span><span class="s1">&#39;# source&#39;</span><span class="p">,</span><span class="s1">&#39; target&#39;</span><span class="p">)</span>
+<span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">label_dict</span><span class="o">=</span><span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ng_city_nodes</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+    <span class="n">label_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">ng_city_nodes</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    
+<span class="n">label_dict</span>
+
+<span class="c1">#create label dictionary with ng_city_nodes data index and their corresponding cities</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{161: &#39;Abuja&#39;,
+ 162: &#39;Benin&#39;,
+ 163: &#39;Calabar&#39;,
+ 164: &#39;Enugu&#39;,
+ 165: &#39;Ibadan&#39;,
+ 166: &#39;Ilorin&#39;,
+ 167: &#39;Jos&#39;,
+ 168: &#39;Kaduna&#39;,
+ 169: &#39;Kano&#39;,
+ 170: &#39;Lagos&#39;,
+ 171: &#39;Port Hartcourt&#39;,
+ 172: &#39;Sokoto&#39;,
+ 173: &#39;Yola&#39;,
+ 2868: &#39;Imo&#39;,
+ 2946: &#39;Osubi&#39;,
+ 3185: &#39;Uyo&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">label_dict</span><span class="p">)</span>
+
+<span class="c1">#plot network graph of flights in and out of Nigeria</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/onadeko_8_0.png" src="../_images/onadeko_8_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">degree</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1">#calculate degree of each node</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(170, 42),
+ (161, 23),
+ (169, 7),
+ (508, 3),
+ (523, 3),
+ (164, 3),
+ (153, 2),
+ (156, 2),
+ (628, 2),
+ (171, 2)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree_centrality</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">degree_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1">#calculate degree centrality of each node</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(170, 0.84),
+ (161, 0.46),
+ (169, 0.14),
+ (508, 0.06),
+ (523, 0.06),
+ (164, 0.06),
+ (153, 0.04),
+ (156, 0.04),
+ (628, 0.04),
+ (171, 0.04)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">closeness_centrality</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">closeness_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1">#calculate closeness centrality of each node</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(170, 0.8620689655172413),
+ (161, 0.6493506493506493),
+ (169, 0.5376344086021505),
+ (523, 0.5154639175257731),
+ (508, 0.5050505050505051),
+ (164, 0.5050505050505051),
+ (153, 0.5),
+ (156, 0.5),
+ (628, 0.5),
+ (171, 0.5)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">betweenness_centrality</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">betweenness_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1">#calculate betweenness centrality of each node</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(153, 0.0),
+ (156, 0.0),
+ (160, 0.0),
+ (161, 0.27346938775510204),
+ (162, 0.0),
+ (163, 0.0),
+ (164, 0.0),
+ (165, 0.0),
+ (166, 0.0),
+ (167, 0.0)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigenvector_centrality</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality_numpy</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">max_value</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">eigenvector_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="n">sorted_eigenvector_centrality</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">eigenvector_centrality</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">sorted_eigenvector_centrality</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">eigenvector_centrality</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">max_value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">sorted</span><span class="p">(</span><span class="n">sorted_eigenvector_centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span> 
+
+<span class="c1">#calculate eigenvector centrality of each node</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(170, 1.0),
+ (161, 0.686967823214105),
+ (169, 0.30238852906706754),
+ (523, 0.25896022254707796),
+ (508, 0.25246101480613836),
+ (164, 0.25246101480613803),
+ (153, 0.21959744036222792),
+ (2946, 0.21959744036222792),
+ (255, 0.21959744036222786),
+ (182, 0.21959744036222786)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edge_betweenness</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">edge_betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">edge_betweenness</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1">#calculate edge betweenness of each node</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[((170, 161), 0.12980392156862744),
+ ((170, 169), 0.08509803921568627),
+ ((170, 160), 0.0392156862745098),
+ ((170, 167), 0.0392156862745098),
+ ((170, 168), 0.0392156862745098),
+ ((170, 500), 0.0392156862745098),
+ ((170, 404), 0.0392156862745098),
+ ((170, 486), 0.0392156862745098),
+ ((170, 492), 0.0392156862745098),
+ ((170, 474), 0.0392156862745098)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">page_rank</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">page_rank</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
+
+<span class="c1">#calculate page rank of each node</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{170: 0.2865667946583785,
+ 161: 0.1435943674113041,
+ 169: 0.04611358618359465,
+ 523: 0.01964759838711841,
+ 508: 0.01960178854181843,
+ 164: 0.01960178854181843,
+ 1014: 0.014340574069420128,
+ 153: 0.014048113121183498,
+ 156: 0.014048113121183498,
+ 628: 0.014048113121183498,
+ 171: 0.014048113121183498,
+ 255: 0.014048113121183498,
+ 182: 0.014048113121183498,
+ 191: 0.014048113121183498,
+ 401: 0.014048113121183498,
+ 162: 0.014048113121183498,
+ 163: 0.014048113121183498,
+ 2868: 0.014048113121183498,
+ 2946: 0.014048113121183498,
+ 454: 0.013847686054221427,
+ 160: 0.008741088803485217,
+ 167: 0.008741088803485217,
+ 168: 0.008741088803485217,
+ 500: 0.008741088803485217,
+ 404: 0.008741088803485217,
+ 486: 0.008741088803485217,
+ 492: 0.008741088803485217,
+ 474: 0.008741088803485217,
+ 1809: 0.008741088803485217,
+ 1017: 0.008741088803485217,
+ 441: 0.008741088803485217,
+ 1015: 0.008741088803485217,
+ 578: 0.008741088803485217,
+ 282: 0.008741088803485217,
+ 2040: 0.008741088803485217,
+ 3204: 0.008741088803485217,
+ 1011: 0.008741088803485217,
+ 381: 0.008741088803485217,
+ 770: 0.008741088803485217,
+ 1744: 0.008741088803485217,
+ 484: 0.008741088803485217,
+ 1870: 0.008741088803485217,
+ 3185: 0.008741088803485217,
+ 540: 0.008741088803485217,
+ 544: 0.008540661736523146,
+ 977: 0.008540661736523146,
+ 174: 0.008248200788286517,
+ 165: 0.008248200788286517,
+ 166: 0.008248200788286517,
+ 172: 0.008248200788286517,
+ 173: 0.008248200788286517}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">label_dict</span><span class="p">)</span>
+
+<span class="c1">#plot the network of flights in and out of nigeria using kamada_kawai_layout  </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/onadeko_16_0.png" src="../_images/onadeko_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">networkx.algorithms.community.centrality</span> <span class="kn">import</span> <span class="n">girvan_newman</span>
+<span class="n">communities</span><span class="o">=</span><span class="n">girvan_newman</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">node_groups</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">com</span> <span class="ow">in</span> <span class="nb">next</span><span class="p">(</span><span class="n">communities</span><span class="p">):</span>
+  <span class="n">node_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">com</span><span class="p">))</span>
+
+<span class="n">color_map</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_groups</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">color_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">color_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">color_map</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">label_dict</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">#perform girvan-newman community detection splitting the network into 2 communities</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/onadeko_17_0.png" src="../_images/onadeko_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label_dict</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">g</span><span class="p">)))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;betweenness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+
+
+<span class="n">centrality_table</span><span class="o">=</span><span class="n">node_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">centrality_table</span>
+
+<span class="c1">#Table of airports and their centrality measures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>degree</th>
+      <th>eigenvector</th>
+      <th>pagerank</th>
+      <th>betweenness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>170</th>
+      <td>Lagos</td>
+      <td>42</td>
+      <td>0.594261</td>
+      <td>0.286567</td>
+      <td>0.808571</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>Abuja</td>
+      <td>23</td>
+      <td>0.408239</td>
+      <td>0.143594</td>
+      <td>0.273469</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>Kano</td>
+      <td>7</td>
+      <td>0.179699</td>
+      <td>0.046114</td>
+      <td>0.093469</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>Enugu</td>
+      <td>3</td>
+      <td>0.150029</td>
+      <td>0.019602</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>508</th>
+      <td>NaN</td>
+      <td>3</td>
+      <td>0.150029</td>
+      <td>0.019602</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>523</th>
+      <td>NaN</td>
+      <td>3</td>
+      <td>0.153891</td>
+      <td>0.019648</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1014</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.100749</td>
+      <td>0.014341</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2946</th>
+      <td>Osubi</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2868</th>
+      <td>Imo</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>Calabar</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>Benin</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>454</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.076534</td>
+      <td>0.013848</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>Port Hartcourt</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>628</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.130499</td>
+      <td>0.014048</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1015</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>578</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>282</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2040</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3204</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>381</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1011</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3185</th>
+      <td>Uyo</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1870</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>770</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1744</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>484</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1809</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1017</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>Jos</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>474</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>492</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>486</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>500</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>977</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.023392</td>
+      <td>0.008541</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>544</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.023392</td>
+      <td>0.008541</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>Kaduna</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>Yola</td>
+      <td>1</td>
+      <td>0.053142</td>
+      <td>0.008248</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>Sokoto</td>
+      <td>1</td>
+      <td>0.053142</td>
+      <td>0.008248</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>Ilorin</td>
+      <td>1</td>
+      <td>0.053142</td>
+      <td>0.008248</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>Ibadan</td>
+      <td>1</td>
+      <td>0.053142</td>
+      <td>0.008248</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.053142</td>
+      <td>0.008248</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>540</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.077357</td>
+      <td>0.008741</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">node_data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="s1">&#39;eigenvector&#39;</span><span class="p">,</span> <span class="s1">&#39;pagerank&#39;</span><span class="p">,</span> <span class="s1">&#39;betweenness&#39;</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">#comparison of different centrality measures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1d8db9caf10&gt;
+</pre></div>
+</div>
+<img alt="../_images/onadeko_19_1.png" src="../_images/onadeko_19_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">dataframe</span><span class="o">-</span><span class="n">image</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting dataframe-imageNote: you may need to restart the kernel to use updated packages.
+
+  Downloading dataframe_image-0.1.1-py3-none-any.whl (32 kB)
+Requirement already satisfied: beautifulsoup4 in c:\users\mofop\anaconda3\lib\site-packages (from dataframe-image) (4.9.1)
+Requirement already satisfied: nbconvert&gt;=5 in c:\users\mofop\anaconda3\lib\site-packages (from dataframe-image) (5.6.1)
+Requirement already satisfied: matplotlib&gt;=3.1 in c:\users\mofop\anaconda3\lib\site-packages (from dataframe-image) (3.2.2)
+Requirement already satisfied: pandas&gt;=0.24 in c:\users\mofop\anaconda3\lib\site-packages (from dataframe-image) (1.0.5)
+Collecting aiohttp
+  Downloading aiohttp-3.8.1-cp38-cp38-win_amd64.whl (555 kB)
+Requirement already satisfied: requests in c:\users\mofop\anaconda3\lib\site-packages (from dataframe-image) (2.24.0)
+Requirement already satisfied: soupsieve&gt;1.2 in c:\users\mofop\anaconda3\lib\site-packages (from beautifulsoup4-&gt;dataframe-image) (2.0.1)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (0.3)
+Requirement already satisfied: bleach in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (3.1.5)
+Requirement already satisfied: jinja2&gt;=2.4 in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (2.11.2)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (0.8.4)
+Requirement already satisfied: testpath in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (0.4.4)
+Requirement already satisfied: traitlets&gt;=4.2 in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (4.3.3)
+Requirement already satisfied: nbformat&gt;=4.4 in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (5.0.7)
+Requirement already satisfied: defusedxml in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (0.6.0)
+Requirement already satisfied: jupyter-core in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (4.6.3)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (1.4.2)
+Requirement already satisfied: pygments in c:\users\mofop\anaconda3\lib\site-packages (from nbconvert&gt;=5-&gt;dataframe-image) (2.6.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\mofop\anaconda3\lib\site-packages (from matplotlib&gt;=3.1-&gt;dataframe-image) (1.2.0)
+Requirement already satisfied: numpy&gt;=1.11 in c:\users\mofop\anaconda3\lib\site-packages (from matplotlib&gt;=3.1-&gt;dataframe-image) (1.18.5)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\mofop\anaconda3\lib\site-packages (from matplotlib&gt;=3.1-&gt;dataframe-image) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in c:\users\mofop\anaconda3\lib\site-packages (from matplotlib&gt;=3.1-&gt;dataframe-image) (2.4.7)
+Requirement already satisfied: python-dateutil&gt;=2.1 in c:\users\mofop\anaconda3\lib\site-packages (from matplotlib&gt;=3.1-&gt;dataframe-image) (2.8.1)
+Requirement already satisfied: pytz&gt;=2017.2 in c:\users\mofop\anaconda3\lib\site-packages (from pandas&gt;=0.24-&gt;dataframe-image) (2020.1)
+Collecting charset-normalizer&lt;3.0,&gt;=2.0
+  Downloading charset_normalizer-2.0.10-py3-none-any.whl (39 kB)
+Collecting multidict&lt;7.0,&gt;=4.5
+  Downloading multidict-5.2.0-cp38-cp38-win_amd64.whl (45 kB)
+Collecting frozenlist&gt;=1.1.1
+  Downloading frozenlist-1.3.0-cp38-cp38-win_amd64.whl (33 kB)
+Collecting aiosignal&gt;=1.1.2
+  Downloading aiosignal-1.2.0-py3-none-any.whl (8.2 kB)
+Collecting yarl&lt;2.0,&gt;=1.0
+  Downloading yarl-1.7.2-cp38-cp38-win_amd64.whl (122 kB)
+Requirement already satisfied: attrs&gt;=17.3.0 in c:\users\mofop\anaconda3\lib\site-packages (from aiohttp-&gt;dataframe-image) (19.3.0)
+Collecting async-timeout&lt;5.0,&gt;=4.0.0a3
+  Downloading async_timeout-4.0.2-py3-none-any.whl (5.8 kB)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\users\mofop\anaconda3\lib\site-packages (from requests-&gt;dataframe-image) (1.25.9)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\mofop\anaconda3\lib\site-packages (from requests-&gt;dataframe-image) (2020.6.20)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in c:\users\mofop\anaconda3\lib\site-packages (from requests-&gt;dataframe-image) (2.10)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in c:\users\mofop\anaconda3\lib\site-packages (from requests-&gt;dataframe-image) (3.0.4)
+Requirement already satisfied: webencodings in c:\users\mofop\anaconda3\lib\site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;dataframe-image) (0.5.1)
+Requirement already satisfied: packaging in c:\users\mofop\anaconda3\lib\site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;dataframe-image) (20.4)
+Requirement already satisfied: six&gt;=1.9.0 in c:\users\mofop\anaconda3\lib\site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;dataframe-image) (1.15.0)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in c:\users\mofop\anaconda3\lib\site-packages (from jinja2&gt;=2.4-&gt;nbconvert&gt;=5-&gt;dataframe-image) (1.1.1)
+Requirement already satisfied: ipython-genutils in c:\users\mofop\anaconda3\lib\site-packages (from traitlets&gt;=4.2-&gt;nbconvert&gt;=5-&gt;dataframe-image) (0.2.0)
+Requirement already satisfied: decorator in c:\users\mofop\anaconda3\lib\site-packages (from traitlets&gt;=4.2-&gt;nbconvert&gt;=5-&gt;dataframe-image) (4.4.2)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in c:\users\mofop\anaconda3\lib\site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe-image) (3.2.0)
+Requirement already satisfied: pywin32&gt;=1.0; sys_platform == &quot;win32&quot; in c:\users\mofop\anaconda3\lib\site-packages (from jupyter-core-&gt;nbconvert&gt;=5-&gt;dataframe-image) (227)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in c:\users\mofop\anaconda3\lib\site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe-image) (0.16.0)
+Requirement already satisfied: setuptools in c:\users\mofop\anaconda3\lib\site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=5-&gt;dataframe-image) (49.2.0.post20200714)
+Installing collected packages: charset-normalizer, multidict, frozenlist, aiosignal, yarl, async-timeout, aiohttp, dataframe-image
+Successfully installed aiohttp-3.8.1 aiosignal-1.2.0 async-timeout-4.0.2 charset-normalizer-2.0.10 dataframe-image-0.1.1 frozenlist-1.3.0 multidict-5.2.0 yarl-1.7.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Citations:</p>
+<p>The <a class="reference external" href="http://openflights.org">openflights.org</a> website.”, <a class="reference external" href="https://openflights.org/data.html">https://openflights.org/data.html</a></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="liu.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Human connectome analysis and classification</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="song.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Messel shale food web</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Benjamin D. Pedigo<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
