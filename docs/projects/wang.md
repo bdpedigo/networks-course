@@ -1,1 +1,0 @@
-# Wang - final project placeholder
