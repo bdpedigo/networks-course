@@ -1,1 +1,0 @@
-# Clarke - final project placeholder
