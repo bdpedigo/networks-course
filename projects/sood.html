@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sood - Final project placeholder &#8212; Network Data Science</title>
+    <title>E.coli Transcription Network Analysis &#8212; Network Data Science</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -260,7 +260,10 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Sood - Final project placeholder
+   <em>
+    E.coli
+   </em>
+   Transcription Network Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -314,9 +317,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/projects/sood.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/projects/sood.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -337,7 +340,7 @@
             href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/sood.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/sood.md"><button
+        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/sood.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -352,11 +355,61 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/sood.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-graph">
+   Visualizing the graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centrality-measures">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-detection">
+   Community detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#degree-centrality-for-in-degrees">
+   Degree centrality, for in-degrees
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -364,19 +417,1177 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Sood - Final project placeholder</h1>
+                <h1>E.coli Transcription Network Analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-graph">
+   Visualizing the graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centrality-measures">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-detection">
+   Community detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#degree-centrality-for-in-degrees">
+   Degree centrality, for in-degrees
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sood-final-project-placeholder">
-<h1>Sood - Final project placeholder<a class="headerlink" href="#sood-final-project-placeholder" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="e-coli-transcription-network-analysis">
+<h1><em>E.coli</em> Transcription Network Analysis<a class="headerlink" href="#e-coli-transcription-network-analysis" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author: Lakshay Sood</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="visualizing-the-graph">
+<h2>Visualizing the graph<a class="headerlink" href="#visualizing-the-graph" title="Permalink to this headline">¶</a></h2>
+<p>I chose to analyze data from this paper;</p>
+<p><em>Shen-Orr et. al, “Network motifs in the transcriptional regulation network of Escherichia coli.” Nature Genetics 31, 64-68 (2002).</em></p>
+<p>I am interested in uncovering relationships between operons that control the metabolic state of the cell and operons that control cell division. In the context of this paper, these relationships arise when a transcription factor from one operon regulates expression of the other operon.</p>
+<p>Before we do this, we have to understand some basic properties of the graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graph_tool.all</span> <span class="k">as</span> <span class="nn">gt</span> 
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span> 
+<span class="kn">import</span> <span class="nn">pyintergraph</span> <span class="c1"># For conversion of graph_tool object to networkx object </span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">ns</span><span class="p">[</span><span class="s2">&quot;ecoli_transcription/v1.0&quot;</span><span class="p">]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">pyintergraph</span><span class="o">.</span><span class="n">gt2nx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">operons</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/Users/lakshaysood/Desktop/JHU/Junior_Year/networks-course/ColiNet-1.0/coliInterFullNames.txt&#39;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">operon</span> <span class="k">for</span> <span class="n">operon</span> <span class="ow">in</span> <span class="n">operons</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">num_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+<span class="n">num_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The graph has </span><span class="si">{</span><span class="n">num_nodes</span><span class="si">}</span><span class="s2"> nodes and </span><span class="si">{</span><span class="n">num_edges</span><span class="si">}</span><span class="s2"> edges. This is in comparison to </span><span class="si">{</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2"> potential edges.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The graph has 424 nodes and 577 edges. This is in comparison to 179352 potential edges.
+</pre></div>
+</div>
+</div>
+</div>
+<p>So this is a (very) sparse matrix representing an unweighted, directed network. Let’s visualize its adjacency matrix and a network representation below;</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># https://towardsdatascience.com/visualizing-a-sparse-matrix-1c4c807ea6c9 if I want to plot the matrix alone</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/sood_6_1.png" src="../_images/sood_6_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sood_7_0.png" src="../_images/sood_7_0.png" />
+</div>
+</div>
+<p>If we want to visualize the network free of self-loops, we can do the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">selfloop_edges</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">num_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+<span class="n">num_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The new graph has </span><span class="si">{</span><span class="n">num_nodes</span><span class="si">}</span><span class="s2"> nodes and </span><span class="si">{</span><span class="n">num_edges</span><span class="si">}</span><span class="s2"> edges. This is in comparison to </span><span class="si">{</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2"> potential edges.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The new graph has 424 nodes and 519 edges. This is in comparison to 179352 potential edges.
+</pre></div>
+</div>
+<img alt="../_images/sood_9_1.png" src="../_images/sood_9_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">pos1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sood_10_0.png" src="../_images/sood_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="centrality-measures">
+<h2>Centrality measures<a class="headerlink" href="#centrality-measures" title="Permalink to this headline">¶</a></h2>
+<p>The first thing we can do is to identify the most important nodes in the network. I hypothesize that these operons will control the operations necessary for cellular survival - for example, operons that control the production of essential amino acids, or those that stimulate cellular division.</p>
+<p>One way to define operon importance is to consider the number of downstream operons regulated by an operon. The most important operons have the highest out-degrees in the graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span> <span class="c1"># necessary to do again since we removed self-loops </span>
+
+<span class="n">out_degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">sorted_out_degree_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">out_degrees</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">out_degrees</span> <span class="o">=</span> <span class="n">out_degrees</span><span class="p">[</span><span class="n">sorted_out_degree_indices</span><span class="p">]</span>
+<span class="n">sorted_operons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">)[</span><span class="n">sorted_out_degree_indices</span><span class="p">]</span>
+<span class="n">operon_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">sorted_operons</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">out_degrees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out_degrees</span><span class="p">))}</span>
+<span class="n">operon_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;aroF_tyrA&#39;: 6,
+ &#39;fepA_entD&#39;: 5,
+ &#39;fumA&#39;: 5,
+ &#39;arcA&#39;: 5,
+ &#39;appCBA&#39;: 4,
+ &#39;argX_hisR_leuT_proM&#39;: 4,
+ &#39;ilvC&#39;: 4,
+ &#39;argF&#39;: 4,
+ &#39;argD&#39;: 4,
+ &#39;fur&#39;: 4,
+ &#39;araFG_araH_1H_2&#39;: 4,
+ &#39;caiF&#39;: 4,
+ &#39;cysJIH&#39;: 4,
+ &#39;cvpA_purF_ubiX&#39;: 4,
+ &#39;fdhF&#39;: 4,
+ &#39;hipBA&#39;: 4,
+ &#39;hcaA1A2CBD_yphA&#39;: 3,
+ &#39;cadC&#39;: 3,
+ &#39;dmsABC&#39;: 3,
+ &#39;glnALG&#39;: 3,
+ &#39;nac&#39;: 3,
+ &#39;ecpD_htrE&#39;: 3,
+ &#39;hcaR&#39;: 3,
+ &#39;glmUS&#39;: 3,
+ &#39;cydAB&#39;: 3,
+ &#39;mtr&#39;: 3,
+ &#39;dctA&#39;: 3,
+ &#39;inaA&#39;: 3,
+ &#39;gyrA&#39;: 3,
+ &#39;dapA_nlpB_purA&#39;: 3,
+ &#39;fepDGC&#39;: 3,
+ &#39;cysK&#39;: 3,
+ &#39;fdnGHI&#39;: 3,
+ &#39;lacZYA&#39;: 3,
+ &#39;argR&#39;: 3,
+ &#39;leuX&#39;: 3,
+ &#39;livJ&#39;: 3,
+ &#39;livKHMGF&#39;: 3,
+ &#39;evgA&#39;: 3,
+ &#39;fabA&#39;: 3,
+ &#39;fadBA&#39;: 3,
+ &#39;argE&#39;: 3,
+ &#39;fadR&#39;: 2,
+ &#39;fixABCX&#39;: 2,
+ &#39;dnaA&#39;: 2,
+ &#39;fadL&#39;: 2,
+ &#39;edd_eda&#39;: 2,
+ &#39;flgAMN&#39;: 2,
+ &#39;fhuACDB&#39;: 2,
+ &#39;glpD&#39;: 2,
+ &#39;dcuB_fumB&#39;: 2,
+ &#39;motABcheAW&#39;: 2,
+ &#39;flgBCDEFGHIJK&#39;: 2,
+ &#39;cytR&#39;: 2,
+ &#39;exuT&#39;: 2,
+ &#39;glpFK&#39;: 2,
+ &#39;dsbA&#39;: 2,
+ &#39;ecfF&#39;: 2,
+ &#39;cysPUWAM&#39;: 2,
+ &#39;ecfK&#39;: 2,
+ &#39;ecfJ&#39;: 2,
+ &#39;ecfI&#39;: 2,
+ &#39;glpTQ&#39;: 2,
+ &#39;ecfG&#39;: 2,
+ &#39;entCEBA&#39;: 2,
+ &#39;dsdC&#39;: 2,
+ &#39;glpR&#39;: 2,
+ &#39;ecfABC&#39;: 2,
+ &#39;ebgR&#39;: 2,
+ &#39;ebgAC&#39;: 2,
+ &#39;epd_pgk&#39;: 2,
+ &#39;dsdXA&#39;: 2,
+ &#39;ecfLM&#39;: 2,
+ &#39;crp&#39;: 2,
+ &#39;nadB&#39;: 2,
+ &#39;narK&#39;: 2,
+ &#39;aslB&#39;: 2,
+ &#39;ivbL_ilvBN&#39;: 2,
+ &#39;uidR&#39;: 2,
+ &#39;fruBKA&#39;: 2,
+ &#39;argI&#39;: 2,
+ &#39;araJ&#39;: 2,
+ &#39;araE&#39;: 2,
+ &#39;araC&#39;: 2,
+ &#39;lysA&#39;: 2,
+ &#39;ansB&#39;: 2,
+ &#39;alpA&#39;: 2,
+ &#39;alkA&#39;: 2,
+ &#39;lpxDA_fabZ&#39;: 2,
+ &#39;alaWX&#39;: 2,
+ &#39;aidB&#39;: 2,
+ &#39;ahpCF&#39;: 2,
+ &#39;acs&#39;: 2,
+ &#39;grpE&#39;: 2,
+ &#39;glgCAP&#39;: 2,
+ &#39;glnHPQ&#39;: 2,
+ &#39;tsx&#39;: 2,
+ &#39;guaBA&#39;: 2,
+ &#39;cynTSX&#39;: 2,
+ &#39;cynR&#39;: 2,
+ &#39;cutC&#39;: 2,
+ &#39;cspA&#39;: 2,
+ &#39;csgDEFG&#39;: 2,
+ &#39;cpxP&#39;: 2,
+ &#39;cpxAR&#39;: 2,
+ &#39;glpACB&#39;: 2,
+ &#39;himA&#39;: 2,
+ &#39;cirA&#39;: 2,
+ &#39;caiTABCDE&#39;: 2,
+ &#39;osmE&#39;: 2,
+ &#39;osmC&#39;: 2,
+ &#39;ompF&#39;: 2,
+ &#39;tsr&#39;: 2,
+ &#39;glcC&#39;: 1,
+ &#39;glnB&#39;: 1,
+ &#39;glcDEFGB&#39;: 1,
+ &#39;gdhA&#39;: 1,
+ &#39;glgS&#39;: 1,
+ &#39;kbl_tdh&#39;: 1,
+ &#39;gltA&#39;: 1,
+ &#39;gltBDF&#39;: 1,
+ &#39;leuO&#39;: 1,
+ &#39;leuLABCD&#39;: 1,
+ &#39;lctPRD&#39;: 1,
+ &#39;kdpDE&#39;: 1,
+ &#39;zraP&#39;: 1,
+ &#39;icdA&#39;: 1,
+ &#39;hypABCDE&#39;: 1,
+ &#39;hypA&#39;: 1,
+ &#39;hydHG&#39;: 1,
+ &#39;hycABCDEFGH&#39;: 1,
+ &#39;hycA&#39;: 1,
+ &#39;htrA&#39;: 1,
+ &#39;htpY&#39;: 1,
+ &#39;htpG&#39;: 1,
+ &#39;hns&#39;: 1,
+ &#39;hflB&#39;: 1,
+ &#39;gcvA&#39;: 1,
+ &#39;gorA&#39;: 1,
+ &#39;gntR&#39;: 1,
+ &#39;gntKU&#39;: 1,
+ &#39;glyA&#39;: 1,
+ &#39;gcvTHP&#39;: 1,
+ &#39;emrRAB&#39;: 1,
+ &#39;gatYZABCDR_2&#39;: 1,
+ &#39;arsR&#39;: 1,
+ &#39;codBA&#39;: 1,
+ &#39;clpP&#39;: 1,
+ &#39;carAB&#39;: 1,
+ &#39;birA_murA&#39;: 1,
+ &#39;bioBFCD&#39;: 1,
+ &#39;betT&#39;: 1,
+ &#39;betIBA&#39;: 1,
+ &#39;atoDAE&#39;: 1,
+ &#39;atoDAB&#39;: 1,
+ &#39;atoC&#39;: 1,
+ &#39;aspA&#39;: 1,
+ &#39;asnA&#39;: 1,
+ &#39;arsEFG&#39;: 1,
+ &#39;gatR_1&#39;: 1,
+ &#39;aroP&#39;: 1,
+ &#39;aroL_yaiA_aroM&#39;: 1,
+ &#39;aroG&#39;: 1,
+ &#39;argW&#39;: 1,
+ &#39;argU&#39;: 1,
+ &#39;argCBH&#39;: 1,
+ &#39;araBAD&#39;: 1,
+ &#39;appY&#39;: 1,
+ &#39;aldB&#39;: 1,
+ &#39;adiA&#39;: 1,
+ &#39;ada_alkB&#39;: 1,
+ &#39;acrR&#39;: 1,
+ &#39;cpdB&#39;: 1,
+ &#39;csgBA&#39;: 1,
+ &#39;cyoABCDE&#39;: 1,
+ &#39;cysB&#39;: 1,
+ &#39;galS&#39;: 1,
+ &#39;fpr&#39;: 1,
+ &#39;fnr&#39;: 1,
+ &#39;fliLMNOPQR&#39;: 1,
+ &#39;fliFGHIJK&#39;: 1,
+ &#39;fliE&#39;: 1,
+ &#39;fliC&#39;: 1,
+ &#39;flhDC&#39;: 1,
+ &#39;flgMN&#39;: 1,
+ &#39;flgKL&#39;: 1,
+ &#39;fkpA&#39;: 1,
+ &#39;fhlA&#39;: 1,
+ &#39;fepB&#39;: 1,
+ &#39;fecIR&#39;: 1,
+ &#39;fecABCDE&#39;: 1,
+ &#39;exuR&#39;: 1,
+ &#39;envY_ompT&#39;: 1,
+ &#39;ecfH&#39;: 1,
+ &#39;ecfD&#39;: 1,
+ &#39;dps&#39;: 1,
+ &#39;dnaKJ&#39;: 1,
+ &#39;deoR&#39;: 1,
+ &#39;deoCABD&#39;: 1,
+ &#39;dadAX&#39;: 1,
+ &#39;cysDNC&#39;: 1,
+ &#39;leuQPV&#39;: 1,
+ &#39;aceBAK&#39;: 1,
+ &#39;purEK&#39;: 1,
+ &#39;purC&#39;: 1,
+ &#39;proP&#39;: 1,
+ &#39;prsA&#39;: 1,
+ &#39;pspABCDE&#39;: 1,
+ &#39;pspF&#39;: 1,
+ &#39;pstSCAB_phoU&#39;: 1,
+ &#39;ptsG&#39;: 1,
+ &#39;ptsHI_crr&#39;: 1,
+ &#39;lon&#39;: 1,
+ &#39;rcsAB&#39;: 1,
+ &#39;purHD&#39;: 1,
+ &#39;purL&#39;: 1,
+ &#39;purMN&#39;: 1,
+ &#39;treBC&#39;: 1,
+ &#39;pykF&#39;: 1,
+ &#39;pyrD&#39;: 1,
+ &#39;rbsR&#39;: 1,
+ &#39;proL&#39;: 1,
+ &#39;proK&#39;: 1,
+ &#39;trpLEDCBA&#39;: 1,
+ &#39;ppiA&#39;: 1,
+ &#39;udp&#39;: 1,
+ &#39;ompC&#39;: 1,
+ &#39;thrU_tyrU_glyT_thrT&#39;: 1,
+ &#39;tyrTV&#39;: 1,
+ &#39;osmY&#39;: 1,
+ &#39;tyrP&#39;: 1,
+ &#39;ostA_surA_pdxA&#39;: 1,
+ &#39;oxyR&#39;: 1,
+ &#39;pheU&#39;: 1,
+ &#39;pheV&#39;: 1,
+ &#39;phnCDE_f73_phnFGHIJKLMNOP&#39;: 1,
+ &#39;tyrB&#39;: 1,
+ &#39;phoBR&#39;: 1,
+ &#39;phoE&#39;: 1,
+ &#39;pncB&#39;: 1,
+ &#39;rcsA&#39;: 1,
+ &#39;recA&#39;: 1,
+ &#39;uhpA&#39;: 1,
+ &#39;srlAEBD_gutM_srlR_gutQ&#39;: 1,
+ &#39;slp&#39;: 1,
+ &#39;sodA&#39;: 1,
+ &#39;soxR&#39;: 1,
+ &#39;tonB&#39;: 1,
+ &#39;soxS&#39;: 1,
+ &#39;speA&#39;: 1,
+ &#39;speC&#39;: 1,
+ &#39;ssb&#39;: 1,
+ &#39;recN&#39;: 1,
+ &#39;ssuEADCB&#39;: 1,
+ &#39;stpA&#39;: 1,
+ &#39;sulA&#39;: 1,
+ &#39;tnaLAB&#39;: 1,
+ &#39;tauABCD&#39;: 1,
+ &#39;tdcABCDEFG&#39;: 1,
+ &#39;tdcAR&#39;: 1,
+ &#39;skp_lpxDA_fabZ&#39;: 1,
+ &#39;serX&#39;: 1,
+ &#39;serT&#39;: 1,
+ &#39;serA&#39;: 1,
+ &#39;rfaDFCL&#39;: 1,
+ &#39;rhaSR&#39;: 1,
+ &#39;rob&#39;: 1,
+ &#39;rotA&#39;: 1,
+ &#39;rpiB&#39;: 1,
+ &#39;rpiR_alsBACEK&#39;: 1,
+ &#39;rpoD&#39;: 1,
+ &#39;rpoE_rseABC&#39;: 1,
+ &#39;rpoH&#39;: 1,
+ &#39;rpoN&#39;: 1,
+ &#39;rpsU_dnaG_rpoD&#39;: 1,
+ &#39;rtcAB&#39;: 1,
+ &#39;rtcR&#39;: 1,
+ &#39;sdaA&#39;: 1,
+ &#39;sdhCDAB_b0725_sucABCD&#39;: 1,
+ &#39;nycA&#39;: 1,
+ &#39;ubiG&#39;: 1,
+ &#39;nupG&#39;: 1,
+ &#39;moaABCDE&#39;: 1,
+ &#39;mdoGH&#39;: 1,
+ &#39;melAB&#39;: 1,
+ &#39;melR&#39;: 1,
+ &#39;ybaO&#39;: 1,
+ &#39;metA&#39;: 1,
+ &#39;metC&#39;: 1,
+ &#39;metF&#39;: 1,
+ &#39;xylFGHR&#39;: 1,
+ &#39;metJ&#39;: 1,
+ &#39;metR&#39;: 1,
+ &#39;metT_leuW_glnUW_metU_glnVX&#39;: 1,
+ &#39;metY_yhbC_nusA_infB&#39;: 1,
+ &#39;xylAB&#39;: 1,
+ &#39;mglBAC&#39;: 1,
+ &#39;mhpR&#39;: 1,
+ &#39;mdlA&#39;: 1,
+ &#39;mdh&#39;: 1,
+ &#39;marRAB&#39;: 1,
+ &#39;yiaJ&#39;: 1,
+ &#39;lrp&#39;: 1,
+ &#39;lysU&#39;: 1,
+ &#39;zntA&#39;: 1,
+ &#39;malI&#39;: 1,
+ &#39;yjbK&#39;: 1,
+ &#39;yiaKLMNOPQRS&#39;: 1,
+ &#39;yhfA&#39;: 1,
+ &#39;manXYZ&#39;: 1,
+ &#39;yhdG_fis&#39;: 1,
+ &#39;malS&#39;: 1,
+ &#39;yfhD&#39;: 1,
+ &#39;ycfC_purB&#39;: 1,
+ &#39;ybiS&#39;: 1,
+ &#39;malZ&#39;: 1,
+ &#39;mlc&#39;: 1,
+ &#39;mhpABCDFE&#39;: 1,
+ &#39;uxaCA&#39;: 1,
+ &#39;narZYWV&#39;: 1,
+ &#39;uspA&#39;: 1,
+ &#39;nuoABCEFGHIJKLMN&#39;: 1,
+ &#39;nrfABCDEFG&#39;: 1,
+ &#39;umuDC&#39;: 1,
+ &#39;uvrC&#39;: 1,
+ &#39;nrdAB&#39;: 1,
+ &#39;uvrD&#39;: 1,
+ &#39;modABC&#39;: 1,
+ &#39;nirBDC_cysG&#39;: 1,
+ &#39;uxuABR&#39;: 1,
+ &#39;valUXY_lysV&#39;: 1,
+ &#39;nhaA&#39;: 1,
+ &#39;wza_wzb_b2060_wcaA_wcaB&#39;: 1,
+ &#39;xapAB&#39;: 1,
+ &#39;narL&#39;: 1,
+ &#39;nagBACD&#39;: 1,
+ &#39;xprB_dsbC_recJ&#39;: 1,
+ &#39;mopA&#39;: 1,
+ &#39;mopB&#39;: 1,
+ &#39;xapR&#39;: 1,
+ &#39;mtlADR&#39;: 1,
+ &#39;nagE&#39;: 1,
+ &#39;narGHJI&#39;: 1,
+ &#39;uidRABC&#39;: 0,
+ &#39;znuABC&#39;: 0,
+ &#39;adiA_adiY&#39;: 0,
+ &#39;zntR&#39;: 0,
+ &#39;acrAB&#39;: 0,
+ &#39;acnA&#39;: 0,
+ &#39;adhE&#39;: 0,
+ &#39;yjdHG&#39;: 0,
+ &#39;aroH&#39;: 0,
+ &#39;tyrR&#39;: 0,
+ &#39;treR&#39;: 0,
+ &#39;asnC&#39;: 0,
+ &#39;uppS_cdsA_ecfE&#39;: 0,
+ &#39;uvrA&#39;: 0,
+ &#39;aspV&#39;: 0,
+ &#39;uvrB&#39;: 0,
+ &#39;trpR&#39;: 0,
+ &#39;cadBA&#39;: 0,
+ &#39;torCAD&#39;: 0,
+ &#39;uhpT&#39;: 0,
+ &#39;torR&#39;: 0,
+ &#39;bioA&#39;: 0,
+ &#39;thrW&#39;: 0,
+ &#39;lexA_dinF&#39;: 0,
+ &#39;cbl&#39;: 0,
+ &#39;nlpD_rpoS&#39;: 0,
+ &#39;gcvR&#39;: 0,
+ &#39;nhaR&#39;: 0,
+ &#39;nfo&#39;: 0,
+ &#39;ndh&#39;: 0,
+ &#39;nadR&#39;: 0,
+ &#39;modE&#39;: 0,
+ &#39;gntT&#39;: 0,
+ &#39;metH&#39;: 0,
+ &#39;himD&#39;: 0,
+ &#39;malXY&#39;: 0,
+ &#39;malT&#39;: 0,
+ &#39;ibpAB&#39;: 0,
+ &#39;iclMR&#39;: 0,
+ &#39;idnDOTR&#39;: 0,
+ &#39;malPQ&#39;: 0,
+ &#39;ilvIH&#39;: 0,
+ &#39;ilvY&#39;: 0,
+ &#39;malK_lamB_malM&#39;: 0,
+ &#39;katG&#39;: 0,
+ &#39;malEFG&#39;: 0,
+ &#39;kdpABC&#39;: 0,
+ &#39;ksgA_epaG_epaH&#39;: 0,
+ &#39;lacI&#39;: 0,
+ &#39;lysT_valT_lysW&#39;: 0,
+ &#39;lysR&#39;: 0,
+ &#39;nlpB_purA&#39;: 0,
+ &#39;GalR&#39;: 0,
+ &#39;tarTapcheRBYZ&#39;: 0,
+ &#39;galETKM&#39;: 0,
+ &#39;cyaA&#39;: 0,
+ &#39;rhaT&#39;: 0,
+ &#39;rhaBAD&#39;: 0,
+ &#39;rbsDACBK&#39;: 0,
+ &#39;pyrC&#39;: 0,
+ &#39;putAP&#39;: 0,
+ &#39;purR&#39;: 0,
+ &#39;ppsA&#39;: 0,
+ &#39;polB&#39;: 0,
+ &#39;phoA&#39;: 0,
+ &#39;pdhR_aceEF_lpdA&#39;: 0,
+ &#39;flhBAE&#39;: 0,
+ &#39;fliAZY&#39;: 0,
+ &#39;oppABCDF&#39;: 0,
+ &#39;fliDST&#39;: 0,
+ &#39;ompR_envZ&#39;: 0,
+ &#39;ompA&#39;: 0,
+ &#39;focA_pflB&#39;: 0,
+ &#39;frdABCD&#39;: 0,
+ &#39;nupC&#39;: 0,
+ &#39;FruR&#39;: 0,
+ &#39;ftsQAZ&#39;: 0,
+ &#39;fucAO&#39;: 0,
+ &#39;fucPIKUR&#39;: 0,
+ &#39;fumC&#39;: 0,
+ &#39;zwf&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">regulated_genes</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">index_list</span><span class="p">,</span> <span class="n">operon_list</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span> <span class="c1"># pick the highest n operons and see what genes their transcription factors regulate</span>
+    <span class="n">edge_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+    <span class="n">num_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">. &quot;</span> <span class="o">+</span> <span class="n">operon_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_edges</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">edge_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">index_list</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> 
+                <span class="n">out_node</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">out_node</span><span class="p">])</span>
+
+<span class="n">regulated_genes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">sorted_out_degree_indices</span><span class="p">,</span> <span class="n">sorted_operons</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. aroF_tyrA
+
+appY
+deoR
+lacI
+mtlADR
+rbsDACBK
+tnaLAB
+
+2. fepA_entD
+
+cyaA
+gntT
+lacI
+modE
+torCAD
+
+3. fumA
+
+fumC
+galETKM
+lacI
+metH
+leuO
+
+4. arcA
+
+appY
+cyaA
+gntT
+lacI
+ompA
+
+5. appCBA
+
+appY
+himD
+lacI
+gcvTHP
+
+6. argX_hisR_leuT_proM
+
+appY
+gntT
+lacI
+ompA
+
+7. ilvC
+
+idnDOTR
+ilvIH
+metH
+ppsA
+
+8. argF
+
+appY
+cyaA
+gntT
+katG
+
+9. argD
+
+appY
+mtlADR
+rbsDACBK
+tnaLAB
+
+10. fur
+
+fumC
+lacI
+metH
+leuO
+</pre></div>
+</div>
+</div>
+</div>
+<p>But this method of defining operon importance lacks nuance. If an operon has a high out-degree, but most of the operons it regulates have an out-degree of zero, it is less important than an operon that has a high out-degree with child operons that also have high out-degrees.</p>
+<p>Another way to define node importance is to use eigenvector centrality. Briefly, nodes are considered important if they are connected to other nodes. The entries of the eigenvector for the largest eigenvalue of the adjacency matrix represent each node’s eigenvector centrality. Thus, although the definition in words seems circular, the mathematical definition avoids this circularity.</p>
+<p>We could also use subgraph centrality. This method determines the importance of a node by enumerating the number of subgraphs that include that node. Unfortunately, networkx does not define a subgraph_centrality method for digraphs. Symmetrizing the graph to make it an undirected graph would introduce extra edges, which would change the subgraph centrality of each node from the original graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+
+<span class="n">old_g</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">ns</span><span class="p">[</span><span class="s2">&quot;ecoli_transcription/v1.0&quot;</span><span class="p">]</span>
+<span class="n">old_g</span> <span class="o">=</span> <span class="n">pyintergraph</span><span class="o">.</span><span class="n">gt2nx</span><span class="p">(</span><span class="n">old_g</span><span class="p">)</span>
+<span class="n">old_A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">old_g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">operon_index_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">sorted_out_degree_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">out_degrees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out_degrees</span><span class="p">))}</span>
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">operon_index_dict</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">old_g</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">))</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">old_A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sood_16_0.png" src="../_images/sood_16_0.png" />
+</div>
+</div>
+<p>Comparing the out-degree centrality to the eigenvector centrality, we see that the most important node in the eigenvector network does not have a high out-degree. So for our purposes, eigenvector centrality is not a good measure of the most important nodes in the network.</p>
+</div>
+<div class="section" id="community-detection">
+<h2>Community detection<a class="headerlink" href="#community-detection" title="Permalink to this headline">¶</a></h2>
+<p>At this point I wanted to move on and find communities in the network using the Leiden algorithm for agglomerative clustering. Unfortunately, graspologic’s implementation of the Leiden algorithm only works for undirected graphs. Converting my graph to an undirected graph seems infeasible:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">reciprocity</span><span class="p">(</span><span class="n">old_g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">reciprocity</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>I found a library online, written by the first author of the Leiden paper, that would allow me to work with the algorithm on directed graphs. While the algorithm seemed to work, I had to convert my NetworkX graph to an iGraph, which reindexes all of the nodes and edges, and I didn’t have time to figure out how to recover the original node indices. Also, plotting the communities by color was really finicky in iGraph, and I didn’t have time to figure out how to do it the right way. I’m including my attempt below for completeness, but in the future I’d like to figure ways around these two problems.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leidenalg</span> <span class="k">as</span> <span class="nn">la</span> <span class="c1"># Necessary because graspologic implementation of Leiden algorithm doesn&#39;t work for </span>
+                       <span class="c1"># directed graphs, but this implementation claims to work (written by original author of</span>
+                       <span class="c1"># Leiden paper)</span>
+<span class="kn">import</span> <span class="nn">igraph</span> <span class="k">as</span> <span class="nn">ig</span> 
+
+<span class="n">ig_g</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">Graph</span><span class="o">.</span><span class="n">from_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">find_partition</span><span class="p">(</span><span class="n">ig_g</span><span class="p">,</span> <span class="n">la</span><span class="o">.</span><span class="n">ModularityVertexPartition</span><span class="p">);</span>
+<span class="n">pal</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ClusterColoringPalette</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">))</span>
+<span class="n">ig_g</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pal</span><span class="o">.</span><span class="n">get_many</span><span class="p">(</span><span class="n">pal</span><span class="p">)</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">ig_g</span><span class="o">.</span><span class="n">layout_kamada_kawai</span><span class="p">()</span>
+<span class="n">ig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ig_g</span><span class="p">,</span> <span class="n">vertex_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">edge_arrow_size</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">edge_arrow_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertex_color</span> <span class="o">=</span> <span class="n">ig_g</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sood_22_0.svg" src="../_images/sood_22_0.svg" /></div>
+</div>
+<p>After encountering the difficulties above I decided to make my network undirected and run graspologic’s Leiden algorithm. Here are the results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span> 
+
+<span class="n">sym_A</span> <span class="o">=</span> <span class="n">old_A</span> <span class="o">+</span> <span class="n">old_A</span><span class="o">.</span><span class="n">T</span>
+<span class="n">sym_g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">sym_A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+
+<span class="n">g_com</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">sym_g</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">419</span><span class="p">)</span> 
+<span class="n">g_com_small_communities</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">g_com</span><span class="p">)</span>
+
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">sym_g</span><span class="o">.</span><span class="n">nodes</span><span class="p">()))</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">sym_g</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sym_g</span><span class="o">.</span><span class="n">nodes</span><span class="p">()):</span>
+    <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sym_A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span> 
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;leiden_partition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g_com</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">sym_A</span><span class="p">,</span> 
+    <span class="n">node_data</span> <span class="o">=</span> <span class="n">node_data</span><span class="p">,</span> 
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span>
+    <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;hsv&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sood_24_0.png" src="../_images/sood_24_0.png" />
+</div>
+</div>
+<p>Interestingly, the communities seem to be somewhat different from what I anticipated. I expected that nodes with high out-degrees would serve as the hub nodes for communities, but instead it seems to be that nodes with high in-degrees anchor communities. In retrospect this makes sense as it seems that it is far more common for many operons to regulate a central operon, rather than the other way around.</p>
+<p>This is also biologically plausible. If an operon is truly important for controlling cell division, several regulatory elements would control its expression. The most important nodes in the network might be the most controlled networks. Because transcription factors can serve as activators or repressors, it might even be more interesting to work with a weighted graph, where edge weights were positive for strong activators and negative for strong repressors.</p>
+</div>
+<div class="section" id="degree-centrality-for-in-degrees">
+<h2>Degree centrality, for in-degrees<a class="headerlink" href="#degree-centrality-for-in-degrees" title="Permalink to this headline">¶</a></h2>
+<p>Based on the community detection performed above, I think a more biologically realistic analysis takes into account the in-degree centrality, rather than the out-degree centrality, of the node. Below I replicate my in-degree centrality analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">in_degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">sorted_in_degree_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">in_degrees</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">in_degrees</span> <span class="o">=</span> <span class="n">in_degrees</span><span class="p">[</span><span class="n">sorted_in_degree_indices</span><span class="p">]</span>
+<span class="n">sorted_in_operons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">)[</span><span class="n">sorted_in_degree_indices</span><span class="p">]</span>
+<span class="n">in_operon_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">sorted_in_operons</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">in_degrees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">in_degrees</span><span class="p">))}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">in_regulated_genes</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">index_list</span><span class="p">,</span> <span class="n">operon_list</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span> <span class="c1"># pick the highest n operons and see what genes their transcription factors regulate</span>
+    <span class="n">edge_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+    <span class="n">num_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">. &quot;</span> <span class="o">+</span> <span class="n">operon_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_edges</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">edge_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">index_list</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> 
+                <span class="n">out_node</span> <span class="o">=</span> <span class="n">edge_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">out_node</span><span class="p">])</span>
+
+<span class="n">in_regulated_genes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">sorted_in_degree_indices</span><span class="p">,</span> <span class="n">sorted_in_operons</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. cyaA
+
+alaWX
+aldB
+alkA
+alpA
+ansB
+araFG_araH_1H_2
+arcA
+argF
+argI
+cadC
+caiF
+caiTABCDE
+cvpA_purF_ubiX
+cydAB
+cynR
+cynTSX
+cyoABCDE
+cysB
+cysDNC
+cysJIH
+cysK
+cysPUWAM
+cytR
+dadAX
+dapA_nlpB_purA
+dctA
+dcuB_fumB
+deoCABD
+deoR
+dmsABC
+dnaA
+dnaKJ
+dps
+dsbA
+dsdC
+dsdXA
+ebgAC
+ebgR
+ecfABC
+ecfD
+ecfF
+ecfG
+ecfH
+ecfI
+ecfJ
+ecfK
+ecfLM
+ecpD_htrE
+edd_eda
+emrRAB
+entCEBA
+envY_ompT
+epd_pgk
+evgA
+exuR
+exuT
+fabA
+fadBA
+fadL
+fadR
+fdhF
+fdnGHI
+fecABCDE
+fecIR
+fepA_entD
+fepB
+fepDGC
+fhlA
+fhuACDB
+fixABCX
+fkpA
+flgAMN
+
+2. uvrB
+
+cydAB
+fabA
+fdnGHI
+fruBKA
+hipBA
+pheV
+uvrC
+uvrD
+uxaCA
+uxuABR
+valUXY_lysV
+wza_wzb_b2060_wcaA_wcaB
+xapAB
+xapR
+xprB_dsbC_recJ
+xylAB
+xylFGHR
+ybaO
+ybiS
+ycfC_purB
+yfhD
+yhdG_fis
+yhfA
+yiaJ
+yiaKLMNOPQRS
+yjbK
+
+3. rhaT
+
+cpxAR
+cpxP
+csgDEFG
+cutC
+fdhF
+rhaSR
+rob
+rotA
+rpiB
+rpiR_alsBACEK
+rpoD
+rpoE_rseABC
+rpoH
+rpoN
+rpsU_dnaG_rpoD
+rtcAB
+rtcR
+sdaA
+sdhCDAB_b0725_sucABCD
+serA
+serT
+serX
+skp_lpxDA_fabZ
+slp
+
+4. gntT
+
+appY
+araC
+araE
+arcA
+argF
+argR
+argX_hisR_leuT_proM
+caiF
+cvpA_purF_ubiX
+cynR
+cysJIH
+fdnGHI
+fepA_entD
+glnALG
+gorA
+grpE
+guaBA
+gyrA
+hcaA1A2CBD_yphA
+hcaR
+hflB
+himA
+
+5. lacI
+
+appCBA
+arcA
+argE
+argX_hisR_leuT_proM
+aroF_tyrA
+aslB
+cadC
+fepA_entD
+fumA
+fur
+glmUS
+glnALG
+hcaA1A2CBD_yphA
+hcaR
+inaA
+lacZYA
+lctPRD
+leuLABCD
+leuO
+leuQPV
+leuX
+
+6. appY
+
+ahpCF
+aidB
+appCBA
+araBAD
+araC
+araE
+araFG_araH_1H_2
+araJ
+arcA
+argCBH
+argD
+argE
+argF
+argI
+argR
+argU
+argW
+argX_hisR_leuT_proM
+aroF_tyrA
+
+7. ppsA
+
+ilvC
+narK
+ppiA
+proK
+proL
+proP
+prsA
+pspABCDE
+pspF
+pstSCAB_phoU
+ptsG
+ptsHI_crr
+purC
+purEK
+purHD
+purL
+
+8. oppABCDF
+
+acs
+aidB
+clpP
+cvpA_purF_ubiX
+cydAB
+fabA
+hipBA
+lacZYA
+livJ
+livKHMGF
+osmC
+osmE
+osmY
+ostA_surA_pdxA
+
+9. metH
+
+fumA
+fur
+ilvC
+livKHMGF
+lpxDA_fabZ
+metJ
+metR
+metT_leuW_glnUW_metU_glnVX
+metY_yhbC_nusA_infB
+mglBAC
+mhpABCDFE
+mhpR
+mlc
+moaABCDE
+
+10. tarTapcheRBYZ
+
+araFG_araH_1H_2
+atoDAB
+dsbA
+glgCAP
+glgS
+inaA
+ivbL_ilvBN
+leuX
+lrp
+lysA
+tauABCD
+tdcABCDEFG
+tdcAR
+</pre></div>
+</div>
+</div>
+</div>
+<p>The top 10 regulated genes are cyaA, uvrB, rhaT, gntT, lacI, appY, ppsA, oppABCDF, metH, and tarTapcheRBYZ. This is significant and interesting! Almost all of these genes have functions in DNA replication, sugar transport, or sugar synthesis, which are all very basal functions for the cell. In particular, appY seems to be regulated by almost every enzyme in the arginine biosynthesis pathway. appY codes for a transcription factor that represses genes that are most active in early-stage cell growth. It may be that proteins synthesized in the earliest stages of cell growth are rich in arginine. This is supported by the fact that histones, which are proteins necessary for formation of chromosomes, are rich in lysines and arginines (positive amino acids). It makes sense that histones are synthesized earliest in cell growth as without them. <em>E. coli</em> would be unable to pack its DNA into the small cellular volume.</p>
+</div>
+<div class="section" id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h2>
+<p>I initially hypothesized that nodes with a high out-degree centrality would be most important in the network, serving as master regulators for a host of genetic programs. However, a high out-degree centrality may just indicate promiscuity in transcription factor binding sites, and the operons that scored highest for out-degree centrality tended to be rather random. Community detection using the Leiden algorithm hinted towards in-degree centrality as a better measure for TF binding sites. The operons that scored highest on this metric</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -388,16 +1599,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-networks_course-py"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "conda-env-networks_course-py",
             path: "./projects"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-networks_course-py'</script>
 
               </div>
               
