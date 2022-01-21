@@ -39,4 +39,5 @@ parts:
   - file: projects/song.md
   - file: projects/sood.md
   - file: projects/wang.md
-  - file: projects/harounakenfack.md
+  - file: projects/harounakenfack.ipynb
+  
