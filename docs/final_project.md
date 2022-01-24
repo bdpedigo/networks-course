@@ -1,6 +1,7 @@
 # Final project
 ## Notebook
-- The final project is a short analysis of some dataset in the form of a [Jupyter Notebook](https://jupyter.org/)
+- The final project is a short analysis of some dataset in the form of a [Jupyter Notebook](https://jupyter.org/) which will be submitted and added to this repo in the form of a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+   - The steps to submit the pull request will be much like those of the [mini-assignment](mini_assignment.md). 
 - The notebook should describe (using text and figures):
    - The dataset(s) you investigated, and what you wanted to learn. At a bare minimum:
      - What do the nodes represent?
