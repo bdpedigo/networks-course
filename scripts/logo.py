@@ -28,18 +28,29 @@ def draw_path(vertices, ax=None):
         last_vertex = vertex
 
 
-path = TextPath((0, 0), "N", size=20)
-draw_path(path)
-path = TextPath((14, 0), "D", size=20)
-draw_path(path)
-path = TextPath((28, 0), "S", size=20)
-draw_path(path)
-
 #%%
 fig, ax = plt.subplots(1, 1, figsize=(8, 4))
-path = TextPath((14, 0), "D", size=20)
-draw_path(path.vertices[:23], ax=ax)
+
+n_path = TextPath((0, 0), "N", size=20)
+draw_path(n_path.vertices, ax=ax)
+
+d_path = TextPath((14, 0), "D", size=20)
+draw_path(d_path.vertices[:23], ax=ax)
+draw_path(d_path.vertices[23:], ax=ax)
+
+s_path = TextPath((28, 0), "S", size=20)
+draw_path(s_path.vertices, ax=ax)
+
+#%%
+
+from scipy.interpolate import splprep, splev
+
+# vertices = n_path.vertices.copy()[0:-1].T
+# vertices = d_path.vertices.copy().T
+tck, u = splprep(vertices, u=None, s=5, per=1)
+u_new = np.linspace(u.min(), u.max(), 1000)
+x_new, y_new = splev(u_new, tck, der=0)
 
 fig, ax = plt.subplots(1, 1, figsize=(8, 4))
-path = TextPath((14, 0), "D", size=20)
-draw_path(path.vertices[:23], ax=ax)
+plt.plot(vertices[0], vertices[1], "ro")
+plt.plot(x_new, y_new, "b--")
