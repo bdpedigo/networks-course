@@ -39,4 +39,5 @@ parts:
   - file: projects/onadeko.ipynb
   - file: projects/song.ipynb
   - file: projects/sood.ipynb  
+  - file: projects/wang.ipynb
   
