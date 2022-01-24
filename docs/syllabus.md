@@ -11,12 +11,12 @@ Email: [bpedigo@jhu.edu](mailto:bpedigo@jhu.edu)
 Website: [https://bdpedigo.github.io/](https://bdpedigo.github.io/)
 
 ## Time
-1PM - 2:45PM, MTWThF
+1PM - 2:20PM, MTWThF
 
 Jan 4th - Jan 21st, 2021
 
 ## Location
-TODO
+Zoom
 
 ## Course description
 Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science: for example, they have been used to represent social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, graph neural networks, random graph models, graph matching, and network hypothesis testing. This is a hands-on, project-based course - students will submit a brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics, and linear algebra is very highly encouraged.
@@ -66,26 +66,7 @@ To pass, a student must:
 - Present their final project on the last day of class, Jan 21st (Friday)
 
 ## Final project
-### Notebook
-- The final project is a short analysis of some dataset in the form of a [Jupyter Notebook](https://jupyter.org/)
-- The notebook should describe (using text and figures):
-   - The dataset(s) you investigated, and what you wanted to learn from them
-   - The methods you used, explained at a level that someone else in the class would definitely understand
-   - The results you found, with a few figures
-   - A brief discussion of the meaning of these results
-- You are welcome to collaborate, but 
-   - Each student must submit their own notebook and write their own code. 
-   - If there's something you want to collaborate more extensively on, discuss with instructor. 
-   - Acknowledge any people you collaborated with in the notebook.
-- Reference any articles, data sources, etc. you used in your notebook.
-- **Notebooks are due Thursday, January 20th at 12pm (noon) ET.** This will give me time to address any issues with your pull requests and merge them by the time we have presentations the next day.
-   - You are encouraged to submit pull requests earlier than this, and I am happy to provide feedback! 
-
-### Presentation
-- Everyone will present their final projects **on the last day of class, January 21st.**
-- Presentations should be <5 minutes (no longer than 5) with 2 minutes for questions.
-- Presentation should briefly cover the same main points from the notebook. 
-   - Some details from the notebook you may not have time to cover in the presentation; that's OK.
+See the [Final project tab](final_project.md)
 
 ## Office hours
 After class or by appointment. I also expect most lecture days to have a significant 
