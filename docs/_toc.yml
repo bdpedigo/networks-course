@@ -28,7 +28,7 @@ parts:
   - file: graph_matching
   - file: multiple_embedding
   - file: ranking
-- caption: Projects
+- caption: Student projects
   chapters:
   - file: projects/clarke.ipynb
   - file: projects/fry.ipynb
