@@ -10,14 +10,7 @@ fp = FontProperties(family="monospace", style="normal")
 
 colors = sns.color_palette()
 
-BALL_COLOR = colors[1]
-LINE_COLOR = colors[0]
 
-
-
-
-
-#%%
 n_path = TextPath((0, 0), "N", size=20)
 d_path = TextPath((14, 0), "D", size=20)
 s_path = TextPath((28, 0), "S", size=20)
@@ -28,13 +21,6 @@ d_outer_vertices = d_path.vertices[:22]
 d_inner_vertices = d_path.vertices[23:-1]
 s_vertices = s_path.vertices[:-1]
 
-fig, ax = plt.subplots(1, 1, figsize=(8, 4))
-draw_path(n_vertices, ax=ax)
-draw_path(d_outer_vertices, ax=ax)
-draw_path(d_inner_vertices, ax=ax)
-draw_path(s_vertices, ax=ax)
-
-#%%
 
 def draw_path(vertices, ax=None, scatter=True, color=None):
     last_vertex = vertices[1]
@@ -47,6 +33,7 @@ def draw_path(vertices, ax=None, scatter=True, color=None):
         if scatter:
             ax.scatter(x1, y1, color=color, zorder=1)
         last_vertex = vertex
+
 
 from sklearn.metrics import euclidean_distances, pairwise_distances
 from sklearn.metrics.pairwise import cosine_distances
@@ -139,6 +126,8 @@ N_COLOR = colors[0]
 D_COLOR = colors[1]
 S_COLOR = colors[2]
 
+np.random.seed(8888888)
+
 points, segs = sample_new_points(n_vertices, 50)
 ax.scatter(points[:, 0], points[:, 1], color=N_COLOR)
 draw_path(n_vertices, ax=ax, scatter=False, color=N_COLOR)
@@ -171,6 +160,16 @@ plt.savefig(
     pad_inches=0,
     bbox_inches="tight",
 )
+
+plt.savefig(
+    "networks-course/docs/images/logo-pad.png",
+    format="png",
+    dpi=300,
+    facecolor="w",
+    pad_inches=0.5,
+    bbox_inches="tight",
+)
+
 
 # draw_path(vertices, ax=ax, scatter=False)
 
