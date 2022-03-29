@@ -28,6 +28,7 @@ parts:
   - file: graph_matching
   - file: multiple_embedding
   - file: ranking
+ 
 - caption: Student projects
   chapters:
   - file: projects/clarke.ipynb
@@ -40,4 +41,5 @@ parts:
   - file: projects/song.ipynb
   - file: projects/sood.ipynb  
   - file: projects/wang.ipynb
+  - file: fernandes
   
