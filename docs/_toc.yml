@@ -40,4 +40,5 @@ parts:
   - file: projects/song.ipynb
   - file: projects/sood.ipynb  
   - file: projects/wang.ipynb
+  - file: fernandes.md
   
