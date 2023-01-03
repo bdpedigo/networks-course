@@ -28,16 +28,4 @@ parts:
   - file: graph_matching
   - file: multiple_embedding
   - file: ranking
-- caption: Student projects
-  chapters:
-  - file: projects/clarke.ipynb
-  - file: projects/fry.ipynb
-  - file: projects/geason.ipynb
-  - file: projects/harounakenfack.ipynb
-  - file: projects/larson.ipynb
-  - file: projects/liu.ipynb  
-  - file: projects/onadeko.ipynb
-  - file: projects/song.ipynb
-  - file: projects/sood.ipynb  
-  - file: projects/wang.ipynb
   
