@@ -2,7 +2,7 @@
 # Syllabus
 
 ## Instructor
-Benjamin Pedigo (he/him)
+Benjamin D. Pedigo (he/him)
 
 PhD Candidate, Department of Biomedical Engineering
 
@@ -11,12 +11,12 @@ Email: [bpedigo@jhu.edu](mailto:bpedigo@jhu.edu)
 Website: [https://bdpedigo.github.io/](https://bdpedigo.github.io/)
 
 ## Time
-1PM - 2:20PM, MTWThF
+1:30PM - 4:15PM, MTWThF
 
-Jan 4th - Jan 21st, 2021
+Jan 9th - Jan 20th, 2023
 
 ## Location
-Zoom
+Hodson 315
 
 ## Course description
 Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science: for example, they have been used to represent social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, graph neural networks, random graph models, graph matching, and network hypothesis testing. This is a hands-on, project-based course - students will submit a brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics, and linear algebra is very highly encouraged.
@@ -60,10 +60,10 @@ required to rent or buy:
 ## Grading
 To pass, a student must: 
 - Attend and engage with every lecture (please let the instructor know if you need to miss a lecture for some reason)
-- Submit the pre-project mini-assignment by 11:59pm on Jan 5th
+- Submit the pre-project mini-assignment by 11:59pm on Jan 10th (Tuesday)
 - Submit any other mini-assignments (these may be very minor things like filling out surveys, telling me what your final project will be, etc.)
-- Submit a merge-able final project notebook by 12pm (noon) on Jan 20th (Thursday)
-- Present their final project on the last day of class, Jan 21st (Friday)
+- Submit a merge-able final project notebook by 12pm (noon) on Jan 19th (Thursday)
+- Present their final project on the last day of class, Jan 20th (Friday)
 
 ## Final project
 See the [Final project tab](final_project.md)
