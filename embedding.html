@@ -4,11 +4,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Network embedding &#8212; Network Data Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,40 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -72,7 +73,21 @@
                 </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -81,9 +96,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -101,14 +117,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="landing.html">
-   Welcome
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="landing.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course logistics
  </span>
@@ -224,171 +241,228 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Student projects
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/clarke.html">
-   Word adjacency networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/fry.html">
-   Staphylococcal nuclease
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/geason.html">
-   US flight networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/harounakenfack.html">
-   Network data scientists in California
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/larson.html">
-   Reddit network centrality
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/liu.html">
-   Human connectome analysis and classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/onadeko.html">
-   Nigerian airports
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/song.html">
-   Messel shale food web
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/sood.html">
-   <em>
-    E.coli
-   </em>
-   transcription network
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/wang.html">
-   Relationships of early modern Quakers
-  </a>
- </li>
-</ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/embedding.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bdpedigo/networks-course"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fembedding.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/embedding.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/embedding.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/embedding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fembedding.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/embedding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/embedding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-embed-networks">
    Why embed networks?
@@ -482,12 +556,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Network embedding</h1>
@@ -597,17 +670,18 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="network-embedding">
-<h1>Network embedding<a class="headerlink" href="#network-embedding" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="network-embedding">
+<h1>Network embedding<a class="headerlink" href="#network-embedding" title="Permalink to this headline">#</a></h1>
 <p>Generally speaking, an <strong>embedding</strong> refers to some technique which takes a network (or
 networks as we’ll see later) and converts it to a representation in some vector space.
 Often, this is a Euclidean vector space, and in that space each vector represents a
 single node in the network. We’ll focus on this case for now.</p>
-<div class="section" id="why-embed-networks">
-<h2>Why embed networks?<a class="headerlink" href="#why-embed-networks" title="Permalink to this headline">¶</a></h2>
+<section id="why-embed-networks">
+<h2>Why embed networks?<a class="headerlink" href="#why-embed-networks" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Embedding networks can be viewed as fitting the parameters of statistical models,
 for example, a random dot product graph.</p></li>
@@ -615,9 +689,9 @@ for example, a random dot product graph.</p></li>
 <li><p>Embeddings allow us to use a wide range of general machine learning techniques and
 make them applicable for networks.</p></li>
 </ul>
-</div>
-<div class="section" id="spectral-methods">
-<h2>Spectral methods<a class="headerlink" href="#spectral-methods" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="spectral-methods">
+<h2>Spectral methods<a class="headerlink" href="#spectral-methods" title="Permalink to this headline">#</a></h2>
 <p>A few classes ago when we discussed <a class="reference internal" href="random_graphs.html"><span class="doc std std-doc">random network models</span></a>, we
 talked about how there was a method for estimating the parameters of the random dot product graph (RDPG) model. For simplicity, lets consider an undirected version of this model. Recall
 what this means - the model is that the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> is sampled from a probability
@@ -629,8 +703,8 @@ matrix, where <span class="math notranslate nohighlight">\(d\)</span> is the dim
 vector of each node.</p>
 <p>In practice, we never observe <span class="math notranslate nohighlight">\(X\)</span> - we observe the adjacency matrix <span class="math notranslate nohighlight">\(X\)</span>, and wish to
 estimate <span class="math notranslate nohighlight">\(X\)</span> from it.</p>
-<div class="section" id="low-rank-approximation">
-<h3>Low-rank approximation<a class="headerlink" href="#low-rank-approximation" title="Permalink to this headline">¶</a></h3>
+<section id="low-rank-approximation">
+<h3>Low-rank approximation<a class="headerlink" href="#low-rank-approximation" title="Permalink to this headline">#</a></h3>
 <p>One fundamental concept in statistics and machine learning is that of a <a class="reference external" href="https://en.wikipedia.org/wiki/Low-rank_approximation"><strong>low-rank
 decomposition</strong></a>. In general,
 this means approximating some data matrix with a less complex while still preserving certain properties of the data. One fundamental tool in this field is the <a class="reference external" href="https://en.wikipedia.org/wiki/Singular_value_decomposition"><strong>singular value
@@ -638,9 +712,9 @@ decomposition (SVD)</strong></a>. If
 you aren’t familiar with the SVD, I <em>highly</em> recommend learning more about it, as it is
 one of the most important mathematical tools in science and engineering. I’ll briefly
 state what it is here.</p>
-</div>
-<div class="section" id="singular-value-decomposition">
-<h3>Singular value decomposition<a class="headerlink" href="#singular-value-decomposition" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="singular-value-decomposition">
+<h3>Singular value decomposition<a class="headerlink" href="#singular-value-decomposition" title="Permalink to this headline">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(M\)</span> be some <span class="math notranslate nohighlight">\(m \times n\)</span> real matrix with rank <span class="math notranslate nohighlight">\(r\)</span>. Then, this matrix can be
 factorized as</p>
 <div class="math notranslate nohighlight">
@@ -670,9 +744,9 @@ that the left and the right singular vectors are the same, so we could write</p>
 <p>This is also known as an <strong>eigendecomposition</strong>. For this reason, you may see people use
 these terms interchangably, in particular for undirected networks.</p>
 </div>
-</div>
-<div class="section" id="eckart-young-mirsky-theorem">
-<h3>Eckart-Young-Mirsky theorem<a class="headerlink" href="#eckart-young-mirsky-theorem" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="eckart-young-mirsky-theorem">
+<h3>Eckart-Young-Mirsky theorem<a class="headerlink" href="#eckart-young-mirsky-theorem" title="Permalink to this headline">#</a></h3>
 <p>Why did we go to all of this trouble to decompose our matrix in this way? There are a
 TON of different ways to see the value of the SVD - some are geometric, some are
 statistical, and many more. Here we’ll consider one of these perspectives, which is that
@@ -695,9 +769,9 @@ which minimizes <span class="math notranslate nohighlight">\(e\)</span>) is give
 defined likewise for the right singular vectors, and <span class="math notranslate nohighlight">\(\Sigma_d\)</span> is a <span class="math notranslate nohighlight">\(d \times d\)</span> matrix
 with only the first <span class="math notranslate nohighlight">\(d\)</span> singular values on the diagonal. The decomposition in for <span class="math notranslate nohighlight">\(A_d\)</span>
 above would be called a <strong>truncated singular value decomposition</strong> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
-</div>
-<div class="section" id="adjacency-spectral-embedding">
-<h3>Adjacency Spectral Embedding<a class="headerlink" href="#adjacency-spectral-embedding" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="adjacency-spectral-embedding">
+<h3>Adjacency Spectral Embedding<a class="headerlink" href="#adjacency-spectral-embedding" title="Permalink to this headline">#</a></h3>
 <p>Great, now lets turn back to our specific case of networks. Given everything we just
 discussed, you may see where we’re headed.</p>
 <p>Now, if I ask you to do a low-rank approximation of the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> of a network, you know what
@@ -924,9 +998,9 @@ networks with more than a small number of nodes.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="laplacian-spectral-embedding">
-<h3>Laplacian spectral embedding<a class="headerlink" href="#laplacian-spectral-embedding" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="laplacian-spectral-embedding">
+<h3>Laplacian spectral embedding<a class="headerlink" href="#laplacian-spectral-embedding" title="Permalink to this headline">#</a></h3>
 <p>Thus far, we’ve motivated our spectral approaches by talking about random dot product
 graphs and matrix approximation. However, there’s a parallel way to arrive at some of
 these ideas, in particular for a related algorithm called <strong>laplacian spectral embeddding (LSE)</strong>. This is the workhorse behind an old and popular method called <a class="reference external" href="https://en.wikipedia.org/wiki/Spectral_clustering">spectral clustering</a>.</p>
@@ -939,7 +1013,7 @@ Laplacian <span class="math notranslate nohighlight">\(L\)</span> (there are man
 instance, looking at the eigenvectors of the Laplacian matrix can perform a kind of
 “spring layout” of the network, where each edge is treated as a spring, and the goal
 is to arrange nodes to minimize the energy of this system. Another perspective is that eigenvectors of the Laplacian give an approximate solution to the <a class="reference external" href="https://en.wikipedia.org/wiki/Minimum_cut">min-cut problem</a>. If you are curious about the Laplacian and any of these perspectives, I
-highly recommend looking at <span id="id1">Von Luxburg [<a class="reference internal" href="#id72">1</a>]</span>.</p>
+highly recommend looking at <span id="id1">Von Luxburg [<a class="reference internal" href="#id72" title="Ulrike Von Luxburg. A tutorial on spectral clustering. Statistics and computing, 17(4):395–416, 2007.">1</a>]</span>.</p>
 <p>Briefly, I’ll just say that for a graph with multiple connected components, the
 eigenvectors of the Laplacian turn out to be indicator functions for each of these
 connected components. Let’s look at the eigenvectors for a graph with three connected
@@ -1023,12 +1097,14 @@ the idea of spectral clustering I mentioned before. By analyzing the eigendecomp
 of the Laplacian (say, by clustering it), often we can understand meaningful partitions
 of a network.</p>
 <p>Let’s look at how this type of analysis looks on the C. elegans connectome from
-<span id="id2">Cook <em>et al.</em> [<a class="reference internal" href="#id71">2</a>]</span>.</p>
-<div class="figure align-default" id="id79">
+<span id="id2">Cook <em>et al.</em> [<a class="reference internal" href="#id71" title="Steven J Cook, Travis A Jarrell, Christopher A Brittin, Yi Wang, Adam E Bloniarz, Maksim A Yakovlev, Ken CQ Nguyen, Leo T-H Tang, Emily A Bayer, Janet S Duerr, and others. Whole-animal connectomes of both caenorhabditis elegans sexes. Nature, 571(7763):63–71, 2019.">2</a>]</span>.</p>
+<figure class="align-default" id="id79">
 <img alt="_images/c-elegans.png" src="_images/c-elegans.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Network diagram and 3D position of neurons in the C. elegans male connectome. Figure
-from <span id="id3">Cook <em>et al.</em> [<a class="reference internal" href="#id71">2</a>]</span>.</span><a class="headerlink" href="#id79" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Network diagram and 3D position of neurons in the C. elegans male connectome. Figure
+from <span id="id3">Cook <em>et al.</em> [<a class="reference internal" href="#id71" title="Steven J Cook, Travis A Jarrell, Christopher A Brittin, Yi Wang, Adam E Bloniarz, Maksim A Yakovlev, Ken CQ Nguyen, Leo T-H Tang, Emily A Bayer, Janet S Duerr, and others. Whole-animal connectomes of both caenorhabditis elegans sexes. Nature, 571(7763):63–71, 2019.">2</a>]</span>.</span><a class="headerlink" href="#id79" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;networks-course/data/celegans/male_chem_A_self_undirected.csv&quot;</span>
@@ -1139,29 +1215,31 @@ Again, I recommend trying the the pass-to-ranks method if working on a weighted 
 <p class="admonition-title">Question</p>
 <p>Notice the “spokes” or dense lines in this plot - what might those represent?</p>
 </div>
-</div>
-<div class="section" id="two-truths">
-<h3>Two truths<a class="headerlink" href="#two-truths" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="two-truths">
+<h3>Two truths<a class="headerlink" href="#two-truths" title="Permalink to this headline">#</a></h3>
 <p>So, why use LSE or ASE over the other? This is a good illustration of one important
 point about network embeddings - usually, one method isn’t necessarily better or worse
 than another, they’re simply different. Often, different network embedding methods
 will capture different aspects of network structure. It will be up to you to choose or
 experiment and see which is best for your application.</p>
-<p>In a recent paper, <span id="id4">Priebe <em>et al.</em> [<a class="reference internal" href="#id73">3</a>]</span> showed that when applied to a dataset of human brain networks, ASE and LSE both captured meaningful, but different,aspects of the network. The LSE representation captured the left hemisphere/right hemisphere split in the human brain, while the ASE representation captured the grey matter/white matter difference.</p>
-<div class="figure align-default" id="id80">
+<p>In a recent paper, <span id="id4">Priebe <em>et al.</em> [<a class="reference internal" href="#id73" title="Carey E Priebe, Youngser Park, Joshua T Vogelstein, John M Conroy, Vince Lyzinski, Minh Tang, Avanti Athreya, Joshua Cape, and Eric Bridgeford. On a two-truths phenomenon in spectral graph clustering. Proceedings of the National Academy of Sciences, 116(13):5995–6000, 2019.">3</a>]</span> showed that when applied to a dataset of human brain networks, ASE and LSE both captured meaningful, but different,aspects of the network. The LSE representation captured the left hemisphere/right hemisphere split in the human brain, while the ASE representation captured the grey matter/white matter difference.</p>
+<figure class="align-default" id="id80">
 <img alt="_images/two-truths.jpeg" src="_images/two-truths.jpeg" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of a “Two truths” phenomenon in spectral graph clustering. Figure from <span id="id5">Priebe <em>et al.</em> [<a class="reference internal" href="#id73">3</a>]</span>.</span><a class="headerlink" href="#id80" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="deepwalk-node2vec">
-<h2>DeepWalk / Node2Vec<a class="headerlink" href="#deepwalk-node2vec" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of a “Two truths” phenomenon in spectral graph clustering. Figure from <span id="id5">Priebe <em>et al.</em> [<a class="reference internal" href="#id73" title="Carey E Priebe, Youngser Park, Joshua T Vogelstein, John M Conroy, Vince Lyzinski, Minh Tang, Avanti Athreya, Joshua Cape, and Eric Bridgeford. On a two-truths phenomenon in spectral graph clustering. Proceedings of the National Academy of Sciences, 116(13):5995–6000, 2019.">3</a>]</span>.</span><a class="headerlink" href="#id80" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="deepwalk-node2vec">
+<h2>DeepWalk / Node2Vec<a class="headerlink" href="#deepwalk-node2vec" title="Permalink to this headline">#</a></h2>
 <p>Now, we’ll switch gears and talk about network embedding methods that are not based on
 spectral decompositions.</p>
-<div class="section" id="word2vec">
-<h3>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">¶</a></h3>
+<section id="word2vec">
+<h3>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">#</a></h3>
 <p>To start understanding DeepWalk and Node2Vec, it’s most helpful to take a brief detour
-and look at Word2Vec <span id="id6">[<a class="reference internal" href="#id67">4</a>]</span>. If you are curious about Word2Vec,
+and look at Word2Vec <span id="id6">[<a class="reference internal" href="#id67" title="Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. Efficient estimation of word representations in vector space. arXiv preprint arXiv:1301.3781, 2013.">4</a>]</span>. If you are curious about Word2Vec,
 you can find a fairly accessible introduction at <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick’s blog</a>.</p>
 <p><strong>Word2Vec</strong> is an unsupervised language model developed by researchers at Google. The first
 key idea, which is very common in natural language processing (NLP), is that we can
@@ -1172,11 +1250,13 @@ sliding window over each sentence, and creating (<em>center word</em>, <em>surro
 pairs. The task, then, is to predict the surrounding words from the word in the center.
 In this way, we are training a model to understand the <em>context</em> of the center word
 as it is used in language.</p>
-<div class="figure align-default" id="id81">
+<figure class="align-default" id="id81">
 <img alt="_images/w2v-training-data.png" src="_images/w2v-training-data.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Diagram showing how source text is converted to training data for the Word2Vec / Skip-gram
-model. Figure from <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick’s blog</a>.</span><a class="headerlink" href="#id81" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Diagram showing how source text is converted to training data for the Word2Vec / Skip-gram
+model. Figure from <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick’s blog</a>.</span><a class="headerlink" href="#id81" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>What does this model actually look like? In the case of Word2Vec, it is simply a 2-layer
 neural network. We wont talk much about the details of neural networks for the purposes
 of this course, but the key idea is that neural networks are functions which we train
@@ -1184,42 +1264,48 @@ of this course, but the key idea is that neural networks are functions which we 
 do so by taking input that can be represented mathematically somehow (e.g. as a vector),
 and more or less performing a series of matrix-vector multiplications followed by some nonlinearities to reach an output which usually represents the probability of some
 particular output.</p>
-<div class="figure align-default" id="id82">
+<figure class="align-default" id="id82">
 <img alt="_images/word2vec-skip-gram.png" src="_images/word2vec-skip-gram.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Diagram showing the architecture of Word2Vec. Figure from <a class="reference external" href="https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html">here</a>.</span><a class="headerlink" href="#id82" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Diagram showing the architecture of Word2Vec. Figure from <a class="reference external" href="https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html">here</a>.</span><a class="headerlink" href="#id82" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Note that the first part of this neural network architecture is just a weight, which
 maps each word in our vocabulary to some hidden representation which is useful for
 predicting the context of a word. After training, this weight matrix is used as the
 <em>embedding</em> for each word in our vocabulary.</p>
-</div>
-<div class="section" id="from-word2vec-to-deepwalk">
-<h3>From Word2Vec to DeepWalk<a class="headerlink" href="#from-word2vec-to-deepwalk" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="from-word2vec-to-deepwalk">
+<h3>From Word2Vec to DeepWalk<a class="headerlink" href="#from-word2vec-to-deepwalk" title="Permalink to this headline">#</a></h3>
 <p>Given the success of Word2Vec (as of 2022 I saw it had &gt;24,000 citations), it made sense
 to wonder whether this fairly simple tool could be applied to other contexts, like
 networks.</p>
 <p>One “sequence on a network” that keeps coming up for us is random walks (see <a class="reference internal" href="centrality.html"><span class="doc std std-doc">Centrality measures</span></a>). So, what if we generate a ton of random walks on our network, and then trained a
 Word2Vec model to predict context nodes from the nodes in the center of a window.</p>
-<div class="figure align-default" id="id83">
+<figure class="align-default" id="id83">
 <img alt="_images/deepwalk.png" src="_images/deepwalk.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Overview of DeepWalk. Figure from <span id="id7">Perozzi <em>et al.</em> [<a class="reference internal" href="#id68">5</a>]</span></span><a class="headerlink" href="#id83" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="from-deepwalk-to-node2vec">
-<h3>From DeepWalk to Node2Vec<a class="headerlink" href="#from-deepwalk-to-node2vec" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Overview of DeepWalk. Figure from <span id="id7">Perozzi <em>et al.</em> [<a class="reference internal" href="#id68" title="Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. Deepwalk: online learning of social representations. In Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining, 701–710. 2014.">5</a>]</span></span><a class="headerlink" href="#id83" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="from-deepwalk-to-node2vec">
+<h3>From DeepWalk to Node2Vec<a class="headerlink" href="#from-deepwalk-to-node2vec" title="Permalink to this headline">#</a></h3>
 <p>Node2Vec further modified the algorithm from DeepWalk, mainly by modifying the way that
 random walks are generated. Rather than being true random walks, these paths through
 the network are biased to be more or less likely to travel in the neighborhood they came
 from based on some user provided parameters. The authors claimed that adjusting these
 parameters based on the application let them find more useful representations for
 some datasets, but this result has been debated somewhat.</p>
-<div class="figure align-default" id="id84">
+<figure class="align-default" id="id84">
 <img alt="_images/n2v-modification.png" src="_images/n2v-modification.png" />
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Modification to random walks from Node2Vec. Figure from <span id="id8">Grover and Leskovec [<a class="reference internal" href="#id69">6</a>]</span></span><a class="headerlink" href="#id84" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="running-node2vec">
-<h3>Running Node2Vec<a class="headerlink" href="#running-node2vec" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Modification to random walks from Node2Vec. Figure from <span id="id8">Grover and Leskovec [<a class="reference internal" href="#id69" title="Aditya Grover and Jure Leskovec. Node2vec: scalable feature learning for networks. In Proceedings of the 22nd ACM SIGKDD international conference on Knowledge discovery and data mining, 855–864. 2016.">6</a>]</span></span><a class="headerlink" href="#id84" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="running-node2vec">
+<h3>Running Node2Vec<a class="headerlink" href="#running-node2vec" title="Permalink to this headline">#</a></h3>
 <p>We can learn a Node2Vec embedding easily using <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> - note that many other
 implementations are available. Under the hood, this one uses <code class="docutils literal notranslate"><span class="pre">gensim</span></code> to create a
 Word2Vec model. To start, let’s load in a dataset.</p>
@@ -1284,7 +1370,7 @@ to the original data source.</p>
 run on the same dataset? Why or why not?</p>
 </div>
 <p>So, we now have a 128-dimensional vector associated with each node in our network. It
-can be useful to use UMAP <span id="id9">[<a class="reference internal" href="#id70">7</a>]</span> or other dimensionality reduction
+can be useful to use UMAP <span id="id9">[<a class="reference internal" href="#id70" title="Leland McInnes, John Healy, and James Melville. Umap: uniform manifold approximation and projection for dimension reduction. arXiv preprint arXiv:1802.03426, 2018.">7</a>]</span> or other dimensionality reduction
 techniques to further compress these vectors into a 2D plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1443,12 +1529,12 @@ is something we often do.</p>
 <img alt="_images/embedding_55_0.png" src="_images/embedding_55_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="applications-using-embeddings">
-<h2>Applications using embeddings<a class="headerlink" href="#applications-using-embeddings" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="recommendation">
-<h3>Recommendation<a class="headerlink" href="#recommendation" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="applications-using-embeddings">
+<h2>Applications using embeddings<a class="headerlink" href="#applications-using-embeddings" title="Permalink to this headline">#</a></h2>
+<section id="recommendation">
+<h3>Recommendation<a class="headerlink" href="#recommendation" title="Permalink to this headline">#</a></h3>
 <p>One common application for embeddings is recommender systems - lets say we have a network,
 and want to say something about what other nodes are most similar to a given node. Since
 we have a <span class="math notranslate nohighlight">\(d\)</span>-dimensional representation which represents something about the role of
@@ -1597,18 +1683,19 @@ For this particular example and the Node2Vec/DeepWalk settings we were using, it
 like we found nodes that are in the local neighborhood of the query, which is perfectly
 reasonable for some applications. With other parameters though, we might get something
 very different.</p>
-</div>
-<div class="section" id="clustering">
-<h3>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="clustering">
+<h3>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>TODO</p>
 </div>
-</div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id10"><dl class="citation">
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id10">
+<dl class="citation">
 <dt class="label" id="id72"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Ulrike Von Luxburg. A tutorial on spectral clustering. <em>Statistics and computing</em>, 17(4):395–416, 2007.</p>
 </dd>
@@ -1631,9 +1718,9 @@ very different.</p>
 <dd><p>Leland McInnes, John Healy, and James Melville. Umap: uniform manifold approximation and projection for dimension reduction. <em>arXiv preprint arXiv:1802.03426</em>, 2018.</p>
 </dd>
 </dl>
-</p>
 </div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1657,9 +1744,11 @@ very different.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="community_detection.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1675,24 +1764,28 @@ very different.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Benjamin D. Pedigo<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Benjamin D. Pedigo<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Embedding multiple networks &#8212; Network Data Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,40 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -72,7 +73,21 @@
                 </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -81,9 +96,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -101,14 +117,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="landing.html">
-   Welcome
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="landing.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course logistics
  </span>
@@ -224,171 +241,228 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Student projects
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/clarke.html">
-   Word adjacency networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/fry.html">
-   Staphylococcal nuclease
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/geason.html">
-   US flight networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/harounakenfack.html">
-   Network data scientists in California
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/larson.html">
-   Reddit network centrality
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/liu.html">
-   Human connectome analysis and classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/onadeko.html">
-   Nigerian airports
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/song.html">
-   Messel shale food web
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/sood.html">
-   <em>
-    E.coli
-   </em>
-   transcription network
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/wang.html">
-   Relationships of early modern Quakers
-  </a>
- </li>
-</ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/multiple_embedding.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bdpedigo/networks-course"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fmultiple_embedding.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/multiple_embedding.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/multiple_embedding.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/multiple_embedding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fmultiple_embedding.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/multiple_embedding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/multiple_embedding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#do-a-couple-of-spectral-embeddings">
    Do a couple of spectral embeddings
@@ -433,12 +507,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Embedding multiple networks</h1>
@@ -499,18 +572,21 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="embedding-multiple-networks">
-<h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="embedding-multiple-networks">
+<h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">#</a></h1>
 <p>Often, we are interested in more than one network. Sometimes this arises from thinking
 about multiple “layers,” where each layer represents a different kind of relationship.</p>
-<div class="figure align-default" id="id75">
+<figure class="align-default" id="id75">
 <img alt="_images/stacked-adj.png" src="_images/stacked-adj.png" />
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
-connectome.</span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Example of a multiple-layered network (multigraph) from the <em>Drosophila</em> larva brain
+connectome.</span><a class="headerlink" href="#id75" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Or, we may have networks which arise from the same process, but at different timepoints.</p>
 <p>Regardless of the data, it is common to want to:</p>
 <ul class="simple">
@@ -527,8 +603,8 @@ below, mainly for the spectral methods.</p>
 <p>Many other approaches for doing multiple network embeddings exist, including for some of the
 neural network approaches.</p>
 </div>
-<div class="section" id="do-a-couple-of-spectral-embeddings">
-<h2>Do a couple of spectral embeddings<a class="headerlink" href="#do-a-couple-of-spectral-embeddings" title="Permalink to this headline">¶</a></h2>
+<section id="do-a-couple-of-spectral-embeddings">
+<h2>Do a couple of spectral embeddings<a class="headerlink" href="#do-a-couple-of-spectral-embeddings" title="Permalink to this headline">#</a></h2>
 <p>Let’s say we have two networks. We wish to come up with an embedding for <em>each node
 in each network</em>. Since we’ve already learned about techniques for network embedding,
 why not just apply these techniques separately to each network, and compare the results?</p>
@@ -601,8 +677,8 @@ why not just apply these techniques separately to each network, and compare the 
 <p>Do you notice anything about the relationship of one embedding with regard to the
 other?</p>
 </div>
-<div class="section" id="orthogonal-nonidentifiability">
-<h3>Orthogonal nonidentifiability<a class="headerlink" href="#orthogonal-nonidentifiability" title="Permalink to this headline">¶</a></h3>
+<section id="orthogonal-nonidentifiability">
+<h3>Orthogonal nonidentifiability<a class="headerlink" href="#orthogonal-nonidentifiability" title="Permalink to this headline">#</a></h3>
 <p>Earlier in the course, we discussed a model with a nonidentifiability in its parameters.
 As a reminder, this just means that we have some flexibility in the parameters we use
 which gives us the same model behavior. Can this arise for the RDPG model, which is the
@@ -694,9 +770,9 @@ that the matrix <span class="math notranslate nohighlight">\(P\)</span> is uncha
 </div>
 <p>We have just found two sets of latent positions which are equally valid - but note that
 there are an <em>infinite</em> number of orthogonal transformations.</p>
-</div>
-<div class="section" id="orthogonal-procrustes-problem">
-<h3>Orthogonal procrustes problem<a class="headerlink" href="#orthogonal-procrustes-problem" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="orthogonal-procrustes-problem">
+<h3>Orthogonal procrustes problem<a class="headerlink" href="#orthogonal-procrustes-problem" title="Permalink to this headline">#</a></h3>
 <p>In practice, how can we resolve this issue? Let’s say we have these two sets of latent
 positions, <span class="math notranslate nohighlight">\(X^{(1)}\)</span> and <span class="math notranslate nohighlight">\(X^{(2)} W\)</span>, and want to somehow compare them on equal footing.
 What we can do is try to
@@ -750,9 +826,9 @@ and it has an exact solution (fun fact: the solution uses the SVD).</p>
 <p>Looking at these embeddings, would you say these networks are similar or different, at
 least at a high level?</p>
 </div>
-</div>
-<div class="section" id="considerations">
-<h3>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="considerations">
+<h3>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">#</a></h3>
 <div class="admonition-question admonition">
 <p class="admonition-title">Question</p>
 <p>Does the order of nodes in <span class="math notranslate nohighlight">\(X^{(2)}\)</span> matter? What does it represent?</p>
@@ -798,10 +874,10 @@ alignment (for reasons I won’t go into here, but talk about in a forthcoming p
 always recommend that you try a range of dimensionalities, and <em>look at the embeddings</em>
 after aligning them.</p>
 </div>
-</div>
-</div>
-<div class="section" id="omnibus-embedding">
-<h2>Omnibus Embedding<a class="headerlink" href="#omnibus-embedding" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="omnibus-embedding">
+<h2>Omnibus Embedding<a class="headerlink" href="#omnibus-embedding" title="Permalink to this headline">#</a></h2>
 <p>The method described above (basically just doing ASE twice) is a totally valid way of
 attacking this multiple network embedding problem, though it has many caveats. In
 practice, we often want to do multiple network embeddings without dealing with this
@@ -813,11 +889,13 @@ adjacency matrices. We then decompose that larger matrix <span class="math notra
 ASE. Because this embedding is done in one stage (rather than one for each network) we
 no longer have the same issue with the nonidentifiability above, so we no longer have
 to worry about aligning our embeddings between networks.</p>
-<div class="figure align-default" id="id76">
+<figure class="align-default" id="id76">
 <img alt="_images/omni.png" src="_images/omni.png" />
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Construction of the matrix <span class="math notranslate nohighlight">\(M\)</span> which is then decomposed using the SVD in the Omnibus
-embedding. Figure from <span id="id1">Athreya <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id25">1</a>]</span>.</span><a class="headerlink" href="#id76" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Construction of the matrix <span class="math notranslate nohighlight">\(M\)</span> which is then decomposed using the SVD in the Omnibus
+embedding. Figure from <span id="id1">Athreya <em>et al.</em> [<a class="reference internal" href="random_graphs.html#id25" title="Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. The Journal of Machine Learning Research, 18(1):8393–8484, 2017.">1</a>]</span>.</span><a class="headerlink" href="#id76" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">OmnibusEmbed</span>
@@ -845,14 +923,14 @@ embedding. Figure from <span id="id1">Athreya <em>et al.</em> [<a class="referen
 <img alt="_images/multiple_embedding_24_1.png" src="_images/multiple_embedding_24_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="multiple-ase">
-<h2>Multiple ASE<a class="headerlink" href="#multiple-ase" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="multiple-ase">
+<h2>Multiple ASE<a class="headerlink" href="#multiple-ase" title="Permalink to this headline">#</a></h2>
 <p>Sometimes, we aren’t as interested in having a representation for each node in each
 graph - perhaps we don’t care about what is different between networks, and we are
 interested in grouping nodes based on their <em>shared</em> structure across many different
 networks. An algorithm called <strong>multiple adjacency spectral embedding (MASE)</strong> introduced
-in <span id="id2">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span> can be used for this task.</p>
+in <span id="id2">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70" title="Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. Journal of Machine Learning Research, 22(142):1–49, 2021.">2</a>]</span> can be used for this task.</p>
 <p>I won’t go into all the details of the algorithm, though I believe you all could
 understand it based on what we’ve talked about in this course. However, I’ll say that
 this algorithm is associated with a model, where we model the probability matrix for
@@ -903,16 +981,18 @@ estimate for each node pair</p>
 <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>, these can be accessed using the <code class="docutils literal notranslate"><span class="pre">.score_</span></code> attribute of the fitted object.
 More details can be found in the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/embedding/MASE.html">MASE tutorial</a>.</p>
 </div>
-<div class="figure align-default" id="id77">
+<figure class="align-default" id="id77">
 <img alt="_images/mase-brain.png" src="_images/mase-brain.png" />
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
-<span id="id3">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70">2</a>]</span>.</span><a class="headerlink" href="#id77" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="representations-for-each-network">
-<h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this headline">¶</a></h2>
-<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id4">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id71">3</a>]</span>.
-The data comes from <span id="id5">Wang <em>et al.</em> [<a class="reference internal" href="#id72">4</a>]</span>.</p>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Example of extracting a per-graph representation from the MASE algorithm. Figure from
+<span id="id3">Arroyo <em>et al.</em> [<a class="reference internal" href="#id70" title="Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. Journal of Machine Learning Research, 22(142):1–49, 2021.">2</a>]</span>.</span><a class="headerlink" href="#id77" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="representations-for-each-network">
+<h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this headline">#</a></h2>
+<p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id4">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id71" title="Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. arXiv preprint arXiv:2011.14990, 2020.">3</a>]</span>.
+The data comes from <span id="id5">Wang <em>et al.</em> [<a class="reference internal" href="#id72" title="Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. NeuroImage, 222:117274, 2020.">4</a>]</span>.</p>
 <p>Below, we load in 32 networks - these networks come from MRI scans of mice brains, and
 these mouse came from one of 4 different genotypes. There are 8 mice from each genotype.</p>
 <div class="cell docutils container">
@@ -1070,10 +1150,11 @@ clustering directly on the dissimilarity matrix as I do below.</p>
 </div>
 <p>With this representation that we learned from our network embeddings, our clustering
 exactly recovered the genotype labels!</p>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id6"><dl class="citation">
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id6">
+<dl class="citation">
 <dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
 </dd>
@@ -1087,9 +1168,9 @@ exactly recovered the genotype labels!</p>
 <dd><p>Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. <em>NeuroImage</em>, 222:117274, 2020.</p>
 </dd>
 </dl>
-</p>
 </div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1113,9 +1194,11 @@ exactly recovered the genotype labels!</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="graph_matching.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1131,24 +1214,28 @@ exactly recovered the genotype labels!</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Benjamin D. Pedigo<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Benjamin D. Pedigo<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

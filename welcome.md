@@ -102,29 +102,27 @@ A few of my other interests are birdwatching, bouldering, and biking.
 ---
 # Course logistics
 
-- Course meets MTWThF, 1-2:20pm ET, on Zoom
-- Last 20-30 minutes of each day will hopefully be for project work time
-- I will be available ~2:20-2:45pm ET (or when everyone leaves) - think of this as extra office hours
+- Course meets MTWThF, 1:30-4:15pm ET
+- Last 30-45 minutes of each day will hopefully be for project work time
+- We'll have a break somewhere in there
 - Syllabus: [https://bdpedigo.github.io/networks-course/syllabus.html](https://bdpedigo.github.io/networks-course/syllabus.html) (please review)
 - Calendar: [https://bdpedigo.github.io/networks-course/calendar.html](https://bdpedigo.github.io/networks-course/calendar.html)
-- **Everything will be on the course website** above, not going to use Blackboard for much.
+- **Everything will be on the course website** above, not going to use Blackboard 
 - Class communication will be via **Discord**.
 
 ---
-# Grading
-(straight from the syllabus)
+# Grading (straight from the syllabus)
 > To pass, a student must: 
 > - Attend and engage with every lecture (please let the instructor know if you need to miss a lecture for some reason)
-> - Submit the pre-project mini-assignment by 11:59pm on Jan 5th
+> - Submit the pre-project mini-assignment by 11:59pm on Jan 10th (Tuesday)
 > - Submit any other mini-assignments (these may be very minor things like filling out surveys, telling me what your final project will be, etc.)
-> - Submit a merge-able final project notebook by 12pm (noon) on Jan 20th (Thursday)
-> - Present their final project on the last day of class, Jan 21st (Friday)
+> - Submit a merge-able final project notebook by 12pm (noon) on Jan 19th (Thursday)
+> - Present their final project on the last day of class, Jan 20th (Friday)
 
 ---
 # Mini-assignment
 - Need to make a pull request to this class's repository on GitHub
-- Due **Jan 5th at 11:59pm**
-- **Highly encouraged** to come to class time, work with other students
+- Due **Jan 10th at 11:59pm**
 - Description of the mini-assignment is [here](https://bdpedigo.github.io/networks-course/mini_assignment.html) (and on sidebar for course website).
   
 ---
@@ -143,12 +141,12 @@ A few of my other interests are birdwatching, bouldering, and biking.
    - If there's something you want to collaborate more extensively on, discuss with instructor. 
    - Acknowledge any people you collaborated with in the notebook.
 - Reference any articles, data sources, etc. you used in your notebook.
-- **Notebooks are due Thursday, January 20th at 12pm (noon) ET.** This will give me time to address any issues with your pull requests and merge them by the time we have presentations the next day.
+- **Notebooks are due Thursday, January 19th at 12pm (noon) ET.** This will give me time to address any issues with your pull requests and merge them by the time we have presentations the next day.
    - You are encouraged to submit pull requests earlier than this, and I am happy to provide feedback! 
 
 ---
 # Final project - presentation
-- Everyone will present their final projects **on the last day of class, January 21st.**
+- Everyone will present their final projects **on the last day of class, January 20th.**
 - Presentations should be <5 minutes (no longer than 5) with 2 minutes for questions.
 - Presentation should briefly cover the same main points from the notebook. 
    - Some details from the notebook you may not have time to cover in the presentation; that's OK.

@@ -4,11 +4,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Syllabus &#8212; Network Data Science</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,37 +20,36 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -70,7 +71,21 @@
                 </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -79,9 +94,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -99,14 +115,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="landing.html">
-   Welcome
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="landing.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course logistics
  </span>
@@ -222,154 +239,199 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Student projects
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/clarke.html">
-   Word adjacency networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/fry.html">
-   Staphylococcal nuclease
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/geason.html">
-   US flight networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/harounakenfack.html">
-   Network data scientists in California
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/larson.html">
-   Reddit network centrality
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/liu.html">
-   Human connectome analysis and classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/onadeko.html">
-   Nigerian airports
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/song.html">
-   Messel shale food web
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/sood.html">
-   <em>
-    E.coli
-   </em>
-   transcription network
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/wang.html">
-   Relationships of early modern Quakers
-  </a>
- </li>
-</ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/syllabus.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bdpedigo/networks-course"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fsyllabus.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bdpedigo/networks-course/edit/main/docs/syllabus.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fsyllabus.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/syllabus.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/syllabus.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#instructor">
    Instructor
@@ -466,12 +528,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Syllabus</h1>
@@ -584,33 +645,34 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="syllabus">
-<span id="page-syllabus"></span><h1>Syllabus<a class="headerlink" href="#syllabus" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="instructor">
-<h2>Instructor<a class="headerlink" href="#instructor" title="Permalink to this headline">¶</a></h2>
-<p>Benjamin Pedigo (he/him)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="syllabus">
+<span id="page-syllabus"></span><h1>Syllabus<a class="headerlink" href="#syllabus" title="Permalink to this headline">#</a></h1>
+<section id="instructor">
+<h2>Instructor<a class="headerlink" href="#instructor" title="Permalink to this headline">#</a></h2>
+<p>Benjamin D. Pedigo (he/him)</p>
 <p>PhD Candidate, Department of Biomedical Engineering</p>
 <p>Email: <a class="reference external" href="mailto:bpedigo&#37;&#52;&#48;jhu&#46;edu">bpedigo<span>&#64;</span>jhu<span>&#46;</span>edu</a></p>
 <p>Website: <a class="reference external" href="https://bdpedigo.github.io/">https://bdpedigo.github.io/</a></p>
-</div>
-<div class="section" id="time">
-<h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
-<p>1PM - 2:20PM, MTWThF</p>
-<p>Jan 4th - Jan 21st, 2021</p>
-</div>
-<div class="section" id="location">
-<h2>Location<a class="headerlink" href="#location" title="Permalink to this headline">¶</a></h2>
-<p>Zoom</p>
-</div>
-<div class="section" id="course-description">
-<h2>Course description<a class="headerlink" href="#course-description" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="time">
+<h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">#</a></h2>
+<p>1:30PM - 4:15PM, MTWThF</p>
+<p>Jan 9th - Jan 20th, 2023</p>
+</section>
+<section id="location">
+<h2>Location<a class="headerlink" href="#location" title="Permalink to this headline">#</a></h2>
+<p>Hodson 315</p>
+</section>
+<section id="course-description">
+<h2>Course description<a class="headerlink" href="#course-description" title="Permalink to this headline">#</a></h2>
 <p>Networks represent data by describing a set of objects and the relations between them. Networks are ubiquitous in many fields of science: for example, they have been used to represent social interactions, relationships between genes or protein sequences, and the connectivity of neurons in the brain. This project-based course will introduce students to the process of analyzing real-world network data in Python. Topics covered will include network representations, centrality and ranking measures, modularity and community detection, network embeddings, graph neural networks, random graph models, graph matching, and network hypothesis testing. This is a hands-on, project-based course - students will submit a brief analysis (in Python) of some real-world network dataset for their final project. Familiarity with Python, statistics, and linear algebra is very highly encouraged.</p>
-</div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The following prerequisites are highly recommended to take this course. In particular, Python experience will be important in order to be able to submit the final project. Please talk to the instructor if you are unsure about your prior knowledge for any of these:</p>
@@ -620,25 +682,25 @@
 <li><p>Linear algebra</p></li>
 <li><p>Probability/statistics</p></li>
 </ul>
-</div>
-<div class="section" id="topics">
-<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h2>
 <p>For specific topics covered, please see the <a class="reference internal" href="calendar.html#page-calendar"><span class="std std-ref">calendar page</span></a>.</p>
-</div>
-<div class="section" id="materials">
-<h2>Materials<a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="code-software">
-<h3>Code/software<a class="headerlink" href="#code-software" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="primary">
-<h4>Primary<a class="headerlink" href="#primary" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="materials">
+<h2>Materials<a class="headerlink" href="#materials" title="Permalink to this headline">#</a></h2>
+<section id="code-software">
+<h3>Code/software<a class="headerlink" href="#code-software" title="Permalink to this headline">#</a></h3>
+<section id="primary">
+<h4>Primary<a class="headerlink" href="#primary" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://graspologic.readthedocs.io/en/latest/">graspologic</a></p></li>
 <li><p><a class="reference external" href="https://networkx.org/">NetworkX</a></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html">Scipy’s sparse graph routines</a></p></li>
 </ul>
-</div>
-<div class="section" id="also-mentioned">
-<h4>Also mentioned<a class="headerlink" href="#also-mentioned" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="also-mentioned">
+<h4>Also mentioned<a class="headerlink" href="#also-mentioned" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://graph-tool.skewed.de/">graph-tool</a></p></li>
 <li><p><a class="reference external" href="https://scikit-network.readthedocs.io/en/latest/">scikit-network</a></p></li>
@@ -648,10 +710,10 @@
 <li><p><a class="reference external" href="https://pytorch-geometric.readthedocs.io/en/latest/">pytorch-geometric</a></p></li>
 <li><p><a class="reference external" href="https://stellargraph.readthedocs.io/en/stable/">stellargraph</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="books">
-<h3>Books<a class="headerlink" href="#books" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="books">
+<h3>Books<a class="headerlink" href="#books" title="Permalink to this headline">#</a></h3>
 <p>The following books may be useful material during the course, but none of them are
 required to rent or buy:</p>
 <ul class="simple">
@@ -659,36 +721,36 @@ required to rent or buy:</p>
 <li><p><a class="reference external" href="https://www.networkatlas.eu/">Atlas for the Aspiring Network Scientist</a></p></li>
 <li><p><a class="reference external" href="http://docs.neurodata.io/graph-stats-book/coverpage.html">Hands-on Network Machine Learning with Scikit-Learn and Graspologic</a> (book not yet finished)</p></li>
 </ul>
-</div>
-<div class="section" id="other-resources">
-<h3>Other resources<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="other-resources">
+<h3>Other resources<a class="headerlink" href="#other-resources" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://staging.distill.pub/2021/gnn-intro/">A Gentle Introduction to Graph Neural Networks</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="grading">
-<h2>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="grading">
+<h2>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">#</a></h2>
 <p>To pass, a student must:</p>
 <ul class="simple">
 <li><p>Attend and engage with every lecture (please let the instructor know if you need to miss a lecture for some reason)</p></li>
-<li><p>Submit the pre-project mini-assignment by 11:59pm on Jan 5th</p></li>
+<li><p>Submit the pre-project mini-assignment by 11:59pm on Jan 10th (Tuesday)</p></li>
 <li><p>Submit any other mini-assignments (these may be very minor things like filling out surveys, telling me what your final project will be, etc.)</p></li>
-<li><p>Submit a merge-able final project notebook by 12pm (noon) on Jan 20th (Thursday)</p></li>
-<li><p>Present their final project on the last day of class, Jan 21st (Friday)</p></li>
+<li><p>Submit a merge-able final project notebook by 12pm (noon) on Jan 19th (Thursday)</p></li>
+<li><p>Present their final project on the last day of class, Jan 20th (Friday)</p></li>
 </ul>
-</div>
-<div class="section" id="final-project">
-<h2>Final project<a class="headerlink" href="#final-project" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="final-project">
+<h2>Final project<a class="headerlink" href="#final-project" title="Permalink to this headline">#</a></h2>
 <p>See the <a class="reference internal" href="final_project.html"><span class="doc std std-doc">Final project tab</span></a></p>
-</div>
-<div class="section" id="office-hours">
-<h2>Office hours<a class="headerlink" href="#office-hours" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="office-hours">
+<h2>Office hours<a class="headerlink" href="#office-hours" title="Permalink to this headline">#</a></h2>
 <p>After class or by appointment. I also expect most lecture days to have a significant
 group work proportion where you can ask questions.</p>
-</div>
-<div class="section" id="python-development">
-<h2>Python development<a class="headerlink" href="#python-development" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="python-development">
+<h2>Python development<a class="headerlink" href="#python-development" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>I highly recommend using <a class="reference external" href="https://code.visualstudio.com/">VS Code</a> for
 Python development, as it has lots of nice features for working with GitHub and Jupyter
@@ -703,13 +765,13 @@ nice article on <a class="reference external" href="https://code.visualstudio.co
 welcome to stick with it, just note that it may be harder for me to provide feedback for
 other IDEs or Python setups.</p>
 </div>
-</div>
-<div class="section" id="accommodations">
-<h2>Accommodations<a class="headerlink" href="#accommodations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="accommodations">
+<h2>Accommodations<a class="headerlink" href="#accommodations" title="Permalink to this headline">#</a></h2>
 <p>My goal is for this course to be a safe and accessible place for anyone to learn. Please let me know if there’s anything I can do to accomodate any needs towards that end.</p>
-</div>
-<div class="section" id="feedback">
-<h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="feedback">
+<h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">#</a></h2>
 <p>I am always open to feedback (positive or negative) on this course. You can leave any
 comments you have <a class="reference external" href="https://forms.gle/UxFB2sSQiQyrxr5AA">here</a>. Can be totally anonymous,
 if you’d like.</p>
@@ -717,8 +779,8 @@ if you’d like.</p>
 My #1 priority is making sure everyone has a safe environment to learn - to this end, and out of respect
 for your peers and the instructor, PLEASE do not attend in person class if you are at all sick. 
 Missing class for an illness will never be held against you, please just let me know what
-is going on and we will come up with a plan.  --></div>
-</div>
+is going on and we will come up with a plan.  --></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -742,9 +804,11 @@ is going on and we will come up with a plan.  --></div>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="landing.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -760,24 +824,28 @@ is going on and we will come up with a plan.  --></div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Benjamin D. Pedigo<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Benjamin D. Pedigo<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
