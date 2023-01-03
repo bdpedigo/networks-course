@@ -1,13 +1,13 @@
-# Network Data Science - EN.580.129 (13)
+# Network Data Science - EN.580.129 (22)
 A repo housing a course introducing students to network data science at Johns Hopkins University.
 
-Term: Intersession 2022
+Term: Intersession 2023
 
 Instructor: Benjamin D. Pedigo
 
-Times: M T W Th F, 1:00PM - 2:20PM
+Times: M T W Th F, 1:00PM - 4:15PM
 
-Schedule: 01-01-2022 to 01-21-2022
+Schedule: 01-09-2023 to 01-20-2023
 
 Credits: 2
 
