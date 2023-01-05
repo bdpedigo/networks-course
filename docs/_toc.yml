@@ -9,6 +9,7 @@ parts:
   - file: final_project
 - caption: Resources
   chapters:
+  - file: python
   - file: online_resources
   - file: books
   - file: datasets
