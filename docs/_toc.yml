@@ -31,4 +31,5 @@ parts:
   - file: ranking
 - caption: Projects
   chapters: 
-  - file: pedigo.md  
+  - file: pedigo.md
+  - file: kondepudi.md  
