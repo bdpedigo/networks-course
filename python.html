@@ -503,6 +503,18 @@ title="Print to PDF"
 <h2>Installing Python<a class="headerlink" href="#installing-python" title="Permalink to this headline">#</a></h2>
 <p>Guides to installing Python on: <a class="reference external" href="https://docs.python-guide.org/starting/install3/osx/#install3-osx">Mac</a>, <a class="reference external" href="https://docs.python-guide.org/starting/install3/win/#install3-windows">Windows</a>, and <a class="reference external" href="https://docs.python-guide.org/starting/install3/linux/#install3-linux">Linux</a>.</p>
 <p>Once you have installed Python 3, you should be able to try a command like one of the following (depending on your shell) to see where the Python interpreter is located.</p>
+<p>Bash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">which</span> <span class="n">python3</span>
+
+<span class="o">&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span>
+</pre></div>
+</div>
+<p>Command prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">where</span> <span class="n">python3</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
 </section>
 <section id="virtual-environments">
 <h2>Virtual environments<a class="headerlink" href="#virtual-environments" title="Permalink to this headline">#</a></h2>
@@ -512,16 +524,40 @@ environment. Many tools exist for creating virtual environments, some are docume
 <a class="reference external" href="https://docs.python-guide.org/dev/virtualenvs/">here</a>.</p>
 <p>Below, I provide an example using <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>, which is now bundled with Python by default (meaning you shouldn’t need to download anything extra). Here, I am using Python 3.9, but this may differ for your platform (you can also likely just do <code class="docutils literal notranslate"><span class="pre">python3</span></code> instead of <code class="docutils literal notranslate"><span class="pre">python3.9</span></code>).</p>
 <p>Creates a new virtual environment in the current working directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="mf">.9</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+</pre></div>
+</div>
 <p>From the same directory (since the command above created a new folder called <code class="docutils literal notranslate"><span class="pre">venv</span></code>), I should now be able to do:</p>
-<p>(not sure if the below is correct on Windows)</p>
+<p>Bash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>(not sure if the below is correct on Windows)
+Command prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
+</pre></div>
+</div>
 <p>If this worked, you will likely see <code class="docutils literal notranslate"><span class="pre">(venv)</span></code> at the start of your
 shell prompt now. You can also check for what interpreter the <code class="docutils literal notranslate"><span class="pre">python</span></code> command is now pointing to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">which</span> <span class="n">python</span>
+</pre></div>
+</div>
 <p>Hopefully, this is now pointing to a file in the <code class="docutils literal notranslate"><span class="pre">venv</span></code> folder you just created.</p>
 <p>With the virtual environment active, you can install some packages to use in this course. This command will update/install <code class="docutils literal notranslate"><span class="pre">pip</span></code> and some other packages that help us install other things.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pip</span> <span class="n">setuptools</span> <span class="n">wheel</span>
+</pre></div>
+</div>
 <p>Finally, you can install the required packages. <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> is a Python
 package for network statistics which we’ll use in the course. Conveniently, it
 also depends on other packages we’ll use, like <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, <code class="docutils literal notranslate"><span class="pre">networkx</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. <code class="docutils literal notranslate"><span class="pre">pip</span></code> is smart enough to also install
 all of these dependencies for you.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">graspologic</span> <span class="o">--</span><span class="n">pre</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--pre</span></code> flag in the above will install the latest <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> pre-release, which will ensure you are getting the most up-to-date version of the package (although it will also be somewhat of a beta version).</p>
+</div>
 <p>During installations like these, pay attention to any error messages that
 happen during installation. These would likely mean that packages (including
 dependencies of the one you are trying to install) will not work properly down
@@ -531,7 +567,13 @@ the line.</p>
 <p>If you are using a MacBook with an M1/M2 processor, or another ARM architecture chip, then the above likely will not work for you. Please discuss with Ben.</p>
 </div>
 <p>To see if this all worked, start a Python interpreter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
+</pre></div>
+</div>
 <p>Within the Python interpreter, try importing <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graspologic</span>
+</pre></div>
+</div>
 </section>
 <section id="using-an-ide">
 <h2>Using an IDE<a class="headerlink" href="#using-an-ide" title="Permalink to this headline">#</a></h2>
