@@ -30,6 +30,8 @@ parts:
   - file: multiple_embedding
   - file: ranking
 - caption: Projects
-  chapters:
+  chapters: 
+  - file: pedigo.md
+  - file: modaressanavi.md  
+  - file: kondepudi.md
   - file: he.md
-  
