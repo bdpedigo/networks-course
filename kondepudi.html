@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Connected components &#8212; Network Data Science</title>
+    <title>Kondepudi - final project placeholder &#8212; Network Data Science</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,13 +51,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Centrality measures" href="centrality.html" />
-    <link rel="prev" title="Plotting networks" href="plotting_networks.html" />
+    <link rel="prev" title="Ranking and flow" href="ranking.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -184,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
   Lectures
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
    Welcome
@@ -205,8 +202,8 @@ const thebe_selector_output = ".output, .cell_output"
    Plotting networks
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="connected_components.html">
    Connected components
   </a>
  </li>
@@ -251,9 +248,9 @@ const thebe_selector_output = ".output, .cell_output"
   Projects
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="kondepudi.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Kondepudi - final project placeholder
   </a>
  </li>
@@ -308,35 +305,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/connected_components.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -376,7 +344,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fconnected_components.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fkondepudi.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -393,7 +361,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/connected_components.ipynb"
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/kondepudi.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -421,7 +389,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/connected_components.ipynb"
+        <a href="_sources/kondepudi.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -432,7 +400,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -470,7 +438,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Connected components</h1>
+                <h1>Kondepudi - final project placeholder</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -482,136 +450,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="connected-components">
-<h1>Connected components<a class="headerlink" href="#connected-components" title="Permalink to this headline">#</a></h1>
-<p>A <strong>connected component</strong> of an undirected is a set of nodes, wherein it is possible to
-get from any node <span class="math notranslate nohighlight">\(i\)</span> in that set to any other node <span class="math notranslate nohighlight">\(j\)</span> by traversing the nodes of that
-network. A network is <strong>fully connected</strong> if it has one connected component.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm</span>
-<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
-
-<span class="n">A</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]],</span> <span class="n">return_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="_images/connected_components_1_1.png" src="_images/connected_components_1_1.png" />
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">graspologic</span></code> has tools for dealing with connected components. First, it is often useful
-to know whether a network is fully connected.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For most applications, if your graph
-has multiple connected components, it makes more sense to treat each component as its own
-network and to analyze them separately.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_fully_connected</span>
-
-<span class="n">is_fully_connected</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-
-<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="n">is_fully_connected</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">component</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
-10
-</pre></div>
-</div>
-</div>
-</div>
-<p>For a directed network, there are two notions of connectedness.</p>
-<ul class="simple">
-<li><p>A <strong>weakly connected component</strong> is a set of nodes such that it is possible to get from any node <span class="math notranslate nohighlight">\(i\)</span> in the set to any node <span class="math notranslate nohighlight">\(j\)</span> in the set <em>while ignoring edge directions</em>.</p></li>
-<li><p>A <strong>strongly connected component</strong> is a set of nodes such that it is possible to get from any node <span class="math notranslate nohighlight">\(i\)</span> in the set to any node <span class="math notranslate nohighlight">\(j\)</span> in the set.</p></li>
-</ul>
-<p>Strong connectedness implies weak connectedness.</p>
-<p>Strictly speaking, you have to specify which version of connectedness you mean when talking
-about directed networks. However, I think it’s more common to assume people mean weakly connected.</p>
-<p>This is the version of connectedness for a directed network that <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> means.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]],</span> <span class="n">return_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">is_fully_connected</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
-
-<span class="n">nx</span><span class="o">.</span><span class="n">is_weakly_connected</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<p>For data cleaning purposes, it is often helpful to be able to select the <strong>largest connected component</strong>. Just like it sounds, this is just the largest group of nodes in the network which satisfy one of the connectedness properties above.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">largest_connected_component</span>
-
-<span class="n">A</span> <span class="o">=</span> <span class="n">sbm</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
-
-<span class="n">A_lcc</span> <span class="o">=</span> <span class="n">largest_connected_component</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="n">A_lcc</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(20, 20)
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="kondepudi-final-project-placeholder">
+<h1>Kondepudi - final project placeholder<a class="headerlink" href="#kondepudi-final-project-placeholder" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -641,19 +481,12 @@ about directed networks. However, I think it’s more common to assume people me
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="plotting_networks.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ranking.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Plotting networks</p>
+            <p class="prev-next-title">Ranking and flow</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="centrality.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Centrality measures</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
