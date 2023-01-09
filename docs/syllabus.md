@@ -72,8 +72,6 @@ See the [Final project tab](final_project.md)
 After class or by appointment. I also expect most lecture days to have a significant 
 group work proportion where you can ask questions.
 
-
-
 ## Accommodations
 My goal is for this course to be a safe and accessible place for anyone to learn. Please let me know if there's anything I can do to accomodate any needs towards that end.
 
@@ -87,3 +85,23 @@ My #1 priority is making sure everyone has a safe environment to learn - to this
 for your peers and the instructor, PLEASE do not attend in person class if you are at all sick. 
 Missing class for an illness will never be held against you, please just let me know what
 is going on and we will come up with a plan.  -->
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## [0.0.5] - 2023-01-05
+
+### Added
+
+- Early draft of AdjacencyFrame and related code for manipulating networks and matrices.
+
+## [0.0.4] - 2022-09-21
+
+### Added
+
+- First release on PyPI.

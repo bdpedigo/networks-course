@@ -18,6 +18,12 @@ Schedule below is approximate and subject to change
 ```{admonition} Due
 :class: important
 
+Have a working Python environment to use for this course.
+```
+
+```{admonition} Due
+:class: important
+
 Complete the [mini-assignment](mini_assignment.md).
 ```
 - [Representing networks](representing_networks.ipynb)
