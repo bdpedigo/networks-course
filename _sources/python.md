@@ -1,11 +1,27 @@
 # Python development 
-https://docs.python-guide.org/
+Please refer to the main Python documentation [here](https://docs.python-guide.org/) for a lot more good advice on Python development.
+
 
 ## Installing Python
-Guides to installing Python on [Mac](https://docs.python-guide.org/starting/install3/osx/#install3-osx
+Guides to installing Python on: [Mac](https://docs.python-guide.org/starting/install3/osx/#install3-osx
 ), [Windows](https://docs.python-guide.org/starting/install3/win/#install3-windows
 ), and [Linux](https://docs.python-guide.org/starting/install3/linux/#install3-linux
 ).
+
+Once you have installed Python 3, you should be able to try a command like one of the following (depending on your shell) to see where the Python interpreter is located.
+
+```{bash}
+which python3
+
+> /usr/local/bin/python3
+```
+
+```{cmd}
+where python3
+
+...
+```
+
 
 ## Virtual environments
 Virtual environments help you manage dependencies and package installs on a per-project
@@ -13,10 +29,59 @@ basis. In general, it is a bad idea to do development without using a virtual
 environment. Many tools exist for creating virtual environments, some are documented 
 [here](https://docs.python-guide.org/dev/virtualenvs/).
 
-python3.9 -m venv my-venv
-source my-venv/bin/activate
-pip install -U pip setuptools
-pip install graspologic
+Below, I provide an example using `virtualenv`, which is now bundled with Python by default (meaning you shouldn't need to download anything extra). Here, I am using Python 3.9, but this may differ for your platform (you can also likely just do `python3` instead of `python3.9`).
+
+Creates a new virtual environment in the current working directory:
+```{bash/cmd}
+python3.9 -m venv venv
+```
+
+From the same directory (since the command above created a new folder called `venv`), I should now be able to do:
+```{bash}
+source venv/bin/activate
+```
+(not sure if the below is correct on Windows)
+```{cmd}
+venv\Scripts\activate
+```
+
+If this worked, you will likely see `(venv)` at the start of your
+shell prompt now. You can also check for what interpreter the `python` command is now pointing to:
+```{bash}
+which python
+```
+Hopefully, this is now pointing to a file in the `venv` folder you just created.
+
+With the virtual environment active, you can install some packages to use in this course. This command will update/install `pip` and some other packages that help us install other things.
+```{bash/cmd}
+pip install -U pip setuptools wheel
+```
+
+Finally, you can install the required packages. `graspologic` is a Python
+package for network statistics which we'll use in the course. Conveniently, it
+also depends on other packages we'll use, like `pandas`, `numpy`, `scipy`, `networkx`, `matplotlib`, and `seaborn`. `pip` is smart enough to also install
+all of these dependencies for you.
+```{bash/cmd}
+pip install graspologic --pre
+```
+
+During installations like these, pay attention to any error messages that
+happen during installation. These would likely mean that packages (including
+dependencies of the one you are trying to install) will not work properly down
+the line.
+
+```{warning}
+If you are using a MacBook with an M1/M2 processor, or another ARM architecture chip, then the above likely will not work for you. Please discuss with Ben.
+```
+
+To see if this all worked, start a Python interpreter:
+```{bash/cmd}
+python
+```
+Within the Python interpreter, try importing `graspologic`:
+```{python}
+import graspologic
+```
 
 ## Using an IDE
 - I highly recommend using [VS Code](https://code.visualstudio.com/) for 

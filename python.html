@@ -498,10 +498,11 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="python-development">
 <h1>Python development<a class="headerlink" href="#python-development" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://docs.python-guide.org/">https://docs.python-guide.org/</a></p>
+<p>Please refer to the main Python documentation <a class="reference external" href="https://docs.python-guide.org/">here</a> for a lot more good advice on Python development.</p>
 <section id="installing-python">
 <h2>Installing Python<a class="headerlink" href="#installing-python" title="Permalink to this headline">#</a></h2>
-<p>Guides to installing Python on <a class="reference external" href="https://docs.python-guide.org/starting/install3/osx/#install3-osx">Mac</a>, <a class="reference external" href="https://docs.python-guide.org/starting/install3/win/#install3-windows">Windows</a>, and <a class="reference external" href="https://docs.python-guide.org/starting/install3/linux/#install3-linux">Linux</a>.</p>
+<p>Guides to installing Python on: <a class="reference external" href="https://docs.python-guide.org/starting/install3/osx/#install3-osx">Mac</a>, <a class="reference external" href="https://docs.python-guide.org/starting/install3/win/#install3-windows">Windows</a>, and <a class="reference external" href="https://docs.python-guide.org/starting/install3/linux/#install3-linux">Linux</a>.</p>
+<p>Once you have installed Python 3, you should be able to try a command like one of the following (depending on your shell) to see where the Python interpreter is located.</p>
 </section>
 <section id="virtual-environments">
 <h2>Virtual environments<a class="headerlink" href="#virtual-environments" title="Permalink to this headline">#</a></h2>
@@ -509,10 +510,28 @@ title="Print to PDF"
 basis. In general, it is a bad idea to do development without using a virtual
 environment. Many tools exist for creating virtual environments, some are documented
 <a class="reference external" href="https://docs.python-guide.org/dev/virtualenvs/">here</a>.</p>
-<p>python3.9 -m venv my-venv
-source my-venv/bin/activate
-pip install -U pip setuptools
-pip install graspologic</p>
+<p>Below, I provide an example using <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>, which is now bundled with Python by default (meaning you shouldn’t need to download anything extra). Here, I am using Python 3.9, but this may differ for your platform (you can also likely just do <code class="docutils literal notranslate"><span class="pre">python3</span></code> instead of <code class="docutils literal notranslate"><span class="pre">python3.9</span></code>).</p>
+<p>Creates a new virtual environment in the current working directory:</p>
+<p>From the same directory (since the command above created a new folder called <code class="docutils literal notranslate"><span class="pre">venv</span></code>), I should now be able to do:</p>
+<p>(not sure if the below is correct on Windows)</p>
+<p>If this worked, you will likely see <code class="docutils literal notranslate"><span class="pre">(venv)</span></code> at the start of your
+shell prompt now. You can also check for what interpreter the <code class="docutils literal notranslate"><span class="pre">python</span></code> command is now pointing to:</p>
+<p>Hopefully, this is now pointing to a file in the <code class="docutils literal notranslate"><span class="pre">venv</span></code> folder you just created.</p>
+<p>With the virtual environment active, you can install some packages to use in this course. This command will update/install <code class="docutils literal notranslate"><span class="pre">pip</span></code> and some other packages that help us install other things.</p>
+<p>Finally, you can install the required packages. <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> is a Python
+package for network statistics which we’ll use in the course. Conveniently, it
+also depends on other packages we’ll use, like <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, <code class="docutils literal notranslate"><span class="pre">networkx</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. <code class="docutils literal notranslate"><span class="pre">pip</span></code> is smart enough to also install
+all of these dependencies for you.</p>
+<p>During installations like these, pay attention to any error messages that
+happen during installation. These would likely mean that packages (including
+dependencies of the one you are trying to install) will not work properly down
+the line.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are using a MacBook with an M1/M2 processor, or another ARM architecture chip, then the above likely will not work for you. Please discuss with Ben.</p>
+</div>
+<p>To see if this all worked, start a Python interpreter:</p>
+<p>Within the Python interpreter, try importing <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>:</p>
 </section>
 <section id="using-an-ide">
 <h2>Using an IDE<a class="headerlink" href="#using-an-ide" title="Permalink to this headline">#</a></h2>
