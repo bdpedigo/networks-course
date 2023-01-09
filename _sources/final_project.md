@@ -23,6 +23,6 @@
 
 ## Presentation
 - Everyone will present their final projects **on the last day of class, January 21st.**
-- Presentations should be <5 minutes (no longer than 5) with 2 minutes for questions.
+- Presentations should be ~7 minutes and we'll have another ~3 minutes for questions.
 - Presentation should briefly cover the same main points from the notebook. 
    - Some details from the notebook you may not have time to cover in the presentation; that's OK.
