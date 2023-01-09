@@ -13,6 +13,7 @@ parts:
   - file: online_resources
   - file: books
   - file: datasets
+  - file: modaressanavi.md
 - caption: Lectures
   chapters:
   - url: https://bdpedigo.github.io/networks-course/welcome.html
