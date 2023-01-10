@@ -812,11 +812,6 @@ or along columns?</p>
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For a weighted network, there is also something called <strong>node strength</strong>, which is the
-sum of input and/or output weights.</p>
-</div>
 </section>
 <section id="eigenvector-centrality">
 <h2>Eigenvector centrality<a class="headerlink" href="#eigenvector-centrality" title="Permalink to this headline">#</a></h2>
@@ -912,6 +907,7 @@ will be the one we chose above, by a famous result called the <a class="referenc
 <p>Let’s say we have an unweighted, directed network (for the time being). At time <span class="math notranslate nohighlight">\(t\)</span>, imagine you are a placed at a random node in a network, node <span class="math notranslate nohighlight">\(i\)</span>. To decide your position at time <span class="math notranslate nohighlight">\(t+1\)</span>, you <em>randomly</em> chose one of the outbound links from node <span class="math notranslate nohighlight">\(A\)</span> to follow.</p>
 <p>Let <span class="math notranslate nohighlight">\(x^{t+1}\)</span> be an <span class="math notranslate nohighlight">\(n\)</span>-length vector, with all 0s except for a <span class="math notranslate nohighlight">\(1\)</span> at the position
 of our random walker at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(d_{i}\)</span> be the (out) degree of node <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>We can write the probability of being at node <span class="math notranslate nohighlight">\(j\)</span> at time <span class="math notranslate nohighlight">\(t+1\)</span> as:</p>
 <p><span class="math notranslate nohighlight">\(P[x_j^{t+1} = 1] = A_{ij}/d_{i}\)</span></p>
 <p>In other words, this probability is <span class="math notranslate nohighlight">\(1 / d_{i}\)</span> if <span class="math notranslate nohighlight">\(i\)</span> is connected to <span class="math notranslate nohighlight">\(j\)</span>, and 0 otherwise.</p>
@@ -939,6 +935,7 @@ walk scheme - at each time step, with probability <span class="math notranslate 
 \[x^{(t+1)} = \alpha A^T D^{-1} x^{(t)} + \frac{(1 - \alpha)}{n} 1\]</div>
 <div class="admonition-question admonition">
 <p class="admonition-title">Question</p>
+<p>Let <span class="math notranslate nohighlight">\(E\)</span> be a matrix of all ones.</p>
 <p>What is <span class="math notranslate nohighlight">\(E x^{(t)}\)</span>?</p>
 <p>Hint: <span class="math notranslate nohighlight">\(x^{(t)}\)</span> represents a probability distribution.</p>
 </div>
@@ -1189,7 +1186,7 @@ in results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/centrality_34_0.png" src="_images/centrality_34_0.png" />
+<img alt="_images/centrality_33_0.png" src="_images/centrality_33_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1548,7 +1545,7 @@ different networks!</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x143259b50&gt;
 </pre></div>
 </div>
-<img alt="_images/centrality_37_1.png" src="_images/centrality_37_1.png" />
+<img alt="_images/centrality_36_1.png" src="_images/centrality_36_1.png" />
 </div>
 </div>
 </section>
