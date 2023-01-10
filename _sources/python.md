@@ -24,6 +24,9 @@ where python3
 ...
 ```
 
+```{note}
+For the purposes of this course, Python 3.8, 3.9, or 3.10 are recommended.
+```
 
 ## Virtual environments
 Virtual environments help you manage dependencies and package installs on a per-project
