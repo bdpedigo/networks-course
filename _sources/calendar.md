@@ -7,11 +7,12 @@ Schedule below is approximate and subject to change
 ## Week 1
 ### Jan 9th (Monday)
 - [Introductions and welcome](https://bdpedigo.github.io/networks-course/welcome.html)
-- [What are networks (and why should we care)]([what_are_networks](https://bdpedigo.github.io/networks-course/what_are_networks.html))?
-- Course roadmap (go over this calendar)
 - Set up development environments
 - Work on the [mini-assignment](mini_assignment.md)
-- Look at datasets
+- [What are networks (and why should we care)]([what_are_networks](https://bdpedigo.github.io/networks-course/what_are_networks.html))?
+- Course roadmap (go over this calendar)
+- [Representing networks](representing_networks.ipynb)
+- Look at datasets (if time)
 
 ### Jan 10th (Tuesday)
 
@@ -26,7 +27,6 @@ Have a working Python environment to use for this course.
 
 Complete the [mini-assignment](mini_assignment.md).
 ```
-- [Representing networks](representing_networks.ipynb)
 - [Plotting networks](plotting_networks.ipynb)
 - [Connected components](connected_components.ipynb)
 - [Centrality measures](centrality.ipynb)
@@ -34,6 +34,7 @@ Complete the [mini-assignment](mini_assignment.md).
    - Eigenvector centrality
    - PageRank
    - Betweenness centrality
+- Look at datasets (if time)
 
 ### Jan 11th (Wednesday)
 ```{admonition} Due
