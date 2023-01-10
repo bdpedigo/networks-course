@@ -7,7 +7,7 @@ Schedule below is approximate and subject to change
 ## Week 1
 ### Jan 9th (Monday)
 - [Introductions and welcome](https://bdpedigo.github.io/networks-course/welcome.html)
-- Set up development environments
+- Set up [development environments](python.md)
 - Work on the [mini-assignment](mini_assignment.md)
 - [What are networks (and why should we care)]([what_are_networks](https://bdpedigo.github.io/networks-course/what_are_networks.html))?
 - Course roadmap (go over this calendar)
