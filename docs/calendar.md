@@ -9,7 +9,7 @@ Schedule below is approximate and subject to change
 - [Introductions and welcome](https://bdpedigo.github.io/networks-course/welcome.html)
 - Set up [development environments](python.md)
 - Work on the [mini-assignment](mini_assignment.md)
-- [What are networks (and why should we care)]([what_are_networks](https://bdpedigo.github.io/networks-course/what_are_networks.html))?
+- [What are networks (and why should we care)](https://bdpedigo.github.io/networks-course/what_are_networks.html)?
 - Course roadmap (go over this calendar)
 - [Representing networks](representing_networks.ipynb)
 - Look at datasets (if time)
