@@ -1,1 +1,1 @@
-# arsnow - final project placeholder
+# Arsnow - final project placeholder
