@@ -111,15 +111,19 @@ import packages installed in the virtual environment (e.g. ```import graspologic
 ```
 
 ## Using an IDE
+
+```{note}
+If you have a lot of experience using Python/developing some other way (besides VS Code) and you are 
+welcome to stick with it, just note that it may be harder for me to provide feedback for
+other IDEs or Python setups.
+```
+
 - I highly recommend using [VS Code](https://code.visualstudio.com/) for 
 Python development, as it has lots of nice features for working with GitHub and Jupyter 
 Book. It will also make it easier for me to help you debug if using VS Code. 
 - There is a
 nice article on [*Getting Started with Python in VS Code*](https://code.visualstudio.com/docs/python/python-tutorial), which also includes instructions on getting a Python interpreter.
 - Make sure you are always using some kind of virtual environment for developing in Python. This is described further for VS Code in the same article above [here](https://code.visualstudio.com/docs/python/python-tutorial#_install-and-use-packages).
+- VS Code also has built-in tools for managing (and even creating) virtual environments which are detailed [here](https://code.visualstudio.com/docs/python/environments#_python-environments).
+- I highly recommend using a VS Code workspace which has your virtual environment enabled by default. You can do this by using the `Python: Select Interpreter` command. This will mean that running Python code from VS Code will automatically use your environment, and same with opening Jupyter Notebooks in VS Code which I find much easier.
 
-```{note}
-If you have a lot of experience using Python/developing some other way and you are 
-welcome to stick with it, just note that it may be harder for me to provide feedback for
-other IDEs or Python setups.
-```
