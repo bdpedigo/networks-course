@@ -734,7 +734,7 @@ is connected.</p>
 </div>
 </div>
 </div>
-<p>Computing the degree is also quite easy with the adjacency matrix.</p>
+<p>Computing the degree is also quite easy with the adjacency matrix (assuming the network is unweighted).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -811,6 +811,11 @@ or along columns?</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a weighted network, there is also something called <strong>node strength</strong>, which is the
+sum of input and/or output weights.</p>
 </div>
 </section>
 <section id="eigenvector-centrality">
@@ -1184,7 +1189,7 @@ in results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/centrality_33_0.png" src="_images/centrality_33_0.png" />
+<img alt="_images/centrality_34_0.png" src="_images/centrality_34_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1543,7 +1548,7 @@ different networks!</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x143259b50&gt;
 </pre></div>
 </div>
-<img alt="_images/centrality_36_1.png" src="_images/centrality_36_1.png" />
+<img alt="_images/centrality_37_1.png" src="_images/centrality_37_1.png" />
 </div>
 </div>
 </section>
