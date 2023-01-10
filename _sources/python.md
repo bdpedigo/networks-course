@@ -107,7 +107,7 @@ connected to the virtual environment. Test this by doing ```which jupyter``` (ba
 environment you just created, e.g. for me it looks like 
 ```/Users/bpedigo/JHU_code/networks-course-2023/.venv/bin/jupyter```. If you try 
 ```jupyter-notebook``` *with your virtual environment active* and you still cannot
-import packages installed in the virtual environment (e.g. ```import graspologic```), then you made need to try the solution detailed [here](https://stackoverflow.com/a/42454615/15480487). Namely, the command ```ipython kernel install --user --name=venv```.
+import packages installed in the virtual environment (e.g. ```import graspologic```), then you made need to try the solution detailed [here](https://stackoverflow.com/a/42454615/15480487). Namely, the command ```ipython kernel install --user --name=venv```, and then manually selecting the correct kernel you just created from the "Kernels" menu in Jupyter Notebook.
 ```
 
 ## Using an IDE
