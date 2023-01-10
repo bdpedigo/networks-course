@@ -16,13 +16,13 @@ Schedule below is approximate and subject to change
 
 ### Jan 10th (Tuesday)
 
-```{admonition} Due
+```{admonition} Due during class
 :class: important
 
-Have a working Python environment to use for this course.
+Have a working Python environment to use for this course (during class).
 ```
 
-```{admonition} Due
+```{admonition} Due end of day
 :class: important
 
 Complete the [mini-assignment](mini_assignment.md).
@@ -37,7 +37,7 @@ Complete the [mini-assignment](mini_assignment.md).
 - Look at datasets (if time)
 
 ### Jan 11th (Wednesday)
-```{admonition} Due
+```{admonition} Due during class
 :class: important
 
 Know what dataset you'll be working on for the final project.
@@ -57,7 +57,7 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 
 ### Jan 12th (Thursday)
 
-```{admonition} Due
+```{admonition} Due during class
 :class: important
 
 Be able to load in and somehow plot your dataset(s) in Python.
@@ -115,10 +115,10 @@ NO CLASS - Martin Luther King, Jr. Day
 
 ### Jan 19th (Thursday)
 
-```{admonition} Due
+```{admonition} Due by beginning of class
 :class: important
 
-Submit final project notebooks by midnight.
+Submit final project notebooks.
 ```
 
 
@@ -128,13 +128,13 @@ Submit final project notebooks by midnight.
    - Multiple ASE
 
 ### Friday
-```{admonition} Due
+```{admonition} Due in class
 :class: important
 
 Final project presentations
 ```
 
-```{admonition} Due
+```{admonition} Due by end of day
 :class: important
 
 Complete exit survey.
