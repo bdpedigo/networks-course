@@ -39,4 +39,5 @@ parts:
   - file: he.md
   - file: arsnow.md
   - file: vanchinathan.md
+  - file: wang.md
   - file: wu.md  
