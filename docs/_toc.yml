@@ -32,4 +32,10 @@ parts:
 - caption: Projects
   chapters: 
   - file: pedigo.md
+  - file: moore.md
+  - file: kondepudi.md  
+  - file: modaressanavi.md  
+  - file: kondepudi.md
+  - file: he.md
+  - file: vanchinathan.md
   - file: wu.md  
