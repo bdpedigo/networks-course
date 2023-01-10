@@ -35,7 +35,6 @@ parts:
   - file: moore.md
   - file: kondepudi.md  
   - file: modaressanavi.md  
-  - file: kondepudi.md
   - file: he.md
   - file: arsnow.md
   - file: vanchinathan.md
