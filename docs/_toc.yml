@@ -29,6 +29,9 @@ parts:
   - file: graph_matching
   - file: multiple_embedding
   - file: ranking
+- caption: Examples
+  chapters: 
+  - file: plot_large
 - caption: Projects
   chapters: 
   - file: Ugwuoke.md
