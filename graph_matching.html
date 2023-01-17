@@ -719,7 +719,7 @@ specific ordering or arrangement of some number of objects.</p>
 <p>How many permutations are there of <span class="math notranslate nohighlight">\(n\)</span> objects?</p>
 </div>
 <p>Permutations, for us, will be represented by <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation_matrix"><strong>permutation matrices</strong></a>.
-A permutation matrix is <span class="math notranslate nohighlight">\(n \times n\)</span>, with all zeros except for <span class="math notranslate nohighlight">\(n\)</span> 1s. Let’s look at
+A permutation matrix is <span class="math notranslate nohighlight">\(n \times n\)</span>, with all zeros except for <span class="math notranslate nohighlight">\(n\)</span> 1s. More specifically, each row and column has exactly one 1 in it. Let’s look at
 what a permutation matrix times a vector looks like.</p>
 <figure class="align-default" id="id77">
 <a class="reference internal image-reference" href="_images/perm-matrix.png"><img alt="_images/perm-matrix.png" src="_images/perm-matrix.png" style="width: 200px;" /></a>
@@ -729,9 +729,9 @@ what a permutation matrix times a vector looks like.</p>
 </figcaption>
 </figure>
 <p>So, we see that if we look at the permutation matrix, the <em>row index</em> represents the
-index of the original position of object <span class="math notranslate nohighlight">\(i\)</span>. The <em>column index</em> represents the new
+index of the new position of object <span class="math notranslate nohighlight">\(i\)</span>. The <em>column index</em> represents the original
 position of an object. So, if we have a 1 at position <span class="math notranslate nohighlight">\((1, 4)\)</span>, that means the first
-object in the original arrangement moves to be the fourth object.</p>
+object was the fourth object in the original arangement.</p>
 <p>Note that this also works for matrices: each column of a matrix <span class="math notranslate nohighlight">\(A\)</span> would be permuted
 the same way as the vector in the example above. So, we can think of</p>
 <div class="math notranslate nohighlight">
@@ -826,22 +826,19 @@ something like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">graspologic.match</span> <span class="kn">import</span> <span class="n">GraphMatch</span>
+<span class="kn">from</span> <span class="nn">graspologic.match</span> <span class="kn">import</span> <span class="n">graph_match</span>
 <span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mf">0.3</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+
 <span class="n">G1</span> <span class="o">=</span> <span class="n">er_np</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
 <span class="n">node_shuffle_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="n">G2</span> <span class="o">=</span> <span class="n">G1</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">node_shuffle_input</span><span class="p">,</span> <span class="n">node_shuffle_input</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of edge disagreements: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">G1</span><span class="o">-</span><span class="n">G2</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edge disagreements:  1012.0
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of edge disagreements: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">G1</span> <span class="o">-</span> <span class="n">G2</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -851,28 +848,19 @@ something like:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;G1 [ER-NP(50, 0.3) Simulation]&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;G2 [G1 Randomly Shuffled]&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1 [ER-NP(50, 0.3) Simulation]&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G2 [G1 Randomly Shuffled]&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/graph_matching_8_0.png" src="_images/graph_matching_8_0.png" />
 </div>
 </div>
 <p>Now, let’s solve the graph matching problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmp</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">()</span>
-<span class="n">gmp</span> <span class="o">=</span> <span class="n">gmp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">)</span>
-<span class="n">G2</span> <span class="o">=</span> <span class="n">G2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">gmp</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">,</span> <span class="n">gmp</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of edge disagreements: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">G1</span><span class="o">-</span><span class="n">G2</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edge disagreements:  0.0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<span class="n">G2</span> <span class="o">=</span> <span class="n">G2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">perm_inds</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of edge disagreements: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">G1</span> <span class="o">-</span> <span class="n">G2</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -886,10 +874,10 @@ the optimization in <code class="docutils literal notranslate"><span class="pre"
 <p>For this example, we use a slightly different network model - we create two stochastic block models, but the edges are <em>correlated</em> so that the two networks are similar but not exactly the same.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">sbm_corr</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
 
@@ -899,7 +887,7 @@ the optimization in <code class="docutils literal notranslate"><span class="pre"
 <span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">block_members</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n_blocks</span> <span class="o">*</span> <span class="p">[</span><span class="n">n_per_block</span><span class="p">])</span>
 <span class="n">n_verts</span> <span class="o">=</span> <span class="n">block_members</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">rho</span> <span class="o">=</span> <span class="mf">.9</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">0.9</span>
 <span class="n">block_probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]])</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">block_probs</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -912,10 +900,6 @@ the optimization in <code class="docutils literal notranslate"><span class="pre"
 <span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Diff (G1 - G2)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/graph_matching_13_0.png" src="_images/graph_matching_13_0.png" />
-<img alt="_images/graph_matching_13_1.png" src="_images/graph_matching_13_1.png" />
 </div>
 </div>
 <p>Here we see that after shuffling the second graph, there are many more edge disagreements, as expected.</p>
@@ -933,32 +917,26 @@ the optimization in <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/graph_matching_15_0.png" src="_images/graph_matching_15_0.png" />
-</div>
 </div>
 <p>First, we will run graph matching on graph 1 and the shuffled graph 2 with no seeds, and return the match ratio, that is the fraction of vertices that have been correctly matched.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sgm</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">()</span>
-<span class="n">sgm</span> <span class="o">=</span> <span class="n">sgm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">A2_shuffle</span><span class="p">)</span>
-<span class="n">A2_unshuffle</span> <span class="o">=</span> <span class="n">A2_shuffle</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">,</span> <span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">perm_first</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">misc</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">A2_shuffle</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<span class="c1"># these other 3 returns we often don&#39;t use, but they are there if you want them and</span>
+<span class="c1"># are explained in the docs. for the most part, we care about &quot;perm_inds&quot; which tell us</span>
+<span class="c1"># how to permute the second graph to match the first graph.</span>
+
+<span class="n">A2_unshuffle</span> <span class="o">=</span> <span class="n">A2_shuffle</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">perm_inds</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">)]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 1&quot;</span><span class="p">)</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 2 unshuffled&quot;</span><span class="p">)</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Diff (G1 - G2 unshuffled)&quot;</span><span class="p">)</span>
 
-<span class="n">match_ratio</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="o">-</span><span class="n">node_unshuffle_input</span><span class="p">))</span><span class="o">/</span><span class="n">n_verts</span><span class="p">)</span>
+<span class="n">match_ratio</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">perm_inds</span> <span class="o">-</span> <span class="n">node_unshuffle_input</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_verts</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Match Ratio with no seeds: &quot;</span><span class="p">,</span> <span class="n">match_ratio</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Match Ratio with no seeds:  0.013333333333333308
-</pre></div>
-</div>
-<img alt="_images/graph_matching_17_1.png" src="_images/graph_matching_17_1.png" />
 </div>
 </div>
 <p>While the predicted permutation for graph 2 did recover the basic structure of the stochastic block model (i.e. graph 1 and graph 2 look qualitatively similar), we see that the number of edge disagreements between them is still quite high, and the match ratio quite low.</p>
@@ -967,29 +945,23 @@ the optimization in <code class="docutils literal notranslate"><span class="pre"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 
-<span class="n">W1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_verts</span><span class="p">)),</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">W1</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">W2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">node_unshuffle_input</span><span class="p">[</span><span class="n">W1</span><span class="p">])</span>
-    
-<span class="n">sgm</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">()</span>
-<span class="n">sgm</span> <span class="o">=</span> <span class="n">sgm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">A2_shuffle</span><span class="p">,</span><span class="n">W1</span><span class="p">,</span><span class="n">W2</span><span class="p">)</span>
-<span class="n">A2_unshuffle</span> <span class="o">=</span> <span class="n">A2_shuffle</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">,</span> <span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">)]</span>
+<span class="n">seeds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_verts</span><span class="p">)),</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">seeds1</span> <span class="o">=</span> <span class="n">seeds1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">seeds2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">node_unshuffle_input</span><span class="p">[</span><span class="n">seeds1</span><span class="p">])</span>
+<span class="n">partial_match</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">seeds1</span><span class="p">,</span> <span class="n">seeds2</span><span class="p">))</span>
+
+<span class="n">_</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">A2_shuffle</span><span class="p">,</span> <span class="n">partial_match</span><span class="o">=</span><span class="n">partial_match</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<span class="n">A2_unshuffle</span> <span class="o">=</span> <span class="n">A2_shuffle</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">perm_inds</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">)]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 1&quot;</span><span class="p">)</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Graph 2 unshuffled&quot;</span><span class="p">)</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A1</span> <span class="o">-</span> <span class="n">A2_unshuffle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Diff (G1 - G2 unshuffled)&quot;</span><span class="p">)</span>
 
-<span class="n">match_ratio</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sgm</span><span class="o">.</span><span class="n">perm_inds_</span><span class="o">-</span><span class="n">node_unshuffle_input</span><span class="p">))</span><span class="o">/</span><span class="n">n_verts</span><span class="p">)</span>
+<span class="n">match_ratio</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">perm_inds</span> <span class="o">-</span> <span class="n">node_unshuffle_input</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_verts</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Match Ratio with 10 seeds: &quot;</span><span class="p">,</span> <span class="n">match_ratio</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Match Ratio with 10 seeds:  1.0
-</pre></div>
-</div>
-<img alt="_images/graph_matching_20_1.png" src="_images/graph_matching_20_1.png" />
 </div>
 </div>
 </section>
@@ -1001,80 +973,85 @@ with different numbers of nodes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulating G1&#39;, G2, deleting 25 vertices</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">directed</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">loops</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">block_probs</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span>
-                <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.3</span><span class="p">],</span>
-                <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span>
-                <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.7</span><span class="p">]]</span>
-<span class="n">n</span> <span class="o">=</span><span class="mi">100</span>
+<span class="n">block_probs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
+<span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">rho</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">block_members</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n_blocks</span> <span class="o">*</span> <span class="p">[</span><span class="n">n</span><span class="p">])</span>
 <span class="n">n_verts</span> <span class="o">=</span> <span class="n">block_members</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">G1p</span><span class="p">,</span> <span class="n">G2</span> <span class="o">=</span> <span class="n">sbm_corr</span><span class="p">(</span><span class="n">block_members</span><span class="p">,</span><span class="n">block_probs</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">loops</span><span class="p">)</span>
-<span class="n">G1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">))</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">G1p</span><span class="p">)</span>
+<span class="n">G1</span><span class="p">,</span> <span class="n">G2_full</span> <span class="o">=</span> <span class="n">sbm_corr</span><span class="p">(</span><span class="n">block_members</span><span class="p">,</span> <span class="n">block_probs</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">loops</span><span class="p">)</span>
 
-<span class="n">step1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">75</span>
-<span class="n">step2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">75</span>
-<span class="n">step3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">step1</span><span class="p">)):</span>
-    <span class="n">block1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">step1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">step1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">25</span><span class="p">)</span>
-    <span class="n">c</span><span class="p">[</span><span class="n">block1</span><span class="p">,:]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="n">c</span><span class="p">[:,</span> <span class="n">block1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">step3</span><span class="p">)):</span>
-        <span class="n">G1</span><span class="p">[</span><span class="n">step2</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">step2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">step2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span><span class="n">step2</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">G1p</span><span class="p">[</span><span class="n">step3</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">step1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">step3</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span><span class="n">step1</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span>
-        
-<span class="n">topleft_G1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span><span class="mi">400</span><span class="p">))</span>
-<span class="n">topleft_G1</span><span class="p">[:</span><span class="mi">300</span><span class="p">,:</span><span class="mi">300</span><span class="p">]</span> <span class="o">=</span> <span class="n">G1</span>
+<span class="n">keep_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">175</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">275</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">375</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">G2</span> <span class="o">=</span> <span class="n">G2_full</span><span class="p">[</span><span class="n">keep_indices</span><span class="p">][:,</span> <span class="n">keep_indices</span><span class="p">]</span>
+
+<span class="n">G2_deleted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">G1</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">G2_deleted</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">keep_indices</span><span class="p">,</span> <span class="n">keep_indices</span><span class="p">)]</span> <span class="o">=</span> <span class="n">G2</span>
+
+<span class="n">topleft_G2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+<span class="n">topleft_G2</span><span class="p">[:</span><span class="mi">300</span><span class="p">,</span> <span class="p">:</span><span class="mi">300</span><span class="p">]</span> <span class="o">=</span> <span class="n">G2</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">G1p</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1&#39;&quot;</span><span class="p">)</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G2&quot;</span><span class="p">)</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">topleft_G1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1 (to top left corner)&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G1&#39;&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G2_full</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G2 (before deletions)&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G2_deleted</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G2 (after deletions)&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">topleft_G2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;G2 (to top left corner)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/graph_matching_22_0.png" src="_images/graph_matching_22_0.png" />
 </div>
 </div>
 <p>Now, we have two networks which have two different sizes, and only some of the nodes in the smaller network are well represented in the other. We can still use graph matching here in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> - this code compares two different methods of doing so using techniques dubbed “padding” in <span id="id3">Fishkind <em>et al.</em> [<a class="reference internal" href="#id20" title="Donniell E Fishkind, Sancar Adali, Heather G Patsolic, Lingyao Meng, Digvijay Singh, Vince Lyzinski, and Carey E Priebe. Seeded graph matching. Pattern recognition, 87:203–215, 2019.">3</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">G2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">seed1</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">75</span><span class="p">)</span> <span class="o">*</span> <span class="mi">25</span> <span class="o">+</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seed2</span><span class="p">]</span>
 
-<span class="n">gmp_naive</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;naive&#39;</span><span class="p">)</span>
-<span class="n">seed1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">seed2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">75</span><span class="p">)</span><span class="o">*</span><span class="mi">25</span> <span class="o">+</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seed1</span><span class="p">]</span>
-<span class="n">gmp_naive</span> <span class="o">=</span> <span class="n">gmp_naive</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">G1</span><span class="p">,</span> <span class="n">seed2</span><span class="p">,</span> <span class="n">seed1</span><span class="p">)</span>
-<span class="n">G1_naive</span> <span class="o">=</span> <span class="n">topleft_G1</span><span class="p">[</span><span class="n">gmp_naive</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">][:,</span> <span class="n">gmp_naive</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">]</span>
+<span class="n">partial_match</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">seed1</span><span class="p">,</span> <span class="n">seed2</span><span class="p">))</span>
 
-<span class="n">gmp_adopted</span> <span class="o">=</span> <span class="n">GraphMatch</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;adopted&#39;</span><span class="p">)</span>
-<span class="n">gmp_adopted</span> <span class="o">=</span> <span class="n">gmp_adopted</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">G1</span><span class="p">,</span> <span class="n">seed2</span><span class="p">,</span> <span class="n">seed1</span><span class="p">)</span>
-<span class="n">G1_adopted</span> <span class="o">=</span> <span class="n">topleft_G1</span><span class="p">[</span><span class="n">gmp_adopted</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">][:,</span> <span class="n">gmp_adopted</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">]</span>
+<span class="n">naive_indices1</span><span class="p">,</span> <span class="n">naive_indices2</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span>
+    <span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">partial_match</span><span class="o">=</span><span class="n">partial_match</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;naive&quot;</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span>
+<span class="p">)</span>
+<span class="n">G2_naive</span> <span class="o">=</span> <span class="n">G2</span><span class="p">[</span><span class="n">naive_indices2</span><span class="p">][:,</span> <span class="n">naive_indices2</span><span class="p">]</span>
+<span class="n">G2_naive_full</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">G2_naive_full</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">naive_indices1</span><span class="p">,</span> <span class="n">naive_indices1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">G2_naive</span>
+
+<span class="n">adopted_indices1</span><span class="p">,</span> <span class="n">adopted_indices2</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span>
+    <span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">partial_match</span><span class="o">=</span><span class="n">partial_match</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;adopted&quot;</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span>
+<span class="p">)</span>
+<span class="n">G2_adopted</span> <span class="o">=</span> <span class="n">G2</span><span class="p">[</span><span class="n">adopted_indices2</span><span class="p">][:,</span> <span class="n">adopted_indices2</span><span class="p">]</span>
+<span class="n">G2_adopted_full</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">G2_adopted_full</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">adopted_indices1</span><span class="p">,</span> <span class="n">adopted_indices1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">G2_adopted</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">G1_naive</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Naive Padding&quot;</span><span class="p">)</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">G1_adopted</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adopted Padding&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G2_naive_full</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Naive Padding&quot;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">G2_adopted_full</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adopted Padding&quot;</span><span class="p">)</span>
 
-<span class="n">naive_matching</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">gmp_naive</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span> <span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span><span class="p">)])</span>
-<span class="n">adopted_matching</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">gmp_adopted</span><span class="o">.</span><span class="n">perm_inds_</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span> <span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span><span class="p">)])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Match ratio of nodes remaining in G1, with naive padding: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">naive_matching</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span><span class="o">/</span><span class="mi">300</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Match ratio of nodes remaining in G1, with adopted padding: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">adopted_matching</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span><span class="o">/</span><span class="mi">300</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">compute_match_ratio</span><span class="p">(</span><span class="n">indices1</span><span class="p">,</span> <span class="n">indices2</span><span class="p">):</span>
+    <span class="n">match_ratio</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices2</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">indices1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">keep_indices</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">indices2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">):</span>
+            <span class="n">match_ratio</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">match_ratio</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices2</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Matching accuracy with naive padding: </span><span class="si">{</span><span class="n">compute_match_ratio</span><span class="p">(</span><span class="n">naive_indices1</span><span class="p">,</span><span class="w"> </span><span class="n">naive_indices2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Matching accuracy with adopted padding: </span><span class="si">{</span><span class="n">compute_match_ratio</span><span class="p">(</span><span class="n">adopted_indices1</span><span class="p">,</span><span class="w"> </span><span class="n">adopted_indices2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Match ratio of nodes remaining in G1, with naive padding: 0.10666666666666667
-Match ratio of nodes remaining in G1, with adopted padding: 1.0
-</pre></div>
-</div>
-<img alt="_images/graph_matching_24_1.png" src="_images/graph_matching_24_1.png" />
 </div>
 </div>
 </section>
