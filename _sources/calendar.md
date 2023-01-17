@@ -91,6 +91,11 @@ NO CLASS - Martin Luther King, Jr. Day
 
 
 ### Jan 17th (Tuesday)
+
+```{warning}
+Class taught remotely; see videos on course Canvas
+```
+
 - [Graph matching](graph_matching.ipynb)
    - When could we use it 
    - Why is it hard?
