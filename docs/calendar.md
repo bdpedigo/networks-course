@@ -79,11 +79,6 @@ Be able to load in and somehow plot your dataset(s) in Python.
 - [Network embedding (Part 1)](embedding.ipynb)
    - Word2Vec to DeepWalk to Node2Vec
    - Recommendations using an embedding 
-- [Network embeddings (Part 2)](embedding.ipynb)
-  - Spectral methods
-    - Adjacency spectral embedding
-    - Laplacian spectral embedding
-    - Two truths
 
 ## Week 2
 ### Jan 16th (Monday)
@@ -105,13 +100,18 @@ NO CLASS - Martin Luther King, Jr. Day
      - Adding seeds
      - Graphs of different sizes
    - Application example
-
-### Jan 18th (Wednesday)
 - [Ranking](ranking.ipynb)
   - Simple rankings (A, A squared)
   - Eigenvector ranking
   - Minimum violations ranking
   - Applications of ranking to study hierarchies
+
+### Jan 18th (Wednesday)
+- [Network embeddings (Part 2)](embedding.ipynb)
+  - Spectral methods
+    - Adjacency spectral embedding
+    - Laplacian spectral embedding
+    - Two truths
 
 ### Jan 19th (Thursday)
 
@@ -120,7 +120,6 @@ NO CLASS - Martin Luther King, Jr. Day
 
 Submit final project notebooks.
 ```
-
 
 - [Multiple network embedding](multiple_embedding.ipynb)
    - ASE x 2 
