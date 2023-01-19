@@ -31,4 +31,18 @@ parts:
   - file: ranking
 - caption: Projects
   chapters: 
+<<<<<<< HEAD
   - file: Ugwuoke.ipynb
+=======
+  - file: Ugwuoke.md
+  - file: pedigo.md
+  - file: moore.md
+  - file: kondepudi.md  
+  - file: modaressanavi.md  
+  - file: kondepudi.md
+  - file: he.md
+  - file: arsnow.md
+  - file: vanchinathan.md
+  - file: wang.md
+  - file: wu.md  
+>>>>>>> cf88a80f4af582376b467775b0cc319ec0dc660c
