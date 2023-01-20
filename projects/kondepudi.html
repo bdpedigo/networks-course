@@ -1,0 +1,2312 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Elliptic Cryptocurrency Transactions &#8212; Network Data Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Protein Interactomes in Staphylococcus Bacteria" href="modaressanavi.html" />
+    <link rel="prev" title="Spotify Million Playlists" href="he.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-JYHFQNEPZN');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Network Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../landing.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course logistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../calendar.html">
+   Calendar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mini_assignment.html">
+   Mini-assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../final_project.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python.html">
+   Python development
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../online_resources.html">
+   Online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../books.html">
+   Books
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
+   Welcome
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
+   What are networks?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../representing_networks.html">
+   Representing networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plotting_networks.html">
+   Plotting networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../connected_components.html">
+   Connected components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../centrality.html">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../random_graphs.html">
+   Random network models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../community_detection.html">
+   Community detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embedding.html">
+   Network embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph_matching.html">
+   Graph matching
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../multiple_embedding.html">
+   Embedding multiple networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ranking.html">
+   Ranking and flow
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plot_large.html">
+   Plotting larger networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="arsnow.html">
+   South Florida Cypress Wetlands Trophic Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="he.html">
+   Spotify Million Playlists
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Elliptic Cryptocurrency Transactions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modaressanavi.html">
+   Protein Interactomes in Staphylococcus Bacteria
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="moore.html">
+   Reddit links
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ugwuoke.html">
+   Analyzing Airport Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vanchinathan.html">
+   Yeast operons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wu.html">
+   London Train Network
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/kondepudi.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/kondepudi.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/kondepudi.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/projects/kondepudi.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#of-the-1089-nodes-32-have-an-in-degree-and-an-out-degree-of-1">
+   348 of the 1089 nodes (32%) have an in degree and an out degree of 1.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#of-the-1089-nodes-32-have-an-in-degree-of-0-and-an-out-degree-of-1">
+   302 of the 1089 nodes (32%) have an in degree of 0 and an out degree of 1.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#of-the-1089-nodes-32-have-an-in-degree-of-1-and-an-out-degree-of-0">
+   211 of the 1089 nodes (32%) have an in degree of 1 and an out degree of 0.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-we-look-at-the-graph-above-we-can-see-there-are-chains-of-nodes-it-seems-that-occasionally-there-are-transactions-that-pass-through-a-chain-of-entities-these-entities-simply-receieve-the-transaction-from-one-entity-and-transfer-it-to-the-next-we-can-reason-that-this-could-potentially-be-a-part-of-a-money-laundering-operation-specifically-layering-in-this-step-money-is-transfered-through-multiple-accounts-to-further-the-distance-from-the-money-from-the-original-source-these-entities-are-likely-shell-companies-trusts-or-other-corporate-vehicles-which-aren-t-required-to-reveal-their-true-owner">
+     If we look at the graph above, we can see there are chains of nodes. It seems that occasionally, there are transactions that pass through a chain of entities. These entities simply receieve the transaction from one entity and transfer it to the next. We can reason that this could potentially be a part of a money laundering operation, specifically layering. In this step, money is transfered through multiple accounts to further the distance from the money from the original source. These entities are likely shell companies, trusts, or other corporate vehicles which aren’t required to reveal their true owner.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-spent-a-lot-a-lot-of-time-trying-collapse-the-chains-so-we-could-better-represent-the-network-unfortunately-pandas-didn-t-want-to-work-with-me-so-we-re-stuck-with-the-above-information">
+   I spent a lot (a lot!) of time trying collapse the chains so we could better represent the network. Unfortunately, pandas didn’t want to work with me so we’re stuck with the above information.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-ll-probably-work-on-this-project-more-in-the-future-as-i-think-there-s-still-quite-a-bit-of-information-that-i-still-haven-t-gotten-around-through-analyzing">
+     I’ll probably work on this project more in the future as I think there’s still quite a bit of information that I still haven’t gotten around through analyzing.
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Elliptic Cryptocurrency Transactions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#of-the-1089-nodes-32-have-an-in-degree-and-an-out-degree-of-1">
+   348 of the 1089 nodes (32%) have an in degree and an out degree of 1.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#of-the-1089-nodes-32-have-an-in-degree-of-0-and-an-out-degree-of-1">
+   302 of the 1089 nodes (32%) have an in degree of 0 and an out degree of 1.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#of-the-1089-nodes-32-have-an-in-degree-of-1-and-an-out-degree-of-0">
+   211 of the 1089 nodes (32%) have an in degree of 1 and an out degree of 0.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-we-look-at-the-graph-above-we-can-see-there-are-chains-of-nodes-it-seems-that-occasionally-there-are-transactions-that-pass-through-a-chain-of-entities-these-entities-simply-receieve-the-transaction-from-one-entity-and-transfer-it-to-the-next-we-can-reason-that-this-could-potentially-be-a-part-of-a-money-laundering-operation-specifically-layering-in-this-step-money-is-transfered-through-multiple-accounts-to-further-the-distance-from-the-money-from-the-original-source-these-entities-are-likely-shell-companies-trusts-or-other-corporate-vehicles-which-aren-t-required-to-reveal-their-true-owner">
+     If we look at the graph above, we can see there are chains of nodes. It seems that occasionally, there are transactions that pass through a chain of entities. These entities simply receieve the transaction from one entity and transfer it to the next. We can reason that this could potentially be a part of a money laundering operation, specifically layering. In this step, money is transfered through multiple accounts to further the distance from the money from the original source. These entities are likely shell companies, trusts, or other corporate vehicles which aren’t required to reveal their true owner.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-spent-a-lot-a-lot-of-time-trying-collapse-the-chains-so-we-could-better-represent-the-network-unfortunately-pandas-didn-t-want-to-work-with-me-so-we-re-stuck-with-the-above-information">
+   I spent a lot (a lot!) of time trying collapse the chains so we could better represent the network. Unfortunately, pandas didn’t want to work with me so we’re stuck with the above information.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-ll-probably-work-on-this-project-more-in-the-future-as-i-think-there-s-still-quite-a-bit-of-information-that-i-still-haven-t-gotten-around-through-analyzing">
+     I’ll probably work on this project more in the future as I think there’s still quite a bit of information that I still haven’t gotten around through analyzing.
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="elliptic-cryptocurrency-transactions">
+<h1>Elliptic Cryptocurrency Transactions<a class="headerlink" href="#elliptic-cryptocurrency-transactions" title="Permalink to this headline">#</a></h1>
+<p><strong>Author: Adi Kondepudi</strong></p>
+<p><a class="reference external" href="https://www.kaggle.com/datasets/ellipticco/elliptic-data-set?resource=download">https://www.kaggle.com/datasets/ellipticco/elliptic-data-set?resource=download</a></p>
+<p>The elliptic data set maps bitcoin transfers between entities, both licit and illicit.</p>
+<p>There are 203,769 nodes and 234,355 edges. Nodes are entities and edges are transactions.</p>
+<p>Among the nodes, 2% (4545) are illicit and 21% (42019) are licit. The rest are unknown.</p>
+<p>There are 166 features for each node.</p>
+<p>The first feature is the time step for that node. Each time step represents a connected component of nodes with edges (transactions) that have all occured within three hours of each other.</p>
+<p>The next 93 features give information about the transactions made by that node (fees, volume, averages, etc).</p>
+<p>The last 72 features are aggregated from adjacent nodes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing general libraries.</span>
+<span class="c1"># Specific functions and whatnot will be imported seperately in later cells. </span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">graspologic</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reading data</span>
+<span class="n">df_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./elliptic/elliptic_txs_features.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">df_classes</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./elliptic/elliptic_txs_classes.csv&quot;</span><span class="p">)</span>
+<span class="n">df_edgelist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./elliptic/elliptic_txs_edgelist.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># renaming columns</span>
+<span class="n">df_classes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_classes</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;illicit&quot;</span>
+<span class="n">df_classes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_classes</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;licit&quot;</span>
+
+<span class="n">df_features</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;time step&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;local_feat_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">93</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;agg_feat_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">72</span><span class="p">)]</span>
+<span class="n">df_classes</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">]</span>
+
+<span class="c1"># adding class data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_features</span><span class="p">,</span> <span class="n">df_classes</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">second_column</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">second_column</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>class</th>
+      <th>time step</th>
+      <th>local_feat_0</th>
+      <th>local_feat_1</th>
+      <th>local_feat_2</th>
+      <th>local_feat_3</th>
+      <th>local_feat_4</th>
+      <th>local_feat_5</th>
+      <th>local_feat_6</th>
+      <th>...</th>
+      <th>agg_feat_62</th>
+      <th>agg_feat_63</th>
+      <th>agg_feat_64</th>
+      <th>agg_feat_65</th>
+      <th>agg_feat_66</th>
+      <th>agg_feat_67</th>
+      <th>agg_feat_68</th>
+      <th>agg_feat_69</th>
+      <th>agg_feat_70</th>
+      <th>agg_feat_71</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>230425980</td>
+      <td>unknown</td>
+      <td>1</td>
+      <td>-0.171469</td>
+      <td>-0.184668</td>
+      <td>-1.201369</td>
+      <td>-0.121970</td>
+      <td>-0.043875</td>
+      <td>-0.113002</td>
+      <td>-0.061584</td>
+      <td>...</td>
+      <td>-0.562153</td>
+      <td>-0.600999</td>
+      <td>1.461330</td>
+      <td>1.461369</td>
+      <td>0.018279</td>
+      <td>-0.087490</td>
+      <td>-0.131155</td>
+      <td>-0.097524</td>
+      <td>-0.120613</td>
+      <td>-0.119792</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5530458</td>
+      <td>unknown</td>
+      <td>1</td>
+      <td>-0.171484</td>
+      <td>-0.184668</td>
+      <td>-1.201369</td>
+      <td>-0.121970</td>
+      <td>-0.043875</td>
+      <td>-0.113002</td>
+      <td>-0.061584</td>
+      <td>...</td>
+      <td>0.947382</td>
+      <td>0.673103</td>
+      <td>-0.979074</td>
+      <td>-0.978556</td>
+      <td>0.018279</td>
+      <td>-0.087490</td>
+      <td>-0.131155</td>
+      <td>-0.097524</td>
+      <td>-0.120613</td>
+      <td>-0.119792</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>232022460</td>
+      <td>unknown</td>
+      <td>1</td>
+      <td>-0.172107</td>
+      <td>-0.184668</td>
+      <td>-1.201369</td>
+      <td>-0.121970</td>
+      <td>-0.043875</td>
+      <td>-0.113002</td>
+      <td>-0.061584</td>
+      <td>...</td>
+      <td>0.670883</td>
+      <td>0.439728</td>
+      <td>-0.979074</td>
+      <td>-0.978556</td>
+      <td>-0.098889</td>
+      <td>-0.106715</td>
+      <td>-0.131155</td>
+      <td>-0.183671</td>
+      <td>-0.120613</td>
+      <td>-0.119792</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>232438397</td>
+      <td>licit</td>
+      <td>1</td>
+      <td>0.163054</td>
+      <td>1.963790</td>
+      <td>-0.646376</td>
+      <td>12.409294</td>
+      <td>-0.063725</td>
+      <td>9.782742</td>
+      <td>12.414558</td>
+      <td>...</td>
+      <td>-0.577099</td>
+      <td>-0.613614</td>
+      <td>0.241128</td>
+      <td>0.241406</td>
+      <td>1.072793</td>
+      <td>0.085530</td>
+      <td>-0.131155</td>
+      <td>0.677799</td>
+      <td>-0.120613</td>
+      <td>-0.119792</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>230460314</td>
+      <td>unknown</td>
+      <td>1</td>
+      <td>1.011523</td>
+      <td>-0.081127</td>
+      <td>-1.201369</td>
+      <td>1.153668</td>
+      <td>0.333276</td>
+      <td>1.312656</td>
+      <td>-0.061584</td>
+      <td>...</td>
+      <td>-0.511871</td>
+      <td>-0.400422</td>
+      <td>0.517257</td>
+      <td>0.579382</td>
+      <td>0.018279</td>
+      <td>0.277775</td>
+      <td>0.326394</td>
+      <td>1.293750</td>
+      <td>0.178136</td>
+      <td>0.179117</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 168 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grouping dataset by timestep and sorting from largest to smallest.</span>
+<span class="c1"># Time step 1 is the largest with 7880 entities and time step 27 is the smallest with 1089 entities.</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;time step&#39;</span><span class="p">])[</span><span class="s1">&#39;time step&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time step
+1     7880
+42    7140
+5     6803
+10    6727
+3     6621
+36    6393
+7     6048
+22    5894
+4     5693
+45    5598
+35    5507
+41    5342
+47    5121
+43    5063
+9     4996
+44    4975
+24    4592
+2     4544
+13    4528
+32    4525
+40    4481
+8     4457
+6     4328
+11    4296
+20    4291
+29    4275
+23    4165
+15    3639
+21    3537
+46    3519
+19    3506
+17    3385
+37    3306
+33    3151
+16    2975
+48    2954
+38    2891
+31    2816
+39    2760
+26    2523
+34    2486
+30    2483
+49    2454
+25    2314
+12    2047
+14    2022
+18    1976
+28    1653
+27    1089
+Name: time step, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;time step&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">])[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;time step&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">grouped</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">move_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;lower center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/kondepudi_5_0.png" src="../_images/kondepudi_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_illicit</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;illicit&quot;</span><span class="p">]</span>
+<span class="n">grouped_illicit</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time step</th>
+      <th>class</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>93</th>
+      <td>32</td>
+      <td>illicit</td>
+      <td>342</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>29</td>
+      <td>illicit</td>
+      <td>329</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>13</td>
+      <td>illicit</td>
+      <td>291</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>20</td>
+      <td>illicit</td>
+      <td>260</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>9</td>
+      <td>illicit</td>
+      <td>248</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>42</td>
+      <td>illicit</td>
+      <td>239</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>35</td>
+      <td>illicit</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>22</td>
+      <td>illicit</td>
+      <td>158</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>15</td>
+      <td>illicit</td>
+      <td>147</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>24</td>
+      <td>illicit</td>
+      <td>137</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>11</td>
+      <td>illicit</td>
+      <td>131</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>16</td>
+      <td>illicit</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>25</td>
+      <td>illicit</td>
+      <td>118</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>41</td>
+      <td>illicit</td>
+      <td>116</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>40</td>
+      <td>illicit</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>38</td>
+      <td>illicit</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>31</td>
+      <td>illicit</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7</td>
+      <td>illicit</td>
+      <td>102</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>21</td>
+      <td>illicit</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>17</td>
+      <td>illicit</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>26</td>
+      <td>illicit</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>28</td>
+      <td>illicit</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>30</td>
+      <td>illicit</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>39</td>
+      <td>illicit</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>19</td>
+      <td>illicit</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>8</td>
+      <td>illicit</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>49</td>
+      <td>illicit</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>23</td>
+      <td>illicit</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>18</td>
+      <td>illicit</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>14</td>
+      <td>illicit</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>37</td>
+      <td>illicit</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>34</td>
+      <td>illicit</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>48</td>
+      <td>illicit</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>36</td>
+      <td>illicit</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4</td>
+      <td>illicit</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>27</td>
+      <td>illicit</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>43</td>
+      <td>illicit</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>44</td>
+      <td>illicit</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>33</td>
+      <td>illicit</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>47</td>
+      <td>illicit</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>10</td>
+      <td>illicit</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>illicit</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>illicit</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>12</td>
+      <td>illicit</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3</td>
+      <td>illicit</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>5</td>
+      <td>illicit</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>45</td>
+      <td>illicit</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>6</td>
+      <td>illicit</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>46</td>
+      <td>illicit</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;time step&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">grouped_illicit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;time step&#39;, ylabel=&#39;count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_7_1.png" src="../_images/kondepudi_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using PyTorch to use a neural network to classify the unknown values</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+
+<span class="c1"># df with known valyes</span>
+<span class="n">df_licit_illicit</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;unknown&quot;</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_licit_illicit</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_licit_illicit</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;time step&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">X_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+<span class="n">y_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+
+<span class="c1"># Create a TensorDataset to hold the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">,</span> <span class="n">y_tensor</span><span class="p">)</span>
+
+<span class="c1"># Split the data into training and test sets</span>
+<span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))])</span>
+
+<span class="c1"># Create data loaders for the training and test sets</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Define the neural network</span>
+<span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Create an instance of the network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span>
+
+<span class="c1"># Define the loss function and optimizer</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="c1"># Train the network</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="c1"># # Test the network</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy on test data: </span><span class="si">{</span><span class="n">correct</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># creating df of unknown values</span>
+<span class="n">df_unknown</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;unknown&quot;</span><span class="p">]</span>
+<span class="n">df_unknown</span> <span class="o">=</span> <span class="n">df_unknown</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;time step&#39;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_unknown</span> <span class="o">=</span> <span class="n">df_unknown</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df_unknown_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">df_unknown</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+<span class="c1"># Use the neural network to classify the new data</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Run the new data through the network</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">df_unknown_tensor</span><span class="p">)</span>
+    <span class="c1"># Get the predicted class for each sample</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">predicted</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span>
+
+<span class="n">df_df_unknown</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;unknown&quot;</span><span class="p">]</span>
+<span class="n">df_df_unknown</span> <span class="o">=</span> <span class="n">df_df_unknown</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;time step&#39;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_df_unknown</span><span class="p">[</span><span class="s1">&#39;classes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predicted</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">df_df_unknown</span><span class="p">[</span><span class="s2">&quot;classes&quot;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of licit and illicit of previously unknown entities&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on test data: 0.9815311929560829
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_8_1.png" src="../_images/kondepudi_8_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to create a networkx graph for each time step</span>
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">time_step_i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;time step&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">),</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">time_step_i</span> <span class="o">=</span> <span class="n">df_edgelist</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_edgelist</span><span class="p">[</span><span class="s1">&#39;txId1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">time_step_i</span><span class="p">)]</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">time_step_i</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;txId1&#39;</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;txId2&#39;</span><span class="p">,</span> <span class="n">create_using</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">g</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_fully_connected</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">time_step_i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;time step&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">),</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">time_step_i</span> <span class="o">=</span> <span class="n">df_edgelist</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_edgelist</span><span class="p">[</span><span class="s1">&#39;txId1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">time_step_i</span><span class="p">)]</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">time_step_i</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;txId1&#39;</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;txId2&#39;</span><span class="p">,</span> <span class="n">create_using</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">())</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">is_fully_connected</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="c1"># print(&quot;Time Step &quot;, i, &quot;is strongly connected.&quot;)</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">is_weakly_connected</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time Step &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;is weakly connected.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time Step &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;isn&#39;t connected.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Because no statements were printed, all nodes in each time step are strongly connected.</span>
+<span class="c1"># This what Elliptic says about the data, each component is completely connected. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this point forward, we’ll be doing most of our measures on a time step 27. Not only will this increase our processing times, our measures will make more sense as all nodes within time step 27 are strongly connected. The reason why we chose time step 27 is because it is the time step with the least number of nodes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Computing the eigenvector centrality</span>
+
+<span class="k">def</span> <span class="nf">map_to_nodes</span><span class="p">(</span><span class="n">node_map</span><span class="p">):</span>
+    <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># utility function to make it easy to compare dicts to array outputs</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))(</span><span class="n">nodelist</span><span class="p">))</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">eg_centrality</span> <span class="o">=</span> <span class="n">map_to_nodes</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)))</span>
+<span class="n">eg_centrality</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">betweenness_centrality</span> <span class="o">=</span> <span class="n">map_to_nodes</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="n">betweenness_centrality</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting Time Step 27</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_array</span>
+<span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="c1"># the below function simply just converts a graph to be undirected.</span>
+<span class="c1"># we can use the networkx function because our graph isn&#39;t weighted</span>
+<span class="k">def</span> <span class="nf">symmetrze_nx</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leiden requires a symmetric/undirected graph. This converts a directed graph to</span>
+<span class="sd">    undirected just for this community detection step&quot;&quot;&quot;</span>
+    <span class="n">sym_g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sym_g</span>
+
+<span class="n">sym_g</span> <span class="o">=</span> <span class="n">symmetrze_nx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">out2</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">sym_g</span><span class="p">)</span>
+
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">out2</span><span class="p">)</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;node_id&quot;</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;community&quot;</span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">index</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;strength&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;rank_strength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">LaplacianSpectralEmbed</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+
+<span class="n">ptr_adj</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="n">lse</span> <span class="o">=</span> <span class="n">LaplacianSpectralEmbed</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lse_embedding</span> <span class="o">=</span> <span class="n">lse</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">umap</span> <span class="kn">import</span> <span class="n">UMAP</span>
+
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">min_dist</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span>
+<span class="n">umap</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span>
+    <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+    <span class="n">min_dist</span><span class="o">=</span><span class="n">min_dist</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">umap_embedding</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">lse_embedding</span><span class="p">)</span>
+
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">subsample_edges</span><span class="p">(</span><span class="n">adjacency</span><span class="p">,</span> <span class="n">n_edges_kept</span><span class="o">=</span><span class="mi">100_000</span><span class="p">):</span>
+    <span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">adjacency</span><span class="p">)</span>
+    <span class="n">n_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row_inds</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_edges_kept</span> <span class="o">&gt;</span> <span class="n">n_edges</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">adjacency</span>
+
+    <span class="n">choice_edge_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_edges_kept</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">row_inds</span> <span class="o">=</span> <span class="n">row_inds</span><span class="p">[</span><span class="n">choice_edge_inds</span><span class="p">]</span>
+    <span class="n">col_inds</span> <span class="o">=</span> <span class="n">col_inds</span><span class="p">[</span><span class="n">choice_edge_inds</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">adjacency</span><span class="p">[</span><span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">csr_array</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="n">adjacency</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+
+<span class="c1"># this is optional, may not need depending on the number of edges you have</span>
+<span class="n">sub_adj</span> <span class="o">=</span> <span class="n">subsample_edges</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="mi">100_000</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">sub_adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;rank_strength&quot;</span><span class="p">,</span>
+    <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;community&quot;</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-8.944562411308288,
+ 15.430572485923767,
+ -3.235624873638153,
+ 16.602758252620696)
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_13_1.png" src="../_images/kondepudi_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df_grouped</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;community&#39;</span><span class="p">])[</span><span class="s1">&#39;community&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">node_df_grouped</span>
+<span class="n">node_df_largest_communities</span> <span class="o">=</span> <span class="n">node_df</span><span class="p">[(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">22</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">node_df_largest_communities</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>community</th>
+      <th>strength</th>
+      <th>rank_strength</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>node_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>294468623</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>-7.083713</td>
+      <td>6.587129</td>
+    </tr>
+    <tr>
+      <th>294326756</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>11.408134</td>
+      <td>14.842425</td>
+    </tr>
+    <tr>
+      <th>294370619</th>
+      <td>22</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>7.499983</td>
+      <td>10.402857</td>
+    </tr>
+    <tr>
+      <th>294372200</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>-7.002121</td>
+      <td>6.867332</td>
+    </tr>
+    <tr>
+      <th>294324191</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>-7.139164</td>
+      <td>7.864409</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1891081</th>
+      <td>1</td>
+      <td>95</td>
+      <td>25.0</td>
+      <td>8.650565</td>
+      <td>13.803895</td>
+    </tr>
+    <tr>
+      <th>294374011</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>-6.657413</td>
+      <td>6.512280</td>
+    </tr>
+    <tr>
+      <th>294300722</th>
+      <td>22</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>6.279359</td>
+      <td>2.508360</td>
+    </tr>
+    <tr>
+      <th>294375201</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>-6.410471</td>
+      <td>7.060765</td>
+    </tr>
+    <tr>
+      <th>1757629</th>
+      <td>22</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>8.746396</td>
+      <td>6.634493</td>
+    </tr>
+  </tbody>
+</table>
+<p>228 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting five largest communities within Time Step 27</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_array</span>
+<span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+
+
+<span class="c1"># g = plot(27)</span>
+<span class="c1"># nodelist = list(g.nodes)</span>
+<span class="c1"># adj = nx.to_scipy_sparse_array(g, nodelist=nodelist)</span>
+
+<span class="c1"># # the below function simply just converts a graph to be undirected.</span>
+<span class="c1"># # we can use the networkx function because our graph isn&#39;t weighted</span>
+<span class="c1"># def symmetrze_nx(g):</span>
+<span class="c1">#     &quot;&quot;&quot;Leiden requires a symmetric/undirected graph. This converts a directed graph to</span>
+<span class="c1">#     undirected just for this community detection step&quot;&quot;&quot;</span>
+<span class="c1">#     sym_g = g.to_undirected()</span>
+<span class="c1">#     return sym_g</span>
+
+<span class="c1"># sym_g = symmetrze_nx(g)</span>
+<span class="c1"># out2 = leiden(sym_g)</span>
+
+<span class="c1"># node_df = pd.Series(out2)</span>
+<span class="c1"># node_df.index.name = &quot;node_id&quot;</span>
+<span class="c1"># node_df.name = &quot;community&quot;</span>
+<span class="c1"># node_df = node_df.to_frame()</span>
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="n">node_df_largest_communities</span><span class="o">.</span><span class="n">index</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="c1"># node_df[&quot;strength&quot;] = adj.sum(axis=1) + adj.sum(axis=0)</span>
+<span class="c1"># node_df[&#39;rank_strength&#39;] = node_df[&#39;strength&#39;].rank(method=&#39;dense&#39;)</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">LaplacianSpectralEmbed</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+
+<span class="n">ptr_adj</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="n">lse</span> <span class="o">=</span> <span class="n">LaplacianSpectralEmbed</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lse_embedding</span> <span class="o">=</span> <span class="n">lse</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">umap</span> <span class="kn">import</span> <span class="n">UMAP</span>
+
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">min_dist</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span>
+<span class="n">umap</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span>
+    <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+    <span class="n">min_dist</span><span class="o">=</span><span class="n">min_dist</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">umap_embedding</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">lse_embedding</span><span class="p">)</span>
+
+<span class="n">node_df_largest_communities</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">node_df_largest_communities</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">subsample_edges</span><span class="p">(</span><span class="n">adjacency</span><span class="p">,</span> <span class="n">n_edges_kept</span><span class="o">=</span><span class="mi">100_000</span><span class="p">):</span>
+    <span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">adjacency</span><span class="p">)</span>
+    <span class="n">n_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row_inds</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_edges_kept</span> <span class="o">&gt;</span> <span class="n">n_edges</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">adjacency</span>
+
+    <span class="n">choice_edge_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_edges_kept</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">row_inds</span> <span class="o">=</span> <span class="n">row_inds</span><span class="p">[</span><span class="n">choice_edge_inds</span><span class="p">]</span>
+    <span class="n">col_inds</span> <span class="o">=</span> <span class="n">col_inds</span><span class="p">[</span><span class="n">choice_edge_inds</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">adjacency</span><span class="p">[</span><span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">csr_array</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="n">adjacency</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+
+<span class="c1"># this is optional, may not need depending on the number of edges you have</span>
+<span class="n">sub_adj</span> <span class="o">=</span> <span class="n">subsample_edges</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="mi">100_000</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">sub_adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_df_largest_communities</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;rank_strength&quot;</span><span class="p">,</span>
+    <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;community&quot;</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/adikondepudi/Library/Python/3.9/lib/python/site-packages/graspologic/embed/base.py:199: UserWarning: Input graph is not fully connected. Results may notbe optimal. You can compute the largest connected component byusing ``graspologic.utils.largest_connected_component``.
+  warnings.warn(msg, UserWarning)
+/var/folders/dk/ntqqxtcj77d6kpjl7pz6dbbr0000gn/T/ipykernel_71030/4021646743.py:60: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  node_df_largest_communities[&quot;x&quot;] = umap_embedding[:, 0]
+/var/folders/dk/ntqqxtcj77d6kpjl7pz6dbbr0000gn/T/ipykernel_71030/4021646743.py:61: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  node_df_largest_communities[&quot;y&quot;] = umap_embedding[:, 1]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-3.685612750053406,
+ 19.581494879722595,
+ -4.315412318706512,
+ 11.561751401424408)
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_15_2.png" src="../_images/kondepudi_15_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">g</span><span class="p">)))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;betweenness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;betweenness&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/kondepudi_16_0.png" src="../_images/kondepudi_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
+    <span class="n">node_data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="s2">&quot;betweenness&quot;</span><span class="p">],</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x2e6458d90&gt;
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_17_1.png" src="../_images/kondepudi_17_1.png" />
+</div>
+</div>
+<p>Here we try some community detection, in this case we’re attempting to divide the network into two communities. This is mostly just to test the algorithims and learn the techniques, as the network we have isnt’t made to be split communities.</p>
+<p>First, we’ll start with Naive Optimization</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">:</span>
+    <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
+
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># random bernoullis</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">888</span><span class="p">)</span>
+<span class="n">partition</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">partition</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, ..., 0, 0, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">modularity_from_adjacency</span><span class="p">(</span><span class="n">sym_adj</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">partition_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">)(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sym_adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">partition_labels</span> <span class="o">=</span> <span class="n">partition</span>
+    <span class="n">partition_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">partition_labels</span><span class="p">)</span>
+    <span class="n">in_comm_mask</span> <span class="o">=</span> <span class="n">partition_labels</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">==</span> <span class="n">partition_labels</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sym_adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+    <span class="n">degree_prod_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">degrees</span><span class="p">)</span> <span class="o">/</span> <span class="n">sym_adj</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">mod_mat</span> <span class="o">=</span> <span class="n">sym_adj</span> <span class="o">-</span> <span class="n">resolution</span> <span class="o">*</span> <span class="n">degree_prod_mat</span>
+    <span class="k">return</span> <span class="n">mod_mat</span><span class="p">[</span><span class="n">in_comm_mask</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">sym_adj</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+
+<span class="n">mod_score</span> <span class="o">=</span> <span class="n">modularity_from_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">partition</span><span class="p">)</span>
+<span class="n">mod_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.014742446988177846
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span><span class="p">,</span> <span class="n">heatmap</span>
+
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;random_partition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">partition</span>
+
+
+<span class="k">def</span> <span class="nf">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">partition_key</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">adj</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">partition_key</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+        <span class="n">edge_hue</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span>
+        <span class="n">adj</span><span class="p">,</span>
+        <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">node_data</span><span class="p">[</span><span class="n">partition_key</span><span class="p">],</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">sort_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+
+
+<span class="n">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_df</span><span class="p">,</span> <span class="s2">&quot;random_partition&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1500x700 with 4 Axes&gt;,
+ &lt;AxesSubplot: title={&#39;center&#39;: &#39;Betweenness&#39;}&gt;)
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_23_1.png" src="../_images/kondepudi_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">best_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">best_iterations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">last_mod_score</span> <span class="o">=</span> <span class="n">mod_score</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
+    <span class="c1"># choose a random node to perturb</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># check what group it is currently in, and swap it</span>
+    <span class="n">current_group</span> <span class="o">=</span> <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">current_group</span><span class="p">:</span>
+        <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># compute modularity with this slightly modified partition</span>
+    <span class="n">mod_score</span> <span class="o">=</span> <span class="n">modularity_from_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">partition</span><span class="p">)</span>
+
+    <span class="c1"># decide whether to keep that change or not</span>
+    <span class="k">if</span> <span class="n">mod_score</span> <span class="o">&lt;</span> <span class="n">last_mod_score</span><span class="p">:</span>
+        <span class="c1"># swap it back</span>
+        <span class="k">if</span> <span class="n">current_group</span><span class="p">:</span>
+            <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">partition</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">last_mod_score</span> <span class="o">=</span> <span class="n">mod_score</span>
+        <span class="n">best_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mod_score</span><span class="p">)</span>
+        <span class="n">best_iterations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iteration</span><span class="p">)</span>
+
+<span class="n">mod_score</span>
+
+<span class="c1"># took 95seconds!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.401541095890411
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_iterations</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">best_scores</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Modularity&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Iteration&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/kondepudi_25_0.png" src="../_images/kondepudi_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;naive_partition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">partition</span>
+
+<span class="n">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_df</span><span class="p">,</span> <span class="s2">&quot;naive_partition&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1500x700 with 4 Axes&gt;,
+ &lt;AxesSubplot: xlabel=&#39;Iteration&#39;, ylabel=&#39;Modularity&#39;&gt;)
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_26_1.png" src="../_images/kondepudi_26_1.png" />
+</div>
+</div>
+<p>Both spectral and leidan optimization require the network to be undirected. The following code will convert the directed network into being undirected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">symmetrze_nx</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+    <span class="n">sym_g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sym_g</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Spectral optimization:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">symmetrze_nx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">modularity_matrix</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">first_eigenvector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">eig_partition</span> <span class="o">=</span> <span class="n">first_eigenvector</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">eig_partition</span><span class="p">[</span><span class="n">eig_partition</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">eig_partition</span><span class="p">[</span><span class="n">eig_partition</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">eig_partition</span> <span class="o">=</span> <span class="n">eig_partition</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">modularity_from_adjacency</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">eig_partition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;networkx.utils.decorators.argmap&#39;&gt; compilation 25:5: FutureWarning: modularity_matrix will return a numpy array instead of a matrix in NetworkX 3.0.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.24689053996997573
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;eig_partition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eig_partition</span>
+
+<span class="n">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_df</span><span class="p">,</span> <span class="s2">&quot;eig_partition&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1500x700 with 4 Axes&gt;,
+ &lt;AxesSubplot: xlabel=&#39;Iteration&#39;, ylabel=&#39;Modularity&#39;&gt;)
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_31_1.png" src="../_images/kondepudi_31_1.png" />
+</div>
+</div>
+<p>That was pretty bad… let’s try leiden!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span><span class="p">,</span> <span class="n">modularity</span>
+
+<span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+
+<span class="n">modularity</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">leiden_partition_map</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9048667960686809
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;leiden_partition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
+
+<span class="n">plot_network_partition</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">node_df</span><span class="p">,</span> <span class="s2">&quot;leiden_partition&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1500x700 with 4 Axes&gt;,
+ &lt;AxesSubplot: xlabel=&#39;Iteration&#39;, ylabel=&#39;Modularity&#39;&gt;)
+</pre></div>
+</div>
+<img alt="../_images/kondepudi_34_1.png" src="../_images/kondepudi_34_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">in_degree</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">in_degree</span><span class="p">())</span>
+<span class="n">df_in_degree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">in_degree</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;in degree&#39;</span><span class="p">])</span>
+<span class="n">out_degree</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">out_degree</span><span class="p">())</span>
+<span class="n">df_out_degree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">out_degree</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;out degree&#39;</span><span class="p">])</span>
+<span class="n">df_in_out_degree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_in_degree</span><span class="p">,</span> <span class="n">df_out_degree</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">df_in_out_degree_1_1</span> <span class="o">=</span> <span class="n">df_in_out_degree</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;in degree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;out degree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">df_in_out_degree_0_1</span> <span class="o">=</span> <span class="n">df_in_out_degree</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;in degree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;out degree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">df_in_out_degree_1_0</span> <span class="o">=</span> <span class="n">df_in_out_degree</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;in degree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;out degree&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_in_out_degree_1_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_in_out_degree_0_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_in_out_degree_1_0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_in_out_degree</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(348, 3)
+(302, 3)
+(211, 3)
+(1089, 3)
+228
+</pre></div>
+</div>
+</div>
+</div>
+<section id="of-the-1089-nodes-32-have-an-in-degree-and-an-out-degree-of-1">
+<h2>348 of the 1089 nodes (32%) have an in degree and an out degree of 1.<a class="headerlink" href="#of-the-1089-nodes-32-have-an-in-degree-and-an-out-degree-of-1" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="of-the-1089-nodes-32-have-an-in-degree-of-0-and-an-out-degree-of-1">
+<h2>302 of the 1089 nodes (32%) have an in degree of 0 and an out degree of 1.<a class="headerlink" href="#of-the-1089-nodes-32-have-an-in-degree-of-0-and-an-out-degree-of-1" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="of-the-1089-nodes-32-have-an-in-degree-of-1-and-an-out-degree-of-0">
+<h2>211 of the 1089 nodes (32%) have an in degree of 1 and an out degree of 0.<a class="headerlink" href="#of-the-1089-nodes-32-have-an-in-degree-of-1-and-an-out-degree-of-0" title="Permalink to this headline">#</a></h2>
+<section id="if-we-look-at-the-graph-above-we-can-see-there-are-chains-of-nodes-it-seems-that-occasionally-there-are-transactions-that-pass-through-a-chain-of-entities-these-entities-simply-receieve-the-transaction-from-one-entity-and-transfer-it-to-the-next-we-can-reason-that-this-could-potentially-be-a-part-of-a-money-laundering-operation-specifically-layering-in-this-step-money-is-transfered-through-multiple-accounts-to-further-the-distance-from-the-money-from-the-original-source-these-entities-are-likely-shell-companies-trusts-or-other-corporate-vehicles-which-aren-t-required-to-reveal-their-true-owner">
+<h3>If we look at the graph above, we can see there are chains of nodes. It seems that occasionally, there are transactions that pass through a chain of entities. These entities simply receieve the transaction from one entity and transfer it to the next. We can reason that this could potentially be a part of a money laundering operation, specifically layering. In this step, money is transfered through multiple accounts to further the distance from the money from the original source. These entities are likely shell companies, trusts, or other corporate vehicles which aren’t required to reveal their true owner.<a class="headerlink" href="#if-we-look-at-the-graph-above-we-can-see-there-are-chains-of-nodes-it-seems-that-occasionally-there-are-transactions-that-pass-through-a-chain-of-entities-these-entities-simply-receieve-the-transaction-from-one-entity-and-transfer-it-to-the-next-we-can-reason-that-this-could-potentially-be-a-part-of-a-money-laundering-operation-specifically-layering-in-this-step-money-is-transfered-through-multiple-accounts-to-further-the-distance-from-the-money-from-the-original-source-these-entities-are-likely-shell-companies-trusts-or-other-corporate-vehicles-which-aren-t-required-to-reveal-their-true-owner" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">copy_df_in_out_degree</span> <span class="o">=</span> <span class="n">df_in_out_degree</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">copy_df_in_out_degree</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># drop the rows from df1 where the value in the &#39;id&#39; column matches a value in the &#39;id&#39; column of df2</span>
+<span class="n">copy_df_in_out_degree</span> <span class="o">=</span> <span class="n">copy_df_in_out_degree</span><span class="p">[</span><span class="o">~</span><span class="n">copy_df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_in_out_degree_1_1</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">copy_df_in_out_degree</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">copy_df_in_out_degree</span> <span class="o">=</span> <span class="n">copy_df_in_out_degree</span><span class="p">[</span><span class="o">~</span><span class="n">copy_df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_in_out_degree_0_1</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">copy_df_in_out_degree</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">copy_df_in_out_degree</span> <span class="o">=</span> <span class="n">copy_df_in_out_degree</span><span class="p">[</span><span class="o">~</span><span class="n">copy_df_in_out_degree</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_in_out_degree_1_0</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">copy_df_in_out_degree</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(741, 3)
+(532, 3)
+(288, 3)
+(110, 3)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="i-spent-a-lot-a-lot-of-time-trying-collapse-the-chains-so-we-could-better-represent-the-network-unfortunately-pandas-didn-t-want-to-work-with-me-so-we-re-stuck-with-the-above-information">
+<h2>I spent a lot (a lot!) of time trying collapse the chains so we could better represent the network. Unfortunately, pandas didn’t want to work with me so we’re stuck with the above information.<a class="headerlink" href="#i-spent-a-lot-a-lot-of-time-trying-collapse-the-chains-so-we-could-better-represent-the-network-unfortunately-pandas-didn-t-want-to-work-with-me-so-we-re-stuck-with-the-above-information" title="Permalink to this headline">#</a></h2>
+<section id="i-ll-probably-work-on-this-project-more-in-the-future-as-i-think-there-s-still-quite-a-bit-of-information-that-i-still-haven-t-gotten-around-through-analyzing">
+<h3>I’ll probably work on this project more in the future as I think there’s still quite a bit of information that I still haven’t gotten around through analyzing.<a class="headerlink" href="#i-ll-probably-work-on-this-project-more-in-the-future-as-i-think-there-s-still-quite-a-bit-of-information-that-i-still-haven-t-gotten-around-through-analyzing" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="he.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Spotify Million Playlists</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="modaressanavi.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Protein Interactomes in Staphylococcus Bacteria</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Benjamin D. Pedigo<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
