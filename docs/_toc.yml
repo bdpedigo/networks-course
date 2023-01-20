@@ -34,13 +34,5 @@ parts:
   - file: plot_large
 - caption: Projects
   chapters: 
-  - file: Ugwuoke.md
-  - file: pedigo.md
-  - file: moore.md
-  - file: kondepudi.md  
-  - file: modaressanavi.md  
-  - file: he.md
-  - file: arsnow.md
-  - file: vanchinathan.md
-  - file: wang.md
-  - file: wu.md  
+  - file: projects/arsnow.ipynb
+  - file: projects/ugwuoke.ipynb
