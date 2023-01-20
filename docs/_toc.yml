@@ -40,3 +40,4 @@ parts:
   - file: projects/ugwuoke.ipynb
   - file: projects/vanchinathan.ipynb
   - file: projects/wu.ipynb
+  - file: projects/kondepudi.ipynb
