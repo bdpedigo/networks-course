@@ -1,0 +1,1840 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Analyzing Airport Data &#8212; Network Data Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Moore - final project placeholder" href="../moore.html" />
+    <link rel="prev" title="Plotting larger networks" href="../plot_large.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-JYHFQNEPZN');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Network Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../landing.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course logistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../calendar.html">
+   Calendar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mini_assignment.html">
+   Mini-assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../final_project.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python.html">
+   Python development
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../online_resources.html">
+   Online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../books.html">
+   Books
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
+   Welcome
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
+   What are networks?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../representing_networks.html">
+   Representing networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plotting_networks.html">
+   Plotting networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../connected_components.html">
+   Connected components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../centrality.html">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../random_graphs.html">
+   Random network models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../community_detection.html">
+   Community detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embedding.html">
+   Network embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph_matching.html">
+   Graph matching
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../multiple_embedding.html">
+   Embedding multiple networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ranking.html">
+   Ranking and flow
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plot_large.html">
+   Plotting larger networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Analyzing Airport Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../moore.html">
+   Moore - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../kondepudi.html">
+   Kondepudi - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../modaressanavi.html">
+   Modaressanavi - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../he.html">
+   He - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../arsnow.html">
+   Arsnow - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vanchinathan.html">
+   Vanchinathan - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wang.html">
+   Wang - final project placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wu.html">
+   Wu - final project placeholder
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/ugwuoke.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/ugwuoke.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/ugwuoke.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/projects/ugwuoke.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-plots-of-the-data">
+   Initial plots of the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-detection">
+   Community Detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centrality-measures">
+   Centrality Measures
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Analyzing Airport Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-plots-of-the-data">
+   Initial plots of the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-detection">
+   Community Detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centrality-measures">
+   Centrality Measures
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="analyzing-airport-data">
+<h1>Analyzing Airport Data<a class="headerlink" href="#analyzing-airport-data" title="Permalink to this headline">#</a></h1>
+<p><strong>Author: Hope Ugwuoke</strong></p>
+<p>In this project I studied the data from all the flights in the US from September 1st to September 30th of 2021. I got this data from the Bureau of Transportation Statistics.</p>
+<p>The nodes are aiports and the edges are flights. There are about 18,000 edges. The network is weighted because there are several flights (such as 100 or 200) flights between any two airports each month.</p>
+<p>The network is directed because the flight come from an origin and have an end destination. Sometimes the weight becomes balenced because flights may come from an airport and then return to the airport.</p>
+<p>When the weights are balenced the arrow is not visible. Yet there are some arrows in the image because some airports do not reciprocate. As in there are flights from the airport but no flights to the airport.</p>
+<p>The first step was getting the data from the bureau of labor statistics and importing it into a networkx graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Airport data.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">Flightdata</span><span class="p">:</span>
+    <span class="n">originlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">destinationlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Flightdata</span><span class="p">):</span> 
+        <span class="n">rowlist</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+        <span class="n">originlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowlist</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+        <span class="n">destinationlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowlist</span><span class="p">[</span><span class="mi">16</span><span class="p">])</span>
+
+<span class="n">nodelist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">originlist</span><span class="p">)</span>
+<span class="n">flight_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">originlist</span><span class="p">,</span> <span class="n">destinationlist</span><span class="p">,</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">flight_counts</span> <span class="o">=</span> <span class="n">flight_counts</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">flight_counts</span><span class="o">.</span><span class="n">index</span><span class="p">:</span> 
+    <span class="k">if</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">flight_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">flight_counts</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">435</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="initial-plots-of-the-data">
+<h2>Initial plots of the Data<a class="headerlink" href="#initial-plots-of-the-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_adjacency</span><span class="p">(</span><span class="n">flight_counts</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ugwuoke_3_0.png" src="../_images/ugwuoke_3_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">heatmap</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/ugwuoke_4_1.png" src="../_images/ugwuoke_4_1.png" />
+</div>
+</div>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The networkx graph is not very good</p></li>
+<li><p>There are many smaller (less busy) airports that only fly to larger airports.</p></li>
+<li><p>The large or busy airports are the lines that are visible on the graph.</p></li>
+</ul>
+</section>
+<section id="community-detection">
+<h2>Community Detection<a class="headerlink" href="#community-detection" title="Permalink to this headline">#</a></h2>
+<p>Next I used leiden to detect communites and to create nicer looking plots.</p>
+<p>Depending on resolution there could be anywhere from 3 to 45 communities. No matter the resolution the modularity was low. The modularity score for resolution of 1 was 0.18.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.layouts.colors</span> <span class="kn">import</span> <span class="n">_get_colors</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ParameterGrid</span>
+<span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">LaplacianSpectralEmbed</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+<span class="kn">from</span> <span class="nn">umap</span> <span class="kn">import</span> <span class="n">UMAP</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_array</span>
+
+<span class="n">main_random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">symmetrze_nx</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leiden requires a symmetric/undirected graph. This converts a directed graph to</span>
+<span class="sd">    undirected just for this community detection step&quot;&quot;&quot;</span>
+    <span class="n">sym_g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sym_g</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+            <span class="n">sym_g</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">target</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">sym_g</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">target</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span> <span class="o">*</span> <span class="mf">0.5</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sym_g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sym_g</span>
+<span class="n">sym_G</span> <span class="o">=</span> <span class="n">symmetrze_nx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">sym_G</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1">#making a series then a dataframe with leiden data </span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;node_id&quot;</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;community&quot;</span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+<span class="c1">#adding colors based on leiden communities</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">_get_colors</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">)[</span><span class="s2">&quot;nominal&quot;</span><span class="p">]</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="n">colors</span><span class="p">))</span>
+
+<span class="c1">#graphing nodesize based on strength</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;strength&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;rank_strength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+
+<span class="c1">#Determining position</span>
+<span class="n">ptr_adj</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+<span class="n">lse</span> <span class="o">=</span> <span class="n">LaplacianSpectralEmbed</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lse_embedding</span> <span class="o">=</span> <span class="n">lse</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">min_dist</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span>
+<span class="n">umap</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span>
+    <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+    <span class="n">min_dist</span><span class="o">=</span><span class="n">min_dist</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">umap_embedding</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">lse_embedding</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">#Plotting using graspologic  </span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;rank_strength&quot;</span><span class="p">,</span>
+    <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;community&quot;</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10.183902788162232, 26.191208791732787, -4.62498642206192, 9.912980568408965)
+</pre></div>
+</div>
+<img alt="../_images/ugwuoke_6_1.png" src="../_images/ugwuoke_6_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.layouts.colors</span> <span class="kn">import</span> <span class="n">_get_colors</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ParameterGrid</span>
+<span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">LaplacianSpectralEmbed</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+<span class="kn">from</span> <span class="nn">umap</span> <span class="kn">import</span> <span class="n">UMAP</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_array</span>
+
+<span class="n">main_random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">symmetrze_nx</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leiden requires a symmetric/undirected graph. This converts a directed graph to</span>
+<span class="sd">    undirected just for this community detection step&quot;&quot;&quot;</span>
+    <span class="n">sym_g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sym_g</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+            <span class="n">sym_g</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">target</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">sym_g</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">target</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span> <span class="o">*</span> <span class="mf">0.5</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sym_g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sym_g</span>
+<span class="n">sym_G</span> <span class="o">=</span> <span class="n">symmetrze_nx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">sym_G</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">#making a series then a dataframe with leiden data </span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;node_id&quot;</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;community&quot;</span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+<span class="c1">#adding colors based on leiden communities</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">_get_colors</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">)[</span><span class="s2">&quot;nominal&quot;</span><span class="p">]</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="n">colors</span><span class="p">))</span>
+
+<span class="c1">#graphing nodesize based on strength</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;strength&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;rank_strength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+
+<span class="c1">#Determining position</span>
+<span class="n">ptr_adj</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+<span class="n">lse</span> <span class="o">=</span> <span class="n">LaplacianSpectralEmbed</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lse_embedding</span> <span class="o">=</span> <span class="n">lse</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">min_dist</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span>
+<span class="n">umap</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span>
+    <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+    <span class="n">min_dist</span><span class="o">=</span><span class="n">min_dist</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">umap_embedding</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">lse_embedding</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">#Plotting using graspologic  </span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;rank_strength&quot;</span><span class="p">,</span>
+    <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;community&quot;</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.578326630592346, 22.542750430107116, -2.098478627204895, 12.844508957862853)
+</pre></div>
+</div>
+<img alt="../_images/ugwuoke_7_1.png" src="../_images/ugwuoke_7_1.png" />
+</div>
+</div>
+<p>Even though the modularity was low, I wanted to explore if the communities had anything to do with geographic location. To do so, I sorted the data frame by community and strength to be able to investigate the most connected airports out of each community.</p>
+<p>0 LNS, MLB, MDT, GSO, BNA
+PA, FL, PA NC TN
+1 SGF, VPS, CMI, AEX, LFT
+Missouri, fl, Chicago, lousianna, lousianna
+2 PSM, PBG, IAG, BMI, PGD
+new hamsphire, NY, NY, illinos, fl
+3 PIR, RIW, SOW, DRO, VDZ</p>
+<p>Sampling 5 airports from each community at resolutions 3 and looking at their geographic locations there were usually repeated states between each community.</p>
+<p>HVN              2     105.0           47.0  20.941002   8.769190
+FLL              2     152.0           55.0  19.784447   8.244032
+MYR              2    5301.0          246.0  17.815920   6.894062
+LBE
+conneticut, florida, SC, CA</p>
+<p>IWD              4     757.0          134.0  20.121136   4.697268
+TVC              4     855.0          139.0  18.464842   6.809649
+PAH              4    1406.0          178.0  17.020662  -1.255356
+SCE              4    1882.0          193.0  12.907616   2.366777
+TBN<br />
+Michigan, michigan, kentucky, PA, Missouri</p>
+<p>Looking at the data at a higher resolution there were still repeated cities in the data but the locations were generally not in a related geographic area. For example on community sampled had airports in Florida, Conneticut and California. This suggests that airports that are frequently flown to are not usually in the same geographic region. This makes sense because it would probably be cheaper to drive within short distance ranges. The exact way the communities are formed isn’t really clear.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_df</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;community&#39;</span><span class="p">,</span><span class="s1">&#39;strength&#39;</span><span class="p">])</span>
+<span class="n">node_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>community</th>
+      <th>strength</th>
+      <th>rank_strength</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>node_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>DAB</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>14.213344</td>
+      <td>0.112244</td>
+    </tr>
+    <tr>
+      <th>ATL</th>
+      <td>0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>10.702254</td>
+      <td>6.402745</td>
+    </tr>
+    <tr>
+      <th>CSG</th>
+      <td>0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>13.378389</td>
+      <td>3.047507</td>
+    </tr>
+    <tr>
+      <th>MGM</th>
+      <td>0</td>
+      <td>45.0</td>
+      <td>21.0</td>
+      <td>17.104906</td>
+      <td>9.534023</td>
+    </tr>
+    <tr>
+      <th>TLH</th>
+      <td>0</td>
+      <td>46.0</td>
+      <td>22.0</td>
+      <td>17.120779</td>
+      <td>-1.194793</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>RUT</th>
+      <td>43</td>
+      <td>41428.0</td>
+      <td>342.0</td>
+      <td>16.440046</td>
+      <td>1.811247</td>
+    </tr>
+    <tr>
+      <th>PVC</th>
+      <td>43</td>
+      <td>66484.0</td>
+      <td>356.0</td>
+      <td>15.186150</td>
+      <td>4.901760</td>
+    </tr>
+    <tr>
+      <th>AUG</th>
+      <td>43</td>
+      <td>161548.0</td>
+      <td>377.0</td>
+      <td>14.623292</td>
+      <td>2.648622</td>
+    </tr>
+    <tr>
+      <th>BHB</th>
+      <td>43</td>
+      <td>231327.0</td>
+      <td>384.0</td>
+      <td>11.721870</td>
+      <td>7.251369</td>
+    </tr>
+    <tr>
+      <th>MEM</th>
+      <td>44</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>7.388025</td>
+      <td>11.500373</td>
+    </tr>
+  </tbody>
+</table>
+<p>435 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>Some airports were very popular, and formed such strong communities that UMAP placed them very far away from the rest of the airports. These are probably cities near a major city so maybe a newark airport near New York City. It is difficult to tell exactly what these airports were as it changed everytime.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">graspologic.layouts.colors</span> <span class="kn">import</span> <span class="n">_get_colors</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ParameterGrid</span>
+<span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">LaplacianSpectralEmbed</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+<span class="kn">from</span> <span class="nn">umap</span> <span class="kn">import</span> <span class="n">UMAP</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_array</span>
+
+<span class="n">main_random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">symmetrze_nx</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leiden requires a symmetric/undirected graph. This converts a directed graph to</span>
+<span class="sd">    undirected just for this community detection step&quot;&quot;&quot;</span>
+    <span class="n">sym_g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sym_g</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+            <span class="n">sym_g</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">target</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">sym_g</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">target</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span> <span class="o">*</span> <span class="mf">0.5</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sym_g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sym_g</span>
+<span class="n">sym_G</span> <span class="o">=</span> <span class="n">symmetrze_nx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">sym_G</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1">#making a series then a dataframe with leiden data </span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;node_id&quot;</span>
+<span class="n">node_df</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;community&quot;</span>
+<span class="n">node_df</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+<span class="c1">#adding colors based on leiden communities</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">_get_colors</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">)[</span><span class="s2">&quot;nominal&quot;</span><span class="p">]</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;community&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="n">colors</span><span class="p">))</span>
+
+<span class="c1">#graphing nodesize based on strength</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;strength&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;rank_strength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+
+<span class="c1">#Determining position</span>
+<span class="n">ptr_adj</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+<span class="n">lse</span> <span class="o">=</span> <span class="n">LaplacianSpectralEmbed</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lse_embedding</span> <span class="o">=</span> <span class="n">lse</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">min_dist</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span>
+<span class="n">umap</span> <span class="o">=</span> <span class="n">UMAP</span><span class="p">(</span>
+    <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+    <span class="n">min_dist</span><span class="o">=</span><span class="n">min_dist</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">umap_embedding</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">lse_embedding</span><span class="p">)</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">#Plotting using graspologic  </span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">adj</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;rank_strength&quot;</span><span class="p">,</span>
+    <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;community&quot;</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-2.6373936235904694,
+ 18.363856345415115,
+ -5.282933330535888,
+ 15.767748928070068)
+</pre></div>
+</div>
+<img alt="../_images/ugwuoke_11_1.png" src="../_images/ugwuoke_11_1.png" />
+</div>
+</div>
+</section>
+<section id="centrality-measures">
+<h2>Centrality Measures<a class="headerlink" href="#centrality-measures" title="Permalink to this headline">#</a></h2>
+<p>Next I tried the different centrality measures on the data.</p>
+<p>Looking at the centrality based on degree, it is clear that there are a few incredibly densly connnected airports that are in the center of the diagram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ugwuoke_13_0.png" src="../_images/ugwuoke_13_0.png" />
+</div>
+</div>
+<p>I then compared all the centrality measures in the same graph. This code was based on code by Ben Pedigo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;betweenness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;betweenness&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ugwuoke_15_0.png" src="../_images/ugwuoke_15_0.png" />
+</div>
+</div>
+<p>I used .sort_values() to rank the airports based on the different centrality measures. Then I manually added the top 10 airports to sets in order to conduct set operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_data</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])</span>
+<span class="n">degree</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;LAX&#39;</span><span class="p">,</span><span class="s1">&#39;IAH&#39;</span><span class="p">,</span><span class="s1">&#39;MSP&#39;</span><span class="p">,</span><span class="s1">&#39;PHX&#39;</span><span class="p">,</span><span class="s1">&#39;CLT&#39;</span><span class="p">,</span> <span class="s1">&#39;LAS&#39;</span><span class="p">,</span> <span class="s1">&#39;ATL&#39;</span><span class="p">,</span> <span class="s1">&#39;DEN&#39;</span><span class="p">,</span> <span class="s1">&#39;ORD&#39;</span><span class="p">,</span> <span class="s1">&#39;DFW&#39;</span><span class="p">}</span>
+<span class="n">eigenvector</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;MDW&#39;</span><span class="p">,</span> <span class="s1">&#39;MSP&#39;</span><span class="p">,</span><span class="s1">&#39;BNA&#39;</span><span class="p">,</span> <span class="s1">&#39;PHX&#39;</span><span class="p">,</span> <span class="s1">&#39;CLT&#39;</span><span class="p">,</span> <span class="s1">&#39;ATL&#39;</span><span class="p">,</span> <span class="s1">&#39;LAS&#39;</span><span class="p">,</span><span class="s1">&#39;DFW&#39;</span><span class="p">,</span><span class="s1">&#39;DEN&#39;</span><span class="p">,</span><span class="s1">&#39;ORD&#39;</span><span class="p">}</span>
+<span class="n">betweenness</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SLC&#39;</span><span class="p">,</span><span class="s1">&#39;MSP&#39;</span><span class="p">,</span> <span class="s1">&#39;PHX&#39;</span><span class="p">,</span><span class="s1">&#39;LAX&#39;</span><span class="p">,</span><span class="s1">&#39;LAS&#39;</span><span class="p">,</span><span class="s1">&#39;SEA&#39;</span><span class="p">,</span><span class="s1">&#39;CLT&#39;</span><span class="p">,</span><span class="s1">&#39;ORD&#39;</span><span class="p">,</span><span class="s1">&#39;DFW&#39;</span><span class="p">,</span><span class="s1">&#39;ATL&#39;</span><span class="p">,</span><span class="s1">&#39;DEN&#39;</span><span class="p">}</span>
+<span class="n">pagerank</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SLC&#39;</span><span class="p">,</span><span class="s1">&#39;LAS&#39;</span><span class="p">,</span><span class="s1">&#39;SEA&#39;</span><span class="p">,</span><span class="s1">&#39;MSP&#39;</span><span class="p">,</span><span class="s1">&#39;CLT&#39;</span><span class="p">,</span><span class="s1">&#39;ATL&#39;</span><span class="p">,</span><span class="s1">&#39;ANC&#39;</span><span class="p">,</span><span class="s1">&#39;DEN&#39;</span><span class="p">,</span><span class="s1">&#39;ORD&#39;</span><span class="p">,</span><span class="s1">&#39;DFW&#39;</span><span class="p">}</span>
+
+<span class="n">ConnectedAiports</span> <span class="o">=</span> <span class="n">degree</span> <span class="o">&amp;</span> <span class="n">eigenvector</span>
+<span class="n">connectedaiports</span> <span class="o">=</span> <span class="n">betweenness</span> <span class="o">&amp;</span> <span class="n">pagerank</span>
+<span class="n">connectedAirports</span> <span class="o">=</span> <span class="n">connectedaiports</span> <span class="o">&amp;</span> <span class="n">ConnectedAiports</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">connectedAirports</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;LAS&#39;, &#39;DFW&#39;, &#39;ORD&#39;, &#39;ATL&#39;, &#39;CLT&#39;, &#39;MSP&#39;, &#39;DEN&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>There were 6 airports that appeared in every centrality measure:</p>
+<p>Las Vegas, Atlanta, Dallas/Fort worth, Chicago O’hare, Charlotte, Minneapolis and Denver.</p>
+<p>The consistency between the centrality measures verifies that these airports are very highly connected. Looking at the airports it makes sense based on populaton of the cities in which these airports are located.</p>
+<p>These centrality measures did not account for the weight of each connection in the graph. So I compared the eigenvector plots when it was weighted and unweighted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;eigenvector (weighted)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="s2">&quot;eigenvector (weighted)&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ugwuoke_20_0.png" src="../_images/ugwuoke_20_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_data</span> <span class="o">=</span> <span class="n">node_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;eigenvector (weighted)&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">node_data</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      eigenvector  eigenvector (weighted)         x         y
+JMS  1.277276e-21            1.277276e-21 -0.231443  0.227580
+DUJ  1.277276e-21            1.277276e-21 -0.000657  0.009819
+PDT  1.277276e-21            1.277276e-21  0.022719 -0.023362
+CYS  1.277276e-21            1.277276e-21 -0.506314  0.759154
+PKB  1.277276e-21            1.277276e-21  0.067229 -0.072572
+HRO  1.277276e-21            1.277276e-21 -0.011257  0.017871
+JHM  1.277276e-21            1.277276e-21  0.011682 -0.005062
+PVC  1.277276e-21            1.277276e-21  0.157823 -0.152436
+IWD  1.277276e-21            1.277276e-21 -0.017577  0.018111
+DVL  1.277276e-21            1.277276e-21 -0.148734  0.140681
+RKD  1.277276e-21            1.277276e-21  0.076887 -0.084109
+CDR  1.277276e-21            1.277276e-21  0.030904  0.001687
+CDB  1.277276e-21            1.277276e-21 -0.039658  0.003241
+RUT  1.277276e-21            1.277276e-21  0.090060 -0.097902
+HVR  1.277276e-21            1.277276e-21 -0.080893  0.072872
+SDP  1.277276e-21            1.277276e-21 -0.025902  0.002085
+SDY  1.277276e-21            1.277276e-21 -0.097682  0.088094
+SGY  1.277276e-21            1.277276e-21 -0.130907  0.073230
+BRL  1.277276e-21            1.277276e-21 -0.016720  0.019398
+IRK  1.277276e-21            1.277276e-21 -0.085671  0.077441
+SNP  1.277276e-21            1.277276e-21 -0.025902  0.002085
+EAU  1.277276e-21            1.277276e-21 -0.009475  0.004340
+OGS  1.277276e-21            1.277276e-21  0.169605 -0.163213
+LBF  1.277276e-21            1.277276e-21 -0.311727  0.309987
+LEB  1.277276e-21            1.277276e-21 -0.049926  0.046108
+LNS  1.277276e-21            1.277276e-21 -0.000658  0.009819
+LNY  1.277276e-21            1.277276e-21  0.012333 -0.004246
+HNH  1.277276e-21            1.277276e-21 -0.129033  0.070673
+MAZ  1.277276e-21            1.277276e-21  0.030316 -0.030414
+GGW  1.277276e-21            1.277276e-21 -0.080922  0.072834
+MBL  1.277276e-21            1.277276e-21 -0.149763  0.140450
+OLF  1.277276e-21            1.277276e-21 -0.075781  0.068516
+GDV  1.277276e-21            1.277276e-21 -0.085995  0.077087
+MCK  1.277276e-21            1.277276e-21  0.045448 -0.018541
+FOD  1.277276e-21            1.277276e-21  0.000930  0.020860
+MGW  1.277276e-21            1.277276e-21 -0.000655  0.009820
+MKK  1.277276e-21            1.277276e-21  0.013916 -0.008072
+MKL  1.277276e-21            1.277276e-21 -0.003068  0.010465
+MSL  1.277276e-21            1.277276e-21  0.114318 -0.115705
+MSS  1.277276e-21            1.277276e-21 -0.003993  0.012810
+MWA  1.277276e-21            1.277276e-21  0.057351 -0.062909
+HOM  1.277276e-21            1.277276e-21 -0.192789  0.124796
+SOW  1.277276e-21            1.277276e-21  0.025322 -0.028470
+PUB  1.277276e-21            1.277276e-21  0.301743 -0.213473
+ANI  1.277276e-21            1.277276e-21 -0.025902  0.002085
+TVF  1.277276e-21            1.277276e-21  0.036940 -0.041612
+VDZ  1.277276e-21            1.277276e-21 -0.111867  0.039316
+TUP  1.277276e-21            1.277276e-21  0.072180 -0.079022
+AIA  1.277276e-21            1.277276e-21  0.082854 -0.079489
+AUG  1.277276e-21            1.277276e-21  0.145959 -0.142131
+BFD  1.277276e-21            1.277276e-21 -0.000658  0.009819
+TBN  1.277276e-21            1.277276e-21  0.018527  0.066588
+IPL  1.277276e-21            1.277276e-21  0.008435 -0.008355
+VQS  1.277276e-21            1.277276e-21  0.038391 -0.039925
+VCT  1.277276e-21            1.277276e-21  0.320489 -0.232897
+BHB  1.277276e-21            1.277276e-21  0.150763 -0.146206
+UIN  1.277276e-21            1.277276e-21  0.033835 -0.033533
+HNS  1.532731e-20            1.532731e-20 -0.129363  0.070717
+BFF  1.532731e-20            1.532731e-20 -0.301473  0.299727
+DDC  2.615860e-18            2.615860e-18 -0.133686  0.129605
+LBL  2.615860e-18            2.615860e-18 -0.135786  0.131579
+SPN  1.383288e-05            1.383288e-05  0.583097  0.429985
+PIB  3.533875e-05            3.533875e-05 -0.011019 -0.041064
+DEC  4.156471e-05            4.156471e-05  0.014854  0.040547
+JST  9.785644e-05            9.785644e-05  0.012103  0.026688
+ENA  5.369901e-04            5.369901e-04 -0.017109 -0.000711
+DLG  5.369901e-04            5.369901e-04 -0.441606  0.135264
+AKN  5.369901e-04            5.369901e-04  0.666337 -0.169218
+OME  5.369901e-04            5.369901e-04 -0.402457 -0.197675
+ADQ  5.369901e-04            5.369901e-04 -0.464561 -0.551817
+SCC  5.369901e-04            5.369901e-04 -0.334447 -0.340066
+BET  5.369901e-04            5.369901e-04 -0.085532  0.550594
+BRW  5.369901e-04            5.369901e-04 -0.178289  0.377985
+DUT  5.369901e-04            5.369901e-04 -0.016935 -0.000672
+ADK  5.369901e-04            5.369901e-04 -0.099322 -0.038985
+OTZ  5.456055e-04            5.456055e-04 -0.336315 -0.165208
+OWB  6.032396e-04            6.032396e-04  0.049612 -0.052472
+PPG  8.619476e-04            8.619476e-04 -0.135293 -0.262823
+GUM  8.621695e-04            8.621695e-04  0.404509  0.278452
+ELD  1.070830e-03            1.070830e-03  0.000989  0.013960
+CNM  1.296874e-03            1.296874e-03 -0.005029 -0.008506
+HYA  1.605130e-03            1.605130e-03 -0.018217  0.024825
+SLK  1.605130e-03            1.605130e-03  0.028589 -0.027377
+IAG  1.612371e-03            1.612371e-03 -0.474046  0.001054
+BIH  1.866664e-03            1.866664e-03  0.018571  0.107008
+SBD  1.866664e-03            1.866664e-03 -0.027831 -0.151003
+PQI  1.895676e-03            1.895676e-03 -0.102766 -0.138516
+PIH  1.905395e-03            1.905395e-03 -0.037466 -0.038855
+CDC  1.905395e-03            1.905395e-03  0.086657  0.054057
+EKO  1.905395e-03            1.905395e-03 -0.038564 -0.032750
+WYS  1.905395e-03            1.905395e-03  0.128097 -0.042465
+BTM  1.905395e-03            1.905395e-03  0.012100  0.056567
+TWF  1.905395e-03            1.905395e-03  0.041632  0.037988
+ART  1.955433e-03            1.955433e-03  0.058294  0.046751
+YKM  1.985193e-03            1.985193e-03  0.080622  0.083222
+ALW  1.985193e-03            1.985193e-03  0.272519  0.254120
+EAT  1.985193e-03            1.985193e-03  0.089614  0.096492
+GST  2.030258e-03            2.030258e-03 -0.041454 -0.027477
+BGM  2.118176e-03            2.118176e-03  0.101253  0.043905
+MEI  2.202442e-03            2.202442e-03  0.018022  0.000818
+INL  2.230904e-03            2.230904e-03 -0.099264 -0.065581
+ABR  2.230904e-03            2.230904e-03  0.061294  0.090893
+HIB  2.230904e-03            2.230904e-03 -0.044372 -0.026206
+BJI  2.230904e-03            2.230904e-03  0.050347  0.070108
+TEX  2.260773e-03            2.260773e-03 -0.002545 -0.015159
+PGA  2.260773e-03            2.260773e-03 -0.010270 -0.020632
+CEZ  2.260773e-03            2.260773e-03 -0.000527 -0.020325
+BRD  2.266699e-03            2.266699e-03  0.045680  0.063318
+LYH  2.269786e-03            2.269786e-03 -0.032205 -0.043934
+FLO  2.269786e-03            2.269786e-03  0.021014  0.005734
+PGV  2.269786e-03            2.269786e-03 -0.031830 -0.047031
+PHF  2.269786e-03            2.269786e-03 -0.100104 -0.120695
+BKW  2.269786e-03            2.269786e-03  0.019507  0.001776
+HGR  2.398962e-03            2.398962e-03 -0.162960 -0.121923
+VLD  2.508599e-03            2.508599e-03  0.057168  0.050358
+BQK  2.508599e-03            2.508599e-03  0.256391  0.177489
+ABY  2.508599e-03            2.508599e-03  0.036753  0.029061
+GTR  2.508599e-03            2.508599e-03 -0.088662 -0.102855
+DHN  2.508599e-03            2.508599e-03  0.106114  0.097084
+SMX  2.521970e-03            2.521970e-03  0.249798  0.066288
+SJT  2.539220e-03            2.539220e-03  0.151509  0.167214
+GRK  2.539220e-03            2.539220e-03 -0.051026 -0.048032
+ACT  2.539220e-03            2.539220e-03  0.044281  0.047687
+GGG  2.539220e-03            2.539220e-03 -0.041242 -0.020230
+BPT  2.539220e-03            2.539220e-03  0.087510  0.108934
+ABI  2.539220e-03            2.539220e-03  0.072470  0.076908
+GCK  2.539220e-03            2.539220e-03  0.099874  0.131701
+FSM  2.539220e-03            2.539220e-03  0.135208  0.158151
+SPS  2.539220e-03            2.539220e-03  0.030699  0.040861
+SWO  2.539220e-03            2.539220e-03  0.062544  0.070630
+CLL  2.539220e-03            2.539220e-03  0.150551  0.150706
+LAW  2.539220e-03            2.539220e-03 -0.047378 -0.037775
+CVN  2.539220e-03            2.539220e-03 -0.008112  0.039649
+DRT  2.539220e-03            2.539220e-03  0.120432  0.187323
+TYR  2.539220e-03            2.539220e-03  0.048719  0.054431
+COD  2.575752e-03            2.575752e-03  0.140400  0.273665
+GCC  2.575752e-03            2.575752e-03  0.017816  0.009618
+SHR  2.575752e-03            2.575752e-03  0.020972  0.011627
+RKS  2.575752e-03            2.575752e-03  0.018203  0.009456
+LAR  2.575752e-03            2.575752e-03  0.018135  0.009542
+RIW  2.575752e-03            2.575752e-03  0.018330  0.009352
+PIR  2.575752e-03            2.575752e-03  0.018549  0.009209
+BKG  2.575752e-03            2.575752e-03  0.178241  0.007288
+DIK  2.575752e-03            2.575752e-03  0.092816  0.167914
+ALS  2.575752e-03            2.575752e-03  0.023083  0.011179
+VEL  2.575752e-03            2.575752e-03  0.018769  0.008995
+ATY  2.590406e-03            2.590406e-03  0.020300  0.021469
+DBQ  2.590406e-03            2.590406e-03 -0.044576 -0.044878
+EAR  2.590406e-03            2.590406e-03  0.013866  0.012962
+MKG  2.590406e-03            2.590406e-03  0.013740  0.012380
+ALO  2.590406e-03            2.590406e-03  0.081138  0.066143
+CGI  2.590406e-03            2.590406e-03  0.013881  0.013556
+MCW  2.590406e-03            2.590406e-03  0.017711  0.017191
+CMX  2.590406e-03            2.590406e-03  0.017339  0.014329
+YAK  2.609111e-03            2.609111e-03 -0.071848  0.027341
+CDV  2.609111e-03            2.609111e-03 -0.065548  0.028619
+SIT  2.610477e-03            2.610477e-03 -0.305712  0.077095
+PAH  2.631971e-03            2.631971e-03  0.016970  0.015054
+PSG  2.653044e-03            2.653044e-03 -0.121058  0.004768
+WRG  2.653044e-03            2.653044e-03 -0.112055  0.021869
+SHD  2.660537e-03            2.660537e-03  0.007507  0.016909
+HYS  2.673988e-03            2.673988e-03  0.016243  0.020068
+KTN  2.694267e-03            2.694267e-03 -0.204439  0.024148
+JNU  2.808731e-03            2.808731e-03 -0.129135  0.067742
+PUW  3.064268e-03            3.064268e-03 -0.072023 -0.221181
+PBG  3.096278e-03            3.096278e-03  0.272258 -0.235963
+ELM  3.263790e-03            3.263790e-03  0.030447  0.177557
+USA  3.563035e-03            3.563035e-03  0.236679 -0.488269
+HOT  3.610050e-03            3.610050e-03 -0.001392  0.011305
+AOO  3.706454e-03            3.706454e-03 -0.009199  0.006587
+PSE  3.775109e-03            3.775109e-03  0.000652 -1.000000
+TOL  4.202777e-03            4.202777e-03  0.111448  0.040384
+SBY  4.225219e-03            4.225219e-03 -0.014962 -0.015368
+CIU  4.349080e-03            4.349080e-03 -0.036720  0.010928
+RHI  4.349080e-03            4.349080e-03 -0.017779 -0.003811
+ESC  4.349080e-03            4.349080e-03 -0.038267  0.003479
+LWB  4.370799e-03            4.370799e-03  0.003364  0.017774
+EWN  4.395763e-03            4.395763e-03  0.034689  0.014128
+PLN  4.418862e-03            4.418862e-03 -0.019538  0.002057
+IMT  4.418862e-03            4.418862e-03 -0.018181 -0.007040
+APN  4.418862e-03            4.418862e-03 -0.019111  0.005865
+OTH  4.442416e-03            4.442416e-03  0.012957 -0.182342
+CNY  4.481147e-03            4.481147e-03  0.019369  0.008665
+CPR  4.481147e-03            4.481147e-03  0.049407  0.090721
+LWS  4.481147e-03            4.481147e-03 -0.179697 -0.090784
+RFD  4.521837e-03            4.521837e-03 -0.008230 -0.373519
+MBS  4.708582e-03            4.708582e-03 -0.026154 -0.019705
+MQT  4.708582e-03            4.708582e-03 -0.092470 -0.080696
+AZO  4.708582e-03            4.708582e-03  0.030773  0.032229
+BRO  4.741095e-03            4.741095e-03  0.167782  0.340885
+TXK  4.741095e-03            4.741095e-03  0.046050  0.019890
+LCH  4.741095e-03            4.741095e-03 -0.038041 -0.037732
+GFK  4.752874e-03            4.752874e-03 -0.252439 -0.011048
+PRC  4.754323e-03            4.754323e-03  0.016939  0.004346
+GUC  4.777627e-03            4.777627e-03 -0.035292  0.066557
+HOB  4.777627e-03            4.777627e-03 -0.072974 -0.034608
+OAJ  4.778385e-03            4.778385e-03 -0.070757 -0.080633
+SCK  4.782743e-03            4.782743e-03  0.221466 -0.326148
+GLH  4.796539e-03            4.796539e-03 -0.006682  0.024826
+ROW  4.799993e-03            4.799993e-03  0.144225  0.094430
+YUM  4.799993e-03            4.799993e-03  0.076045  0.119072
+DLH  4.821310e-03            4.821310e-03  0.069456  0.087163
+RST  4.821310e-03            4.821310e-03 -0.028393 -0.018881
+LSE  4.821310e-03            4.821310e-03 -0.030922 -0.021719
+ERI  4.860192e-03            4.860192e-03  0.139561  0.123084
+MLU  5.047819e-03            5.047819e-03 -0.108782 -0.103082
+AEX  5.047819e-03            5.047819e-03  0.078355  0.105670
+EGE  5.114972e-03            5.114972e-03  0.093936  0.083556
+PSM  5.123037e-03            5.123037e-03  0.041917 -0.103949
+MHK  5.129626e-03            5.129626e-03 -0.132499 -0.147540
+CMI  5.129626e-03            5.129626e-03  0.100233  0.091046
+COU  5.129626e-03            5.129626e-03  0.077514  0.360654
+SUX  5.166158e-03            5.166158e-03  0.024863  0.014854
+JLN  5.166158e-03            5.166158e-03  0.021900  0.012831
+SLN  5.209064e-03            5.209064e-03  0.019220  0.010777
+LBE  5.373991e-03            5.373991e-03 -0.469918 -0.113866
+GRI  5.448687e-03            5.448687e-03 -0.238954 -0.090229
+ORH  5.631981e-03            5.631981e-03 -0.166913 -0.044568
+ITH  5.969286e-03            5.969286e-03 -0.039926 -0.052215
+SPI  5.983879e-03            5.983879e-03  0.069302  0.041806
+CKB  6.098630e-03            6.098630e-03  0.011558  0.017493
+HTS  6.243197e-03            6.243197e-03 -0.018977 -0.055391
+HLN  6.466340e-03            6.466340e-03 -0.134099 -0.096696
+AVP  6.755868e-03            6.755868e-03  0.035846  0.052799
+LAN  6.834559e-03            6.834559e-03 -0.016663 -0.009520
+CWA  6.939486e-03            6.939486e-03 -0.017864 -0.009081
+LRD  7.263065e-03            7.263065e-03 -0.065159 -0.083997
+ITO  7.279387e-03            7.279387e-03 -0.021415 -0.007135
+CSG  7.317605e-03            7.317605e-03 -0.013040 -0.014530
+FAY  7.317605e-03            7.317605e-03 -0.021118 -0.031535
+XWA  7.328626e-03            7.328626e-03  0.001684 -0.033778
+SAF  7.375745e-03            7.375745e-03 -0.176803 -0.192770
+FLG  7.375745e-03            7.375745e-03 -0.069004 -0.093504
+BQN  7.621450e-03            7.621450e-03 -0.724804  0.017426
+MOT  7.716123e-03            7.716123e-03  0.094483 -0.319197
+TRI  8.463219e-03            8.463219e-03  0.067193  0.026779
+SCE  8.559692e-03            8.559692e-03 -0.032874 -0.042119
+CHO  8.592275e-03            8.592275e-03  0.033311  0.039276
+LNK  8.604755e-03            8.604755e-03 -0.024166 -0.022214
+MLB  8.685919e-03            8.685919e-03  0.077931 -0.157598
+EVV  9.028537e-03            9.028537e-03  0.009448  0.015621
+FAI  9.192029e-03            9.192029e-03 -0.003169 -0.006680
+GNV  9.208952e-03            9.208952e-03  0.055188  0.242508
+BFL  9.242409e-03            9.242409e-03  0.053260  0.052867
+DAB  9.273038e-03            9.273038e-03 -0.017511  0.070362
+SGU  9.281140e-03            9.281140e-03  0.017943  0.009590
+MGM  9.443582e-03            9.443582e-03  0.014717 -0.026178
+AGS  9.443582e-03            9.443582e-03  0.047970  0.030539
+MOB  9.519480e-03            9.519480e-03 -0.195563 -0.290394
+BTR  9.519480e-03            9.519480e-03  0.230381  0.251932
+LFT  9.519480e-03            9.519480e-03 -0.114016 -0.125970
+RDD  9.755464e-03            9.755464e-03  0.095175 -0.144643
+STX  9.773266e-03            9.773266e-03  0.048969 -0.006639
+DRO  9.897715e-03            9.897715e-03 -0.080707 -0.008233
+MFE  1.004488e-02            1.004488e-02  0.023928 -0.016757
+ACV  1.008483e-02            1.008483e-02  0.169917 -0.005869
+BLV  1.009231e-02            1.009231e-02 -0.001438  0.127741
+BIS  1.085858e-02            1.085858e-02  0.322295 -0.096047
+HDN  1.092071e-02            1.092071e-02 -0.002537  0.003399
+LCK  1.097158e-02            1.097158e-02 -0.003312 -0.050618
+GTF  1.157872e-02            1.157872e-02 -0.031902  0.094828
+CRW  1.166475e-02            1.166475e-02  0.037685  0.129826
+PAE  1.201063e-02            1.201063e-02 -0.047120 -0.371438
+GPT  1.235362e-02            1.235362e-02 -0.027906  0.020299
+SWF  1.251334e-02            1.251334e-02  0.086536 -0.045126
+SUN  1.310198e-02            1.310198e-02  0.121815 -0.008539
+GJT  1.328064e-02            1.328064e-02 -0.015506 -0.012780
+BLI  1.410973e-02            1.410973e-02 -0.001663  0.006882
+BMI  1.458546e-02            1.458546e-02 -0.032314  0.035991
+MVY  1.461091e-02            1.461091e-02  0.063698 -0.025465
+GRB  1.477357e-02            1.477357e-02 -0.009746  0.020276
+TTN  1.484518e-02            1.484518e-02  0.175534 -0.078460
+SBP  1.503164e-02            1.503164e-02  0.021109 -0.028843
+TLH  1.532414e-02            1.532414e-02  0.004338 -0.029628
+MRY  1.592814e-02            1.592814e-02  0.031920 -0.016698
+CRP  1.609723e-02            1.609723e-02  0.003830 -0.000832
+CAK  1.612501e-02            1.612501e-02 -0.034636  0.136546
+MTJ  1.622917e-02            1.622917e-02  0.004419  0.014497
+ACY  1.642636e-02            1.642636e-02  0.112178 -0.086117
+ROA  1.654105e-02            1.654105e-02  0.012833 -0.087907
+MLI  1.657922e-02            1.657922e-02 -0.071339 -0.162520
+CHA  1.718912e-02            1.718912e-02 -0.026833  0.053496
+FNT  1.722427e-02            1.722427e-02 -0.119568 -0.013047
+RDM  1.737658e-02            1.737658e-02 -0.003611  0.011628
+BGR  1.765220e-02            1.765220e-02  0.077323  0.036628
+STS  1.768909e-02            1.768909e-02  0.008704 -0.010265
+FAR  1.788488e-02            1.788488e-02 -0.120420  0.217645
+BIL  1.836181e-02            1.836181e-02 -0.073389  0.066569
+ASE  1.841334e-02            1.841334e-02 -0.003828 -0.014523
+SHV  1.850670e-02            1.850670e-02  0.153908  0.035428
+ACK  1.868058e-02            1.868058e-02 -0.019461  0.020064
+PVU  1.883516e-02            1.883516e-02 -0.004608 -0.117244
+ABE  1.883889e-02            1.883889e-02  0.181352 -0.034297
+PSC  1.885454e-02            1.885454e-02  0.012234 -0.224511
+CAE  2.030343e-02            2.030343e-02 -0.015960 -0.020286
+PIA  2.085601e-02            2.085601e-02 -0.026824 -0.119076
+DAY  2.153386e-02            2.153386e-02 -0.052708 -0.030712
+HHH  2.168698e-02            2.168698e-02  0.011170 -0.027610
+IDA  2.187537e-02            2.187537e-02 -0.024282  0.114588
+MFR  2.190612e-02            2.190612e-02  0.013631 -0.007764
+LEX  2.203167e-02            2.203167e-02 -0.022739 -0.084781
+HVN  2.208435e-02            2.208435e-02 -0.065911  0.198899
+LIH  2.212996e-02            2.212996e-02 -0.005905  0.006482
+SGF  2.249374e-02            2.249374e-02  0.275717 -0.008703
+GSO  2.251318e-02            2.251318e-02 -0.039492 -0.070756
+FWA  2.303105e-02            2.303105e-02 -0.022153 -0.011438
+ATW  2.303188e-02            2.303188e-02  0.022250 -0.005594
+AZA  2.415169e-02            2.415169e-02  0.133729 -0.067096
+ILM  2.452983e-02            2.452983e-02 -0.054726  0.095847
+RAP  2.545544e-02            2.545544e-02  0.014977 -0.018593
+HPN  2.558634e-02            2.558634e-02 -0.047141  0.046250
+SBN  2.711317e-02            2.711317e-02  0.009732  0.001424
+BTV  2.822895e-02            2.822895e-02 -0.012836  0.016829
+MSO  2.828754e-02            2.828754e-02 -0.008006 -0.028224
+STT  2.861349e-02            2.861349e-02  0.036733 -0.011787
+KOA  2.899000e-02            2.899000e-02  0.005567  0.009391
+PGD  2.909175e-02            2.909175e-02  0.082416 -0.197813
+CID  2.909468e-02            2.909468e-02 -0.006615  0.008838
+FSD  2.911595e-02            2.911595e-02  0.008041  0.009999
+FCA  2.930821e-02            2.930821e-02  0.014190 -0.010473
+JAC  3.032708e-02            3.032708e-02  0.003549 -0.014366
+HSV  3.124000e-02            3.124000e-02  0.008449 -0.014951
+TVC  3.172025e-02            3.172025e-02  0.012882 -0.001198
+MDT  3.261988e-02            3.261988e-02  0.000458  0.017134
+FAT  3.277092e-02            3.277092e-02  0.004274  0.007714
+SBA  3.306616e-02            3.306616e-02  0.008150 -0.003317
+ANC  3.346730e-02            3.346730e-02 -0.017293  0.001639
+PIE  3.380542e-02            3.380542e-02  0.031708 -0.137508
+EUG  3.464327e-02            3.464327e-02  0.003834  0.006424
+EYW  3.475285e-02            3.475285e-02  0.012316 -0.038661
+JAN  3.617716e-02            3.617716e-02 -0.005735  0.004722
+OGG  3.678101e-02            3.678101e-02  0.016720 -0.003240
+SFB  3.759879e-02            3.759879e-02  0.065059 -0.123355
+XNA  3.794049e-02            3.794049e-02 -0.013806 -0.017302
+LBB  3.977900e-02            3.977900e-02  0.004725  0.002729
+MHT  4.038688e-02            4.038688e-02 -0.001015 -0.001821
+PSP  4.090763e-02            4.090763e-02  0.007841  0.001597
+ICT  4.165485e-02            4.165485e-02 -0.002075 -0.006724
+HRL  4.266620e-02            4.266620e-02  0.002698 -0.002981
+ISP  4.292413e-02            4.292413e-02  0.010726 -0.000022
+AMA  4.292440e-02            4.292440e-02  0.006907  0.000502
+MSN  4.432352e-02            4.432352e-02 -0.004511 -0.006794
+AVL  4.453640e-02            4.453640e-02  0.119398  0.013593
+LIT  4.624831e-02            4.624831e-02 -0.001064 -0.004048
+PBI  4.675654e-02            4.675654e-02  0.007300  0.013530
+MAF  4.956223e-02            4.956223e-02  0.000312  0.005210
+ECP  5.269266e-02            5.269266e-02  0.000876  0.001880
+TYS  5.280044e-02            5.280044e-02  0.080523 -0.025632
+PNS  5.282685e-02            5.282685e-02  0.005240  0.006022
+ROC  5.324759e-02            5.324759e-02  0.004597 -0.004473
+HNL  5.372036e-02            5.372036e-02  0.011293 -0.002262
+GSP  5.383781e-02            5.383781e-02 -0.006532  0.004014
+TUS  5.529511e-02            5.529511e-02  0.006256  0.001385
+GEG  5.654880e-02            5.654880e-02 -0.000857 -0.002290
+BHM  5.843067e-02            5.843067e-02  0.001374 -0.007275
+PWM  5.870440e-02            5.870440e-02  0.008161 -0.002286
+ALB  6.150351e-02            6.150351e-02 -0.007480  0.000089
+SYR  6.250514e-02            6.250514e-02  0.000677 -0.010154
+RIC  6.308331e-02            6.308331e-02  0.009450 -0.007788
+BZN  6.353920e-02            6.353920e-02  0.001971 -0.000093
+SRQ  6.502618e-02            6.502618e-02  0.003011 -0.006508
+COS  6.547436e-02            6.547436e-02  0.000445 -0.004121
+LGB  6.595896e-02            6.595896e-02  0.001467  0.004441
+GRR  6.627799e-02            6.627799e-02 -0.005248  0.008128
+DSM  6.670853e-02            6.670853e-02 -0.003136  0.005072
+MEM  6.673839e-02            6.673839e-02  0.000253  0.007740
+BOI  6.725320e-02            6.725320e-02  0.006421  0.005636
+VPS  6.903721e-02            6.903721e-02  0.011732  0.005441
+SJU  7.185213e-02            7.185213e-02  0.006275 -0.008303
+ONT  7.201003e-02            7.201003e-02  0.003357 -0.005184
+PVD  7.305780e-02            7.305780e-02 -0.002541 -0.000909
+ELP  7.406790e-02            7.406790e-02  0.004260  0.003888
+BDL  7.476609e-02            7.476609e-02  0.006201 -0.002333
+BUR  7.498121e-02            7.498121e-02  0.003578  0.003168
+TUL  7.506072e-02            7.506072e-02  0.001967  0.003030
+ORF  7.564085e-02            7.564085e-02  0.002926 -0.007563
+BUF  7.651226e-02            7.651226e-02  0.005013 -0.000520
+SAV  7.696402e-02            7.696402e-02 -0.003745 -0.002684
+OKC  7.707788e-02            7.707788e-02 -0.002235  0.000559
+MYR  7.811480e-02            7.811480e-02 -0.002517 -0.003070
+MKE  7.820166e-02            7.820166e-02 -0.000594 -0.000372
+ABQ  8.082739e-02            8.082739e-02 -0.000718 -0.005687
+RNO  8.207621e-02            8.207621e-02  0.000064  0.000195
+JAX  8.218787e-02            8.218787e-02  0.001439 -0.004832
+SNA  8.571577e-02            8.571577e-02  0.003626 -0.001695
+SDF  8.619675e-02            8.619675e-02 -0.003901 -0.000093
+OMA  8.645597e-02            8.645597e-02  0.003415  0.002180
+CVG  8.647268e-02            8.647268e-02  0.009751 -0.004901
+RSW  9.180511e-02            9.180511e-02  0.005808  0.002013
+CLE  9.489437e-02            9.489437e-02  0.001955 -0.003734
+CHS  9.695347e-02            9.695347e-02  0.003116 -0.003628
+SJC  9.838598e-02            9.838598e-02 -0.001126  0.003954
+IND  9.883503e-02            9.883503e-02 -0.001030  0.002804
+SMF  9.887787e-02            9.887787e-02 -0.003168  0.001121
+JFK  1.000400e-01            1.000400e-01  0.031074 -0.029826
+OAK  1.009794e-01            1.009794e-01 -0.000614  0.000865
+CMH  1.011808e-01            1.011808e-01  0.005811  0.000623
+PDX  1.013077e-01            1.013077e-01  0.007141 -0.003462
+SAT  1.026388e-01            1.026388e-01  0.002874  0.000076
+PIT  1.028491e-01            1.028491e-01 -0.003272  0.002804
+RDU  1.056784e-01            1.056784e-01  0.001575  0.000835
+IAD  1.083030e-01            1.083030e-01  0.001482  0.008411
+MSY  1.122491e-01            1.122491e-01  0.004129  0.005046
+MCI  1.152099e-01            1.152099e-01  0.001080 -0.002143
+SFO  1.163403e-01            1.163403e-01  0.009123  0.003245
+HOU  1.169813e-01            1.169813e-01  0.007479  0.003348
+MIA  1.178790e-01            1.178790e-01  0.002172 -0.009468
+EWR  1.181491e-01            1.181491e-01 -0.008569  0.011993
+SLC  1.187541e-01            1.187541e-01 -0.007023 -0.002679
+STL  1.215567e-01            1.215567e-01 -0.000088  0.002127
+FLL  1.215760e-01            1.215760e-01  0.005551 -0.004958
+PHL  1.218736e-01            1.218736e-01 -0.005754  0.000408
+SEA  1.237277e-01            1.237277e-01 -0.004198 -0.004252
+BOS  1.239023e-01            1.239023e-01 -0.001460  0.005812
+SAN  1.246209e-01            1.246209e-01  0.005714 -0.002755
+TPA  1.270535e-01            1.270535e-01 -0.005339 -0.002234
+BWI  1.281560e-01            1.281560e-01  0.002632  0.006705
+LGA  1.293998e-01            1.293998e-01  0.006546  0.007437
+DAL  1.319452e-01            1.319452e-01 -0.003086 -0.004073
+DTW  1.320166e-01            1.320166e-01 -0.005887  0.002311
+DCA  1.325030e-01            1.325030e-01  0.002739  0.010125
+MCO  1.352451e-01            1.352451e-01  0.003052  0.004069
+LAX  1.357806e-01            1.357806e-01  0.006255 -0.000051
+AUS  1.371208e-01            1.371208e-01  0.007257 -0.004799
+IAH  1.372334e-01            1.372334e-01  0.009683 -0.001455
+MDW  1.378640e-01            1.378640e-01  0.009855  0.005519
+MSP  1.390426e-01            1.390426e-01 -0.005502  0.001555
+BNA  1.406884e-01            1.406884e-01  0.003946  0.000780
+PHX  1.409042e-01            1.409042e-01 -0.000726 -0.007191
+CLT  1.414666e-01            1.414666e-01  0.015981 -0.000879
+ATL  1.563511e-01            1.563511e-01  0.007320  0.005118
+LAS  1.571839e-01            1.571839e-01  0.004344 -0.007329
+DFW  1.582600e-01            1.582600e-01 -0.004470  0.016675
+DEN  1.605365e-01            1.605365e-01  0.016725  0.007210
+ORD  1.614501e-01            1.614501e-01  0.009651  0.011052
+</pre></div>
+</div>
+</div>
+</div>
+<p>Printing out the data the values were exactly the same.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../plot_large.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Plotting larger networks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../moore.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Moore - final project placeholder</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Benjamin D. Pedigo<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
