@@ -1,1 +1,0 @@
-# Modaressanavi - final project placeholder
