@@ -1,1 +1,0 @@
-# Ugwuoke - final project placeholder
