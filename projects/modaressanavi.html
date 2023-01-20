@@ -1,0 +1,1235 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Protein Interactomes in Staphylococcus Bacteria &#8212; Network Data Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analyzing Airport Data" href="ugwuoke.html" />
+    <link rel="prev" title="Spotify Million Playlists" href="he.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-JYHFQNEPZN');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Network Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../landing.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course logistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../calendar.html">
+   Calendar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mini_assignment.html">
+   Mini-assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../final_project.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python.html">
+   Python development
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../online_resources.html">
+   Online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../books.html">
+   Books
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
+   Welcome
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
+   What are networks?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../representing_networks.html">
+   Representing networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plotting_networks.html">
+   Plotting networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../connected_components.html">
+   Connected components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../centrality.html">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../random_graphs.html">
+   Random network models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../community_detection.html">
+   Community detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embedding.html">
+   Network embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph_matching.html">
+   Graph matching
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../multiple_embedding.html">
+   Embedding multiple networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ranking.html">
+   Ranking and flow
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plot_large.html">
+   Plotting larger networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="arsnow.html">
+   South Florida Cypress Wetlands Trophic Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="he.html">
+   Spotify Million Playlists
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Protein Interactomes in Staphylococcus Bacteria
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ugwuoke.html">
+   Analyzing Airport Data
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/modaressanavi.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/modaressanavi.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/modaressanavi.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/projects/modaressanavi.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Protein Interactomes in Staphylococcus Bacteria
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-networks">
+   Plotting Networks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heatmaps-of-adjacency-matrices">
+     Heatmaps of Adjacency Matrices
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-heatmaps-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-have-significant-similarities-in-pattern-that-could-turn-into-interesting-results">
+       The heatmaps for S. aureus NCTC8325, S. aureus MSHR1132, S. epidermidis RP62A, and S. epidermidis ATCC12228 have significant similarities in pattern that could turn into interesting results!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#network-layouts">
+     Network Layouts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#even-the-network-layouts-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-are-significantly-similar-there-are-certain-vertices-the-large-red-vertex-in-the-center-that-are-shared-as-more-connected-vertices-across-all-four-interactomes-in-addition-the-number-and-spread-of-communities-in-these-subspecies-is-roughly-the-same-with-leiden-resolution-of-0-50-this-further-supports-the-similarity-of-interactomes-in-these-4-subspecies">
+       Even the network layouts for S. aureus NCTC8325, S. aureus MSHR1132, S. epidermidis RP62A, and S. epidermidis ATCC12228 are significantly similar. There are certain vertices (the large red vertex in the center) that are shared as more connected vertices across all four interactomes. In addition, the number and spread of communities in these subspecies is roughly the same with Leiden resolution of 0.50. This further supports the similarity of interactomes in these 4 subspecies.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-network-model-sbm">
+   Random Network Model: SBM
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#it-seems-that-my-dataset-is-not-large-enough-for-such-an-estimator-to-be-an-ideal-model-i-also-tried-random-dot-product-graph-rdpg-model-and-the-result-was-roughly-the-same-it-seems-that-these-models-generally-work-better-for-networks-with-more-vertices-for-example-for-homo-sapiens-interactome-which-has-over-16000-vertices-and-more-than-9000-are-in-a-single-community-the-result-looks-like">
+     It seems that my dataset is not large enough for such an estimator to be an ideal model.  I also tried random dot product graph (RDPG) model and the result was roughly the same. It seems that these models generally work better for networks with more vertices. For example, for Homo sapiens interactome which has over 16000 vertices and more than 9000 are in a single community, the result looks like:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching">
+   Graph Matching
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#most-connected-proteins">
+     Most Connected Proteins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-much-of-a-single-cell-function-is-dependent-on-one-protein">
+       How much of a single cell function is dependent on one protein?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-aureus-nctc8325">
+         S. aureus NCTC8325
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-aureus-col">
+         S. aureus COL
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-aureus-mshr1132">
+         S. aureus MSHR1132
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-epidermidis-rp62a">
+         S. epidermidis RP62A
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-epidermidis-atcc12228">
+         S. epidermidis ATCC12228
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-epidermidis-m23864-w1">
+         S. epidermidis M23864:W1
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#most-similar-subspecies">
+     Most Similar Subspecies
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-are-the-most-most-similar-subspecies-among-4-subspecies-of-staphycoccolus-bacteria">
+       What are the most most similar subspecies among 4 subspecies of Staphycoccolus bacteria?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-two-bacteria-from-different-species-be-more-similar-than-two-subspecies">
+       Can two bacteria from different species be more similar than two subspecies?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Protein Interactomes in Staphylococcus Bacteria</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Protein Interactomes in Staphylococcus Bacteria
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-networks">
+   Plotting Networks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heatmaps-of-adjacency-matrices">
+     Heatmaps of Adjacency Matrices
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-heatmaps-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-have-significant-similarities-in-pattern-that-could-turn-into-interesting-results">
+       The heatmaps for S. aureus NCTC8325, S. aureus MSHR1132, S. epidermidis RP62A, and S. epidermidis ATCC12228 have significant similarities in pattern that could turn into interesting results!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#network-layouts">
+     Network Layouts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#even-the-network-layouts-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-are-significantly-similar-there-are-certain-vertices-the-large-red-vertex-in-the-center-that-are-shared-as-more-connected-vertices-across-all-four-interactomes-in-addition-the-number-and-spread-of-communities-in-these-subspecies-is-roughly-the-same-with-leiden-resolution-of-0-50-this-further-supports-the-similarity-of-interactomes-in-these-4-subspecies">
+       Even the network layouts for S. aureus NCTC8325, S. aureus MSHR1132, S. epidermidis RP62A, and S. epidermidis ATCC12228 are significantly similar. There are certain vertices (the large red vertex in the center) that are shared as more connected vertices across all four interactomes. In addition, the number and spread of communities in these subspecies is roughly the same with Leiden resolution of 0.50. This further supports the similarity of interactomes in these 4 subspecies.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-network-model-sbm">
+   Random Network Model: SBM
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#it-seems-that-my-dataset-is-not-large-enough-for-such-an-estimator-to-be-an-ideal-model-i-also-tried-random-dot-product-graph-rdpg-model-and-the-result-was-roughly-the-same-it-seems-that-these-models-generally-work-better-for-networks-with-more-vertices-for-example-for-homo-sapiens-interactome-which-has-over-16000-vertices-and-more-than-9000-are-in-a-single-community-the-result-looks-like">
+     It seems that my dataset is not large enough for such an estimator to be an ideal model.  I also tried random dot product graph (RDPG) model and the result was roughly the same. It seems that these models generally work better for networks with more vertices. For example, for Homo sapiens interactome which has over 16000 vertices and more than 9000 are in a single community, the result looks like:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching">
+   Graph Matching
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#most-connected-proteins">
+     Most Connected Proteins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-much-of-a-single-cell-function-is-dependent-on-one-protein">
+       How much of a single cell function is dependent on one protein?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-aureus-nctc8325">
+         S. aureus NCTC8325
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-aureus-col">
+         S. aureus COL
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-aureus-mshr1132">
+         S. aureus MSHR1132
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-epidermidis-rp62a">
+         S. epidermidis RP62A
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-epidermidis-atcc12228">
+         S. epidermidis ATCC12228
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#s-epidermidis-m23864-w1">
+         S. epidermidis M23864:W1
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#most-similar-subspecies">
+     Most Similar Subspecies
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-are-the-most-most-similar-subspecies-among-4-subspecies-of-staphycoccolus-bacteria">
+       What are the most most similar subspecies among 4 subspecies of Staphycoccolus bacteria?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-two-bacteria-from-different-species-be-more-similar-than-two-subspecies">
+       Can two bacteria from different species be more similar than two subspecies?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="protein-interactomes-in-staphylococcus-bacteria">
+<h1>Protein Interactomes in Staphylococcus Bacteria<a class="headerlink" href="#protein-interactomes-in-staphylococcus-bacteria" title="Permalink to this headline">#</a></h1>
+<p>This project focuses on protein interactomes in two species of Staphylococcus bacteria and three subspecies of each: Staphylococcus aureus with NCTC8325, COL, and MSHR1132 subspecies and Staphylococcus epidermidis with RP62A, ATCC12228, and M23864:W1 subspecies. An interactome is a set of physical molecular interactions in an organism. In a protein interactome, every vertex represents a specific protein and edges represent whether there is physical interaction between the source and target nodes. Therefore, protein interactoms are undirected and unweighted networks.</p>
+<p>Unsurprisingly, the number of proteins in organisms that were developed during early stages of evolution is much less than more complex ones that were developed later in the tree of life.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">largest_connected_component</span>
+
+<span class="n">bac</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;S. aureus NCTC8325&quot;</span><span class="p">,</span> <span class="s2">&quot;S. aureus COL&quot;</span><span class="p">,</span> <span class="s2">&quot;S. aureus MSHR1132&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;S. epidermidis RP62A&quot;</span><span class="p">,</span> <span class="s2">&quot;S. epidermidis ATCC12228&quot;</span><span class="p">,</span> <span class="s2">&quot;S. epidermidis M23864W1&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">print_num_nodes_and_edges</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;./treeoflife/&quot;</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="n">A_lcc</span> <span class="o">=</span> <span class="n">largest_connected_component</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of nodes in largest connected component in </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">(</span><span class="n">A_lcc</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of edges in largest connected component in </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">(</span><span class="n">A_lcc</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">()</span>
+    
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">print_num_nodes_and_edges</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of nodes in largest connected component in S. aureus NCTC8325.txt: 491
+Number of edges in largest connected component in S. aureus NCTC8325.txt: 2247
+
+Number of nodes in largest connected component in S. aureus COL.txt: 149
+Number of edges in largest connected component in S. aureus COL.txt: 275
+
+Number of nodes in largest connected component in S. aureus MSHR1132.txt: 498
+Number of edges in largest connected component in S. aureus MSHR1132.txt: 2245
+
+Number of nodes in largest connected component in S. epidermidis RP62A.txt: 535
+Number of edges in largest connected component in S. epidermidis RP62A.txt: 2395
+
+Number of nodes in largest connected component in S. epidermidis ATCC12228.txt: 481
+Number of edges in largest connected component in S. epidermidis ATCC12228.txt: 2314
+
+Number of nodes in largest connected component in S. epidermidis M23864W1.txt: 246
+Number of edges in largest connected component in S. epidermidis M23864W1.txt: 445
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="plotting-networks">
+<h1>Plotting Networks<a class="headerlink" href="#plotting-networks" title="Permalink to this headline">#</a></h1>
+<p>All six networks contain some isolated vertices and, therefore, largest connected component is used for smooth analysis and visualization. These networks are also significantly sparse since the actual number of edges is much lower than possible number of edges (number of vertices to the power of 2).</p>
+<section id="heatmaps-of-adjacency-matrices">
+<h2>Heatmaps of Adjacency Matrices<a class="headerlink" href="#heatmaps-of-adjacency-matrices" title="Permalink to this headline">#</a></h2>
+<p>Since networks are sparse, we expect many zeros in the adjacency matrix which is translated into white space on the heatmaps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">adjplot</span>
+
+<span class="k">def</span> <span class="nf">plot_heatmap</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;./treeoflife/&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>
+    <span class="n">A_lcc</span> <span class="o">=</span> <span class="n">largest_connected_component</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">A_lcc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">A_lcc</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">adjplot</span><span class="p">(</span><span class="n">A_lcc</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;heatmap&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">plot_heatmap</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bac</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/modaressanavi_4_0.png" src="../_images/modaressanavi_4_0.png" />
+</div>
+</div>
+<section id="the-heatmaps-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-have-significant-similarities-in-pattern-that-could-turn-into-interesting-results">
+<h3>The heatmaps for S. aureus NCTC8325, S. aureus MSHR1132, S. epidermidis RP62A, and S. epidermidis ATCC12228 have significant similarities in pattern that could turn into interesting results!<a class="headerlink" href="#the-heatmaps-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-have-significant-similarities-in-pattern-that-could-turn-into-interesting-results" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="network-layouts">
+<h2>Network Layouts<a class="headerlink" href="#network-layouts" title="Permalink to this headline">#</a></h2>
+<p>Since the number of proteins (vertices) in these bactera is not relatively large and their interactomes are sparse, Kamada Kawai layout is a good candidate for network layout visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span><span class="p">,</span> <span class="n">modularity</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">plot_partition</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;./treeoflife/&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>
+    <span class="n">A_lcc</span> <span class="o">=</span> <span class="n">largest_connected_component</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">A_lcc</span>
+    <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    
+    <span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+    <span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+    
+    <span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+    <span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
+        
+    <span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">A_lcc</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;leiden&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
+    
+    <span class="n">A_lcc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">A_lcc</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+    <span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">A_lcc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">communities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">modularity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">leiden_partition_map</span><span class="p">)</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mod</span>
+    
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A_lcc</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="s2">&quot;leiden&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="o">+</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">number of communities: </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">communities</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">modularity: </span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;tab20&quot;</span>
+    <span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">plot_partition</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bac</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/modaressanavi_7_0.png" src="../_images/modaressanavi_7_0.png" />
+</div>
+</div>
+<section id="even-the-network-layouts-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-are-significantly-similar-there-are-certain-vertices-the-large-red-vertex-in-the-center-that-are-shared-as-more-connected-vertices-across-all-four-interactomes-in-addition-the-number-and-spread-of-communities-in-these-subspecies-is-roughly-the-same-with-leiden-resolution-of-0-50-this-further-supports-the-similarity-of-interactomes-in-these-4-subspecies">
+<h3>Even the network layouts for S. aureus NCTC8325, S. aureus MSHR1132, S. epidermidis RP62A, and S. epidermidis ATCC12228 are significantly similar. There are certain vertices (the large red vertex in the center) that are shared as more connected vertices across all four interactomes. In addition, the number and spread of communities in these subspecies is roughly the same with Leiden resolution of 0.50. This further supports the similarity of interactomes in these 4 subspecies.<a class="headerlink" href="#even-the-network-layouts-for-s-aureus-nctc8325-s-aureus-mshr1132-s-epidermidis-rp62a-and-s-epidermidis-atcc12228-are-significantly-similar-there-are-certain-vertices-the-large-red-vertex-in-the-center-that-are-shared-as-more-connected-vertices-across-all-four-interactomes-in-addition-the-number-and-spread-of-communities-in-these-subspecies-is-roughly-the-same-with-leiden-resolution-of-0-50-this-further-supports-the-similarity-of-interactomes-in-these-4-subspecies" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="random-network-model-sbm">
+<h1>Random Network Model: SBM<a class="headerlink" href="#random-network-model-sbm" title="Permalink to this headline">#</a></h1>
+<p>I chose stochastic block model (SBM) to prove the strength of communities in my each interactome.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.models</span> <span class="kn">import</span> <span class="n">SBMEstimator</span>
+
+<span class="k">def</span> <span class="nf">plot_estimator</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;heatmap&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;./treeoflife/&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">A_lcc</span> <span class="o">=</span> <span class="n">largest_connected_component</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+    <span class="n">sbme</span> <span class="o">=</span> <span class="n">SBMEstimator</span><span class="p">(</span><span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loops</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sbme</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">A_lcc</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">adjplot</span><span class="p">(</span><span class="n">sbme</span><span class="o">.</span><span class="n">sample</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">plot_type</span><span class="o">=</span><span class="n">plot_type</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">)</span>
+    
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">plot_estimator</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bac</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/modaressanavi_10_0.png" src="../_images/modaressanavi_10_0.png" />
+</div>
+</div>
+<section id="it-seems-that-my-dataset-is-not-large-enough-for-such-an-estimator-to-be-an-ideal-model-i-also-tried-random-dot-product-graph-rdpg-model-and-the-result-was-roughly-the-same-it-seems-that-these-models-generally-work-better-for-networks-with-more-vertices-for-example-for-homo-sapiens-interactome-which-has-over-16000-vertices-and-more-than-9000-are-in-a-single-community-the-result-looks-like">
+<h2>It seems that my dataset is not large enough for such an estimator to be an ideal model.  I also tried random dot product graph (RDPG) model and the result was roughly the same. It seems that these models generally work better for networks with more vertices. For example, for Homo sapiens interactome which has over 16000 vertices and more than 9000 are in a single community, the result looks like:<a class="headerlink" href="#it-seems-that-my-dataset-is-not-large-enough-for-such-an-estimator-to-be-an-ideal-model-i-also-tried-random-dot-product-graph-rdpg-model-and-the-result-was-roughly-the-same-it-seems-that-these-models-generally-work-better-for-networks-with-more-vertices-for-example-for-homo-sapiens-interactome-which-has-over-16000-vertices-and-more-than-9000-are-in-a-single-community-the-result-looks-like" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">display</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;human.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/modaressanavi_12_0.png" src="../_images/modaressanavi_12_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="graph-matching">
+<h1>Graph Matching<a class="headerlink" href="#graph-matching" title="Permalink to this headline">#</a></h1>
+<p>So far, we have noticed that the number of proteins in the largest connected component of S. aureus NCTC8325, S. aureus MSHR1132, S. epidermidis RP62A, and S. epidermidis ATCC12228 are very close to each other, their adjacency matrix heatmaps follow the similar patterns, and their layouts indicate similar proteins as most important (connected) vertices. As a result, graph matching is appropriate to test the hypothesis of important proteins that are shared between these 4 subspecies.</p>
+<p>First, I created a new list of these 4 subspecies and added them as a node to a graph to later plot their edge difference ratioes to each other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imp_bac</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;S. aureus NCTC8325&quot;</span><span class="p">,</span> <span class="s2">&quot;S. aureus MSHR1132&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;S. epidermidis RP62A&quot;</span><span class="p">,</span> <span class="s2">&quot;S. epidermidis ATCC12228&quot;</span><span class="p">]</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">imp_bac</span><span class="p">:</span>
+    <span class="n">H</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I decided to plot all possible combination of the differences between the four subspecies. I used graspologic graph_match to find the predicted permutation for the second graph at every iteration. I plotted the permutation of the first and second graphs returned by graph_match() as well as the plot of their edge differences.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.match</span> <span class="kn">import</span> <span class="n">graph_match</span>
+
+<span class="k">def</span> <span class="nf">output_diff_plots</span><span class="p">(</span><span class="n">title1</span><span class="p">,</span> <span class="n">title2</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">G1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;./treeoflife/&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title1</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>  
+    <span class="n">A1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+    <span class="n">A1</span> <span class="o">=</span> <span class="n">largest_connected_component</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+    
+    <span class="n">G2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;./treeoflife/&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title2</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>
+    <span class="n">A2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">G2</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+    <span class="n">A2</span> <span class="o">=</span> <span class="n">largest_connected_component</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
+
+    <span class="n">perm_A1</span><span class="p">,</span> <span class="n">perm_A2</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">misc</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">A2</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">A1</span> <span class="o">=</span> <span class="n">A1</span><span class="p">[</span><span class="n">perm_A1</span><span class="p">][:,</span> <span class="n">perm_A1</span><span class="p">]</span>
+    <span class="n">A2</span> <span class="o">=</span> <span class="n">A2</span><span class="p">[</span><span class="n">perm_A2</span><span class="p">][:,</span> <span class="n">perm_A2</span><span class="p">]</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">A2</span> <span class="o">-</span> <span class="n">A1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A2</span><span class="p">))</span>
+    <span class="n">H</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">title1</span><span class="p">,</span> <span class="n">title2</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">diff</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">diff</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title1</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">title2</span><span class="si">}</span><span class="se">\n</span><span class="s2"> edge difference ratio: </span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">adjplot</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;heatmap&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">adjplot</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;heatmap&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">adjplot</span><span class="p">(</span><span class="n">A2</span> <span class="o">-</span> <span class="n">A1</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;heatmap&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">))</span>
+        
+<span class="n">axsi</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="n">j</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">output_diff_plots</span><span class="p">(</span><span class="n">imp_bac</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">imp_bac</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="n">axsi</span><span class="p">])</span>
+        <span class="n">axsi</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/modaressanavi_16_0.png" src="../_images/modaressanavi_16_0.png" />
+</div>
+</div>
+<p>Here is a heatmap of how every two subspecies are similar in terms of protein interactomes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+
+<span class="n">H_arr</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">H_arr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">imp_bac</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">imp_bac</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/modaressanavi_18_1.png" src="../_images/modaressanavi_18_1.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="results">
+<h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h1>
+<section id="most-connected-proteins">
+<h2>Most Connected Proteins<a class="headerlink" href="#most-connected-proteins" title="Permalink to this headline">#</a></h2>
+<section id="how-much-of-a-single-cell-function-is-dependent-on-one-protein">
+<h3>How much of a single cell function is dependent on one protein?<a class="headerlink" href="#how-much-of-a-single-cell-function-is-dependent-on-one-protein" title="Permalink to this headline">#</a></h3>
+<p>Let’s find top 3 most connected proteins in each network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">def</span> <span class="nf">top_ten_nodes</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;./treeoflife/&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>  
+    <span class="n">neighbors</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">neighbors</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">node</span><span class="p">)))</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">neighbors</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">neighbors</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">sorted_value_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">values</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">sorted_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sorted_value_index</span><span class="p">}</span>
+    
+    <span class="n">local_top_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">local_top_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">top_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">local_top_nodes</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">top_ten_nodes</span><span class="p">(</span><span class="n">bac</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">top_nodes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;SAOUHSC_00002&#39;, &#39;SAOUHSC_01690&#39;, &#39;SAOUHSC_01806&#39;],
+ [&#39;SACOL0005&#39;, &#39;SACOL0006&#39;, &#39;SACOL0008&#39;],
+ [&#39;SAMSHR1132_00020&#39;, &#39;SAMSHR1132_15480&#39;, &#39;SAMSHR1132_04220&#39;],
+ [&#39;SERP0001&#39;, &#39;SERP1823&#39;, &#39;SERP0002&#39;],
+ [&#39;SE0002&#39;, &#39;SE2299&#39;, &#39;SE1156&#39;],
+ [&#39;HMPREF0793_0006&#39;, &#39;HMPREF0793_0046&#39;, &#39;HMPREF0793_1188&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="s-aureus-nctc8325">
+<h4>S. aureus NCTC8325<a class="headerlink" href="#s-aureus-nctc8325" title="Permalink to this headline">#</a></h4>
+<p>SAOUHSC_00002, SAOUHSC_01690: DNA Polymerase III subunits, responsible for DNA replication, recombination, and repair</p>
+<p>SAOUHSC_01806: pyruvate kinase, responsible for conversion of ADP to ATP and cell metabolism</p>
+</section>
+<section id="s-aureus-col">
+<h4>S. aureus COL<a class="headerlink" href="#s-aureus-col" title="Permalink to this headline">#</a></h4>
+<p>SACOL0005, SACOL0006: DNA gyrase subunit, catalyzes the ATP-dependent negative super-coiling (twisting) of DNA</p>
+<p>SACOL0008: histidine ammonia-lyase, degrades histidine to ammonia</p>
+</section>
+<section id="s-aureus-mshr1132">
+<h4>S. aureus MSHR1132<a class="headerlink" href="#s-aureus-mshr1132" title="Permalink to this headline">#</a></h4>
+<p>SAMSHR1132_00020, SAMSHR1132_04220: DNA Polymerase III subunits, responsible for DNA replication, recombination, and repair</p>
+<p>SAMSHR1132_15480: pyruvate kinase, responsible for conversion of ADP to ATP and cell metabolism</p>
+</section>
+<section id="s-epidermidis-rp62a">
+<h4>S. epidermidis RP62A<a class="headerlink" href="#s-epidermidis-rp62a" title="Permalink to this headline">#</a></h4>
+<p>SERP0001, SERP1823: ribosomal protein, required for translation</p>
+<p>SERP0002: ribonuclease protein component, the component is responsible for degrading RNA</p>
+</section>
+<section id="s-epidermidis-atcc12228">
+<h4>S. epidermidis ATCC12228<a class="headerlink" href="#s-epidermidis-atcc12228" title="Permalink to this headline">#</a></h4>
+<p>SE0002: ribonuclease protein component, the component is responsible for degrading RNA</p>
+<p>SE2299: DNA Polymerase III subunits, responsible for DNA replication, recombination, and repair</p>
+<p>SE1156: nucleoside diphosphate kinase, catalyzes production of nucleoside triphosphate (like ATP)</p>
+</section>
+<section id="s-epidermidis-m23864-w1">
+<h4>S. epidermidis M23864:W1<a class="headerlink" href="#s-epidermidis-m23864-w1" title="Permalink to this headline">#</a></h4>
+<p>Could not find!</p>
+<p>Firstly, the same proteins are the most connected in both S. aureus NCTC8325 and S. aureus MSHR1132. This justifies the lowest observed edge ratio between all species.</p>
+<p>Secondly, the most connected proteins are the proteins that correspond with the survival of a single cell, as expected. The above list shows that in the genus of Staphylococcus bacteria, proteins responsible for transcription and translation as well as those involved in mechanisms that provide energy for the cell are dominantly connected to other proteins.</p>
+</section>
+</section>
+</section>
+<section id="most-similar-subspecies">
+<h2>Most Similar Subspecies<a class="headerlink" href="#most-similar-subspecies" title="Permalink to this headline">#</a></h2>
+<section id="what-are-the-most-most-similar-subspecies-among-4-subspecies-of-staphycoccolus-bacteria">
+<h3>What are the most most similar subspecies among 4 subspecies of Staphycoccolus bacteria?<a class="headerlink" href="#what-are-the-most-most-similar-subspecies-among-4-subspecies-of-staphycoccolus-bacteria" title="Permalink to this headline">#</a></h3>
+<p>From my results, it is clear that S. aureus NCTC8325 and S. aureus MSHR1132 are the most similar subspecies as their edge difference ratio is as low as 7.1% and they share the most connected proteins.</p>
+<p>On the other hand, it seems that S. epidermidis ATCC12228 and epidermidis RP62A do not have that level of similarity. In fact, S. epidermidis ATCC12228 usually (since graph matching is indeterminate) matches more closely with the S. aureus NCTC8325 and S. aureus MSHR1132 subspecies.</p>
+</section>
+<section id="can-two-bacteria-from-different-species-be-more-similar-than-two-subspecies">
+<h3>Can two bacteria from different species be more similar than two subspecies?<a class="headerlink" href="#can-two-bacteria-from-different-species-be-more-similar-than-two-subspecies" title="Permalink to this headline">#</a></h3>
+<p>Based on my results, I tend to believe so…</p>
+<p>DNA Polymerase III subunits are most connected in S. aureus NCTC8325, S. aureus MSHR1132, and S. epidermidis ATCC12228 but not in epidermidis RP62A. This could partially justify the fact that the ATCC12228 subspecies is in fact more similar to the aureus subspecies than it is to other epidermidis subspecies.</p>
+<p>In addition to DNA Polymerase III, kinase enzymes are also shared common as top nodes among S. aureus NCTC8325, S. aureus MSHR1132, and S. epidermidis ATCC12228 but not in epidermidis RP62A.</p>
+<p>Note that the number of nodes in the RP62A is also relatively larger than the other three subspecies which could justify why the edge difference ratio may be higher in some graph matching trials.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "venv"
+        },
+        kernelOptions: {
+            kernelName: "venv",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'venv'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="he.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Spotify Million Playlists</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ugwuoke.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analyzing Airport Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Benjamin D. Pedigo<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
