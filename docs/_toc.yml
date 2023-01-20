@@ -38,3 +38,4 @@ parts:
   - file: projects/he.ipynb
   - file: projects/modaressanavi.ipynb 
   - file: projects/ugwuoke.ipynb
+  - file: projects/vanchinathan.ipynb
