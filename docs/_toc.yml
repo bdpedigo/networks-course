@@ -35,4 +35,5 @@ parts:
 - caption: Projects
   chapters: 
   - file: projects/arsnow.ipynb
+  - file: projects/he.ipynb
   - file: projects/ugwuoke.ipynb
