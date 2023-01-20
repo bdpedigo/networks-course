@@ -16,13 +16,13 @@ If you have trobule with my instructions below, I suggest completing the very qu
   ![h:300px](./images/mini-assignment/git-clone.png)
 - From the command line, do `git clone <link that you just copied>`
 - You should now see a directory called `networks-course`
+- From the command line, make sure you are in the `networks-course` directory. You probably need to move there with a command like `cd networks-course`. 
 - Create and switch to a new branch by doing `git checkout -b add-placeholder`
   ![](./images/mini-assignment/git-checkout.png)
 - Make a new file in the directory `networks-course/docs`, call it `<your-last-name>.md`:
   ![h:400](./images/mini-assignment/nav-example-name-markdown.png)
 - In that file, write `# <your last name> - final project placeholder`:
   ![h:200](./images/mini-assignment/name-example-markdown.png)
-- From the command line, make sure you are in the `networks-course` directory. You probably need to move there with a command like `cd networks-course`. 
 - Use `git` to check for modified files via `git status`: 
   ![h:175](./images/mini-assignment/git-status.png) 
 - Do `git add docs/<your last name>.md` to add this new file to be tracked. You can use `git status` again to verify if this worked
