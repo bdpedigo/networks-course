@@ -29,8 +29,12 @@ parts:
   - file: graph_matching
   - file: multiple_embedding
   - file: ranking
+- caption: Examples
+  chapters: 
+  - file: plot_large
 - caption: Projects
   chapters: 
-  - file: pedigo.md
-  - file: modaressanavi.ipynb  
-  - file: kondepudi.md
+  - file: projects/arsnow.ipynb
+  - file: projects/he.ipynb
+  - file: projects/modaressanavi.ipynb 
+  - file: projects/ugwuoke.ipynb
