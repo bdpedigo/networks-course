@@ -39,3 +39,4 @@ parts:
   - file: projects/modaressanavi.ipynb 
   - file: projects/ugwuoke.ipynb
   - file: projects/vanchinathan.ipynb
+  - file: projects/wu.ipynb
