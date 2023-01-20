@@ -32,5 +32,5 @@ parts:
 - caption: Projects
   chapters: 
   - file: pedigo.md
-  - file: modaressanavi.md  
+  - file: modaressanavi.ipynb  
   - file: kondepudi.md
