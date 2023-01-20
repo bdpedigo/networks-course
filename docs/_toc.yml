@@ -37,6 +37,7 @@ parts:
   - file: projects/arsnow.ipynb
   - file: projects/he.ipynb
   - file: projects/modaressanavi.ipynb 
+  - file: projects/moore.ipynb
   - file: projects/ugwuoke.ipynb
   - file: projects/vanchinathan.ipynb
   - file: projects/wu.ipynb

@@ -1,1 +1,0 @@
-# Moore - final project placeholder
