@@ -1,1 +1,0 @@
-# Pedigo - final project placeholder
