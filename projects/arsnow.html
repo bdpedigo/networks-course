@@ -1,0 +1,1075 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>South Florida Cypress Wetlands Trophic Networks &#8212; Network Data Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analyzing Airport Data" href="ugwuoke.html" />
+    <link rel="prev" title="Plotting larger networks" href="../plot_large.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-JYHFQNEPZN');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Network Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../landing.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course logistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../calendar.html">
+   Calendar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mini_assignment.html">
+   Mini-assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../final_project.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python.html">
+   Python development
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../online_resources.html">
+   Online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../books.html">
+   Books
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
+   Welcome
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
+   What are networks?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../representing_networks.html">
+   Representing networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plotting_networks.html">
+   Plotting networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../connected_components.html">
+   Connected components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../centrality.html">
+   Centrality measures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../random_graphs.html">
+   Random network models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../community_detection.html">
+   Community detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embedding.html">
+   Network embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../graph_matching.html">
+   Graph matching
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../multiple_embedding.html">
+   Embedding multiple networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ranking.html">
+   Ranking and flow
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plot_large.html">
+   Plotting larger networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   South Florida Cypress Wetlands Trophic Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ugwuoke.html">
+   Analyzing Airport Data
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/arsnow.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/arsnow.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/arsnow.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/projects/arsnow.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   South Florida Cypress Wetlands Trophic Networks
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centrality-measures">
+   Centrality Measures
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-detection">
+   Community Detection
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching">
+   Graph Matching
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranking">
+   Ranking
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>South Florida Cypress Wetlands Trophic Networks</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   South Florida Cypress Wetlands Trophic Networks
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centrality-measures">
+   Centrality Measures
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-detection">
+   Community Detection
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-matching">
+   Graph Matching
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranking">
+   Ranking
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="south-florida-cypress-wetlands-trophic-networks">
+<h1>South Florida Cypress Wetlands Trophic Networks<a class="headerlink" href="#south-florida-cypress-wetlands-trophic-networks" title="Permalink to this headline">#</a></h1>
+<p><strong>Author: George Arsnow</strong></p>
+<p>The following is an analysis of trophic networks observed in south florida cypress wetlands in dry and wet seasons of 1996-1997.
+Data is taken from R. Ulanowicz, C. Bondavalli, and M. Egnotovich, “Network analysis of trophic dynamics in South Florida ecosystem, fy 97: The florida bay ecosystem,” Annual Report to the U. S. Geo. Service Biological Resources Division (1998). These networks were assembled by a combination of fieldwork and simulation. Both the dry and wet networks are fully connected and contain 128 nodes representing species present in the cypress wetlands ecosystem. The dry network contains 2137 directed edges, while the wet network contains 2106 directed edges, each signifying biomass transfer. The networks are weighted to indicate relative magnitudes of biomass transfer between species.</p>
+<p>The species corresponding to node 18 and node 57 are shown to be particularly important to normal ecosystem trophic dynamics. To simulate the impact of extinction of one or both of these keystone species, network centrality measures are compared among networks in which these nodes (and all related edges) are removed.</p>
+<p>Community detection is used to divide the networks into preferentially self-interacting groups. Graph matching between the dry and wet trophic networks demonstrates their similarity, and signal flow ranking is used to sort the species by predation level.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="centrality-measures">
+<h1>Centrality Measures<a class="headerlink" href="#centrality-measures" title="Permalink to this headline">#</a></h1>
+<p>The dry and wet trophic networks, designated baydry and baywet, respectively, are read from text files into graphs.
+Total degree, eigenvector centrality, PageRank, and betweenness centrality are computed for the nodes of each network. In both networks, node 57 has the highest total degree (110), eigenvector centrality (0.5538 dry, 0.5584 wet), and PageRank (0.2529 dry, 0.2371 wet), and node 18 has the highest betweenness centrality (0.3880 dry, 0.3838 wet). To simulate the extinction of these ecologically important species, one or both was removed from the network. The means and standard deviations of the four centrality measures were calculated for the regular (full) networks and the networks with node 18 removed (18R), node 57 removed (57R), and both node 18 and node 57 removed (1857R), as shown in the tables below. Some values in the tables are very small and approximated as zero.</p>
+<p><img alt="image.png" src="projects/attachment:image.png" />
+<img alt="image-2.png" src="projects/attachment:image-2.png" />
+<img alt="image-3.png" src="projects/attachment:image-3.png" />
+<img alt="image-4.png" src="projects/attachment:image-4.png" /></p>
+<p>The cell below allows visual comparison of network layouts between the dry and wet networks and their 18R, 57R, and 1857R versions. The removal of node 57 has the largest visual impact: the layouts, constructed with the networkx spring_layout() function, are more symmetric compared to the original dry and wet networks, which were skewed toward the location of node 57.
+A species’ total degree represents the total number of a species’ biomass exchanges, regardless of the species’ status as predator or prey. In-degree and out-degree were also computed. As node 57 has highest in-degree (109) in the dry and wet networks, it is consumed by the greatest number of other species. Node 84 has higest out-degree (63) in the dry network and node higest out-degree (62) in the wet network, meaning that they consume the largest variety of other species.</p>
+<p>Eigenvector centrality and PageRank are better measures of a species’ importance to the ecosystem than total degree, as they account for a species’ relation to other ecologically key species and species’ amount of influence on others, respectively.
+Betweenness centrality does not have a physical meaning in the case of trophic networks, but it can serve as measure of how many individual linear food chains a species can be part of.</p>
+<p>The tables above indicate that the removal of species 18 and 57 have mixed results on the centrality measures. A decrease in mean centrality measures can suggest that the ecosystem has been damaged by the loss of one of these key species. Increases, by contrast, may indicate that the ecosystem adapts, with previously suppressed species taking larger roles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">plot_node_scaled_network</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># REF: https://github.com/mwaskom/seaborn/blob/9425588d3498755abd93960df4ab05ec1a8de3ef/seaborn/_core.py#L215</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">map_to_nodes</span><span class="p">(</span><span class="n">node_map</span><span class="p">):</span>
+    <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">baydry</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="c1"># utility function to make it easy to compare dicts to array outputs</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))(</span><span class="n">nodelist</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">remove_m</span><span class="p">(</span><span class="n">gd</span><span class="p">,</span> <span class="n">gw</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="c1">#  Removes one node specified by index from the dry (gd) and wet (gw) networks.</span>
+    <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">gd</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">GD</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">gd</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+    <span class="n">GW</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">gw</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+    
+    <span class="n">GD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">GD</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">GD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">GD</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">GW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">GW</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">GW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">GW</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">gd_del</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">GD</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+    <span class="n">gw_del</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">GW</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gd_del</span><span class="p">,</span> <span class="n">gw_del</span>
+    
+<span class="k">def</span> <span class="nf">compare_centrality</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="n">baywet</span><span class="p">):</span>
+    <span class="c1"># Plots centrality measures for dry and wet networks.</span>
+    
+    <span class="n">nodelist1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">baydry</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">BD</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist1</span><span class="p">)</span> <span class="c1"># weighted numpy array</span>
+    <span class="n">BW</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">baywet</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist1</span><span class="p">)</span> <span class="c1"># weighted numpy array</span>
+
+    <span class="n">node_data_bd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">baydry</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+    <span class="n">node_data_bd</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bd</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">baydry</span><span class="p">)))</span>
+    <span class="n">node_data_bd</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bd</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">baydry</span><span class="p">))</span>
+    <span class="n">node_data_bd</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bd</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">baydry</span><span class="p">))</span>
+    <span class="n">node_data_bd</span><span class="p">[</span><span class="s2">&quot;betweenness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bd</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">baydry</span><span class="p">))</span>
+
+    <span class="n">pos_bd</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">baydry</span><span class="p">)</span>
+    <span class="n">node_data_bd</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos_bd</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data_bd</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">node_data_bd</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos_bd</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data_bd</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="n">node_data_bw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">baywet</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+    <span class="n">node_data_bw</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bw</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">baywet</span><span class="p">)))</span>
+    <span class="n">node_data_bw</span><span class="p">[</span><span class="s2">&quot;eigenvector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bw</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">baywet</span><span class="p">))</span>
+    <span class="n">node_data_bw</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bw</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">baywet</span><span class="p">))</span>
+    <span class="n">node_data_bw</span><span class="p">[</span><span class="s2">&quot;betweenness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_data_bw</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">baywet</span><span class="p">))</span>
+
+    <span class="n">pos_bw</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">baywet</span><span class="p">)</span>
+    <span class="n">node_data_bw</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos_bw</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data_bw</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">node_data_bw</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos_bw</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_data_bw</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">fig1</span><span class="p">,</span> <span class="n">axs1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">fig2</span><span class="p">,</span> <span class="n">axs2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BD</span><span class="p">,</span> <span class="n">node_data_bd</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">axs1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BD</span><span class="p">,</span> <span class="n">node_data_bd</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">axs1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BD</span><span class="p">,</span> <span class="n">node_data_bd</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">axs1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BD</span><span class="p">,</span> <span class="n">node_data_bd</span><span class="p">,</span> <span class="s2">&quot;betweenness&quot;</span><span class="p">,</span> <span class="n">axs1</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BW</span><span class="p">,</span> <span class="n">node_data_bw</span><span class="p">,</span> <span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">axs2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BW</span><span class="p">,</span> <span class="n">node_data_bw</span><span class="p">,</span> <span class="s2">&quot;eigenvector&quot;</span><span class="p">,</span> <span class="n">axs2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BW</span><span class="p">,</span> <span class="n">node_data_bw</span><span class="p">,</span> <span class="s2">&quot;pagerank&quot;</span><span class="p">,</span> <span class="n">axs2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">plot_node_scaled_network</span><span class="p">(</span><span class="n">BW</span><span class="p">,</span> <span class="n">node_data_bw</span><span class="p">,</span> <span class="s2">&quot;betweenness&quot;</span><span class="p">,</span> <span class="n">axs2</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="n">fig1</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Dry&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">fig2</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Wet&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">fig1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">fig2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Uncomment the following lines for sets of dot plots comparing the centrality measures.</span>
+    
+    <span class="c1">#sns.pairplot(node_data_bd, vars=[&#39;degree&#39;, &#39;eigenvector&#39;, &#39;pagerank&#39;, &#39;betweenness&#39;], height=4)</span>
+    <span class="c1">#sns.pairplot(node_data_bw, vars=[&#39;degree&#39;, &#39;eigenvector&#39;, &#39;pagerank&#39;, &#39;betweenness&#39;], height=4)</span>
+    
+
+<span class="n">baydry</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baydry.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span> <span class="c1"># weighted graph</span>
+<span class="n">baywet</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baywet.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span> <span class="c1"># weighted graph</span>
+
+<span class="n">bd18</span><span class="p">,</span> <span class="n">bw18</span> <span class="o">=</span> <span class="n">remove_m</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="n">baywet</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span> <span class="c1"># Networks with node 18 removed (17 is the index of node 18).</span>
+
+<span class="n">bd57</span><span class="p">,</span> <span class="n">bw57</span> <span class="o">=</span> <span class="n">remove_m</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="n">baywet</span><span class="p">,</span> <span class="mi">56</span><span class="p">)</span> <span class="c1"># Networks with node 57 removed.</span>
+
+<span class="n">bd1857</span><span class="p">,</span> <span class="n">bw1857</span> <span class="o">=</span> <span class="n">remove_m</span><span class="p">(</span><span class="n">bd57</span><span class="p">,</span> <span class="n">bw57</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span> <span class="c1"># Networks with node 18 and node 57 removed.</span>
+
+<span class="c1"># Comment/uncomment the following statements to compare different network versions.</span>
+<span class="n">compare_centrality</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="n">baywet</span><span class="p">)</span> 
+<span class="n">compare_centrality</span><span class="p">(</span><span class="n">bd18</span><span class="p">,</span> <span class="n">bw18</span><span class="p">)</span>
+<span class="n">compare_centrality</span><span class="p">(</span><span class="n">bd57</span><span class="p">,</span> <span class="n">bw57</span><span class="p">)</span>
+<span class="n">compare_centrality</span><span class="p">(</span><span class="n">bd1857</span><span class="p">,</span> <span class="n">bw1857</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/arsnow_2_0.png" src="../_images/arsnow_2_0.png" />
+<img alt="../_images/arsnow_2_1.png" src="../_images/arsnow_2_1.png" />
+<img alt="../_images/arsnow_2_2.png" src="../_images/arsnow_2_2.png" />
+<img alt="../_images/arsnow_2_3.png" src="../_images/arsnow_2_3.png" />
+<img alt="../_images/arsnow_2_4.png" src="../_images/arsnow_2_4.png" />
+<img alt="../_images/arsnow_2_5.png" src="../_images/arsnow_2_5.png" />
+<img alt="../_images/arsnow_2_6.png" src="../_images/arsnow_2_6.png" />
+<img alt="../_images/arsnow_2_7.png" src="../_images/arsnow_2_7.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="community-detection">
+<h1>Community Detection<a class="headerlink" href="#community-detection" title="Permalink to this headline">#</a></h1>
+<p>Leiden partitioning is used to divide the dry and wet networks into preferentially self-interacting groups. The modularity scores 0.2994854160522282 and 0.3270457717063401 for the dry and wet networks, respectively, are relatively low, indicating that there are not clear community divisions. This is expected for a trophic network because trophic interactions are largely between two individuals (represented by an edge) and directional. However, the larger modularity of the wet network may indicate that species are less able to interact with others, possibly by geographic separation. Indeed, the wet network has fewer edges than the dry network, which can further support this idea of hindered interaction in the wet season. The code below plots network layouts depicting the leiden-partitioned networks and heatmaps representing the grouped networks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graphs are weighted for layout but normalized for heatmap.</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span><span class="p">,</span> <span class="n">heatmap</span>
+<span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span><span class="p">,</span> <span class="n">modularity</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">pass_to_ranks</span>
+
+<span class="k">def</span> <span class="nf">plot_network_leiden_partition</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+
+    <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">node_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+    <span class="c1">#pos = nx.kamada_kawai_layout(g)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">:</span>
+        <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+    <span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+    <span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
+
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">adj_ptr</span> <span class="o">=</span> <span class="n">pass_to_ranks</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+    <span class="n">node_df</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">leiden_partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">modularity</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">leiden_partition_map</span><span class="p">))</span>
+
+    <span class="n">node_df</span><span class="p">[</span><span class="s1">&#39;leiden_partition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">leiden_partition_map</span><span class="p">)</span>
+    <span class="n">partition_key</span> <span class="o">=</span> <span class="s1">&#39;leiden_partition&#39;</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+    <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">adj</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">partition_key</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+        <span class="n">edge_hue</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span>
+        <span class="n">adj_ptr</span><span class="p">,</span>
+        <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">node_df</span><span class="p">[</span><span class="n">partition_key</span><span class="p">],</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">sort_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span>
+
+<span class="n">baydry</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baydry.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+<span class="n">plot_network_leiden_partition</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="s1">&#39;Dry&#39;</span><span class="p">)</span>
+
+<span class="n">baywet</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baywet.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+<span class="n">plot_network_leiden_partition</span><span class="p">(</span><span class="n">baywet</span><span class="p">,</span> <span class="s1">&#39;Wet&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2994854160522282
+0.32704577170634
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1500x700 with 4 Axes&gt;,
+ array([&lt;AxesSubplot: &gt;, &lt;AxesSubplot: &gt;], dtype=object))
+</pre></div>
+</div>
+<img alt="../_images/arsnow_4_2.png" src="../_images/arsnow_4_2.png" />
+<img alt="../_images/arsnow_4_3.png" src="../_images/arsnow_4_3.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="graph-matching">
+<h1>Graph Matching<a class="headerlink" href="#graph-matching" title="Permalink to this headline">#</a></h1>
+<p>The dry and wet networks are made unweigted and subjected to graph matching. The code below plots the dry and wet aligned heatmaps. There are 43 edge disagreements between the two networks, and the wet network contains 31 fewer edges than the dry network. There great similarity between dry and wet networks indicates that seasonal weather conditions do not have a major impact on interspecies biomass transfer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">graspologic.match</span> <span class="kn">import</span> <span class="n">graph_match</span>
+<span class="kn">from</span> <span class="nn">graspologic.simulations</span> <span class="kn">import</span> <span class="n">er_np</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+
+<span class="n">baydry</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baydry.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span> <span class="c1"># weighted graph</span>
+<span class="n">baywet</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baywet.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span> <span class="c1"># weighted graph</span>
+<span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">baydry</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">BD</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span> <span class="c1"># weighted numpy array</span>
+<span class="n">BW</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">baywet</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span> <span class="c1"># weighted numpy array</span>
+<span class="n">BD_bin</span> <span class="o">=</span> <span class="n">binarize</span><span class="p">(</span><span class="n">BD</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># binary numpy array</span>
+<span class="n">BW_bin</span> <span class="o">=</span> <span class="n">binarize</span><span class="p">(</span><span class="n">BW</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># binary numpy array</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">BD_bin</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dry&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">BW_bin</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Wet&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">graph_match</span><span class="p">(</span><span class="n">BD_bin</span><span class="p">,</span> <span class="n">BW_bin</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<span class="n">BW_bin</span> <span class="o">=</span> <span class="n">BW_bin</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">perm_inds</span><span class="p">,</span> <span class="n">perm_inds</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of edge disagreements: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">BD_bin</span> <span class="o">-</span> <span class="n">BW_bin</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edge disagreements:  43
+</pre></div>
+</div>
+<img alt="../_images/arsnow_6_1.png" src="../_images/arsnow_6_1.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ranking">
+<h1>Ranking<a class="headerlink" href="#ranking" title="Permalink to this headline">#</a></h1>
+<p>The code below uses the signal flow algorithm to rank the species of the dry and wet trophic networks by relative predation level. The “apex predator” in both ecosystems, according to the signal flow results, is species 1. Species 57, seen above by the degree, eigenvector, and PageRank centrality measures to be an important species to the ecosystem, has the lowest signal flow score, meaning it is a major food source for other species. The rankings of the dry and wet network species are not identical but are very similar. Layouts weighted by signal flow score are also plotted by the code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+
+<span class="k">def</span> <span class="nf">plot_network_color_scaled</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">g_sym</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">node_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">:</span>
+        <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+    <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span>
+    <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
+
+    <span class="n">partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g_sym</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">8888</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partition_map</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">nodelist</span><span class="p">)</span>
+
+    <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;leiden_labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
+
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">)))</span>
+
+    <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span> 
+
+    <span class="n">W</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">L</span> <span class="o">=</span> <span class="n">D</span> <span class="o">-</span> <span class="n">W</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">L_dagger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># this is the Moore-Penrose inverse</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">L_dagger</span> <span class="o">@</span> <span class="n">b</span>
+
+    <span class="n">signal_flow_rank</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+    <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;sf_rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_flow_rank</span> <span class="o">-</span> <span class="n">signal_flow_rank</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">signal_flow_rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">signal_flow_rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;sf_rank_order&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;sf_rank&quot;</span><span class="p">])</span>
+    
+    <span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">node_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">vmin</span><span class="p">)</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">levels</span><span class="p">))))</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">node_data</span><span class="o">=</span><span class="n">node_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>  <span class="c1"># bug in this function requires the .reset_index</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+        <span class="n">node_hue</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+        <span class="n">node_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+        <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+        <span class="n">edge_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+
+<span class="n">baydry</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baydry.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+<span class="n">baydry_sym</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baydry.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+
+<span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="n">baydry</span><span class="p">,</span> <span class="n">baydry_sym</span><span class="p">,</span> <span class="s2">&quot;sf_rank_order&quot;</span><span class="p">,</span> <span class="s1">&#39;Dry&#39;</span><span class="p">)</span>
+                                          
+<span class="n">baywet</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baywet.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+<span class="n">baywet_sym</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_weighted_edgelist</span><span class="p">(</span><span class="s1">&#39;baywet.txt&#39;</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+
+<span class="n">plot_network_color_scaled</span><span class="p">(</span><span class="n">baywet</span><span class="p">,</span> <span class="n">baywet_sym</span><span class="p">,</span> <span class="s2">&quot;sf_rank_order&quot;</span><span class="p">,</span> <span class="s1">&#39;Wet&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1      2.164899
+4      1.344438
+8      1.335031
+6      1.332861
+7      1.297969
+         ...   
+121   -0.523228
+76    -0.638422
+65    -0.703830
+66    -0.844189
+57    -1.146383
+Length: 128, dtype: float64
+1     2.164304
+4     1.327395
+8     1.312416
+7     1.297062
+15    1.231258
+        ...   
+65   -0.554642
+53   -0.604947
+76   -0.617998
+66   -0.720421
+57   -1.135755
+Length: 128, dtype: float64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Wet&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/arsnow_8_2.png" src="../_images/arsnow_8_2.png" />
+<img alt="../_images/arsnow_8_3.png" src="../_images/arsnow_8_3.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../plot_large.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Plotting larger networks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ugwuoke.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analyzing Airport Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Benjamin D. Pedigo<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
