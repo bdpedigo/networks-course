@@ -7,26 +7,26 @@ Schedule below is approximate and subject to change
 ## Week 1
 ### Jan 9th (Monday)
 - [Introductions and welcome](https://bdpedigo.github.io/networks-course/welcome.html)
-- [What are networks (and why should we care)]([what_are_networks](https://bdpedigo.github.io/networks-course/what_are_networks.html))?
-- Course roadmap (go over this calendar)
-- Set up development environments
+- Set up [development environments](python.md)
 - Work on the [mini-assignment](mini_assignment.md)
-- Look at datasets
+- [What are networks (and why should we care)](https://bdpedigo.github.io/networks-course/what_are_networks.html)?
+- Course roadmap (go over this calendar)
+- [Representing networks](representing_networks.ipynb)
+- Look at datasets (if time)
 
 ### Jan 10th (Tuesday)
 
-```{admonition} Due
+```{admonition} Due during class
 :class: important
 
-Have a working Python environment to use for this course.
+Have a working Python environment to use for this course (during class).
 ```
 
-```{admonition} Due
+```{admonition} Due end of day
 :class: important
 
 Complete the [mini-assignment](mini_assignment.md).
 ```
-- [Representing networks](representing_networks.ipynb)
 - [Plotting networks](plotting_networks.ipynb)
 - [Connected components](connected_components.ipynb)
 - [Centrality measures](centrality.ipynb)
@@ -34,9 +34,10 @@ Complete the [mini-assignment](mini_assignment.md).
    - Eigenvector centrality
    - PageRank
    - Betweenness centrality
+- Look at datasets (if time)
 
 ### Jan 11th (Wednesday)
-```{admonition} Due
+```{admonition} Due during class
 :class: important
 
 Know what dataset you'll be working on for the final project.
@@ -56,7 +57,7 @@ Complete [exit survey](https://forms.gle/xgyoCM9wuKUmcY6S7) to submit this info.
 
 ### Jan 12th (Thursday)
 
-```{admonition} Due
+```{admonition} Due during class
 :class: important
 
 Be able to load in and somehow plot your dataset(s) in Python.
@@ -78,11 +79,6 @@ Be able to load in and somehow plot your dataset(s) in Python.
 - [Network embedding (Part 1)](embedding.ipynb)
    - Word2Vec to DeepWalk to Node2Vec
    - Recommendations using an embedding 
-- [Network embeddings (Part 2)](embedding.ipynb)
-  - Spectral methods
-    - Adjacency spectral embedding
-    - Laplacian spectral embedding
-    - Two truths
 
 ## Week 2
 ### Jan 16th (Monday)
@@ -95,6 +91,11 @@ NO CLASS - Martin Luther King, Jr. Day
 
 
 ### Jan 17th (Tuesday)
+
+```{warning}
+Class taught remotely; see videos on course Canvas
+```
+
 - [Graph matching](graph_matching.ipynb)
    - When could we use it 
    - Why is it hard?
@@ -104,22 +105,26 @@ NO CLASS - Martin Luther King, Jr. Day
      - Adding seeds
      - Graphs of different sizes
    - Application example
-
-### Jan 18th (Wednesday)
 - [Ranking](ranking.ipynb)
   - Simple rankings (A, A squared)
   - Eigenvector ranking
   - Minimum violations ranking
   - Applications of ranking to study hierarchies
 
+### Jan 18th (Wednesday)
+- [Network embeddings (Part 2)](embedding.ipynb)
+  - Spectral methods
+    - Adjacency spectral embedding
+    - Laplacian spectral embedding
+    - Two truths
+
 ### Jan 19th (Thursday)
 
-```{admonition} Due
+```{admonition} Due by beginning of class
 :class: important
 
-Submit final project notebooks by midnight.
+Submit final project notebooks.
 ```
-
 
 - [Multiple network embedding](multiple_embedding.ipynb)
    - ASE x 2 
@@ -127,13 +132,13 @@ Submit final project notebooks by midnight.
    - Multiple ASE
 
 ### Friday
-```{admonition} Due
+```{admonition} Due in class
 :class: important
 
 Final project presentations
 ```
 
-```{admonition} Due
+```{admonition} Due by end of day
 :class: important
 
 Complete exit survey.

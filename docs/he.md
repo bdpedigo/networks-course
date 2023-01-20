@@ -1,1 +1,0 @@
-# He - final project placeholder
