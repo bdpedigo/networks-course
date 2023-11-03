@@ -1,50 +1,69 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Graph matching &#8212; Network Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-JYHFQNEPZN');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -53,70 +72,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'graph_matching';</script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Embedding multiple networks" href="multiple_embedding.html" />
     <link rel="prev" title="Network embedding" href="embedding.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-JYHFQNEPZN');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="landing.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Network Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Network Data Science - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Network Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -125,566 +178,305 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="syllabus.html">
-   Syllabus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="calendar.html">
-   Calendar
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mini_assignment.html">
-   Mini-assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="final_project.html">
-   Final project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calendar.html">Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mini_assignment.html">Mini-assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="final_project.html">Final project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   Python development
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="online_resources.html">
-   Online
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="books.html">
-   Books
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="online_resources.html">Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="books.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
-   Welcome
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
-   What are networks?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="representing_networks.html">
-   Representing networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plotting_networks.html">
-   Plotting networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connected_components.html">
-   Connected components
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="centrality.html">
-   Centrality measures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="random_graphs.html">
-   Random network models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="community_detection.html">
-   Community detection
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
-   Network embedding
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Graph matching
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="multiple_embedding.html">
-   Embedding multiple networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ranking.html">
-   Ranking and flow
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">What are networks?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representing_networks.html">Representing networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting_networks.html">Plotting networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_components.html">Connected components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="centrality.html">Centrality measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random_graphs.html">Random network models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community_detection.html">Community detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Network embedding</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Graph matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiple_embedding.html">Embedding multiple networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking.html">Ranking and flow</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="plot_large.html">
-   Plotting larger networks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="plot_large.html">Plotting larger networks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/arsnow.html">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/he.html">
-   Spotify Million Playlists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/kondepudi.html">
-   Elliptic Cryptocurrency Transactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/modaressanavi.html">
-   Protein Interactomes in Staphylococcus Bacteria
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/moore.html">
-   Reddit links
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/ugwuoke.html">
-   Analyzing Airport Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/vanchinathan.html">
-   Yeast operons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/wu.html">
-   London Train Network
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="projects/arsnow.html">South Florida Cypress Wetlands Trophic Networks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/he.html">Spotify Million Playlists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/kondepudi.html">Elliptic Cryptocurrency Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/modaressanavi.html">Protein Interactomes in Staphylococcus Bacteria</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/moore.html">Reddit links</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/ugwuoke.html">Analyzing Airport Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/vanchinathan.html">Yeast operons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/wu.html">London Train Network</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/graph_matching.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/edit/main/docs/graph_matching.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fgraph_matching.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/graph_matching.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fgraph_matching.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/graph_matching.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/graph_matching.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-match-graphs">
-   Why match graphs?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#permutations">
-   Permutations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-matching-problem">
-   Graph matching problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solving-the-graph-matching-problem">
-   Solving the graph matching problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-matching-with-graspologic">
-   Graph matching with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     graspologic
-    </span>
-   </code>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-graph-matching">
-     Basic graph matching
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-seed-nodes">
-     Adding seed nodes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graphs-with-different-numbers-of-nodes">
-     Graphs with different numbers of nodes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practical-considerations">
-     Practical considerations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application">
-   Application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Graph matching</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-match-graphs">
-   Why match graphs?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#permutations">
-   Permutations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-matching-problem">
-   Graph matching problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solving-the-graph-matching-problem">
-   Solving the graph matching problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-matching-with-graspologic">
-   Graph matching with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     graspologic
-    </span>
-   </code>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-graph-matching">
-     Basic graph matching
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-seed-nodes">
-     Adding seed nodes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graphs-with-different-numbers-of-nodes">
-     Graphs with different numbers of nodes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practical-considerations">
-     Practical considerations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application">
-   Application
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Graph matching</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-match-graphs">Why match graphs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations">Permutations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-matching-problem">Graph matching problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-graph-matching-problem">Solving the graph matching problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-matching-with-graspologic">Graph matching with <code class="docutils literal notranslate"><span class="pre">graspologic</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-graph-matching">Basic graph matching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-seed-nodes">Adding seed nodes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs-with-different-numbers-of-nodes">Graphs with different numbers of nodes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-considerations">Practical considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="graph-matching">
-<h1>Graph matching<a class="headerlink" href="#graph-matching" title="Permalink to this headline">#</a></h1>
+<h1>Graph matching<a class="headerlink" href="#graph-matching" title="Permalink to this heading">#</a></h1>
 <p>Some of this lesson is taken directly from the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/index.html#matching"><code class="docutils literal notranslate"><span class="pre">graspologic</span></code> tutorials on graph matching</a>, mostly written by Ali Saad-Eldin with help from myself.</p>
 <section id="why-match-graphs">
-<h2>Why match graphs?<a class="headerlink" href="#why-match-graphs" title="Permalink to this headline">#</a></h2>
+<h2>Why match graphs?<a class="headerlink" href="#why-match-graphs" title="Permalink to this heading">#</a></h2>
 <p>Graph matching comes up in a ton of different contexts!</p>
 <ul class="simple">
 <li><p>Computer vision: comparing objects</p></li>
@@ -716,7 +508,7 @@ title="Print to PDF"
 </figure>
 </section>
 <section id="permutations">
-<h2>Permutations<a class="headerlink" href="#permutations" title="Permalink to this headline">#</a></h2>
+<h2>Permutations<a class="headerlink" href="#permutations" title="Permalink to this heading">#</a></h2>
 <p>To start to understand graph matching, we first need to understand permutations and
 permutation matrices.</p>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Permutation"><strong>permutation</strong></a> can be thought of as a
@@ -756,7 +548,7 @@ we care about this for networks?</p>
 </div>
 </section>
 <section id="graph-matching-problem">
-<h2>Graph matching problem<a class="headerlink" href="#graph-matching-problem" title="Permalink to this headline">#</a></h2>
+<h2>Graph matching problem<a class="headerlink" href="#graph-matching-problem" title="Permalink to this heading">#</a></h2>
 <p>Why do we care about permutations for the problem of <a class="reference external" href="https://en.wikipedia.org/wiki/Graph_matching"><strong>graph matching</strong></a>?
 Graph matching refers to the problem of finding a mapping between the nodes of one graph (<span class="math notranslate nohighlight">\(A\)</span>)
 and the nodes of some other graph, <span class="math notranslate nohighlight">\(B\)</span>. For now, consider the case where the two networks
@@ -789,7 +581,7 @@ directed or undirected, with or without self-loops.</p>
 </figure>
 </section>
 <section id="solving-the-graph-matching-problem">
-<h2>Solving the graph matching problem<a class="headerlink" href="#solving-the-graph-matching-problem" title="Permalink to this headline">#</a></h2>
+<h2>Solving the graph matching problem<a class="headerlink" href="#solving-the-graph-matching-problem" title="Permalink to this heading">#</a></h2>
 <p>Many solutions for the problem above have been proposed - note that all of these are
 approximate solutions, and they tend to scale fairly poorly (in the number of nodes)
 compared to some of the other algorithms we have discussed so far. Nevertheless, a lot
@@ -816,7 +608,7 @@ easily used to solve the other.</p>
 \[\min_D -\text{trace}(ADB^T D^T)\]</div>
 <p>Given this relaxation, we can now begin to take gradients in our space of matrices. I won’t go into every detail, but the algorithm we end up using is
 something like:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Start with some initial position - note that this position is a doubly stochastic matrix.</p></li>
 <li><p>Compute the gradient of the expression above with respect to <span class="math notranslate nohighlight">\(D\)</span>. This gives us our “step direction.”</p></li>
 <li><p>Compute a step size (how far to go in that direction in the space of matrices) by searching over the line between our current position and the one computed in 2.</p></li>
@@ -826,9 +618,9 @@ something like:</p>
 </ol>
 </section>
 <section id="graph-matching-with-graspologic">
-<h2>Graph matching with <code class="docutils literal notranslate"><span class="pre">graspologic</span></code><a class="headerlink" href="#graph-matching-with-graspologic" title="Permalink to this headline">#</a></h2>
+<h2>Graph matching with <code class="docutils literal notranslate"><span class="pre">graspologic</span></code><a class="headerlink" href="#graph-matching-with-graspologic" title="Permalink to this heading">#</a></h2>
 <section id="basic-graph-matching">
-<h3>Basic graph matching<a class="headerlink" href="#basic-graph-matching" title="Permalink to this headline">#</a></h3>
+<h3>Basic graph matching<a class="headerlink" href="#basic-graph-matching" title="Permalink to this heading">#</a></h3>
 <p>Thankfully, all of this is implemented in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code>. Let’s start by generating a random network (ER). We’ll then make a permuted copy of itself.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -875,7 +667,7 @@ something like:</p>
 <p>So, we’ve exactly recovered the correct permutation - note that this won’t always be true.</p>
 </section>
 <section id="adding-seed-nodes">
-<h3>Adding seed nodes<a class="headerlink" href="#adding-seed-nodes" title="Permalink to this headline">#</a></h3>
+<h3>Adding seed nodes<a class="headerlink" href="#adding-seed-nodes" title="Permalink to this heading">#</a></h3>
 <p>Next, we explore the use of “seed” nodes. Imagine you have two networks that you want to match, but you already know that a handful of these nodes are correctly paired. These nodes are called seeds, which you can incorporate into
 the optimization in <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> via techniques described in <span id="id2">Fishkind <em>et al.</em> [<a class="reference internal" href="#id20" title="Donniell E Fishkind, Sancar Adali, Heather G Patsolic, Lingyao Meng, Digvijay Singh, Vince Lyzinski, and Carey E Priebe. Seeded graph matching. Pattern recognition, 87:203–215, 2019.">3</a>]</span>.</p>
 <p>For this example, we use a slightly different network model - we create two stochastic block models, but the edges are <em>correlated</em> so that the two networks are similar but not exactly the same.</p>
@@ -973,7 +765,7 @@ the optimization in <code class="docutils literal notranslate"><span class="pre"
 </div>
 </section>
 <section id="graphs-with-different-numbers-of-nodes">
-<h3>Graphs with different numbers of nodes<a class="headerlink" href="#graphs-with-different-numbers-of-nodes" title="Permalink to this headline">#</a></h3>
+<h3>Graphs with different numbers of nodes<a class="headerlink" href="#graphs-with-different-numbers-of-nodes" title="Permalink to this heading">#</a></h3>
 <p>I won’t go into all of the details, but it is also possible to match networks
 with different numbers of nodes.</p>
 <p>Here, we just create two correlated SBMs, and then remove some nodes from each block in one of the networks.</p>
@@ -1063,7 +855,7 @@ with different numbers of nodes.</p>
 </div>
 </section>
 <section id="practical-considerations">
-<h3>Practical considerations<a class="headerlink" href="#practical-considerations" title="Permalink to this headline">#</a></h3>
+<h3>Practical considerations<a class="headerlink" href="#practical-considerations" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>While the number of edges in the two networks matters, the most important scaling factor is the number of nodes. Solving the graph matching problem using our code may take a while when you have more than a few thousand nodes.</p></li>
 <li><p>The current implementation only works for dense arrays. There is no reason we couldn’t make it work for sparse (and we plan to) but because the most important factor in the scaling is the number of nodes, this wouldn’t make a drastic difference.</p></li>
@@ -1074,7 +866,7 @@ with different numbers of nodes.</p>
 </section>
 </section>
 <section id="application">
-<h2>Application<a class="headerlink" href="#application" title="Permalink to this headline">#</a></h2>
+<h2>Application<a class="headerlink" href="#application" title="Permalink to this heading">#</a></h2>
 <p>In a recent paper, we applied these same tools for matching the nodes in the left and right <em>Drosophila</em> larva mushroom body connectome datasets, the same
 ones you get from <code class="docutils literal notranslate"><span class="pre">graspologic.datasets.load_drosophila_left()</span></code> etc.</p>
 <figure class="align-default" id="id79">
@@ -1085,19 +877,22 @@ ones you get from <code class="docutils literal notranslate"><span class="pre">g
 </figure>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id5">
-<dl class="citation">
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
-<dd><p>Jaewon Chung, Eric Bridgeford, Jesús Arroyo, Benjamin D Pedigo, Ali Saad-Eldin, Vivek Gopalakrishnan, Liang Xiang, Carey E Priebe, and Joshua T Vogelstein. Statistical connectomics. <em>Annual Review of Statistics and Its Application</em>, 8:463–492, 2021.</p>
-</dd>
-<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
-<dd><p>Joshua T Vogelstein, John M Conroy, Vince Lyzinski, Louis J Podrazik, Steven G Kratzer, Eric T Harley, Donniell E Fishkind, R Jacob Vogelstein, and Carey E Priebe. Fast approximate quadratic programming for graph matching. <em>PLOS one</em>, 10(4):e0121002, 2015.</p>
-</dd>
-<dt class="label" id="id20"><span class="brackets">3</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
-<dd><p>Donniell E Fishkind, Sancar Adali, Heather G Patsolic, Lingyao Meng, Digvijay Singh, Vince Lyzinski, and Carey E Priebe. Seeded graph matching. <em>Pattern recognition</em>, 87:203–215, 2019.</p>
-</dd>
-</dl>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p>Jaewon Chung, Eric Bridgeford, Jesús Arroyo, Benjamin D Pedigo, Ali Saad-Eldin, Vivek Gopalakrishnan, Liang Xiang, Carey E Priebe, and Joshua T Vogelstein. Statistical connectomics. <em>Annual Review of Statistics and Its Application</em>, 8:463–492, 2021.</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>Joshua T Vogelstein, John M Conroy, Vince Lyzinski, Louis J Podrazik, Steven G Kratzer, Eric T Harley, Donniell E Fishkind, R Jacob Vogelstein, and Carey E Priebe. Fast approximate quadratic programming for graph matching. <em>PLOS one</em>, 10(4):e0121002, 2015.</p>
+</div>
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Donniell E Fishkind, Sancar Adali, Heather G Patsolic, Lingyao Meng, Digvijay Singh, Vince Lyzinski, and Carey E Priebe. Seeded graph matching. <em>Pattern recognition</em>, 87:203–215, 2019.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1114,7 +909,7 @@ ones you get from <code class="docutils literal notranslate"><span class="pre">g
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1122,50 +917,113 @@ ones you get from <code class="docutils literal notranslate"><span class="pre">g
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="embedding.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Network embedding</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="embedding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Network embedding</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="multiple_embedding.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="multiple_embedding.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Embedding multiple networks</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-match-graphs">Why match graphs?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations">Permutations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-matching-problem">Graph matching problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-graph-matching-problem">Solving the graph matching problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-matching-with-graspologic">Graph matching with <code class="docutils literal notranslate"><span class="pre">graspologic</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-graph-matching">Basic graph matching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-seed-nodes">Adding seed nodes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs-with-different-numbers-of-nodes">Graphs with different numbers of nodes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-considerations">Practical considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Benjamin D. Pedigo<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Benjamin D. Pedigo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

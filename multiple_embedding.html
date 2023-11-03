@@ -1,50 +1,69 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Embedding multiple networks &#8212; Network Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-JYHFQNEPZN');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -53,70 +72,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'multiple_embedding';</script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Ranking and flow" href="ranking.html" />
     <link rel="prev" title="Graph matching" href="graph_matching.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-JYHFQNEPZN');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="landing.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Network Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Network Data Science - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Network Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -125,523 +178,299 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="syllabus.html">
-   Syllabus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="calendar.html">
-   Calendar
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mini_assignment.html">
-   Mini-assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="final_project.html">
-   Final project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calendar.html">Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mini_assignment.html">Mini-assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="final_project.html">Final project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   Python development
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="online_resources.html">
-   Online
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="books.html">
-   Books
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="online_resources.html">Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="books.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
-   Welcome
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
-   What are networks?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="representing_networks.html">
-   Representing networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plotting_networks.html">
-   Plotting networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connected_components.html">
-   Connected components
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="centrality.html">
-   Centrality measures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="random_graphs.html">
-   Random network models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="community_detection.html">
-   Community detection
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
-   Network embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="graph_matching.html">
-   Graph matching
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Embedding multiple networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ranking.html">
-   Ranking and flow
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">What are networks?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representing_networks.html">Representing networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting_networks.html">Plotting networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_components.html">Connected components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="centrality.html">Centrality measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random_graphs.html">Random network models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community_detection.html">Community detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_matching.html">Graph matching</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Embedding multiple networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking.html">Ranking and flow</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="plot_large.html">
-   Plotting larger networks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="plot_large.html">Plotting larger networks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/arsnow.html">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/he.html">
-   Spotify Million Playlists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/kondepudi.html">
-   Elliptic Cryptocurrency Transactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/modaressanavi.html">
-   Protein Interactomes in Staphylococcus Bacteria
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/moore.html">
-   Reddit links
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/ugwuoke.html">
-   Analyzing Airport Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/vanchinathan.html">
-   Yeast operons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/wu.html">
-   London Train Network
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="projects/arsnow.html">South Florida Cypress Wetlands Trophic Networks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/he.html">Spotify Million Playlists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/kondepudi.html">Elliptic Cryptocurrency Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/modaressanavi.html">Protein Interactomes in Staphylococcus Bacteria</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/moore.html">Reddit links</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/ugwuoke.html">Analyzing Airport Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/vanchinathan.html">Yeast operons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/wu.html">London Train Network</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/multiple_embedding.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/edit/main/docs/multiple_embedding.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fmultiple_embedding.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/multiple_embedding.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fmultiple_embedding.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/multiple_embedding.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/multiple_embedding.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-a-couple-of-spectral-embeddings">
-   Do a couple of spectral embeddings
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orthogonal-nonidentifiability">
-     Orthogonal nonidentifiability
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orthogonal-procrustes-problem">
-     Orthogonal procrustes problem
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#considerations">
-     Considerations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#omnibus-embedding">
-   Omnibus Embedding
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiple-ase">
-   Multiple ASE
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representations-for-each-network">
-   Representations for each network
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Embedding multiple networks</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-a-couple-of-spectral-embeddings">
-   Do a couple of spectral embeddings
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orthogonal-nonidentifiability">
-     Orthogonal nonidentifiability
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orthogonal-procrustes-problem">
-     Orthogonal procrustes problem
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#considerations">
-     Considerations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#omnibus-embedding">
-   Omnibus Embedding
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiple-ase">
-   Multiple ASE
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representations-for-each-network">
-   Representations for each network
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Embedding multiple networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-a-couple-of-spectral-embeddings">Do a couple of spectral embeddings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-nonidentifiability">Orthogonal nonidentifiability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-procrustes-problem">Orthogonal procrustes problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations">Considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omnibus-embedding">Omnibus Embedding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-ase">Multiple ASE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representations-for-each-network">Representations for each network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="embedding-multiple-networks">
-<h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this headline">#</a></h1>
+<h1>Embedding multiple networks<a class="headerlink" href="#embedding-multiple-networks" title="Permalink to this heading">#</a></h1>
 <p>Often, we are interested in more than one network. Sometimes this arises from thinking
 about multiple “layers,” where each layer represents a different kind of relationship.</p>
 <figure class="align-default" id="id75">
@@ -668,7 +497,7 @@ below, mainly for the spectral methods.</p>
 neural network approaches.</p>
 </div>
 <section id="do-a-couple-of-spectral-embeddings">
-<h2>Do a couple of spectral embeddings<a class="headerlink" href="#do-a-couple-of-spectral-embeddings" title="Permalink to this headline">#</a></h2>
+<h2>Do a couple of spectral embeddings<a class="headerlink" href="#do-a-couple-of-spectral-embeddings" title="Permalink to this heading">#</a></h2>
 <p>Let’s say we have two networks. We wish to come up with an embedding for <em>each node
 in each network</em>. Since we’ve already learned about techniques for network embedding,
 why not just apply these techniques separately to each network, and compare the results?</p>
@@ -732,7 +561,7 @@ why not just apply these techniques separately to each network, and compare the 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x12e684c10&gt;
 </pre></div>
 </div>
-<img alt="_images/multiple_embedding_5_1.png" src="_images/multiple_embedding_5_1.png" />
+<img alt="_images/6983d3385bef2dc9654b10a96e1a0159cb51c20c90fe056764973fc090c7101a.png" src="_images/6983d3385bef2dc9654b10a96e1a0159cb51c20c90fe056764973fc090c7101a.png" />
 </div>
 </div>
 <div class="tip admonition">
@@ -742,7 +571,7 @@ why not just apply these techniques separately to each network, and compare the 
 other?</p>
 </div>
 <section id="orthogonal-nonidentifiability">
-<h3>Orthogonal nonidentifiability<a class="headerlink" href="#orthogonal-nonidentifiability" title="Permalink to this headline">#</a></h3>
+<h3>Orthogonal nonidentifiability<a class="headerlink" href="#orthogonal-nonidentifiability" title="Permalink to this heading">#</a></h3>
 <p>Earlier in the course, we discussed a model with a nonidentifiability in its parameters.
 As a reminder, this just means that we have some flexibility in the parameters we use
 which gives us the same model behavior. Can this arise for the RDPG model, which is the
@@ -803,7 +632,7 @@ because they <em>preserve all interpoint distances</em>.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Transformed positions ($X W$)&#39;)
 </pre></div>
 </div>
-<img alt="_images/multiple_embedding_8_1.png" src="_images/multiple_embedding_8_1.png" />
+<img alt="_images/08ed8067827cfce02d33058f65bf636b04243eada7a1080a5b0f7c2d59164d14.png" src="_images/08ed8067827cfce02d33058f65bf636b04243eada7a1080a5b0f7c2d59164d14.png" />
 </div>
 </div>
 <p>Note that the distances between all points is preserved.</p>
@@ -836,7 +665,7 @@ that the matrix <span class="math notranslate nohighlight">\(P\)</span> is uncha
 there are an <em>infinite</em> number of orthogonal transformations.</p>
 </section>
 <section id="orthogonal-procrustes-problem">
-<h3>Orthogonal procrustes problem<a class="headerlink" href="#orthogonal-procrustes-problem" title="Permalink to this headline">#</a></h3>
+<h3>Orthogonal procrustes problem<a class="headerlink" href="#orthogonal-procrustes-problem" title="Permalink to this heading">#</a></h3>
 <p>In practice, how can we resolve this issue? Let’s say we have these two sets of latent
 positions, <span class="math notranslate nohighlight">\(X^{(1)}\)</span> and <span class="math notranslate nohighlight">\(X^{(2)} W\)</span>, and want to somehow compare them on equal footing.
 What we can do is try to
@@ -882,7 +711,7 @@ and it has an exact solution (fun fact: the solution uses the SVD).</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x134f0abe0&gt;
 </pre></div>
 </div>
-<img alt="_images/multiple_embedding_16_1.png" src="_images/multiple_embedding_16_1.png" />
+<img alt="_images/9b9a5c37c6dc581bc4e59a43054c7c2167a215760e740aa6076a0a9eba1f5373.png" src="_images/9b9a5c37c6dc581bc4e59a43054c7c2167a215760e740aa6076a0a9eba1f5373.png" />
 </div>
 </div>
 <div class="tip admonition">
@@ -892,7 +721,7 @@ least at a high level?</p>
 </div>
 </section>
 <section id="considerations">
-<h3>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">#</a></h3>
+<h3>Considerations<a class="headerlink" href="#considerations" title="Permalink to this heading">#</a></h3>
 <div class="admonition-question admonition">
 <p class="admonition-title">Question</p>
 <p>Does the order of nodes in <span class="math notranslate nohighlight">\(X^{(2)}\)</span> matter? What does it represent?</p>
@@ -919,7 +748,7 @@ least at a high level?</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x137e3b0d0&gt;
 </pre></div>
 </div>
-<img alt="_images/multiple_embedding_20_1.png" src="_images/multiple_embedding_20_1.png" />
+<img alt="_images/e6448f52aabb017c3638cbd417e4ae8fb30342b7e74b1cf084345b4822cc2ff4.png" src="_images/e6448f52aabb017c3638cbd417e4ae8fb30342b7e74b1cf084345b4822cc2ff4.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -941,7 +770,7 @@ after aligning them.</p>
 </section>
 </section>
 <section id="omnibus-embedding">
-<h2>Omnibus Embedding<a class="headerlink" href="#omnibus-embedding" title="Permalink to this headline">#</a></h2>
+<h2>Omnibus Embedding<a class="headerlink" href="#omnibus-embedding" title="Permalink to this heading">#</a></h2>
 <p>The method described above (basically just doing ASE twice) is a totally valid way of
 attacking this multiple network embedding problem, though it has many caveats. In
 practice, we often want to do multiple network embeddings without dealing with this
@@ -984,12 +813,12 @@ embedding. Figure from <span id="id1">Athreya <em>et al.</em> [<a class="referen
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13807bd00&gt;
 </pre></div>
 </div>
-<img alt="_images/multiple_embedding_24_1.png" src="_images/multiple_embedding_24_1.png" />
+<img alt="_images/9c7731ffd13bce6ebbab76750e99709709bad8c9788a15fa0140acef0e5ec852.png" src="_images/9c7731ffd13bce6ebbab76750e99709709bad8c9788a15fa0140acef0e5ec852.png" />
 </div>
 </div>
 </section>
 <section id="multiple-ase">
-<h2>Multiple ASE<a class="headerlink" href="#multiple-ase" title="Permalink to this headline">#</a></h2>
+<h2>Multiple ASE<a class="headerlink" href="#multiple-ase" title="Permalink to this heading">#</a></h2>
 <p>Sometimes, we aren’t as interested in having a representation for each node in each
 graph - perhaps we don’t care about what is different between networks, and we are
 interested in grouping nodes based on their <em>shared</em> structure across many different
@@ -1036,7 +865,7 @@ estimate for each node pair</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1387248b0&gt;
 </pre></div>
 </div>
-<img alt="_images/multiple_embedding_26_1.png" src="_images/multiple_embedding_26_1.png" />
+<img alt="_images/45534be6d7f61d16f4827653e00b960ec1a00279a0c8aa0b7480a3e9faa4bc54.png" src="_images/45534be6d7f61d16f4827653e00b960ec1a00279a0c8aa0b7480a3e9faa4bc54.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -1054,7 +883,7 @@ More details can be found in the <a class="reference external" href="https://mic
 </figure>
 </section>
 <section id="representations-for-each-network">
-<h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this headline">#</a></h2>
+<h2>Representations for each network<a class="headerlink" href="#representations-for-each-network" title="Permalink to this heading">#</a></h2>
 <p>The following example comes from the <code class="docutils literal notranslate"><span class="pre">graspologic</span></code> <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/connectomics/mcc.html">tutorial on multiscale comparative connectomics</a>, which is based on <span id="id4">Gopalakrishnan <em>et al.</em> [<a class="reference internal" href="#id71" title="Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. arXiv preprint arXiv:2011.14990, 2020.">3</a>]</span>.
 The data comes from <span id="id5">Wang <em>et al.</em> [<a class="reference internal" href="#id72" title="Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. NeuroImage, 222:117274, 2020.">4</a>]</span>.</p>
 <p>Below, we load in 32 networks - these networks come from MRI scans of mice brains, and
@@ -1134,7 +963,7 @@ we can do something like</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/multiple_embedding_36_0.png" src="_images/multiple_embedding_36_0.png" />
+<img alt="_images/ed3846ed977541845d837509a51e365037b97eb9d44d0d11f5bad2c2170c5b20.png" src="_images/ed3846ed977541845d837509a51e365037b97eb9d44d0d11f5bad2c2170c5b20.png" />
 </div>
 </div>
 <p>A technique called <a class="reference external" href="https://en.wikipedia.org/wiki/Multidimensional_scaling#Classical_multidimensional_scaling"><strong>classical multidimensional scaling</strong></a>
@@ -1171,7 +1000,7 @@ directly pass in <code class="docutils literal notranslate"><span class="pre">om
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/multiple_embedding_38_0.png" src="_images/multiple_embedding_38_0.png" />
+<img alt="_images/3055f079878acfbfd77ab37249e16626ab3a5818c3aeb120032db11ae4de0b26.png" src="_images/3055f079878acfbfd77ab37249e16626ab3a5818c3aeb120032db11ae4de0b26.png" />
 </div>
 </div>
 <p>What if we hadn’t known the genotype labels ahead of time, and wanted to cluster the
@@ -1210,29 +1039,33 @@ clustering directly on the dissimilarity matrix as I do below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/multiple_embedding_40_0.png" src="_images/multiple_embedding_40_0.png" />
+<img alt="_images/dcaa2ec61aa7782741cc430a670dcc3df36dc04892fe335305f48c583162f32a.png" src="_images/dcaa2ec61aa7782741cc430a670dcc3df36dc04892fe335305f48c583162f32a.png" />
 </div>
 </div>
 <p>With this representation that we learned from our network embeddings, our clustering
 exactly recovered the genotype labels!</p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id6">
-<dl class="citation">
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
-</dd>
-<dt class="label" id="id70"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
-<dd><p>Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. <em>Journal of Machine Learning Research</em>, 22(142):1–49, 2021.</p>
-</dd>
-<dt class="label" id="id71"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
-<dd><p>Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. <em>arXiv preprint arXiv:2011.14990</em>, 2020.</p>
-</dd>
-<dt class="label" id="id72"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
-<dd><p>Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. <em>NeuroImage</em>, 222:117274, 2020.</p>
-</dd>
-</dl>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
+</div>
+<div class="citation" id="id70" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Jesús Arroyo, Avanti Athreya, Joshua Cape, Guodong Chen, Carey E Priebe, and Joshua T Vogelstein. Inference for multiple heterogeneous networks with a common invariant subspace. <em>Journal of Machine Learning Research</em>, 22(142):1–49, 2021.</p>
+</div>
+<div class="citation" id="id71" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>Vivek Gopalakrishnan, Jaewon Chung, Eric Bridgeford, Benjamin D Pedigo, Jesús Arroyo, Lucy Upchurch, G Allan Johnson, Nian Wang, Youngser Park, Carey E Priebe, and others. Multiscale comparative connectomics. <em>arXiv preprint arXiv:2011.14990</em>, 2020.</p>
+</div>
+<div class="citation" id="id72" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>Nian Wang, Robert J Anderson, David G Ashbrook, Vivek Gopalakrishnan, Youngser Park, Carey E Priebe, Yi Qi, Rick Laoprasert, Joshua T Vogelstein, Robert W Williams, and others. Variability and heritability of mouse brain structure: microscopic mri atlases and connectomes for diverse strains. <em>NeuroImage</em>, 222:117274, 2020.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1249,7 +1082,7 @@ exactly recovered the genotype labels!</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1257,50 +1090,110 @@ exactly recovered the genotype labels!</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="graph_matching.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Graph matching</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="graph_matching.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Graph matching</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="ranking.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="ranking.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Ranking and flow</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-a-couple-of-spectral-embeddings">Do a couple of spectral embeddings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-nonidentifiability">Orthogonal nonidentifiability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-procrustes-problem">Orthogonal procrustes problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations">Considerations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#omnibus-embedding">Omnibus Embedding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-ase">Multiple ASE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representations-for-each-network">Representations for each network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Benjamin D. Pedigo<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Benjamin D. Pedigo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

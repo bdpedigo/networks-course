@@ -1,120 +1,173 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Spotify Million Playlists &#8212; Network Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-JYHFQNEPZN');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/he';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Elliptic Cryptocurrency Transactions" href="kondepudi.html" />
     <link rel="prev" title="South Florida Cypress Wetlands Trophic Networks" href="arsnow.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-JYHFQNEPZN');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../landing.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Network Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Network Data Science - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Network Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -123,536 +176,303 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus.html">
-   Syllabus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../calendar.html">
-   Calendar
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mini_assignment.html">
-   Mini-assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../final_project.html">
-   Final project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini_assignment.html">Mini-assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../python.html">
-   Python development
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../online_resources.html">
-   Online
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../books.html">
-   Books
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../online_resources.html">Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../books.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
-   Welcome
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
-   What are networks?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../representing_networks.html">
-   Representing networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../plotting_networks.html">
-   Plotting networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../connected_components.html">
-   Connected components
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../centrality.html">
-   Centrality measures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../random_graphs.html">
-   Random network models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community_detection.html">
-   Community detection
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../embedding.html">
-   Network embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../graph_matching.html">
-   Graph matching
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../multiple_embedding.html">
-   Embedding multiple networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ranking.html">
-   Ranking and flow
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">What are networks?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../representing_networks.html">Representing networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting_networks.html">Plotting networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connected_components.html">Connected components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../centrality.html">Centrality measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../random_graphs.html">Random network models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community_detection.html">Community detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embedding.html">Network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graph_matching.html">Graph matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiple_embedding.html">Embedding multiple networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking and flow</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../plot_large.html">
-   Plotting larger networks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../plot_large.html">Plotting larger networks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="arsnow.html">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Spotify Million Playlists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kondepudi.html">
-   Elliptic Cryptocurrency Transactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modaressanavi.html">
-   Protein Interactomes in Staphylococcus Bacteria
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="moore.html">
-   Reddit links
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ugwuoke.html">
-   Analyzing Airport Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="vanchinathan.html">
-   Yeast operons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="wu.html">
-   London Train Network
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="arsnow.html">South Florida Cypress Wetlands Trophic Networks</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spotify Million Playlists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kondepudi.html">Elliptic Cryptocurrency Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modaressanavi.html">Protein Interactomes in Staphylococcus Bacteria</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="moore.html">Reddit links</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ugwuoke.html">Analyzing Airport Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vanchinathan.html">Yeast operons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wu.html">London Train Network</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/he.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/he.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/he.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/he.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/he.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/he.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/projects/he.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-network">
-   The Network
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-visualization">
-   Data Visualization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#network-visualization">
-   Network Visualization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning">
-   Machine Learning
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nn-model">
-     NN Model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-forest-classifier">
-     Random Forest Classifier
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knn-classifier">
-     KNN Classifier
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Spotify Million Playlists</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-network">
-   The Network
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-visualization">
-   Data Visualization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#network-visualization">
-   Network Visualization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#machine-learning">
-   Machine Learning
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nn-model">
-     NN Model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-forest-classifier">
-     Random Forest Classifier
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knn-classifier">
-     KNN Classifier
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spotify Million Playlists</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-network">The Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-visualization">Network Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-model">NN Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-classifier">KNN Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="spotify-million-playlists">
-<h1>Spotify Million Playlists<a class="headerlink" href="#spotify-million-playlists" title="Permalink to this headline">#</a></h1>
+<h1>Spotify Million Playlists<a class="headerlink" href="#spotify-million-playlists" title="Permalink to this heading">#</a></h1>
 <p><strong>Author: Allen He</strong></p>
 <section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <p>The data chosen for this project is the Spotify Million Playlist Dataset. It contains a million json files, each with 1000 playlists stored inside. The format of the data, converted to python, is an outer dictionary containing two keys: one with info of the dataset, and a second with all the playlists as values. The playlists themselves are a dictionary, with the key being a description of the playlist and the values being the tracks in the playlist with unique artist and song identifiers.
 <a class="reference external" href="https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge">Data Source</a></p>
 <p>We begin by importing relevant packages.</p>
@@ -715,7 +535,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="the-network">
-<h2>The Network<a class="headerlink" href="#the-network" title="Permalink to this headline">#</a></h2>
+<h2>The Network<a class="headerlink" href="#the-network" title="Permalink to this heading">#</a></h2>
 <p>We want to eventually be able to predict whether an artist is in a playlist or not. However, we should get a visualization of what we’re looking at, so we first create an undirected weighted network where the nodes are playlists, and edges are created between playlists if they share artists. The edge weights are the number of shared artists between the playlists.
 The format for this hashmap will be:</p>
 <p>{key: artist, value: {dictionary with key : playlist number, value : # appearances in playlist}}</p>
@@ -823,7 +643,7 @@ This idea will be applied to trackingDict; thus, all we need to do is initialize
 </div>
 </section>
 <section id="data-visualization">
-<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this headline">#</a></h2>
+<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
 <p>Let’s just play around and create a couple graphs depicting information on what playlists contain the most unique artists and which artists are in the most playlists. We start with the former.</p>
 <p>We create playlistArtistMap, which is a dictionary which with format {key: playlist name, value: # unique artists}
 We then order the dictionary, and plot the result.</p>
@@ -872,7 +692,7 @@ We then order the dictionary, and plot the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/he_12_0.png" src="../_images/he_12_0.png" />
+<img alt="../_images/c7857d8524827ff45e928fe654cab6669d03578cb4d91d3c8096aa95c7bebd0f.png" src="../_images/c7857d8524827ff45e928fe654cab6669d03578cb4d91d3c8096aa95c7bebd0f.png" />
 </div>
 </div>
 <p>Now for the inverse (artist x how many playlists they appeared in):</p>
@@ -913,13 +733,13 @@ We then order the dictionary, and plot the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/he_15_0.png" src="../_images/he_15_0.png" />
+<img alt="../_images/6afe9b6ea8ef78d9285e1a34f840d513e28f1d7d153c50289bd65cce30510a1f.png" src="../_images/6afe9b6ea8ef78d9285e1a34f840d513e28f1d7d153c50289bd65cce30510a1f.png" />
 </div>
 </div>
 <p>We can tell from these graphs that there will be a lot of edges; Drake himself will be responsible for (188 * 187 = 35156) edges.</p>
 </section>
 <section id="network-visualization">
-<h2>Network Visualization<a class="headerlink" href="#network-visualization" title="Permalink to this headline">#</a></h2>
+<h2>Network Visualization<a class="headerlink" href="#network-visualization" title="Permalink to this heading">#</a></h2>
 <p>We first check out what our heatmap looks like - this will be great for informing us about the density of our network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -936,7 +756,7 @@ We then order the dictionary, and plot the result.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1500x1500 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/he_18_2.png" src="../_images/he_18_2.png" />
+<img alt="../_images/8100ef63e115544ef73966502dd171334db66ec604add279d9147ab3774a216d.png" src="../_images/8100ef63e115544ef73966502dd171334db66ec604add279d9147ab3774a216d.png" />
 </div>
 </div>
 <p>It appears as if this network is extremely dense; in fact, it looks fully connected. Let’s check.</p>
@@ -1077,7 +897,7 @@ Index: []
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/he_30_0.png" src="../_images/he_30_0.png" />
+<img alt="../_images/e259eb2fb5ba5811e298ea781adad50617ed50e5bbdbab9b345ba0531dc389b3.png" src="../_images/e259eb2fb5ba5811e298ea781adad50617ed50e5bbdbab9b345ba0531dc389b3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1121,12 +941,12 @@ Index: []
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Leiden Graph&#39;)
 </pre></div>
 </div>
-<img alt="../_images/he_32_1.png" src="../_images/he_32_1.png" />
+<img alt="../_images/fe19fd78f603cb9966d3ce0cd62c1797189746d5c032fb0da0d19369f113b06b.png" src="../_images/fe19fd78f603cb9966d3ce0cd62c1797189746d5c032fb0da0d19369f113b06b.png" />
 </div>
 </div>
 </section>
 <section id="machine-learning">
-<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">#</a></h2>
+<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this heading">#</a></h2>
 <p>Our plan is to figure out whether an artist belongs in a playlist or not through multi-label binary classification. To build inputs, we use the Laplacian Spectral Embedding to turn our nodes into n-dimensional vectors. We also want to see the effect that centrality measures have on the models, so we create embeddings with betweenness and eigenvector centrality measures as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1255,7 +1075,7 @@ see how well classification goes with completely random labeling.</p>
 </div>
 <p>Expectedly, we get an accuracy of ~50%, as well as a recall of ~50%. This means that we are predicting an almost equal amount of true positives and false negatives - this checks out, because if an artist is actually in a playlist, then in the random model, there’s a 50/50 chance that artist appears. The sub-1% precision means there are WAY too many false positives, which makes sense in context because most of the playlists should have predominantly 0 labels, and these 0 labels are a 50/50 to be a 1 in the random model.</p>
 <section id="nn-model">
-<h3>NN Model<a class="headerlink" href="#nn-model" title="Permalink to this headline">#</a></h3>
+<h3>NN Model<a class="headerlink" href="#nn-model" title="Permalink to this heading">#</a></h3>
 <p>We build some simple neural networks in Keras, without worrying about hidden layers. We take n input dimensions and the input layer has n + 1 neurons in each case, while the output layer is the same size as the number of labels to predict.</p>
 <p>Each neuron in the first layer is connected to every neuron in the next layer. A weight determines the strength of the connection between two neurons. An activation function basically determines which neurons in the layer are relevant by examining the sum of the weighted inputs. In forward propagation, these are the parameters which a model makes prediction through. The learning comes in back propogation, when the model goes backwards from the predicted output; it is here that weights and biases are adjusted to minimize the loss function.</p>
 <p>According to Sci-Kit, the loss function for multi-label classification models should be a binary-crossentropy loss function. Binary cross-entropy will calculate a score based on the distance of a label from its expected value. The activation function is sigmoid, which will compute probabilities in a continuous range between 0 and 1. Hence, we create an alpha-value to optimize that will determine the threshold for whether a label should be a concrete 0 or 1.</p>
@@ -1557,7 +1377,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
 </div>
 </section>
 <section id="random-forest-classifier">
-<h3>Random Forest Classifier<a class="headerlink" href="#random-forest-classifier" title="Permalink to this headline">#</a></h3>
+<h3>Random Forest Classifier<a class="headerlink" href="#random-forest-classifier" title="Permalink to this heading">#</a></h3>
 <p>The random forest classifier learns through decision trees; it basically looks at a feature, and splits the data based on that feature, and then continuously makes splits. How do we determine the quality of these splits? We use something called the <em>gini impurity</em> value; this essentially measures the diversity of data in a given tree. The lower the impurity, the lower the chance of misclassification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1582,7 +1402,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
 </div>
 </section>
 <section id="knn-classifier">
-<h3>KNN Classifier<a class="headerlink" href="#knn-classifier" title="Permalink to this headline">#</a></h3>
+<h3>KNN Classifier<a class="headerlink" href="#knn-classifier" title="Permalink to this heading">#</a></h3>
 <p>KNN in theory should work great with embeddings based off communities; this is because the KNN model associates datapoints which are closely related/close together to be clusters. Hence, it will end up classifying our test data by seeing which cluster it falls closer to.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1612,7 +1432,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
 </section>
 </section>
 <section id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h2>
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
 <p>We want to visualize our results so they are easier to interpret. To do that, we create 4 dictionaries, each one measuring a different metric. From there, we can just plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1679,7 +1499,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/he_61_0.png" src="../_images/he_61_0.png" />
+<img alt="../_images/43f45a0877a3eb517645d064c6be460e662723d3e1fc1104b7daf062d9468d9b.png" src="../_images/43f45a0877a3eb517645d064c6be460e662723d3e1fc1104b7daf062d9468d9b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1711,7 +1531,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.996, 0.9966)
 </pre></div>
 </div>
-<img alt="../_images/he_62_1.png" src="../_images/he_62_1.png" />
+<img alt="../_images/b09706c8dcb8cca3b59b36c5244ad0619254a4888160a6f8e1252b555f9e5ea5.png" src="../_images/b09706c8dcb8cca3b59b36c5244ad0619254a4888160a6f8e1252b555f9e5ea5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1738,7 +1558,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/he_63_0.png" src="../_images/he_63_0.png" />
+<img alt="../_images/65d7f90ff50339f102a7cae6985c8fcf150f934d17a3b1868225de739fb22a40.png" src="../_images/65d7f90ff50339f102a7cae6985c8fcf150f934d17a3b1868225de739fb22a40.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1765,7 +1585,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/he_64_0.png" src="../_images/he_64_0.png" />
+<img alt="../_images/47f9b7dec35c81378f4dc3feabf2a26c4fa12cef1dd21f5ecfc8aec4351650d4.png" src="../_images/47f9b7dec35c81378f4dc3feabf2a26c4fa12cef1dd21f5ecfc8aec4351650d4.png" />
 </div>
 </div>
 <p>We observe that in the neural networks, the alpha-value which produces the best results ranges the gamut from 0.19-0.28, although the alphas for embeddings including either betweenness or eigenvector centrality could be considered significantly different from the other alphas. This tells us that including a single centrality measure as an input feature (even though it’s just 1 feature out of 98) has a large impact on the neural network’s learning.</p>
@@ -1787,7 +1607,7 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./projects"
         },
         predefinedOutput: true
@@ -1795,50 +1615,111 @@ Run Number 9 =&gt; with alpha: 0.23000000000000007 | acc: 0.9965311151339562 | r
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="arsnow.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">South Florida Cypress Wetlands Trophic Networks</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="arsnow.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">South Florida Cypress Wetlands Trophic Networks</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="kondepudi.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="kondepudi.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Elliptic Cryptocurrency Transactions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-network">The Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-visualization">Network Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-model">NN Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-classifier">KNN Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Benjamin D. Pedigo<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Benjamin D. Pedigo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

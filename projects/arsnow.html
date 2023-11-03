@@ -1,120 +1,173 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>South Florida Cypress Wetlands Trophic Networks &#8212; Network Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-JYHFQNEPZN');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/arsnow';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Spotify Million Playlists" href="he.html" />
     <link rel="prev" title="Plotting larger networks" href="../plot_large.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-JYHFQNEPZN');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../landing.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Network Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Network Data Science - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Network Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -123,489 +176,295 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus.html">
-   Syllabus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../calendar.html">
-   Calendar
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mini_assignment.html">
-   Mini-assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../final_project.html">
-   Final project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini_assignment.html">Mini-assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../python.html">
-   Python development
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../online_resources.html">
-   Online
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../books.html">
-   Books
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../online_resources.html">Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../books.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
-   Welcome
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
-   What are networks?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../representing_networks.html">
-   Representing networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../plotting_networks.html">
-   Plotting networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../connected_components.html">
-   Connected components
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../centrality.html">
-   Centrality measures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../random_graphs.html">
-   Random network models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community_detection.html">
-   Community detection
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../embedding.html">
-   Network embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../graph_matching.html">
-   Graph matching
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../multiple_embedding.html">
-   Embedding multiple networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ranking.html">
-   Ranking and flow
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">What are networks?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../representing_networks.html">Representing networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting_networks.html">Plotting networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connected_components.html">Connected components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../centrality.html">Centrality measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../random_graphs.html">Random network models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community_detection.html">Community detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embedding.html">Network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graph_matching.html">Graph matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiple_embedding.html">Embedding multiple networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking and flow</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../plot_large.html">
-   Plotting larger networks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../plot_large.html">Plotting larger networks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="he.html">
-   Spotify Million Playlists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kondepudi.html">
-   Elliptic Cryptocurrency Transactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modaressanavi.html">
-   Protein Interactomes in Staphylococcus Bacteria
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="moore.html">
-   Reddit links
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ugwuoke.html">
-   Analyzing Airport Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="vanchinathan.html">
-   Yeast operons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="wu.html">
-   London Train Network
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">South Florida Cypress Wetlands Trophic Networks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="he.html">Spotify Million Playlists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kondepudi.html">Elliptic Cryptocurrency Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modaressanavi.html">Protein Interactomes in Staphylococcus Bacteria</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="moore.html">Reddit links</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ugwuoke.html">Analyzing Airport Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vanchinathan.html">Yeast operons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wu.html">London Train Network</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/arsnow.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/arsnow.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/arsnow.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/arsnow.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/arsnow.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/arsnow.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/projects/arsnow.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#centrality-measures">
-   Centrality Measures
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#community-detection">
-   Community Detection
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-matching">
-   Graph Matching
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ranking">
-   Ranking
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>South Florida Cypress Wetlands Trophic Networks</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#centrality-measures">
-   Centrality Measures
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#community-detection">
-   Community Detection
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graph-matching">
-   Graph Matching
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ranking">
-   Ranking
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>South Florida Cypress Wetlands Trophic Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">South Florida Cypress Wetlands Trophic Networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#centrality-measures">Centrality Measures</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#community-detection">Community Detection</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-matching">Graph Matching</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ranking">Ranking</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="south-florida-cypress-wetlands-trophic-networks">
-<h1>South Florida Cypress Wetlands Trophic Networks<a class="headerlink" href="#south-florida-cypress-wetlands-trophic-networks" title="Permalink to this headline">#</a></h1>
+<h1>South Florida Cypress Wetlands Trophic Networks<a class="headerlink" href="#south-florida-cypress-wetlands-trophic-networks" title="Permalink to this heading">#</a></h1>
 <p><strong>Author: George Arsnow</strong></p>
 <p>The following is an analysis of trophic networks observed in south florida cypress wetlands in dry and wet seasons of 1996-1997.
 Data is taken from R. Ulanowicz, C. Bondavalli, and M. Egnotovich, “Network analysis of trophic dynamics in South Florida ecosystem, fy 97: The florida bay ecosystem,” Annual Report to the U. S. Geo. Service Biological Resources Division (1998). These networks were assembled by a combination of fieldwork and simulation. Both the dry and wet networks are fully connected and contain 128 nodes representing species present in the cypress wetlands ecosystem. The dry network contains 2137 directed edges, while the wet network contains 2106 directed edges, each signifying biomass transfer. The networks are weighted to indicate relative magnitudes of biomass transfer between species.</p>
@@ -613,7 +472,7 @@ Data is taken from R. Ulanowicz, C. Bondavalli, and M. Egnotovich, “Network an
 <p>Community detection is used to divide the networks into preferentially self-interacting groups. Graph matching between the dry and wet trophic networks demonstrates their similarity, and signal flow ranking is used to sort the species by predation level.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="centrality-measures">
-<h1>Centrality Measures<a class="headerlink" href="#centrality-measures" title="Permalink to this headline">#</a></h1>
+<h1>Centrality Measures<a class="headerlink" href="#centrality-measures" title="Permalink to this heading">#</a></h1>
 <p>The dry and wet trophic networks, designated baydry and baywet, respectively, are read from text files into graphs.
 Total degree, eigenvector centrality, PageRank, and betweenness centrality are computed for the nodes of each network. In both networks, node 57 has the highest total degree (110), eigenvector centrality (0.5538 dry, 0.5584 wet), and PageRank (0.2529 dry, 0.2371 wet), and node 18 has the highest betweenness centrality (0.3880 dry, 0.3838 wet). To simulate the extinction of these ecologically important species, one or both was removed from the network. The means and standard deviations of the four centrality measures were calculated for the regular (full) networks and the networks with node 18 removed (18R), node 57 removed (57R), and both node 18 and node 57 removed (1857R), as shown in the tables below. Some values in the tables are very small and approximated as zero.</p>
 <p><img alt="image.png" src="projects/attachment:image.png" />
@@ -756,19 +615,19 @@ Betweenness centrality does not have a physical meaning in the case of trophic n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/arsnow_2_0.png" src="../_images/arsnow_2_0.png" />
-<img alt="../_images/arsnow_2_1.png" src="../_images/arsnow_2_1.png" />
-<img alt="../_images/arsnow_2_2.png" src="../_images/arsnow_2_2.png" />
-<img alt="../_images/arsnow_2_3.png" src="../_images/arsnow_2_3.png" />
-<img alt="../_images/arsnow_2_4.png" src="../_images/arsnow_2_4.png" />
-<img alt="../_images/arsnow_2_5.png" src="../_images/arsnow_2_5.png" />
-<img alt="../_images/arsnow_2_6.png" src="../_images/arsnow_2_6.png" />
-<img alt="../_images/arsnow_2_7.png" src="../_images/arsnow_2_7.png" />
+<img alt="../_images/6b6e078f9cc771a5af5f9b3c26c4485b605c286e8afc5271e44c69fdd3cad4c1.png" src="../_images/6b6e078f9cc771a5af5f9b3c26c4485b605c286e8afc5271e44c69fdd3cad4c1.png" />
+<img alt="../_images/a6e6b5cf0d54b0ec051e1e3819f5ea40ee0903e1a18e93926a4b4a10466e83f7.png" src="../_images/a6e6b5cf0d54b0ec051e1e3819f5ea40ee0903e1a18e93926a4b4a10466e83f7.png" />
+<img alt="../_images/a77c90346e1495cd365cc8e4a363ce14b9ea506702375a513307a2c091c990b5.png" src="../_images/a77c90346e1495cd365cc8e4a363ce14b9ea506702375a513307a2c091c990b5.png" />
+<img alt="../_images/2c8aecc55743b975f015de5480a4ef543935cd508bc399117ed834c79ba3f012.png" src="../_images/2c8aecc55743b975f015de5480a4ef543935cd508bc399117ed834c79ba3f012.png" />
+<img alt="../_images/922f4e7884ac3f5c28cca1bcc5a5d942abd4ee5fd02ec95c30b489922450cc1f.png" src="../_images/922f4e7884ac3f5c28cca1bcc5a5d942abd4ee5fd02ec95c30b489922450cc1f.png" />
+<img alt="../_images/b4a566d11664fe3f2fd4d5d066d72423ed9c0313c8edb2a599d453e111ee506d.png" src="../_images/b4a566d11664fe3f2fd4d5d066d72423ed9c0313c8edb2a599d453e111ee506d.png" />
+<img alt="../_images/d6d35bb60a1b7ee9a961b4dd01fdc9df75b70e53e0d66e2521d29767c869e0c2.png" src="../_images/d6d35bb60a1b7ee9a961b4dd01fdc9df75b70e53e0d66e2521d29767c869e0c2.png" />
+<img alt="../_images/093a775100f3ffd166922b8c4e86cd72e2c8a794be03c47a86406a82f9e28b58.png" src="../_images/093a775100f3ffd166922b8c4e86cd72e2c8a794be03c47a86406a82f9e28b58.png" />
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="community-detection">
-<h1>Community Detection<a class="headerlink" href="#community-detection" title="Permalink to this headline">#</a></h1>
+<h1>Community Detection<a class="headerlink" href="#community-detection" title="Permalink to this heading">#</a></h1>
 <p>Leiden partitioning is used to divide the dry and wet networks into preferentially self-interacting groups. The modularity scores 0.2994854160522282 and 0.3270457717063401 for the dry and wet networks, respectively, are relatively low, indicating that there are not clear community divisions. This is expected for a trophic network because trophic interactions are largely between two individuals (represented by an edge) and directional. However, the larger modularity of the wet network may indicate that species are less able to interact with others, possibly by geographic separation. Indeed, the wet network has fewer edges than the dry network, which can further support this idea of hindered interaction in the wet season. The code below plots network layouts depicting the leiden-partitioned networks and heatmaps representing the grouped networks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -859,13 +718,13 @@ Betweenness centrality does not have a physical meaning in the case of trophic n
  array([&lt;AxesSubplot: &gt;, &lt;AxesSubplot: &gt;], dtype=object))
 </pre></div>
 </div>
-<img alt="../_images/arsnow_4_2.png" src="../_images/arsnow_4_2.png" />
-<img alt="../_images/arsnow_4_3.png" src="../_images/arsnow_4_3.png" />
+<img alt="../_images/5a878e6de074bd9e367d2df677e5530c38e32a8c16011925e89abc669fa748e8.png" src="../_images/5a878e6de074bd9e367d2df677e5530c38e32a8c16011925e89abc669fa748e8.png" />
+<img alt="../_images/1da28b40fad0bd8a8790ac88d189c4c487dee8145d280761329d0a88f926edbb.png" src="../_images/1da28b40fad0bd8a8790ac88d189c4c487dee8145d280761329d0a88f926edbb.png" />
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="graph-matching">
-<h1>Graph Matching<a class="headerlink" href="#graph-matching" title="Permalink to this headline">#</a></h1>
+<h1>Graph Matching<a class="headerlink" href="#graph-matching" title="Permalink to this heading">#</a></h1>
 <p>The dry and wet networks are made unweigted and subjected to graph matching. The code below plots the dry and wet aligned heatmaps. There are 43 edge disagreements between the two networks, and the wet network contains 31 fewer edges than the dry network. There great similarity between dry and wet networks indicates that seasonal weather conditions do not have a major impact on interspecies biomass transfer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -902,12 +761,12 @@ Betweenness centrality does not have a physical meaning in the case of trophic n
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of edge disagreements:  43
 </pre></div>
 </div>
-<img alt="../_images/arsnow_6_1.png" src="../_images/arsnow_6_1.png" />
+<img alt="../_images/b78eb124030debfa55dde571f72d5f67190b00c381203915b2fda75dc55d9309.png" src="../_images/b78eb124030debfa55dde571f72d5f67190b00c381203915b2fda75dc55d9309.png" />
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ranking">
-<h1>Ranking<a class="headerlink" href="#ranking" title="Permalink to this headline">#</a></h1>
+<h1>Ranking<a class="headerlink" href="#ranking" title="Permalink to this heading">#</a></h1>
 <p>The code below uses the signal flow algorithm to rank the species of the dry and wet trophic networks by relative predation level. The “apex predator” in both ecosystems, according to the signal flow results, is species 1. Species 57, seen above by the degree, eigenvector, and PageRank centrality measures to be an important species to the ecosystem, has the lowest signal flow score, meaning it is a major food source for other species. The rankings of the dry and wet network species are not identical but are very similar. Layouts weighted by signal flow score are also plotted by the code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1030,8 +889,8 @@ Length: 128, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Wet&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/arsnow_8_2.png" src="../_images/arsnow_8_2.png" />
-<img alt="../_images/arsnow_8_3.png" src="../_images/arsnow_8_3.png" />
+<img alt="../_images/9efe508f25eab9e802847155be9189515ad4837b1432a79732f0970735916b2d.png" src="../_images/9efe508f25eab9e802847155be9189515ad4837b1432a79732f0970735916b2d.png" />
+<img alt="../_images/5f6333708c47b7bd4a82d02ec1b0cec6c789024eed76d919911d0e5281f2f6f6.png" src="../_images/5f6333708c47b7bd4a82d02ec1b0cec6c789024eed76d919911d0e5281f2f6f6.png" />
 </div>
 </div>
 </section>
@@ -1048,7 +907,7 @@ Length: 128, dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./projects"
         },
         predefinedOutput: true
@@ -1056,50 +915,106 @@ Length: 128, dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../plot_large.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Plotting larger networks</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../plot_large.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Plotting larger networks</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="he.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="he.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Spotify Million Playlists</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">South Florida Cypress Wetlands Trophic Networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#centrality-measures">Centrality Measures</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#community-detection">Community Detection</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-matching">Graph Matching</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ranking">Ranking</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Benjamin D. Pedigo<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Benjamin D. Pedigo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

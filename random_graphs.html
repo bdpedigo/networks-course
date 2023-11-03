@@ -1,50 +1,69 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Random network models &#8212; Network Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-JYHFQNEPZN');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -53,70 +72,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'random_graphs';</script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Community detection" href="community_detection.html" />
     <link rel="prev" title="Centrality measures" href="centrality.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-JYHFQNEPZN');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="landing.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Network Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Network Data Science - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Network Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -125,603 +178,310 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="syllabus.html">
-   Syllabus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="calendar.html">
-   Calendar
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mini_assignment.html">
-   Mini-assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="final_project.html">
-   Final project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calendar.html">Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mini_assignment.html">Mini-assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="final_project.html">Final project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   Python development
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="online_resources.html">
-   Online
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="books.html">
-   Books
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="online_resources.html">Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="books.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
-   Welcome
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
-   What are networks?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="representing_networks.html">
-   Representing networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plotting_networks.html">
-   Plotting networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connected_components.html">
-   Connected components
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="centrality.html">
-   Centrality measures
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Random network models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="community_detection.html">
-   Community detection
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
-   Network embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="graph_matching.html">
-   Graph matching
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="multiple_embedding.html">
-   Embedding multiple networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ranking.html">
-   Ranking and flow
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">What are networks?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representing_networks.html">Representing networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting_networks.html">Plotting networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connected_components.html">Connected components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="centrality.html">Centrality measures</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Random network models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community_detection.html">Community detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_matching.html">Graph matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiple_embedding.html">Embedding multiple networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking.html">Ranking and flow</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="plot_large.html">
-   Plotting larger networks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="plot_large.html">Plotting larger networks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/arsnow.html">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/he.html">
-   Spotify Million Playlists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/kondepudi.html">
-   Elliptic Cryptocurrency Transactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/modaressanavi.html">
-   Protein Interactomes in Staphylococcus Bacteria
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/moore.html">
-   Reddit links
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/ugwuoke.html">
-   Analyzing Airport Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/vanchinathan.html">
-   Yeast operons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projects/wu.html">
-   London Train Network
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="projects/arsnow.html">South Florida Cypress Wetlands Trophic Networks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/he.html">Spotify Million Playlists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/kondepudi.html">Elliptic Cryptocurrency Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/modaressanavi.html">Protein Interactomes in Staphylococcus Bacteria</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/moore.html">Reddit links</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="projects/ugwuoke.html">Analyzing Airport Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/vanchinathan.html">Yeast operons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/wu.html">London Train Network</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/random_graphs.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/edit/main/docs/random_graphs.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Frandom_graphs.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/random_graphs.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Frandom_graphs.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/random_graphs.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/random_graphs.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-use-random-network-models">
-   Why use random network models?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-some-data-from-graspologic">
-   Load some data from
-   <em>
-    graspologic
-   </em>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notation">
-   Notation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#independent-edge-models">
-   Independent edge models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#erdos-reyni-er">
-     Erdos-Reyni (ER)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#degree-corrected-erdos-reyni-dcer">
-     Degree-corrected Erdos-Reyni (DCER)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stochastic-block-model-sbm">
-     Stochastic block model (SBM)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#degree-corrected-stochastic-block-model-dcsbm">
-     Degree-corrected stochastic block model (DCSBM)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-dot-product-graph-rdpg">
-     Random dot product graph (RDPG)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compare-all-of-the-models-on-this-dataset">
-     Compare all of the models on this dataset
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#relationships-among-these-models">
-     Relationships among these models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#barabasi-albert-model">
-   Barabasi-Albert model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-models">
-   Other models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bespoke-models">
-   “Bespoke” models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Random network models</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-use-random-network-models">
-   Why use random network models?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-some-data-from-graspologic">
-   Load some data from
-   <em>
-    graspologic
-   </em>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notation">
-   Notation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#independent-edge-models">
-   Independent edge models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#erdos-reyni-er">
-     Erdos-Reyni (ER)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#degree-corrected-erdos-reyni-dcer">
-     Degree-corrected Erdos-Reyni (DCER)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stochastic-block-model-sbm">
-     Stochastic block model (SBM)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#degree-corrected-stochastic-block-model-dcsbm">
-     Degree-corrected stochastic block model (DCSBM)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-dot-product-graph-rdpg">
-     Random dot product graph (RDPG)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compare-all-of-the-models-on-this-dataset">
-     Compare all of the models on this dataset
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#relationships-among-these-models">
-     Relationships among these models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#barabasi-albert-model">
-   Barabasi-Albert model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-models">
-   Other models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bespoke-models">
-   “Bespoke” models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Random network models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-random-network-models">Why use random network models?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-some-data-from-graspologic">Load some data from <em>graspologic</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-edge-models">Independent edge models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-reyni-er">Erdos-Reyni (ER)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-corrected-erdos-reyni-dcer">Degree-corrected Erdos-Reyni (DCER)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-model-sbm">Stochastic block model (SBM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-corrected-stochastic-block-model-dcsbm">Degree-corrected stochastic block model (DCSBM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-dot-product-graph-rdpg">Random dot product graph (RDPG)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-all-of-the-models-on-this-dataset">Compare all of the models on this dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationships-among-these-models">Relationships among these models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barabasi-albert-model">Barabasi-Albert model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-models">Other models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bespoke-models">“Bespoke” models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="random-network-models">
-<h1>Random network models<a class="headerlink" href="#random-network-models" title="Permalink to this headline">#</a></h1>
+<h1>Random network models<a class="headerlink" href="#random-network-models" title="Permalink to this heading">#</a></h1>
 <p>This notebook on random network models is adapted from the <a class="reference external" href="https://microsoft.github.io/graspologic/latest/tutorials/models/models.html"><code class="docutils literal notranslate"><span class="pre">graspoloigc</span></code> tutorial</a> on the same topic.</p>
 <p>You may also be interested in <a class="reference external" href="http://docs.neurodata.io/graph-stats-book/representations/ch5/why-use-models.html">a similar section in <em>Hands-on Network Machine Learning with Scikit-Learn and Graspologic</em></a>.</p>
 <section id="why-use-random-network-models">
-<h2>Why use random network models?<a class="headerlink" href="#why-use-random-network-models" title="Permalink to this headline">#</a></h2>
+<h2>Why use random network models?<a class="headerlink" href="#why-use-random-network-models" title="Permalink to this heading">#</a></h2>
 <p>There are a few different reasons one might want to use a statistical network model.</p>
 <p>First, these models can be a concise, mathematical way of formalizing a conception of
 the process involved in generating a network.</p>
@@ -738,7 +498,7 @@ statistical network models might differ. For whatever the reason, these models c
 in research a ton. Let’s look at a few of these models below.</p>
 </section>
 <section id="load-some-data-from-graspologic">
-<h2>Load some data from <em>graspologic</em><a class="headerlink" href="#load-some-data-from-graspologic" title="Permalink to this headline">#</a></h2>
+<h2>Load some data from <em>graspologic</em><a class="headerlink" href="#load-some-data-from-graspologic" title="Permalink to this heading">#</a></h2>
 <p>For this example we will use the <em>Drosophila melanogaster</em> larva right mushroom body connectome from <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/28796202">Eichler et al. 2017</a>. Here we will consider a binarized and directed version of the graph. Note that I will make this graph unweighted, because most statistical
 network models are concerned with binary networks.</p>
 <div class="cell docutils container">
@@ -768,18 +528,18 @@ network models are concerned with binary networks.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_4_0.png" src="_images/random_graphs_4_0.png" />
+<img alt="_images/d394064fc6dfe1c4d845364bfa49bc07ef9ff456046224257ab4b627eca0f99b.png" src="_images/d394064fc6dfe1c4d845364bfa49bc07ef9ff456046224257ab4b627eca0f99b.png" />
 </div>
 </div>
 </section>
 <section id="notation">
-<h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">#</a></h2>
+<h2>Notation<a class="headerlink" href="#notation" title="Permalink to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(n\)</span> - the number of nodes in the graph</p>
 <p><span class="math notranslate nohighlight">\(A\)</span> - <span class="math notranslate nohighlight">\(n \times n\)</span> adjacency matrix</p>
 <p><span class="math notranslate nohighlight">\(P\)</span> - <span class="math notranslate nohighlight">\(n \times n\)</span> matrix of probabilities</p>
 </section>
 <section id="independent-edge-models">
-<h2>Independent edge models<a class="headerlink" href="#independent-edge-models" title="Permalink to this headline">#</a></h2>
+<h2>Independent edge models<a class="headerlink" href="#independent-edge-models" title="Permalink to this heading">#</a></h2>
 <p>Many statistical network models fall under the umbrella of independent edge random networks, sometimes called the <strong>Inhomogeneous Erdos-Renyi (IER)</strong> model. Under this model, the elements of the network’s adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> are sampled independently from a Bernoulli distribution:</p>
 <div class="math notranslate nohighlight">
 \[A_{ij} \sim Bernoulli(P_{ij})\]</div>
@@ -792,7 +552,7 @@ network models are concerned with binary networks.</p>
 <li><p>a single sample of a new network from the fit model</p></li>
 </ul>
 <section id="erdos-reyni-er">
-<h3>Erdos-Reyni (ER)<a class="headerlink" href="#erdos-reyni-er" title="Permalink to this headline">#</a></h3>
+<h3>Erdos-Reyni (ER)<a class="headerlink" href="#erdos-reyni-er" title="Permalink to this heading">#</a></h3>
 <p>The <strong>Erdos-Reyni (ER)</strong> model is the simplest random graph model. We are interested in modeling the probability of an edge existing between any two nodes, <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. We denote this probability <span class="math notranslate nohighlight">\(P_{ij}\)</span>. For the ER model:</p>
 <div class="math notranslate nohighlight">
 \[P_{ij} = p\]</div>
@@ -838,7 +598,7 @@ This means that the one parameter <span class="math notranslate nohighlight">\(p
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ER &quot;p&quot; parameter: 0.1661046088739007
 </pre></div>
 </div>
-<img alt="_images/random_graphs_9_1.png" src="_images/random_graphs_9_1.png" />
+<img alt="_images/9bd4890fce11df88567a46b725c7a24c7f7daa2026c7f75b0a36e75f59d83e1b.png" src="_images/9bd4890fce11df88567a46b725c7a24c7f7daa2026c7f75b0a36e75f59d83e1b.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> also has an ER sampler. Note the <code class="docutils literal notranslate"><span class="pre">directed</span></code> kwarg.</p>
@@ -861,7 +621,7 @@ This means that the one parameter <span class="math notranslate nohighlight">\(p
 </div>
 </section>
 <section id="degree-corrected-erdos-reyni-dcer">
-<h3>Degree-corrected Erdos-Reyni (DCER)<a class="headerlink" href="#degree-corrected-erdos-reyni-dcer" title="Permalink to this headline">#</a></h3>
+<h3>Degree-corrected Erdos-Reyni (DCER)<a class="headerlink" href="#degree-corrected-erdos-reyni-dcer" title="Permalink to this heading">#</a></h3>
 <p>A slightly more complicated variant of the ER model is the <strong>degree-corrected Erdos-Reyni model (DCER)</strong>. Here, there is still a global parameter <span class="math notranslate nohighlight">\(p\)</span> to specify relative connection probability between all edges. However, we add a promiscuity parameter <span class="math notranslate nohighlight">\(\theta_i\)</span> for each node <span class="math notranslate nohighlight">\(i\)</span> which specifies its expected degree relative to other nodes:</p>
 <div class="math notranslate nohighlight">
 \[P_{ij} = \theta_i \theta_j p\]</div>
@@ -898,12 +658,12 @@ interpretation as the expected number of edges.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DCER &quot;p&quot; parameter: 7536.0
 </pre></div>
 </div>
-<img alt="_images/random_graphs_13_1.png" src="_images/random_graphs_13_1.png" />
+<img alt="_images/ed942c533ef5df382711b7b99f8b861034c235bb4be8d769f88737ba70e3aca6.png" src="_images/ed942c533ef5df382711b7b99f8b861034c235bb4be8d769f88737ba70e3aca6.png" />
 </div>
 </div>
 </section>
 <section id="stochastic-block-model-sbm">
-<h3>Stochastic block model (SBM)<a class="headerlink" href="#stochastic-block-model-sbm" title="Permalink to this headline">#</a></h3>
+<h3>Stochastic block model (SBM)<a class="headerlink" href="#stochastic-block-model-sbm" title="Permalink to this heading">#</a></h3>
 <p>Under the <strong>stochastic block model (SBM)</strong>, each node is modeled as belonging to a block (sometimes called a community or group). The probability of node <span class="math notranslate nohighlight">\(i\)</span> connecting to node <span class="math notranslate nohighlight">\(j\)</span> is simply a function of the block membership of the two nodes. Let <span class="math notranslate nohighlight">\(n\)</span> be the number of nodes in the graph, then <span class="math notranslate nohighlight">\(\tau\)</span> is a length <span class="math notranslate nohighlight">\(n\)</span> vector which indicates the block membership of each node in the graph. Let <span class="math notranslate nohighlight">\(K\)</span> be the number of blocks, then <span class="math notranslate nohighlight">\(B\)</span> is a <span class="math notranslate nohighlight">\(K \times K\)</span> matrix of block-block connection probabilities.</p>
 <div class="math notranslate nohighlight">
 \[P_{ij} = B_{\tau_i \tau_j}\]</div>
@@ -928,7 +688,7 @@ interpretation as the expected number of edges.</p>
  [0.         0.07587302 0.         0.        ]]
 </pre></div>
 </div>
-<img alt="_images/random_graphs_15_1.png" src="_images/random_graphs_15_1.png" />
+<img alt="_images/b9318642d0555f77be91d6bca72e3f488b2916ffcabae7577b2dc8183e89fc2a.png" src="_images/b9318642d0555f77be91d6bca72e3f488b2916ffcabae7577b2dc8183e89fc2a.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -960,7 +720,7 @@ has a bit of a learning curve.</p>
 </div>
 </section>
 <section id="degree-corrected-stochastic-block-model-dcsbm">
-<h3>Degree-corrected stochastic block model (DCSBM)<a class="headerlink" href="#degree-corrected-stochastic-block-model-dcsbm" title="Permalink to this headline">#</a></h3>
+<h3>Degree-corrected stochastic block model (DCSBM)<a class="headerlink" href="#degree-corrected-stochastic-block-model-dcsbm" title="Permalink to this heading">#</a></h3>
 <p>Just as we could add a degree-correction term to the ER model, so too can we modify the stochastic block model to allow for heterogeneous expected degrees. This yields the <strong>degree-corrected stochastic block model.</strong> Again, we let <span class="math notranslate nohighlight">\(\theta\)</span> be a length <span class="math notranslate nohighlight">\(n\)</span> vector of degree correction parameters, and all other parameters remain as they were defined above for the SBM:</p>
 <div class="math notranslate nohighlight">
 \[P_{ij} = \theta_i \theta_j B_{\tau_i, \tau_j}\]</div>
@@ -986,12 +746,12 @@ has a bit of a learning curve.</p>
  [   0.  478.    0.    0.]]
 </pre></div>
 </div>
-<img alt="_images/random_graphs_20_1.png" src="_images/random_graphs_20_1.png" />
+<img alt="_images/c20dc96ca15f523dd859610f2664bc44313f128ffc1c8213bd0bec0d4196e13b.png" src="_images/c20dc96ca15f523dd859610f2664bc44313f128ffc1c8213bd0bec0d4196e13b.png" />
 </div>
 </div>
 </section>
 <section id="random-dot-product-graph-rdpg">
-<h3>Random dot product graph (RDPG)<a class="headerlink" href="#random-dot-product-graph-rdpg" title="Permalink to this headline">#</a></h3>
+<h3>Random dot product graph (RDPG)<a class="headerlink" href="#random-dot-product-graph-rdpg" title="Permalink to this heading">#</a></h3>
 <p>The <strong>random dot product graph model (RDPG)</strong> <span id="id1">[<a class="reference internal" href="#id25" title="Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. The Journal of Machine Learning Research, 18(1):8393–8484, 2017.">1</a>, <a class="reference internal" href="#id33" title="Stephen J Young and Edward R Scheinerman. Random dot product graph models for social networks. In International Workshop on Algorithms and Models for the Web-Graph, 138–149. Springer, 2007.">2</a>]</span> is a (relatively speaking) newer network model under the umbrella of latent position random graphs <span id="id2">[<a class="reference internal" href="#id32" title="Peter D Hoff, Adrian E Raftery, and Mark S Handcock. Latent space approaches to social network analysis. Journal of the american Statistical association, 97(460):1090–1098, 2002.">3</a>]</span>. Under <strong>latent position models</strong>, each node has an associated, typically unobserved vector which is referred to as the <strong>latent position</strong> of that node. For the directed network case, we can allow each node to have associated “in” and “out” latent position vectors which may not be the same, with the former governing the nodes inputs and the latter governing its outputs. If <span class="math notranslate nohighlight">\(x_i\)</span> is the out latent position for node <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(y_j\)</span> the input latent position for node <span class="math notranslate nohighlight">\(j\)</span>, then the probability of an edge between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is some function of these vectors:</p>
 <div class="math notranslate nohighlight">
 \[P[A_{ij} = 1] = P_{ij} = f(x_i, y_j)\]</div>
@@ -1019,7 +779,7 @@ are well defined.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_23_0.png" src="_images/random_graphs_23_0.png" />
+<img alt="_images/0ba7d21455a5c7d85605264352a502828b4182018d7e00546be312da8760629b.png" src="_images/0ba7d21455a5c7d85605264352a502828b4182018d7e00546be312da8760629b.png" />
 </div>
 </div>
 <p>For the RDPG, looking at the model parameters can be more challenging, since in this
@@ -1056,12 +816,12 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x142425640&gt;
 </pre></div>
 </div>
-<img alt="_images/random_graphs_27_1.png" src="_images/random_graphs_27_1.png" />
+<img alt="_images/883cf598e1f7e06ea00c32bc1ebcbdc322b6cf4969f6939f5cbcc8c4e8c3b49a.png" src="_images/883cf598e1f7e06ea00c32bc1ebcbdc322b6cf4969f6939f5cbcc8c4e8c3b49a.png" />
 </div>
 </div>
 </section>
 <section id="compare-all-of-the-models-on-this-dataset">
-<h3>Compare all of the models on this dataset<a class="headerlink" href="#compare-all-of-the-models-on-this-dataset" title="Permalink to this headline">#</a></h3>
+<h3>Compare all of the models on this dataset<a class="headerlink" href="#compare-all-of-the-models-on-this-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
@@ -1126,12 +886,12 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_29_0.png" src="_images/random_graphs_29_0.png" />
+<img alt="_images/dc93ac2273543a828a8069fc428c3e2da2d7db31715fa73973f647f6e50cb2dd.png" src="_images/dc93ac2273543a828a8069fc428c3e2da2d7db31715fa73973f647f6e50cb2dd.png" />
 </div>
 </div>
 </section>
 <section id="relationships-among-these-models">
-<h3>Relationships among these models<a class="headerlink" href="#relationships-among-these-models" title="Permalink to this headline">#</a></h3>
+<h3>Relationships among these models<a class="headerlink" href="#relationships-among-these-models" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="model-relationships">
 <img alt="_images/model-relationships.png" src="_images/model-relationships.png" />
 <figcaption>
@@ -1159,7 +919,7 @@ a vector which corresponds to a node) is to use <code class="docutils literal no
 </section>
 </section>
 <section id="barabasi-albert-model">
-<h2>Barabasi-Albert model<a class="headerlink" href="#barabasi-albert-model" title="Permalink to this headline">#</a></h2>
+<h2>Barabasi-Albert model<a class="headerlink" href="#barabasi-albert-model" title="Permalink to this heading">#</a></h2>
 <p>Here, we quickly give one example of a non-independent edge model.</p>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Barab%C3%A1si%E2%80%93Albert_model"><strong>Barabasi-Albert (BA) model</strong></a> is a model based on the idea of <strong>preferential attachment</strong>, sometimes called “rich-get-richer” phenomena.</p>
 <p>In contrast to the previous models, the BA model is based on a time-evolving process.
@@ -1188,12 +948,12 @@ for creating networks this way.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/random_graphs_32_0.png" src="_images/random_graphs_32_0.png" />
+<img alt="_images/724e2e8b7486594e20e39eb8ffb711c49a77d2206d003ee7700b5cc0a5a0d0d4.png" src="_images/724e2e8b7486594e20e39eb8ffb711c49a77d2206d003ee7700b5cc0a5a0d0d4.png" />
 </div>
 </div>
 </section>
 <section id="other-models">
-<h2>Other models<a class="headerlink" href="#other-models" title="Permalink to this headline">#</a></h2>
+<h2>Other models<a class="headerlink" href="#other-models" title="Permalink to this heading">#</a></h2>
 <p>Many other network models have been described which we haven’t had time to cover here:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Watts%E2%80%93Strogatz_model">Watts-Strogatz model</a> for reproducing so-called “small-world” properties of many real networks, wherein there are relatively short paths among any pair of nodes even in a large network.</p></li>
@@ -1201,7 +961,7 @@ for creating networks this way.</p>
 </ul>
 </section>
 <section id="bespoke-models">
-<h2>“Bespoke” models<a class="headerlink" href="#bespoke-models" title="Permalink to this headline">#</a></h2>
+<h2>“Bespoke” models<a class="headerlink" href="#bespoke-models" title="Permalink to this heading">#</a></h2>
 <p>Your network model does not just have to rely on the network itself, but can actually
 include other factors relevant to the application domain. For instance, one could use
 the spatial location of brain regions as part of a network model of the brain.</p>
@@ -1213,25 +973,30 @@ the spatial location of brain regions as part of a network model of the brain.</
 </figure>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id6">
-<dl class="citation">
-<dt class="label" id="id25"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
-<dd><p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
-</dd>
-<dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
-<dd><p>Stephen J Young and Edward R Scheinerman. Random dot product graph models for social networks. In <em>International Workshop on Algorithms and Models for the Web-Graph</em>, 138–149. Springer, 2007.</p>
-</dd>
-<dt class="label" id="id32"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
-<dd><p>Peter D Hoff, Adrian E Raftery, and Mark S Handcock. Latent space approaches to social network analysis. <em>Journal of the american Statistical association</em>, 97(460):1090–1098, 2002.</p>
-</dd>
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>Jaewon Chung, Eric Bridgeford, Jesús Arroyo, Benjamin D Pedigo, Ali Saad-Eldin, Vivek Gopalakrishnan, Liang Xiang, Carey E Priebe, and Joshua T Vogelstein. Statistical connectomics. <em>Annual Review of Statistics and Its Application</em>, 8:463–492, 2021.</p>
-</dd>
-<dt class="label" id="id56"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
-<dd><p>Florian Klimm, Danielle S Bassett, Jean M Carlson, and Peter J Mucha. Resolving structural variability in network models and the brain. <em>PLoS computational biology</em>, 10(3):e1003491, 2014.</p>
-</dd>
-</dl>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Avanti Athreya, Donniell E Fishkind, Minh Tang, Carey E Priebe, Youngser Park, Joshua T Vogelstein, Keith Levin, Vince Lyzinski, and Yichen Qin. Statistical inference on random dot product graphs: a survey. <em>The Journal of Machine Learning Research</em>, 18(1):8393–8484, 2017.</p>
+</div>
+<div class="citation" id="id33" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>Stephen J Young and Edward R Scheinerman. Random dot product graph models for social networks. In <em>International Workshop on Algorithms and Models for the Web-Graph</em>, 138–149. Springer, 2007.</p>
+</div>
+<div class="citation" id="id32" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">3</a><span class="fn-bracket">]</span></span>
+<p>Peter D Hoff, Adrian E Raftery, and Mark S Handcock. Latent space approaches to social network analysis. <em>Journal of the american Statistical association</em>, 97(460):1090–1098, 2002.</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Jaewon Chung, Eric Bridgeford, Jesús Arroyo, Benjamin D Pedigo, Ali Saad-Eldin, Vivek Gopalakrishnan, Liang Xiang, Carey E Priebe, and Joshua T Vogelstein. Statistical connectomics. <em>Annual Review of Statistics and Its Application</em>, 8:463–492, 2021.</p>
+</div>
+<div class="citation" id="id56" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Florian Klimm, Danielle S Bassett, Jean M Carlson, and Peter J Mucha. Resolving structural variability in network models and the brain. <em>PLoS computational biology</em>, 10(3):e1003491, 2014.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1248,7 +1013,7 @@ the spatial location of brain regions as part of a network model of the brain.</
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1256,50 +1021,117 @@ the spatial location of brain regions as part of a network model of the brain.</
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="centrality.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Centrality measures</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="centrality.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Centrality measures</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="community_detection.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="community_detection.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Community detection</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-random-network-models">Why use random network models?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-some-data-from-graspologic">Load some data from <em>graspologic</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-edge-models">Independent edge models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-reyni-er">Erdos-Reyni (ER)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-corrected-erdos-reyni-dcer">Degree-corrected Erdos-Reyni (DCER)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-model-sbm">Stochastic block model (SBM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-corrected-stochastic-block-model-dcsbm">Degree-corrected stochastic block model (DCSBM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-dot-product-graph-rdpg">Random dot product graph (RDPG)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-all-of-the-models-on-this-dataset">Compare all of the models on this dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationships-among-these-models">Relationships among these models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barabasi-albert-model">Barabasi-Albert model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-models">Other models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bespoke-models">“Bespoke” models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Benjamin D. Pedigo<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Benjamin D. Pedigo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

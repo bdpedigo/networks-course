@@ -1,119 +1,172 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>London Train Network &#8212; Network Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-JYHFQNEPZN');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/wu';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Yeast operons" href="vanchinathan.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JYHFQNEPZN"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-JYHFQNEPZN');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../landing.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Network Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Network Data Science - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Network Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -122,654 +175,321 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus.html">
-   Syllabus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../calendar.html">
-   Calendar
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mini_assignment.html">
-   Mini-assignment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../final_project.html">
-   Final project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calendar.html">Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini_assignment.html">Mini-assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../python.html">
-   Python development
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../online_resources.html">
-   Online
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../books.html">
-   Books
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../datasets.html">
-   Datasets
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../online_resources.html">Online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../books.html">Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">
-   Welcome
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">
-   What are networks?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../representing_networks.html">
-   Representing networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../plotting_networks.html">
-   Plotting networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../connected_components.html">
-   Connected components
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../centrality.html">
-   Centrality measures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../random_graphs.html">
-   Random network models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community_detection.html">
-   Community detection
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../embedding.html">
-   Network embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../graph_matching.html">
-   Graph matching
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../multiple_embedding.html">
-   Embedding multiple networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ranking.html">
-   Ranking and flow
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://bdpedigo.github.io/networks-course/what_are_networks.html">What are networks?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../representing_networks.html">Representing networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting_networks.html">Plotting networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connected_components.html">Connected components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../centrality.html">Centrality measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../random_graphs.html">Random network models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community_detection.html">Community detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embedding.html">Network embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graph_matching.html">Graph matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiple_embedding.html">Embedding multiple networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking and flow</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../plot_large.html">
-   Plotting larger networks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../plot_large.html">Plotting larger networks</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="arsnow.html">
-   South Florida Cypress Wetlands Trophic Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="he.html">
-   Spotify Million Playlists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kondepudi.html">
-   Elliptic Cryptocurrency Transactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modaressanavi.html">
-   Protein Interactomes in Staphylococcus Bacteria
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="moore.html">
-   Reddit links
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ugwuoke.html">
-   Analyzing Airport Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="vanchinathan.html">
-   Yeast operons
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   London Train Network
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="arsnow.html">South Florida Cypress Wetlands Trophic Networks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="he.html">Spotify Million Playlists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kondepudi.html">Elliptic Cryptocurrency Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modaressanavi.html">Protein Interactomes in Staphylococcus Bacteria</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="moore.html">Reddit links</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ugwuoke.html">Analyzing Airport Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vanchinathan.html">Yeast operons</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">London Train Network</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/bdpedigo/networks-course/main?urlpath=tree/docs/projects/wu.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/wu.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/wu.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/wu.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/issues/new?title=Issue%20on%20page%20%2Fprojects/wu.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/bdpedigo/networks-course/edit/main/docs/projects/wu.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/projects/wu.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   London Train Network
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definitions">
-     Definitions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#citations">
-     Citations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adjusting-my-data">
-   Adjusting My Data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-the-data">
-     Importing the Data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#node-attributes">
-     Node Attributes
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coloring-the-nodes">
-     Coloring the Nodes
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#network-connectedness">
-     Network Connectedness
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#network-degrees">
-     Network Degrees
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eigenvector-centrality">
-     Eigenvector Centrality
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pagerank">
-     PageRank
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#betweenness-centrality">
-     Betweenness Centrality
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-centrality-measures-multigraph-attempt">
-     Plotting Centrality Measures (Multigraph Attempt)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-network-models-sbm">
-     Random Network Models (SBM)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modularity">
-     Modularity
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#community-detection">
-     Community Detection
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-centrality-measures-weighted-graph">
-     Plotting Centrality Measures (Weighted Graph)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparing-stations">
-     Comparing Stations
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adjusted-rand-score">
-     Adjusted Rand Score
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#future-considerations">
-   Future Considerations
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>London Train Network</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   London Train Network
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definitions">
-     Definitions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#citations">
-     Citations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adjusting-my-data">
-   Adjusting My Data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-the-data">
-     Importing the Data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#node-attributes">
-     Node Attributes
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coloring-the-nodes">
-     Coloring the Nodes
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#network-connectedness">
-     Network Connectedness
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#network-degrees">
-     Network Degrees
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eigenvector-centrality">
-     Eigenvector Centrality
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pagerank">
-     PageRank
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#betweenness-centrality">
-     Betweenness Centrality
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-centrality-measures-multigraph-attempt">
-     Plotting Centrality Measures (Multigraph Attempt)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-network-models-sbm">
-     Random Network Models (SBM)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modularity">
-     Modularity
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#community-detection">
-     Community Detection
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-centrality-measures-weighted-graph">
-     Plotting Centrality Measures (Weighted Graph)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparing-stations">
-     Comparing Stations
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adjusted-rand-score">
-     Adjusted Rand Score
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#future-considerations">
-   Future Considerations
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>London Train Network</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">London Train Network</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-my-data">Adjusting My Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-data">Importing the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node-attributes">Node Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coloring-the-nodes">Coloring the Nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-connectedness">Network Connectedness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-degrees">Network Degrees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvector-centrality">Eigenvector Centrality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagerank">PageRank</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betweenness-centrality">Betweenness Centrality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-centrality-measures-multigraph-attempt">Plotting Centrality Measures (Multigraph Attempt)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-network-models-sbm">Random Network Models (SBM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modularity">Modularity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community-detection">Community Detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-centrality-measures-weighted-graph">Plotting Centrality Measures (Weighted Graph)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-stations">Comparing Stations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-rand-score">Adjusted Rand Score</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-considerations">Future Considerations</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="london-train-network">
-<h1>London Train Network<a class="headerlink" href="#london-train-network" title="Permalink to this headline">#</a></h1>
+<h1>London Train Network<a class="headerlink" href="#london-train-network" title="Permalink to this heading">#</a></h1>
 <p><strong>Author: Lucy Wu</strong></p>
 <section id="definitions">
-<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this heading">#</a></h2>
 <p>Nodes: (369 nodes) Each node represents a different station in the London train network (see further classifications below)<br />
 Edges: (441 edges) Each edge represents a connection between one station to another<br />
 Layers: (1-3) Each node is assigned to a corresponding layer of the train network</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Underground (The Tube)</p></li>
 <li><p>Overground</p></li>
 <li><p>DLR (Docklands Light Railway, automated light metro system)</p></li>
@@ -778,7 +498,7 @@ Layers: (1-3) Each node is assigned to a corresponding layer of the train networ
 Weights: (1-3) Represent the number of different lines connecting two stations (applies to only Underground)\</p>
 </section>
 <section id="citations">
-<h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>
+<h2>Citations<a class="headerlink" href="#citations" title="Permalink to this heading">#</a></h2>
 <p>Original Dataset: <a class="reference external" href="https://networks.skewed.de/net/london_transport">https://networks.skewed.de/net/london_transport</a><br />
 Paper: De Domenico, Manlio, et al. “Navigability of Interconnected Networks under Random Failures.” Proceedings of the National Academy of Sciences, vol. 111, no. 23, June 2014, pp. 8351–56. <a class="reference external" href="http://DOI.org">DOI.org</a> (Crossref), <a class="reference external" href="https://doi.org/10.1073/pnas.1318469111">https://doi.org/10.1073/pnas.1318469111</a>.</p>
 <div class="cell docutils container">
@@ -798,10 +518,10 @@ Paper: De Domenico, Manlio, et al. “Navigability of Interconnected Networks un
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="adjusting-my-data">
-<h1>Adjusting My Data<a class="headerlink" href="#adjusting-my-data" title="Permalink to this headline">#</a></h1>
+<h1>Adjusting My Data<a class="headerlink" href="#adjusting-my-data" title="Permalink to this heading">#</a></h1>
 <p>To the original nodes file, I added in another column to collect Fare Zone information. I felt this would be a good way to make my insights more interesting.</p>
 <section id="importing-the-data">
-<h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">#</a></h2>
+<h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Importing the nodes</span>
@@ -935,7 +655,7 @@ Paper: De Domenico, Manlio, et al. “Navigability of Interconnected Networks un
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
 </pre></div>
 </div>
-<img alt="../_images/wu_12_1.png" src="../_images/wu_12_1.png" />
+<img alt="../_images/f89423697d85cce5d8399bfbb0a43d1f3fd08eeb3209c8ca82f0b84559a0677c.png" src="../_images/f89423697d85cce5d8399bfbb0a43d1f3fd08eeb3209c8ca82f0b84559a0677c.png" />
 </div>
 </div>
 <p>This is a pretty sparse array, but it makes sense because every station most likely does not connect to hundreds of other stations. Observe how many of the connections (white squares) are clustered around the diagonal. This depends on how the data is sorted, but it would make sense in this case because a station is connected to the one directly before and after it. The graph is also symmetric because it is undirected. Also note that we still have not considered weight or layer data, so this is a top down view.</p>
@@ -953,12 +673,12 @@ Paper: De Domenico, Manlio, et al. “Navigability of Interconnected Networks un
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/wu_14_0.png" src="../_images/wu_14_0.png" />
+<img alt="../_images/54c4ae9b12065e030dda2ab0c40ab9f550c1d9da65aa1c8b29db9295f46eabac.png" src="../_images/54c4ae9b12065e030dda2ab0c40ab9f550c1d9da65aa1c8b29db9295f46eabac.png" />
 </div>
 </div>
 </section>
 <section id="node-attributes">
-<h2>Node Attributes<a class="headerlink" href="#node-attributes" title="Permalink to this headline">#</a></h2>
+<h2>Node Attributes<a class="headerlink" href="#node-attributes" title="Permalink to this heading">#</a></h2>
 <p>We should consider some limitations that will make our data more interesting to interpret.</p>
 <p>Since there are multiple layers to the train network, we should consider the layer number of each. We should also add in the weight, since it may help inform certain underground stations that are more densely connected than others. Lastly, we will add in the node names so we can reference which station is tied to which node.</p>
 <div class="cell docutils container">
@@ -1050,13 +770,13 @@ Paper: De Domenico, Manlio, et al. “Navigability of Interconnected Networks un
 True
 </pre></div>
 </div>
-<img alt="../_images/wu_19_1.png" src="../_images/wu_19_1.png" />
+<img alt="../_images/69ce2fa3ea0e50db0619879376f880f8a19622fb33a5d4f132c306a21ee0eb94.png" src="../_images/69ce2fa3ea0e50db0619879376f880f8a19622fb33a5d4f132c306a21ee0eb94.png" />
 </div>
 </div>
 <p>With multigraph: a white square means that an edge exists on multiple layers. It’s fairly obvious that there are very few nodes that have edges which exist on multiple layers.</p>
 </section>
 <section id="coloring-the-nodes">
-<h2>Coloring the Nodes<a class="headerlink" href="#coloring-the-nodes" title="Permalink to this headline">#</a></h2>
+<h2>Coloring the Nodes<a class="headerlink" href="#coloring-the-nodes" title="Permalink to this heading">#</a></h2>
 <p>In London, the fare system is based on which zone you travel from, and which zone you are travelling to. It is shaped similar to a bullseye or oyster (hence the Oyster Card payment system) so that the nexus is Zone 1 and the outskirts of London are Zone 9 and beyond. Interestingly, there are also half zones, so in that instance, I used .5 as a way to quantify these zones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1093,8 +813,8 @@ True
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/wu_23_0.png" src="../_images/wu_23_0.png" />
-<img alt="../_images/wu_23_1.png" src="../_images/wu_23_1.png" />
+<img alt="../_images/72e42be6dd045c19176d4be032192ea4af129bdb8dace0444102d75473151d00.png" src="../_images/72e42be6dd045c19176d4be032192ea4af129bdb8dace0444102d75473151d00.png" />
+<img alt="../_images/d9180f72cea0c7928d0de477cfc1c712fdd1338058d17ee172974b3db4e3a7d5.png" src="../_images/d9180f72cea0c7928d0de477cfc1c712fdd1338058d17ee172974b3db4e3a7d5.png" />
 </div>
 </div>
 <p>I would have expected that the red zone (Fare Zone 1) would be centralized and most connected, which appeares to be visually accurate here. However, The most interesting line to me is the yellow branch because it belongs to Fare Zone 2, yet is not as connected to other zones as you would expect for an inner zone. Other branches are very colorful, indicating that as you travel further down the branch, you travel through other zones compared to the yellow which only passes through one.</p>
@@ -1108,13 +828,13 @@ True
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/wu_25_0.png" src="../_images/wu_25_0.png" />
+<img alt="../_images/aa8b83d307599f6e16c713d56ecba306ed22aa2fc6dcd763988f983401df610b.png" src="../_images/aa8b83d307599f6e16c713d56ecba306ed22aa2fc6dcd763988f983401df610b.png" />
 </div>
 </div>
 <p>While this is more geographically accurate, there is some information lost or not translated as well since you can’t see the isolated branch of yellow as clearly. However, you can see how each zone blends into the next and forms rings.</p>
 </section>
 <section id="network-connectedness">
-<h2>Network Connectedness<a class="headerlink" href="#network-connectedness" title="Permalink to this headline">#</a></h2>
+<h2>Network Connectedness<a class="headerlink" href="#network-connectedness" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Connectedness: the whole thing should be connected</span>
@@ -1140,7 +860,7 @@ MultiGraph with 369 nodes and 441 edges
 </div>
 </section>
 <section id="network-degrees">
-<h2>Network Degrees<a class="headerlink" href="#network-degrees" title="Permalink to this headline">#</a></h2>
+<h2>Network Degrees<a class="headerlink" href="#network-degrees" title="Permalink to this heading">#</a></h2>
 <p>Since we are using an undirected network, degrees are simply a count of all the edges connected to each node (we don’t need to worry about in or out degrees). In our case, it tells us how many other stations are connected to each station.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1181,7 +901,7 @@ MultiGraph with 369 nodes and 441 edges
 </div>
 </div>
 <p>From our array, we can see a few things:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>If the degree is 1, that signifies the end of the line or branch</p></li>
 <li><p>If the degree is 2, it is contributing to an inner station of a line or branch</p></li>
 <li><p>Anything more shows it is interconnected with other stations</p></li>
@@ -1205,14 +925,14 @@ MultiGraph with 369 nodes and 441 edges
 </div>
 <p>Top 12 Stations by Degree<br />
 7 Connections</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Willesden Junction (2.5)</p></li>
 <li><p>Baker Street (1)</p></li>
 <li><p>Kings Cross St. Pancras (1)</p></li>
 <li><p>Stratford (2.5)</p></li>
 </ol>
 <p>6 Connections</p>
-<ol class="simple">
+<ol class="arabic simple" start="5">
 <li><p>Westham (2.5)</p></li>
 <li><p>Bank (1)</p></li>
 <li><p>Earls Court (1.5)</p></li>
@@ -1225,7 +945,7 @@ MultiGraph with 369 nodes and 441 edges
 <p>It makes sense that the top stations would belong to zones 1 to 2.5. Interestingly enough, there are no Zone 2 stations in this list, while there are a good portion of Zone 2.5 stations. This might suggest Zone 2.5 is more interconnected or important in a sense than Zone 2. Additionally, this pairs well with our findings from the colored graph previously, where Zone 2 actually had a more isolated branch in comparison. This may have contributed to its low number of degrees or connections.</p>
 </section>
 <section id="eigenvector-centrality">
-<h2>Eigenvector Centrality<a class="headerlink" href="#eigenvector-centrality" title="Permalink to this headline">#</a></h2>
+<h2>Eigenvector Centrality<a class="headerlink" href="#eigenvector-centrality" title="Permalink to this heading">#</a></h2>
 <p>This helps us measure the influence of one train station on another, since a train station will be important if it’s connected to another important train station, and so forth.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1334,7 +1054,7 @@ MultiGraph with 369 nodes and 441 edges
 </div>
 </section>
 <section id="pagerank">
-<h2>PageRank<a class="headerlink" href="#pagerank" title="Permalink to this headline">#</a></h2>
+<h2>PageRank<a class="headerlink" href="#pagerank" title="Permalink to this heading">#</a></h2>
 <p>Note: This is a similar metric to eigenvector centrality but more suited for directed graphs. However, we can still see what it looks like and how it compares for fun.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1424,7 +1144,7 @@ MultiGraph with 369 nodes and 441 edges
 </div>
 </section>
 <section id="betweenness-centrality">
-<h2>Betweenness Centrality<a class="headerlink" href="#betweenness-centrality" title="Permalink to this headline">#</a></h2>
+<h2>Betweenness Centrality<a class="headerlink" href="#betweenness-centrality" title="Permalink to this heading">#</a></h2>
 <p>A station will be more important if it lies on more of the shortest paths between two stations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1513,7 +1233,7 @@ MultiGraph with 369 nodes and 441 edges
 </div>
 </section>
 <section id="plotting-centrality-measures-multigraph-attempt">
-<h2>Plotting Centrality Measures (Multigraph Attempt)<a class="headerlink" href="#plotting-centrality-measures-multigraph-attempt" title="Permalink to this headline">#</a></h2>
+<h2>Plotting Centrality Measures (Multigraph Attempt)<a class="headerlink" href="#plotting-centrality-measures-multigraph-attempt" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting and comparing different connectedness measures</span>
@@ -1574,7 +1294,7 @@ MultiGraph with 369 nodes and 441 edges
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/wu_42_0.png" src="../_images/wu_42_0.png" />
+<img alt="../_images/d88507f91c13ea44174133cb49c9fc0736a482191dad5e37b159c0e223b8cda2.png" src="../_images/d88507f91c13ea44174133cb49c9fc0736a482191dad5e37b159c0e223b8cda2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1615,13 +1335,13 @@ MultiGraph with 369 nodes and 441 edges
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fcff12b53d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/wu_44_1.png" src="../_images/wu_44_1.png" />
+<img alt="../_images/64e2689ad8b692ef256a1206470f6dbb9076313f4145a14955f0992b2da57c8d.png" src="../_images/64e2689ad8b692ef256a1206470f6dbb9076313f4145a14955f0992b2da57c8d.png" />
 </div>
 </div>
 <p>It was at this point that I realized it would not be effective to use a multigraph network in combination with eigenvector centrality measures, since we are not sure what it assumes about our data. Also, eigenvector centrality would not run with a multigraph network, so I had to use my original network with some weighting parameters, but inherently makes the graphs unequal because they are using slightly different networks. Later, I will fix this by using a simpler network and compressing some of our data to ensure at least we know what the centrality measures are doing to our data, so we have a more accurate interpretation.</p>
 </section>
 <section id="random-network-models-sbm">
-<h2>Random Network Models (SBM)<a class="headerlink" href="#random-network-models-sbm" title="Permalink to this headline">#</a></h2>
+<h2>Random Network Models (SBM)<a class="headerlink" href="#random-network-models-sbm" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Considering our non-weighted network</span>
@@ -1698,13 +1418,13 @@ MultiGraph with 369 nodes and 441 edges
   1.07232121e-02]]
 </pre></div>
 </div>
-<img alt="../_images/wu_47_1.png" src="../_images/wu_47_1.png" />
+<img alt="../_images/aabf5bdb769b12a79c12eccda7763dd4bfc66b6515cb61494e4d39a4e77ce580.png" src="../_images/aabf5bdb769b12a79c12eccda7763dd4bfc66b6515cb61494e4d39a4e77ce580.png" />
 </div>
 </div>
 <p>As you can see, this does not give us a particularly clear view of any of the data or insights since the dataset is so sparse, so I will avoid generating more block models for this data.</p>
 </section>
 <section id="modularity">
-<h2>Modularity<a class="headerlink" href="#modularity" title="Permalink to this headline">#</a></h2>
+<h2>Modularity<a class="headerlink" href="#modularity" title="Permalink to this heading">#</a></h2>
 <p>We can measure how strong communities are within our train network. I anticipate it will be somewhat high because nodes or stations that are associated with each other will likely have more connections, while they will interact to a minimal degree with any other station.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1742,7 +1462,7 @@ MultiGraph with 369 nodes and 441 edges
 <p>Our modularity score is relatively high, and this would make sense because stations that form in communities are likely to have the strongest connections within their own community, and interact far less with others.</p>
 </section>
 <section id="community-detection">
-<h2>Community Detection<a class="headerlink" href="#community-detection" title="Permalink to this headline">#</a></h2>
+<h2>Community Detection<a class="headerlink" href="#community-detection" title="Permalink to this heading">#</a></h2>
 <p>How can we divide our train network into communities that make sense?<br />
 We will use the Leiden algorithm.</p>
 <div class="cell docutils container">
@@ -1795,13 +1515,13 @@ We will use the Leiden algorithm.</p>
  &lt;AxesSubplot: title={&#39;center&#39;: &#39;Betweenness&#39;}&gt;)
 </pre></div>
 </div>
-<img alt="../_images/wu_54_1.png" src="../_images/wu_54_1.png" />
+<img alt="../_images/a9aee9d5cbdc4573fbffca3aa3820dc4c55953e69aa1d22fb5d9fe6ba0a69a16.png" src="../_images/a9aee9d5cbdc4573fbffca3aa3820dc4c55953e69aa1d22fb5d9fe6ba0a69a16.png" />
 </div>
 </div>
 <p>From this Leiden graph, the algorithm seems to have created communities related to the branches, or more specifically, the lines of our train network. This would make sense because communities would be likely to form where there are connections with each other, and that’s exactly where some lines are located. Considering fare zone, this makes the center of the graph interesting since there are multiple intersecting lines passing through Zone 1.</p>
 </section>
 <section id="plotting-centrality-measures-weighted-graph">
-<h2>Plotting Centrality Measures (Weighted Graph)<a class="headerlink" href="#plotting-centrality-measures-weighted-graph" title="Permalink to this headline">#</a></h2>
+<h2>Plotting Centrality Measures (Weighted Graph)<a class="headerlink" href="#plotting-centrality-measures-weighted-graph" title="Permalink to this heading">#</a></h2>
 <p>‘Weight’ now means if a station has a non-1 weight, it connects a station to another station on either multiple layers and/or it has an underground connection with multiple lines. More simply, it is the sum of all of the weights connecting to or from that particular node.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1878,7 +1598,7 @@ We will use the Leiden algorithm.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/wu_59_0.png" src="../_images/wu_59_0.png" />
+<img alt="../_images/7b32dd170bbbc52e8829a61da91eacf128f7a7aaa521eb9d41c97a3c960a6ea2.png" src="../_images/7b32dd170bbbc52e8829a61da91eacf128f7a7aaa521eb9d41c97a3c960a6ea2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1891,7 +1611,7 @@ We will use the Leiden algorithm.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd011de1490&gt;
 </pre></div>
 </div>
-<img alt="../_images/wu_60_1.png" src="../_images/wu_60_1.png" />
+<img alt="../_images/d2e11d137c751601a482fee32e584b0189bafd9a432e4d704ecf98954f531b14.png" src="../_images/d2e11d137c751601a482fee32e584b0189bafd9a432e4d704ecf98954f531b14.png" />
 </div>
 </div>
 <p>What is happening here?</p>
@@ -1899,7 +1619,7 @@ We will use the Leiden algorithm.</p>
 <p>Betweenness: There is also some weak relation with pagerank. With a low betweenness score or influence on travel in the network, most nodes tend to have a low pagerank, and that would make sense considering most nodes only connect to two other stations, before and after them in the line. Thus, they would not have a large pagerank since the node would have low importance. It is interesting how the pagerank varies as betweenness increases, indicating that some nodes that connect multiple stations and affect travel, are not as important as others.</p>
 </section>
 <section id="comparing-stations">
-<h2>Comparing Stations<a class="headerlink" href="#comparing-stations" title="Permalink to this headline">#</a></h2>
+<h2>Comparing Stations<a class="headerlink" href="#comparing-stations" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s compare direct stations based on their centrality measure values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2114,7 +1834,7 @@ Name: betweenness, dtype: float64
 <p>Note: I included the top 10 busiest stations based on foot traffic data from <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_busiest_London_Underground_stations">https://en.wikipedia.org/wiki/List_of_busiest_London_Underground_stations</a> as a comparison metric. Most stations on the foot traffic list make an appearance in our centrality lists, however a few don’t, namely, Victoria, Oxford Circus, London Bridge, and Canary Wharf. This suggests there might be another factor that isn’t based on the connectedness or node importance that causes this discrepency.</p>
 </section>
 <section id="adjusted-rand-score">
-<h2>Adjusted Rand Score<a class="headerlink" href="#adjusted-rand-score" title="Permalink to this headline">#</a></h2>
+<h2>Adjusted Rand Score<a class="headerlink" href="#adjusted-rand-score" title="Permalink to this heading">#</a></h2>
 <p>This is a similarity measure used to determine if the labels are completely random (0) or are completely identical (1). I will use the leiden communities we generated earlier along with the fare zone information to determine if they have any correlation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2139,9 +1859,9 @@ Name: betweenness, dtype: float64
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="future-considerations">
-<h1>Future Considerations<a class="headerlink" href="#future-considerations" title="Permalink to this headline">#</a></h1>
+<h1>Future Considerations<a class="headerlink" href="#future-considerations" title="Permalink to this heading">#</a></h1>
 <p>Here are some ideas for extending or improving upon this project.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Lines: I did not have time to look at and incorporate line information for each station, but this could be a good metric to run our Leiden communiites against to see how correlated those labels are.</p></li>
 <li><p>Foot traffic: Additionally, there is detailed data available for each station and how many entries or exits there are: <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_busiest_London_Underground_stations">https://en.wikipedia.org/wiki/List_of_busiest_London_Underground_stations</a>. This information might align well with our centrality measures if incorporated more thoroughly as a node attribute.</p></li>
 <li><p>Labelling: My data did not come with an alphabetic station code (ASC), so I just used the original node names. However, for clarity in graphing, it may be helpful to add a node attribute with the ASC to avoid any possible confusion. For any additional data, it will help adding information that is not sorted the same way as the original file since it will likely come sorted by ASC and not the station name.</p></li>
@@ -2162,7 +1882,7 @@ Name: betweenness, dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./projects"
         },
         predefinedOutput: true
@@ -2170,43 +1890,116 @@ Name: betweenness, dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="vanchinathan.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Yeast operons</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="vanchinathan.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Yeast operons</p>
+      </div>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">London Train Network</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-my-data">Adjusting My Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-data">Importing the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node-attributes">Node Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coloring-the-nodes">Coloring the Nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-connectedness">Network Connectedness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-degrees">Network Degrees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvector-centrality">Eigenvector Centrality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagerank">PageRank</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betweenness-centrality">Betweenness Centrality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-centrality-measures-multigraph-attempt">Plotting Centrality Measures (Multigraph Attempt)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-network-models-sbm">Random Network Models (SBM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modularity">Modularity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community-detection">Community Detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-centrality-measures-weighted-graph">Plotting Centrality Measures (Weighted Graph)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-stations">Comparing Stations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-rand-score">Adjusted Rand Score</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-considerations">Future Considerations</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Benjamin D. Pedigo<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Benjamin D. Pedigo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
